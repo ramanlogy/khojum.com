@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Burst Madness!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            touch-action: manipulation; /* Prevent double-tap zoom on mobile */
+        }
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            touch-action: none;
+        }
+
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            cursor: crosshair;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Bangers', cursive;
+            user-select: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .bubble:hover {
+            transform: scale(1.1);
+        }
+
+        #scoreBoard {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            display: none; /* Initially hidden */
+        }
+
+        #eyeButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.3);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        #gameOver {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        #challengeTimer {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.3);
+            padding: 10px;
+            border-radius: 20px;
+            color: white;
+            font-size: 18px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            #eyeButton {
+                width: 50px;
+                height: 50px;
+            }
+            #scoreBoard, #challengeTimer {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer"></div>
+    <div id="scoreBoard">Score: <span id="score">0</span></div>
+    <div id="challengeTimer">Reach: <span id="challengeTarget">0</span> in <span id="timeLeft">5</span> sec!</div>
+    <button id="eyeButton">
+        <i class="fas fa-eye"></i>
+    </button>
+    <div id="gameOver">
+        <h2>Game Over!</h2>
+        <p>Final Score: <span id="finalScore"></span></p>
+        <button onclick="restartGame()">Play Again</button>
+    </div>
+
+    <script>
+        class BubbleBurstGame {
+            constructor() {
+                this.container = document.getElementById('gameContainer');
+                this.scoreElement = document.getElementById('score');
+                this.scoreBoard = document.getElementById('scoreBoard');
+                this.gameOverElement = document.getElementById('gameOver');
+                this.finalScoreElement = document.getElementById('finalScore');
+                this.eyeButton = document.getElementById('eyeButton');
+                this.challengeTimer = document.getElementById('challengeTimer');
+                this.challengeTarget = document.getElementById('challengeTarget');
+                this.timeLeftElement = document.getElementById('timeLeft');
+
+                this.score = 0;
+                this.gameTime = 30;
+                this.challengeTimeLeft = 5;
+                this.challengeInterval = null;
+
+                this.colors = [
+                    '#ff6b6b', '#4ecdc4', '#45b7d1', 
+                    '#f9d5e5', '#eeac99', '#ff8c42'
+                ];
+                this.sounds = {
+                    pop: new Audio('https://www.soundjay.com/button/sounds/button-09.mp3'),
+                    bubbleWrap: new Audio('https://www.soundjay.com/button/sounds/button-12.mp3')
+                };
+
+                this.setupEventListeners();
+                this.startGame();
+            }
+
+            setupEventListeners() {
+                // Toggle score visibility
+                this.eyeButton.addEventListener('click', () => {
+                    this.sounds.bubbleWrap.play();
+                    this.scoreBoard.style.display = 
+                        this.scoreBoard.style.display === 'none' ? 'block' : 'none';
+                });
+
+                // Mobile touch support
+                this.container.addEventListener('touchstart', (e) => {
+                    e.preventDefault(); // Prevent scrolling
+                    const touch = e.touches[0];
+                    const bubble = document.elementFromPoint(touch.clientX, touch.clientY);
+                    if (bubble && bubble.classList.contains('bubble')) {
+                        this.popBubble(bubble);
+                    }
+                }, { passive: false });
+            }
+
+            createBubble() {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                
+                const size = Math.random() * 100 + 30;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${Math.random() * (window.innerWidth - size)}px`;
+                bubble.style.top = `${Math.random() * (window.innerHeight - size)}px`;
+                bubble.style.backgroundColor = this.colors[Math.floor(Math.random() * this.colors.length)];
+                
+                const points = Math.floor(size / 10);
+                bubble.textContent = `+${points}`;
+                bubble.dataset.points = points;
+
+                bubble.addEventListener('click', (e) => this.popBubble(e.target));
+                this.container.appendChild(bubble);
+            }
+
+            popBubble(bubble) {
+                const points = parseInt(bubble.dataset.points);
+                this.score += points;
+                this.scoreElement.textContent = this.score;
+                
+                // Pop animation
+                bubble.style.transform = 'scale(0)';
+                this.sounds.pop.play();
+                
+                setTimeout(() => {
+                    bubble.remove();
+                    this.createBubble();
+                    this.checkChallengeTarget(points);
+                }, 300);
+            }
+
+            startTimer() {
+                const timer = setInterval(() => {
+                    this.gameTime--;
+                    if (this.gameTime <= 0) {
+                        clearInterval(timer);
+                        this.endGame();
+                    }
+                }, 1000);
+            }
+
+            startChallengeTimer(targetScore) {
+                // Clear any existing challenge timer
+                if (this.challengeInterval) {
+                    clearInterval(this.challengeInterval);
+                }
+
+                this.challengeTarget.textContent = targetScore;
+                this.challengeTimeLeft = 5;
+                this.timeLeftElement.textContent = this.challengeTimeLeft;
+                this.challengeTimer.style.display = 'block';
+
+                this.challengeInterval = setInterval(() => {
+                    this.challengeTimeLeft--;
+                    this.timeLeftElement.textContent = this.challengeTimeLeft;
+
+                    if (this.challengeTimeLeft <= 0) {
+                        clearInterval(this.challengeInterval);
+                        this.challengeTimer.style.display = 'none';
+                    }
+                }, 1000);
+            }
+
+            checkChallengeTarget(points) {
+                // Randomly decide to start a challenge
+                if (Math.random() < 0.2) { // 20% chance
+                    const targetScore = this.score + (points * 2);
+                    this.startChallengeTimer(targetScore);
+                }
+            }
+
+            endGame() {
+                this.container.innerHTML = '';
+                this.gameOverElement.style.display = 'block';
+                this.finalScoreElement.textContent = this.score;
+                
+                // Clear challenge timer if it's running
+                if (this.challengeInterval) {
+                    clearInterval(this.challengeInterval);
+                }
+            }
+
+            startGame() {
+                this.container.innerHTML = '';
+                this.score = 0;
+                this.scoreElement.textContent = '0';
+                this.gameTime = 30;
+                this.gameOverElement.style.display = 'none';
+                this.challengeTimer.style.display = 'none';
+
+                // Create initial bubbles
+                for (let i = 0; i < 10; i++) {
+                    this.createBubble();
+                }
+
+                this.startTimer();
+            }
+        }
+
+        function restartGame() {
+            new BubbleBurstGame();
+        }
+
+        // Start the game when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new BubbleBurstGame();
+        });
+    </script>
+</body>
+</html>
