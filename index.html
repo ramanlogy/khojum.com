@@ -1,345 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7LWHSBNXT5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <style>
+    .card-container {
+      perspective: 1000px;
+      width: 300px;
+      height: 400px;
+      margin: 20px auto;
+      font-family: 'Courier New', monospace;
+    }
 
-  gtag('config', 'G-7LWHSBNXT5');
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musical Bubble Creator</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body, html {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            font-family: 'Arial', sans-serif;
-        }
-        #controls {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 10px;
-            flex-direction: column;
-        }
-        .control-btn {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 16px;
-            min-width: 150px;
-            backdrop-filter: blur(5px);
-        }
-        .control-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: scale(1.05);
-        }
-        .control-btn.active {
-            background: rgba(255,255,255,0.4);
-            box-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            mix-blend-mode: screen;
-            animation: float 3s infinite ease-in-out;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.1); }
-        }
-        #visualizer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            z-index: 1000;
-        }
-    </style>
+    .memory-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease-in-out;
+      cursor: pointer;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .memory-card:hover {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .card-front {
+      background: #f5e6d3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card-back {
+      background: #e6d5c3;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .photo-frame {
+      width: 220px;
+      height: 220px;
+      border: 10px solid #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      margin: 10px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(30%);
+    }
+
+    .date {
+      font-size: 14px;
+      color: #8b7355;
+      margin-top: 15px;
+      font-style: italic;
+    }
+
+    .description {
+      font-size: 16px;
+      color: #5a4a3f;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    .polaroid-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+      pointer-events: none;
+    }
+
+    @media (max-width: 400px) {
+      .card-container {
+        width: 280px;
+        height: 380px;
+      }
+
+      .photo-frame {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div id="controls">
-        <button class="control-btn active" data-mode="sparkle">✨ Sparkle Mode</button>
-        <button class="control-btn" data-mode="chord">🎵 Chord Mode</button>
-        <button class="control-btn" data-mode="cascade">🌊 Cascade Mode</button>
-        <button class="control-btn" data-mode="ethereal">🌌 Ethereal Mode</button>
+  <div class="card-container">
+    <div class="memory-card">
+      <div class="card-front">
+        <div class="photo-frame">
+          <img src="_.jpeg" alt="Vintage photo" class="photo">
+          <div class="polaroid-effect"></div>
+        </div>
+        <div class="date">23.02.2025</div>
+        <div class="description">Looking for my soulmate ♥️<br>Age: 24<br>Let's write our story together...</div>
+      </div>
+      <div class="card-back">
+        <h2 style="color: #8b7355; margin-bottom: 20px;">About Me</h2>
+        <p style="color: #5a4a3f; line-height: 1.6;">
+          Dreamer, adventurer, and hopeless romantic.<br>
+          Seeking someone to share life's beautiful moments.<br>
+          If you believe in destiny, maybe this is ours ✨
+        </p>
+      </div>
     </div>
-    <canvas id="visualizer"></canvas>
+  </div>
 
-    <script>
-        class MusicalBubbleCreator {
-            constructor() {
-                this.setupAudio();
-                this.setupVisualizer();
-                this.setupControls();
-                
-                this.currentMode = 'sparkle';
-                this.notes = {
-                    sparkle: ['C5', 'D5', 'E5', 'G5', 'A5'],
-                    chord: ['C4', 'E4', 'G4', 'B4'],
-                    cascade: ['F4', 'A4', 'C5', 'E5'],
-                    ethereal: ['D4', 'F#4', 'A4', 'C#5']
-                };
-                
-                window.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('control-btn')) return;
-                    this.createMusicBubble(e.clientX, e.clientY);
-                });
-            }
+  <script>
+    // Add subtle floating animation
+    const card = document.querySelector('.memory-card');
+    let floatY = 0;
+    let floatDirection = 1;
 
-            setupAudio() {
-                this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                this.masterGain = this.audioContext.createGain();
-                this.masterGain.gain.value = 0.7;
-                
-                // Create effects
-                this.reverb = this.audioContext.createConvolver();
-                this.delay = this.audioContext.createDelay();
-                this.feedback = this.audioContext.createGain();
-                
-                // Setup delay feedback loop
-                this.delay.delayTime.value = 0.3;
-                this.feedback.gain.value = 0.4;
-                
-                this.delay.connect(this.feedback);
-                this.feedback.connect(this.delay);
-                
-                // Connect effects chain
-                this.masterGain.connect(this.delay);
-                this.delay.connect(this.audioContext.destination);
-                this.generateReverb();
-                
-                // Analyzer for visualizer
-                this.analyzer = this.audioContext.createAnalyser();
-                this.analyzer.fftSize = 256;
-                this.masterGain.connect(this.analyzer);
-                this.analyzer.connect(this.audioContext.destination);
-            }
+    function floatAnimation() {
+      floatY += (0.05 * floatDirection);
+      
+      if (floatY > 5) floatDirection = -1;
+      if (floatY < 0) floatDirection = 1;
+      
+      card.style.transform = `translateY(${floatY}px)`;
+      requestAnimationFrame(floatAnimation);
+    }
 
-            setupVisualizer() {
-                this.canvas = document.getElementById('visualizer');
-                this.ctx = this.canvas.getContext('2d');
-                this.canvas.width = window.innerWidth;
-                this.canvas.height = 100;
-                
-                this.drawVisualizer();
-            }
+    floatAnimation();
+  </script>
 
-            drawVisualizer() {
-                const bufferLength = this.analyzer.frequencyBinCount;
-                const dataArray = new Uint8Array(bufferLength);
-                
-                const draw = () => {
-                    this.analyzer.getByteFrequencyData(dataArray);
-                    
-                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                    this.ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-                    
-                    const barWidth = this.canvas.width / bufferLength * 2.5;
-                    let x = 0;
-                    
-                    for (let i = 0; i < bufferLength; i++) {
-                        const barHeight = dataArray[i] / 2;
-                        
-                        this.ctx.beginPath();
-                        this.ctx.moveTo(x, this.canvas.height);
-                        this.ctx.lineTo(x + barWidth / 2, this.canvas.height - barHeight);
-                        this.ctx.lineTo(x + barWidth, this.canvas.height);
-                        this.ctx.fillStyle = `hsla(${i * 360 / bufferLength}, 80%, 60%, 0.5)`;
-                        this.ctx.fill();
-                        
-                        x += barWidth;
-                    }
-                    
-                    requestAnimationFrame(draw);
-                };
-                
-                draw();
-            }
-
-            async generateReverb() {
-                const length = 2 * this.audioContext.sampleRate;
-                const impulse = this.audioContext.createBuffer(2, length, this.audioContext.sampleRate);
-                
-                for (let channel = 0; channel < 2; channel++) {
-                    const data = impulse.getChannelData(channel);
-                    for (let i = 0; i < length; i++) {
-                        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (length / 4));
-                    }
-                }
-                
-                this.reverb.buffer = impulse;
-            }
-
-            setupControls() {
-                const controls = document.getElementById('controls');
-                controls.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('control-btn')) {
-                        document.querySelectorAll('.control-btn').forEach(btn => {
-                            btn.classList.remove('active');
-                        });
-                        e.target.classList.add('active');
-                        this.currentMode = e.target.dataset.mode;
-                        this.updateEffects();
-                    }
-                });
-            }
-
-            updateEffects() {
-                switch (this.currentMode) {
-                    case 'sparkle':
-                        this.delay.delayTime.value = 0.2;
-                        this.feedback.gain.value = 0.3;
-                        break;
-                    case 'chord':
-                        this.delay.delayTime.value = 0.3;
-                        this.feedback.gain.value = 0.4;
-                        break;
-                    case 'cascade':
-                        this.delay.delayTime.value = 0.4;
-                        this.feedback.gain.value = 0.5;
-                        break;
-                    case 'ethereal':
-                        this.delay.delayTime.value = 0.6;
-                        this.feedback.gain.value = 0.6;
-                        break;
-                }
-            }
-
-            noteToFrequency(note) {
-                const notes = {'C': 0, 'C#': 1, 'D': 2, 'D#': 3, 'E': 4, 'F': 5, 
-                             'F#': 6, 'G': 7, 'G#': 8, 'A': 9, 'A#': 10, 'B': 11};
-                const octave = parseInt(note.slice(-1));
-                const noteName = note.slice(0, -1);
-                return 440 * Math.pow(2, (notes[noteName] + (octave - 4) * 12) / 12);
-            }
-
-            createMusicBubble(x, y) {
-                const modeNotes = this.notes[this.currentMode];
-                const baseNote = modeNotes[Math.floor(Math.random() * modeNotes.length)];
-                
-                // Create main oscillator
-                const osc = this.audioContext.createOscillator();
-                const gainNode = this.audioContext.createGain();
-                
-                osc.type = this.getOscillatorType();
-                osc.frequency.setValueAtTime(
-                    this.noteToFrequency(baseNote),
-                    this.audioContext.currentTime
-                );
-                
-                gainNode.gain.setValueAtTime(0, this.audioContext.currentTime);
-                gainNode.gain.linearRampToValueAtTime(0.5, this.audioContext.currentTime + 0.1);
-                gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioContext.currentTime + 2);
-                
-                osc.connect(gainNode);
-                gainNode.connect(this.masterGain);
-                
-                osc.start();
-                osc.stop(this.audioContext.currentTime + 2);
-                
-                // Create visual bubble
-                this.createBubbleEffect(x, y);
-            }
-
-            getOscillatorType() {
-                switch (this.currentMode) {
-                    case 'sparkle': return 'sine';
-                    case 'chord': return 'triangle';
-                    case 'cascade': return 'sine';
-                    case 'ethereal': return 'sine';
-                    default: return 'sine';
-                }
-            }
-
-            createBubbleEffect(x, y) {
-                const colors = {
-                    sparkle: 'rgba(255,255,255,0.8)',
-                    chord: 'rgba(255,200,100,0.8)',
-                    cascade: 'rgba(100,200,255,0.8)',
-                    ethereal: 'rgba(200,100,255,0.8)'
-                };
-                
-                const size = Math.random() * 50 + 20;
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                bubble.style.left = `${x - size/2}px`;
-                bubble.style.top = `${y - size/2}px`;
-                bubble.style.background = colors[this.currentMode];
-                bubble.style.boxShadow = `0 0 20px ${colors[this.currentMode]}`;
-                
-                document.body.appendChild(bubble);
-                
-                setTimeout(() => {
-                    bubble.style.opacity = '0';
-                    setTimeout(() => bubble.remove(), 1000);
-                }, 2000);
-                
-                // Create additional particles
-                for (let i = 0; i < 5; i++) {
-                    this.createParticle(x, y, colors[this.currentMode]);
-                }
-            }
-
-            createParticle(x, y, color) {
-                const particle = document.createElement('div');
-                particle.className = 'bubble';
-                particle.style.width = '10px';
-                particle.style.height = '10px';
-                particle.style.left = `${x}px`;
-                particle.style.top = `${y}px`;
-                particle.style.background = color;
-                
-                const angle = Math.random() * Math.PI * 2;
-                const velocity = Math.random() * 5 + 2;
-                const vx = Math.cos(angle) * velocity;
-                const vy = Math.sin(angle) * velocity;
-                
-                document.body.appendChild(particle);
-                
-                let posX = x;
-                let posY = y;
-                
-                const animate = () => {
-                    posX += vx;
-                    posY += vy;
-                    particle.style.left = `${posX}px`;
-                    particle.style.top = `${posY}px`;
-                    
-                    if (posX < -50 || posX > window.innerWidth + 50 || 
-                        posY < -50 || posY > window.innerHeight + 50) {
-                        particle.remove();
-                    } else {
-                        requestAnimationFrame(animate);
-                    }
-                };
-                
-                animate();
-            }
-        }
-
-        new MusicalBubbleCreator();
-    </script>
+  <div class="contact-info">
+    <img src="Logo WhatsApp Computer Icons Encapsulated PostScript PNG - Free Download.jpeg"WhatsApp Logo" style="width: 20px; vertical-align: middle; margin-right: 5px;">
+    whatsapp: 9861828821
+  </div>
 </body>
 </html>
