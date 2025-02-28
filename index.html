@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+             <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7LWHSBNXT5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7LWHSBNXT5');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khojum - What are you doing this week?</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nepal-red: #dc143c;
+            --nepal-blue: #003893;
+            --accent-yellow: #f9d949;
+            --dark-text: #333333;
+            --light-text: #666666;
+            --lightest-bg: #f9f7f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Mukta', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--lightest-bg);
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--nepal-red);
+            color: white;
+            padding: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 25L70 45L50 65L30 45L50 25Z' fill='rgba(255,255,255,0.05)'/%3E%3C/svg%3E");
+            background-size: 100px;
+            opacity: 0.2;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo h1 {
+            font-family: 'Mukta', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .logo span {
+            color: var(--accent-yellow);
+        }
+        
+        .logo img {
+            width: 50px;
+            height: auto;
+        }
+        
+        .title-section {
+            text-align: center;
+            padding-bottom: 30px;
+        }
+        
+        .title-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .title-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .date-display {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-top: 10px;
+            display: block;
+        }
+        
+        .filter-bar {
+            background-color: white;
+            padding: 15px 0;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .filter-button {
+            background-color: transparent;
+            border: 1px solid var(--nepal-red);
+            color: var(--nepal-red);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-family: 'Mukta', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-button:hover, .filter-button.active {
+            background-color: var(--nepal-red);
+            color: white;
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 25px;
+            padding-bottom: 60px;
+        }
+        
+        @media (min-width: 768px) {
+            .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .events-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .event-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .event-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .event-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--nepal-red);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .event-content {
+            padding: 20px;
+        }
+        
+        .event-title {
+            font-family: 'Mukta', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+            line-height: 1.3;
+        }
+        
+        .event-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .event-date, .event-time, .event-location, .event-price {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        .event-meta i {
+            color: var(--nepal-red);
+            font-size: 1rem;
+        }
+        
+        .event-description {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .event-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .event-price-tag {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--nepal-blue);
+        }
+        
+        .event-price-tag.free {
+            color: #2ecc71;
+        }
+        
+        .event-button {
+            background-color: var(--nepal-red);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-family: 'Mukta', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .event-button:hover {
+            background-color: #b01030;
+        }
+        
+        footer {
+            background-color: var(--nepal-red);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .logo-small {
+            font-family: 'Mukta', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .logo-small span {
+            color: var(--accent-yellow);
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .loading-spinner {
+            border: 4px solid rgba(0,0,0,0.1);
+            border-left: 4px solid var(--nepal-red);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .title-section h2 {
+                font-size: 2.2rem;
+            }
+            
+            .filter-buttons {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><span>खो</span>जुम</h1>
+            </div>
+            <div class="title-section">
+                <h2>What are you doing this week?</h2>
+                <p>Discover the best events happening in Nepal this week</p>
+                <span class="date-display" id="date-range"></span>
+            </div>
+        </div>
+    </header>
+    
+    <div class="filter-bar">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-button active" data-filter="all">All Events</button>
+                <button class="filter-button" data-filter="cultural">Cultural</button>
+                <button class="filter-button" data-filter="music">Music</button>
+                <button class="filter-button" data-filter="food">Food & Drinks</button>
+                <button class="filter-button" data-filter="arts">Arts</button>
+                <button class="filter-button" data-filter="business">Business</button>
+                <button class="filter-button" data-filter="sports">Sports</button>
+            </div>
+        </div>
+    </div>
+    
+    <main class="container">
+        <div class="events-grid" id="events-container">
+            <!-- Events will be dynamically populated here -->
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Loading more events...</p>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="logo-small">
+                <span>खो</span>जुम
+            </div>
+            <p>Discover and explore the best events happening in Nepal</p>
+            <p class="copyright">&copy; 2025 Khojum. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set the date range for "this week"
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const dayOfWeek = now.getDay();
+            const startDate = new Date(now);
+            startDate.setDate(now.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1)); // Monday
+            
+            const endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + 6); // Sunday
+            
+            const options = { month: 'long', day: 'numeric' };
+            const dateRange = `${startDate.toLocaleDateString('en-US', options)} - ${endDate.toLocaleDateString('en-US', options)}, ${endDate.getFullYear()}`;
+            
+            document.getElementById('date-range').textContent = dateRange;
+            
+            // Load events
+            loadEvents();
+            
+            // Set up filter buttons
+            const filterButtons = document.querySelectorAll('.filter-button');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    // Filter events
+                    const filter = this.getAttribute('data-filter');
+                    filterEvents(filter);
+                });
+            });
+        });
+        
+        // Sample event data
+        const events = [
+            {
+                id: 1,
+                title: "नेपाली संगीत उत्सव २०८१",
+                description: "A celebration of traditional Nepali music featuring performances by renowned artists from across the country.",
+                date: "March 3, 2025",
+                time: "10:00 AM - 10:30 PM",
+                location: "Patan Durbar Square",
+                price: "Rs. 500",
+                image: "assets/cheetah-running-in-african-wild-animalgraphy-generative-ai-free-photo.jpg",
+                category: "music"
+            },
+            {
+                id: 2,
+                title: "Kathmandu Food Festival",
+                description: "Sample delicious cuisine from Nepal's top restaurants and street food vendors.",
+                date: "March 4-5, 2025",
+                time: "11:00 AM - 9:00 PM",
+                location: "Bhrikutimandap, Kathmandu",
+                price: "Rs. 300",
+                image: "assets/pexels-zhanqun-cai-1507025-3998467.jpg",
+                category: "food"
+            },
+            {
+                id: 3,
+                title: "Business Networking Breakfast",
+                description: "Connect with entrepreneurs and business leaders from Kathmandu's growing startup scene.",
+                date: "March 2, 2025",
+                time: "7:30 AM - 9:30 AM",
+                location: "Hotel Yak & Yeti",
+                price: "Rs. 1200",
+                image: "assets/pexels-j-mb-1376406-2660837.jpg",
+                category: "business"
+            },
+            {
+                id: 4,
+                title: "Thamel Art Walk",
+                description: "Explore the vibrant art galleries of Thamel with guided tours and artist meet-and-greets.",
+                date: "March 6, 2025",
+                time: "2:00 PM - 5:00 PM",
+                location: "Thamel, Kathmandu",
+                price: "Free",
+                image: "assets/cheetah-running-in-african-wild-animalgraphy-generative-ai-free-photo.jpg",
+                category: "arts"
+            },
+            {
+                id: 5,
+                title: "होली उत्सव २०८१",
+                description: "Celebrate the festival of colors with music, dance, and traditional activities.",
+                date: "March 7, 2025",
+                time: "10:00 AM - 4:00 PM",
+                location: "Tundikhel, Kathmandu",
+                price: "Free",
+                image: "https://api.placeholder.com/500/300",
+                category: "cultural"
+            },
+            {
+                id: 6,
+                title: "Himalayan Trail Run",
+                description: "Challenge yourself with a 10km trail run through the beautiful hills surrounding Kathmandu Valley.",
+                date: "March 8, 2025",
+                time: "6:00 AM",
+                location: "Shivapuri National Park",
+                price: "Rs. 1500",
+                image: "https://api.placeholder.com/500/300",
+                category: "sports"
+            },
+            {
+                id: 7,
+                title: "Nepali Handicraft Workshop",
+                description: "Learn traditional Nepali craft techniques from master artisans. Materials included.",
+                date: "March 5, 2025",
+                time: "1:00 PM - 4:00 PM",
+                location: "Kupondole, Lalitpur",
+                price: "Rs. 1800",
+                image: "https://api.placeholder.com/500/300",
+                category: "arts"
+            },
+            {
+                id: 8,
+                title: "Classical Dance Performance",
+                description: "Witness the beauty of traditional Nepali dance forms performed by celebrated dancers.",
+                date: "March 3, 2025",
+                time: "5:30 PM - 7:30 PM",
+                location: "Nepal Academy Hall",
+                price: "Rs. 700",
+                image: "https://api.placeholder.com/500/300",
+                category: "cultural"
+            },
+            {
+                id: 9,
+                title: "Indie Music Night",
+                description: "Discover Nepal's emerging indie music scene with performances by local bands.",
+                date: "March 6, 2025",
+                time: "7:00 PM - 10:00 PM",
+                location: "House of Music, Thamel",
+                price: "Rs. 400",
+                image: "https://api.placeholder.com/500/300",
+                category: "music"
+            }
+        ];
+        
+        function loadEvents() {
+            const container = document.getElementById('events-container');
+            container.innerHTML = '';
+            
+            events.forEach(event => {
+                const eventCard = createEventCard(event);
+                container.appendChild(eventCard);
+            });
+        }
+        
+        function createEventCard(event) {
+            const card = document.createElement('div');
+            card.className = 'event-card';
+            card.setAttribute('data-category', event.category);
+            
+            const imageUrl = event.image || "assets/cheetah-running-in-african-wild-animalgraphy-generative-ai-free-photo.jpg";
+            
+            card.innerHTML = `
+                <div class="event-image" style="background-image: url('/api/placeholder/400/320')">
+                    <div class="event-category">${event.category}</div>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">${event.title}</h3>
+                    <div class="event-meta">
+                        <div class="event-date">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>${event.date}</span>
+                        </div>
+                        <div class="event-time">
+                            <i class="far fa-clock"></i>
+                            <span>${event.time}</span>
+                        </div>
+                    </div>
+                    <div class="event-meta">
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${event.location}</span>
+                        </div>
+                    </div>
+                    <p class="event-description">${event.description}</p>
+                    <div class="event-footer">
+                        <div class="event-price-tag${event.price === 'Free' ? ' free' : ''}">
+                            ${event.price}
+                        </div>
+                        <button class="event-button">View Details</button>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+        
+        function filterEvents(category) {
+            const allEvents = document.querySelectorAll('.event-card');
+            
+            allEvents.forEach(event => {
+                if (category === 'all' || event.getAttribute('data-category') === category) {
+                    event.style.display = 'block';
+                } else {
+                    event.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
