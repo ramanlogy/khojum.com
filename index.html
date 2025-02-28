@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khojum - What are you doing this week?</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
@@ -246,6 +247,7 @@
             margin-bottom: 20px;
             display: -webkit-box;
             -webkit-line-clamp: 3;
+            line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -433,10 +435,10 @@
                 title: "नेपाली संगीत उत्सव २०८१",
                 description: "A celebration of traditional Nepali music featuring performances by renowned artists from across the country.",
                 date: "March 3, 2025",
-                time: "4:00 PM - 8:30 PM",
+                time: "10:00 AM - 10:30 PM",
                 location: "Patan Durbar Square",
                 price: "Rs. 500",
-                image: "https://api.placeholder.com/500/300",
+                image: "assets/cheetah-running-in-african-wild-animalgraphy-generative-ai-free-photo.jpg",
                 category: "music"
             },
             {
@@ -447,7 +449,7 @@
                 time: "11:00 AM - 9:00 PM",
                 location: "Bhrikutimandap, Kathmandu",
                 price: "Rs. 300",
-                image: "https://api.placeholder.com/500/300",
+                image: "assets/pexels-zhanqun-cai-1507025-3998467.jpg",
                 category: "food"
             },
             {
@@ -458,7 +460,7 @@
                 time: "7:30 AM - 9:30 AM",
                 location: "Hotel Yak & Yeti",
                 price: "Rs. 1200",
-                image: "https://api.placeholder.com/500/300",
+                image: "assets/pexels-j-mb-1376406-2660837.jpg",
                 category: "business"
             },
             {
@@ -469,7 +471,7 @@
                 time: "2:00 PM - 5:00 PM",
                 location: "Thamel, Kathmandu",
                 price: "Free",
-                image: "https://api.placeholder.com/500/300",
+                image: "assets/cheetah-running-in-african-wild-animalgraphy-generative-ai-free-photo.jpg",
                 category: "arts"
             },
             {
@@ -544,7 +546,7 @@
             card.className = 'event-card';
             card.setAttribute('data-category', event.category);
             
-            const imageUrl = event.image || "https://api.placeholder.com/400/320";
+            const imageUrl = event.image || "assets/cheetah-running-in-african-wild-animalgraphy-generative-ai-free-photo.jpg";
             
             card.innerHTML = `
                 <div class="event-image" style="background-image: url('/api/placeholder/400/320')">
