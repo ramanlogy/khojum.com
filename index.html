@@ -155,6 +155,24 @@
             color: white;
         }
         
+        .sort-dropdown {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .sort-dropdown select {
+            padding: 8px 16px;
+            border: 1px solid var(--nepal-red);
+            border-radius: 100px;
+            background-color: transparent;
+            color: var(--nepal-red);
+            font-family: 'Mukta', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
         .events-grid {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
@@ -363,12 +381,19 @@
         <div class="container">
             <div class="filter-buttons">
                 <button class="filter-button active" data-filter="all">All Events</button>
-                <button class="filter-button" data-filter="cultural">Cultural</button>
+                <button class="filter-button" data-filter="Free">Free</button>
                 <button class="filter-button" data-filter="music">Music</button>
                 <button class="filter-button" data-filter="food">Food & Drinks</button>
                 <button class="filter-button" data-filter="arts">Arts</button>
                 <button class="filter-button" data-filter="business">Business</button>
                 <button class="filter-button" data-filter="sports">Sports</button>
+            </div>
+            <div class="sort-dropdown">
+                <select id="sort-options">
+                    <option value="time">Sort by Time</option>
+                    <option value="popularity">Sort by Popularity</option>
+                    <option value="price">Sort by Price</option>
+                </select>
             </div>
         </div>
     </div>
@@ -426,108 +451,112 @@
                     filterEvents(filter);
                 });
             });
+
+            // Set up sort dropdown
+            const sortDropdown = document.getElementById('sort-options');
+            sortDropdown.addEventListener('change', function() {
+                const sortCriteria = this.value;
+                sortEvents(sortCriteria);
+            });
         });
         
-        // Sample event data
-        const events = [
+        // Sample business data
+        const businesses = [
             {
                 id: 1,
-                title: "नेपाली संगीत उत्सव २०८१",
-                description: "A celebration of traditional Nepali music featuring performances by renowned artists from across the country.",
-                date: "March 3, 2025",
-                time: "10:00 AM - 10:30 PM",
-                location: "Patan Durbar Square",
-                price: "Rs. 500",
-                image: "assets/cheetah-running-in-african-wild-animalgraphy-generative-ai-free-photo.jpg",
-                category: "music"
+                title: "DJ Alok Live in Nepal",
+                description: "DJ Alok takes the stage for a live performance, bringing hits like 'Hear Me Now' and 'Piece of Your Heart' to the crowd. This event marks his first performance in Nepal.",
+                date: "March 7, 2025",
+                time: "7:00 PM onwards",
+                location: "LOD, Thamel",
+                price: "Rs. 2,000 to Rs. 3,000",
+                image: "assets/dj alok.png",
+                category: "music",
+                url: "https://www.instagram.com/p/DGJDIzISsW6/?utm_source=ig_web_copy_link"
             },
             {
                 id: 2,
-                title: "Kathmandu Food Festival",
-                description: "Sample delicious cuisine from Nepal's top restaurants and street food vendors.",
-                date: "March 4-5, 2025",
-                time: "11:00 AM - 9:00 PM",
-                location: "Bhrikutimandap, Kathmandu",
-                price: "Rs. 300",
-                image: "assets/pexels-zhanqun-cai-1507025-3998467.jpg",
-                category: "food"
+                title: "Maha Shivaratri World Music Festival",
+                description: "This event brings a fusion of international and national artists to Pokhara's lakeside, celebrating Shivaratri with soulful music, rock, blues, and traditional beats.",
+                date: "March 1, 2025",
+                time: "1:00 PM onwards",
+                location: "Camping Side, Hallan Chowk",
+                price: "Rs. 500",
+                image: "assets/shivaratri-festival.jpg",
+                category: "music",
+                url: "https://www.instagram.com/p/your_post_id"
             },
             {
                 id: 3,
-                title: "Business Networking Breakfast",
-                description: "Connect with entrepreneurs and business leaders from Kathmandu's growing startup scene.",
-                date: "March 2, 2025",
-                time: "7:30 AM - 9:30 AM",
-                location: "Hotel Yak & Yeti",
-                price: "Rs. 1200",
-                image: "assets/pexels-j-mb-1376406-2660837.jpg",
-                category: "business"
+                title: "Gender Inequality: A Stand-Up",
+                description: "Comedians Aayush Shrestha and Yozana Thapa Magar will take the stage at Tito's Pub, Thamel. The show will address perspectives, stereotypes, and societal norms through humour.",
+                date: "March 1, 2025",
+                time: "8:00 PM onwards",
+                location: "Tito's Pub, Thamel",
+                price: "Rs. 800",
+                image: "assets/stand-up-comedy.jpg",
+                category: "comedy",
+                url: "https://www.instagram.com/p/your_post_id"
             },
             {
                 id: 4,
-                title: "Thamel Art Walk",
-                description: "Explore the vibrant art galleries of Thamel with guided tours and artist meet-and-greets.",
-                date: "March 6, 2025",
-                time: "2:00 PM - 5:00 PM",
-                location: "Thamel, Kathmandu",
-                price: "Free",
-                image: "assets/cheetah-running-in-african-wild-animalgraphy-generative-ai-free-photo.jpg",
-                category: "arts"
+                title: "Trios Music Fest",
+                description: "The Trios Music Fest will feature performances by Kta Haru, Tribal Rain, Pariwartan, and The Velvets Bands at Bhrikuti Mandap Ground.",
+                date: "March 1, 2025",
+                time: "12:00 PM onwards",
+                location: "Bhrikuti Mandap Ground",
+                price: "Rs. 499 to Rs. 2,249",
+                image: "assets/tiros.png",
+                category: "music",
+                url: "https://www.instagram.com/p/DGaD9SNSern/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA=="
             },
             {
                 id: 5,
-                title: "होली उत्सव २०८१",
-                description: "Celebrate the festival of colors with music, dance, and traditional activities.",
-                date: "March 7, 2025",
-                time: "10:00 AM - 4:00 PM",
-                location: "Tundikhel, Kathmandu",
+                title: "Live Painting Competition",
+                description: "World Bank Nepal is organising the 'Where's My Blue Sky?' live Painting competition. This contest spotlights the impact of air pollution in Nepal, offering young artists (16–35 years) a platform to depict their vision for cleaner air.",
+                date: "March 1, 2025",
+                time: "10:00 AM to 5:00 PM",
+                location: "Adarsha Kanya Niketan Higher Secondary School, Mangal Bazar",
                 price: "Free",
-                image: "https://api.placeholder.com/500/300",
-                category: "cultural"
+                image: "assets/live-painting.jpg",
+                category: ["arts", "Free" ],
+                url: "https://www.instagram.com/p/your_post_id"
             },
             {
                 id: 6,
-                title: "Himalayan Trail Run",
-                description: "Challenge yourself with a 10km trail run through the beautiful hills surrounding Kathmandu Valley.",
-                date: "March 8, 2025",
-                time: "6:00 AM",
-                location: "Shivapuri National Park",
-                price: "Rs. 1500",
-                image: "https://api.placeholder.com/500/300",
-                category: "sports"
+                title: "EITV2025 Confluence",
+                description: "Echoes in the Valley and Phuyal Smarika are organising Confluence 2025, wherein there will be a casual, high-energy gathering of musicians, researchers, teachers, students, and music lovers.",
+                date: "March 6, 2025",
+                time: "6:00 PM",
+                location: "Bhumi Restaurant and Bar, Lazimpat",
+                price: "Free",
+                image: "assets/confluence-2025.jpg",
+                category: "music",
+                url: "https://www.instagram.com/p/your_post_id"
             },
             {
                 id: 7,
-                title: "Nepali Handicraft Workshop",
-                description: "Learn traditional Nepali craft techniques from master artisans. Materials included.",
-                date: "March 5, 2025",
-                time: "1:00 PM - 4:00 PM",
-                location: "Kupondole, Lalitpur",
-                price: "Rs. 1800",
-                image: "https://api.placeholder.com/500/300",
-                category: "arts"
+                title: "Pravidhi—A New Realm",
+                description: "Gallery 108 is organising an exhibition, 'Pravidhi—A New Realm' starting from March 1 to April 1. The exhibition features digital paintings and challenges the definition of art and its possibilities in the digital realm.",
+                date: "March 1 to April 1, 2025",
+                time: "11:00 AM to 7:00 PM",
+                location: "Gallery 108, Durbarmarg",
+                price: "Free",
+                image: "assets/pravidhi.png",
+                category: "arts",
+                url: ""
             },
             {
                 id: 8,
-                title: "Classical Dance Performance",
-                description: "Witness the beauty of traditional Nepali dance forms performed by celebrated dancers.",
-                date: "March 3, 2025",
-                time: "5:30 PM - 7:30 PM",
-                location: "Nepal Academy Hall",
-                price: "Rs. 700",
-                image: "https://api.placeholder.com/500/300",
-                category: "cultural"
-            },
-            {
-                id: 9,
-                title: "Indie Music Night",
-                description: "Discover Nepal's emerging indie music scene with performances by local bands.",
-                date: "March 6, 2025",
-                time: "7:00 PM - 10:00 PM",
-                location: "House of Music, Thamel",
-                price: "Rs. 400",
-                image: "https://api.placeholder.com/500/300",
-                category: "music"
+                title: "61st Session of The StoryYellers",
+                description: "The StoryYellers is organising its 61st session featuring Srichchha Pradhan, Miss Nepal World 2023, Monish Niraula, Music Director, Nitesh Tandukar, Content Creator, and Basanta Pandey, CFO, fonepay as the speakers.",
+                date: "March 5, 2025",
+                time: "5:45 PM",
+                location: "Moksh, Jhamsikhel",
+                price: "Rs. 300 to Rs. 350",
+                image: "assets/storyyellers.png",
+                category: "talk",
+                url: "https://www.instagram.com/p/DGaohi5vTCK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
             }
         ];
         
@@ -535,7 +564,7 @@
             const container = document.getElementById('events-container');
             container.innerHTML = '';
             
-            events.forEach(event => {
+            businesses.forEach(event => {
                 const eventCard = createEventCard(event);
                 container.appendChild(eventCard);
             });
@@ -549,7 +578,7 @@
             const imageUrl = event.image || "assets/cheetah-running-in-african-wild-animalgraphy-generative-ai-free-photo.jpg";
             
             card.innerHTML = `
-                <div class="event-image" style="background-image: url('/api/placeholder/400/320')">
+                <div class="event-image" style="background-image: url('${imageUrl}')">
                     <div class="event-category">${event.category}</div>
                 </div>
                 <div class="event-content">
@@ -575,7 +604,10 @@
                         <div class="event-price-tag${event.price === 'Free' ? ' free' : ''}">
                             ${event.price}
                         </div>
-                        <button class="event-button">View Details</button>
+                        <a href="${event.url}" class="event-button" target="_blank">
+                            View Post <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            <span class="sr-only">(opens in a new tab)</span>
+                        </a>
                     </div>
                 </div>
             `;
@@ -587,12 +619,56 @@
             const allEvents = document.querySelectorAll('.event-card');
             
             allEvents.forEach(event => {
-                if (category === 'all' || event.getAttribute('data-category') === category) {
+                const eventCategories = event.getAttribute('data-category').split(' ');
+                const priceElement = event.querySelector('.event-price-tag');
+                const isFreePrice = priceElement && priceElement.textContent.trim().includes('Free');
+                
+                if (category === 'all') {
                     event.style.display = 'block';
+                } else if (category === 'Free') {
+                    // Show events with "Free" price or "Free" category
+                    if (isFreePrice || eventCategories.includes('Free')) {
+                        event.style.display = 'block';
+                    } else {
+                        event.style.display = 'none';
+                    }
                 } else {
-                    event.style.display = 'none';
+                    // Filter by category
+                    if (eventCategories.includes(category)) {
+                        event.style.display = 'block';
+                    } else {
+                        event.style.display = 'none';
+                    }
                 }
             });
+        }
+
+        function sortEvents(criteria) {
+            const container = document.getElementById('events-container');
+            const eventsArray = Array.from(container.children);
+
+            eventsArray.sort((a, b) => {
+                const eventA = businesses.find(event => event.title === a.querySelector('.event-title').textContent);
+                const eventB = businesses.find(event => event.title === b.querySelector('.event-title').textContent);
+
+                switch (criteria) {
+                    case 'time':
+                        return new Date(eventA.date) - new Date(eventB.date);
+                    case 'popularity':
+                        // Assuming you have a popularity metric, otherwise this is a placeholder
+                        return eventB.popularity - eventA.popularity;
+                    case 'price':
+                        const priceA = parseFloat(eventA.price.replace(/[^0-9.-]+/g, "")) || 0;
+                        const priceB = parseFloat(eventB.price.replace(/[^0-9.-]+/g, "")) || 0;
+                        return priceA - priceB;
+                    default:
+                        return 0;
+                }
+            });
+
+            // Clear and re-append sorted events
+            container.innerHTML = '';
+            eventsArray.forEach(event => container.appendChild(event));
         }
     </script>
 </body>
