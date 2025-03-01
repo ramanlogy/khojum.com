@@ -360,6 +360,42 @@
                 padding-bottom: 5px;
             }
         }
+        
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -372,7 +408,7 @@
             <div class="title-section">
                 <h2>What are you doing this week?</h2>
                 <p>Discover the best events happening in Nepal this week</p>
-                <span class="date-display" id="date-range"></span>
+                <span class="date-display" id="date-range">Current Week: {{currentWeek}}</span>
             </div>
         </div>
     </header>
@@ -383,9 +419,9 @@
                 <button class="filter-button active" data-filter="all">All Events</button>
                 <button class="filter-button" data-filter="Free">Free</button>
                 <button class="filter-button" data-filter="music">Music</button>
-                <button class="filter-button" data-filter="food">Food & Drinks</button>
+                <button class="filter-button" data-filter="food">Holi</button>
                 <button class="filter-button" data-filter="arts">Arts</button>
-                <button class="filter-button" data-filter="business">Business</button>
+                <button class="filter-button" data-filter="business">Offers</button>
                 <button class="filter-button" data-filter="sports">Sports</button>
             </div>
             <div class="sort-dropdown">
@@ -419,16 +455,29 @@
         </div>
     </footer>
 
+    <!-- Modal Structure -->
+    <div id="event-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-summary"></p>
+            <h3>Attendees:</h3>
+            <ul id="modal-attendees"></ul>
+            <h3>Special Highlights:</h3>
+            <ul id="modal-highlights"></ul>
+        </div>
+    </div>
+
     <script>
         // Set the date range for "this week"
         document.addEventListener('DOMContentLoaded', function() {
             const now = new Date();
             const dayOfWeek = now.getDay();
             const startDate = new Date(now);
-            startDate.setDate(now.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1)); // Monday
+            startDate.setDate(now.getDate() - dayOfWeek); // Sunday
             
             const endDate = new Date(startDate);
-            endDate.setDate(startDate.getDate() + 6); // Sunday
+            endDate.setDate(startDate.getDate() + 6); // Saturday
             
             const options = { month: 'long', day: 'numeric' };
             const dateRange = `${startDate.toLocaleDateString('en-US', options)} - ${endDate.toLocaleDateString('en-US', options)}, ${endDate.getFullYear()}`;
@@ -437,6 +486,9 @@
             
             // Load events
             loadEvents();
+            
+            // Set default sorting by time when the page loads
+            sortEvents('time');
             
             // Set up filter buttons
             const filterButtons = document.querySelectorAll('.filter-button');
@@ -476,78 +528,6 @@
             },
             {
                 id: 2,
-                title: "Maha Shivaratri World Music Festival",
-                description: "This event brings a fusion of international and national artists to Pokhara's lakeside, celebrating Shivaratri with soulful music, rock, blues, and traditional beats.",
-                date: "March 1, 2025",
-                time: "1:00 PM onwards",
-                location: "Camping Side, Hallan Chowk",
-                price: "Rs. 500",
-                image: "assets/shivaratri-festival.jpg",
-                category: "music",
-                url: "https://www.instagram.com/p/your_post_id"
-            },
-            {
-                id: 3,
-                title: "Gender Inequality: A Stand-Up",
-                description: "Comedians Aayush Shrestha and Yozana Thapa Magar will take the stage at Tito's Pub, Thamel. The show will address perspectives, stereotypes, and societal norms through humour.",
-                date: "March 1, 2025",
-                time: "8:00 PM onwards",
-                location: "Tito's Pub, Thamel",
-                price: "Rs. 800",
-                image: "assets/stand-up-comedy.jpg",
-                category: "comedy",
-                url: "https://www.instagram.com/p/your_post_id"
-            },
-            {
-                id: 4,
-                title: "Trios Music Fest",
-                description: "The Trios Music Fest will feature performances by Kta Haru, Tribal Rain, Pariwartan, and The Velvets Bands at Bhrikuti Mandap Ground.",
-                date: "March 1, 2025",
-                time: "12:00 PM onwards",
-                location: "Bhrikuti Mandap Ground",
-                price: "Rs. 499 to Rs. 2,249",
-                image: "assets/tiros.png",
-                category: "music",
-                url: "https://www.instagram.com/p/DGaD9SNSern/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA=="
-            },
-            {
-                id: 5,
-                title: "Live Painting Competition",
-                description: "World Bank Nepal is organising the 'Where's My Blue Sky?' live Painting competition. This contest spotlights the impact of air pollution in Nepal, offering young artists (16–35 years) a platform to depict their vision for cleaner air.",
-                date: "March 1, 2025",
-                time: "10:00 AM to 5:00 PM",
-                location: "Adarsha Kanya Niketan Higher Secondary School, Mangal Bazar",
-                price: "Free",
-                image: "assets/live-painting.jpg",
-                category: ["arts", "Free" ],
-                url: "https://www.instagram.com/p/your_post_id"
-            },
-            {
-                id: 6,
-                title: "EITV2025 Confluence",
-                description: "Echoes in the Valley and Phuyal Smarika are organising Confluence 2025, wherein there will be a casual, high-energy gathering of musicians, researchers, teachers, students, and music lovers.",
-                date: "March 6, 2025",
-                time: "6:00 PM",
-                location: "Bhumi Restaurant and Bar, Lazimpat",
-                price: "Free",
-                image: "assets/confluence-2025.jpg",
-                category: "music",
-                url: "https://www.instagram.com/p/your_post_id"
-            },
-            {
-                id: 7,
-                title: "Pravidhi—A New Realm",
-                description: "Gallery 108 is organising an exhibition, 'Pravidhi—A New Realm' starting from March 1 to April 1. The exhibition features digital paintings and challenges the definition of art and its possibilities in the digital realm.",
-                date: "March 1 to April 1, 2025",
-                time: "11:00 AM to 7:00 PM",
-                location: "Gallery 108, Durbarmarg",
-                price: "Free",
-                image: "assets/pravidhi.png",
-                category: "arts",
-                url: ""
-            },
-            {
-                id: 8,
                 title: "61st Session of The StoryYellers",
                 description: "The StoryYellers is organising its 61st session featuring Srichchha Pradhan, Miss Nepal World 2023, Monish Niraula, Music Director, Nitesh Tandukar, Content Creator, and Basanta Pandey, CFO, fonepay as the speakers.",
                 date: "March 5, 2025",
@@ -557,6 +537,57 @@
                 image: "assets/storyyellers.png",
                 category: "talk",
                 url: "https://www.instagram.com/p/DGaohi5vTCK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+            },
+            {
+                id: 3,
+                title: "KP OLI CUP 2025 Finals",
+                description: "Machhindra FC vs KP OLI FC at KP oli cup Final 2025 happening grand with live music and special guests.",
+                date: "March 3, 2025",
+                time: "3:00 PM",
+                location: "Dasharath Stadium",
+                price: "Free",
+                image: "assets/kp oli cup.png",
+                category: "sports",
+                url: "https://www.facebook.com/kpolicup/",
+                attendees: ["World Cup-winning Italian legend Gianluigi Buffon", "Kuma sagar and khowpa", "Purna Rai and daju bhai"],
+                highlights: ["Live music performance", "Special guest appearances", "Food stalls available"]
+            },
+            {
+                
+                id: 4,
+                title: "Sushant KC Live in Nepal",
+                description: "Sushant KC is a prominent Nepali singer-songwriter and musician known for his heartfelt lyrics, soulful melodies, and emotional storytelling through music. Some of his hit songs are “Sarangi”, “Parkha Na”, “Kya Kardiya”, “Bardali”. His songs are widely celebrated for his soulful music and heartfelt lyrics that often explore themes of love, nostalgia, and life. His unique blend of contemporary pop with Nepali melodies has made him one of the most beloved artists in Nepal and among the Nepali diaspora.",
+                date: "March 8, 2025",
+                time: "3:00 PM Onwards",
+                location: "Sallaghari Ground, Bhaktapur",
+                price: "Rs. 1050 to Rs. 3000", // Table will be announced soon
+                image: "assets/susants.png", // Add the appropriate image path
+                category: "music",
+                url: "https://events.khalti.com/events/ET25DZREURPZ" // Example URL
+            },
+            {
+                id: 5,
+                title: "Dream On Music Fest",
+                description: " Albatross, Sabin Rai & The Pharaoh, Swar and The Rockheads take the stage for an electrifying live performance! An unforgettable experience of a lifetime filled with high-energy beats, soulful tunes, and pure musical magic which will be hosted by Malvika Subba.",
+                date: "March 8, 2025",
+                time: "1:00 PM Onwards",
+                location: "Hyatt Ground, Boudha",
+                price: "Rs. 899 to Rs. 5,000", // Price range
+                image: "assets/dreamon.png", // Add the appropriate image path
+                category: "music",
+                url: "https://events.khalti.com/events/ET257HPZKA7K" // Example URL
+            },
+            {
+                id: 6,
+                title: "Holi Rewind 2025",
+                description: "Tilt Your World - Holi Rewind 2025 Reliving Holi, Reliving Memories",
+                date: "March 13, 2025",
+                time: "10:00 AM Onwards",
+                location: "International Club, Sanepa, Lalitpur",
+                price: "Rs. 799", // Price
+                image: "assets/holirewind.png", // Add the appropriate image path
+                category: "holi", // Tag for filtering
+                url: "https://events.khalti.com/events/ET25WAA2W3FQ" // Example URL
             }
         ];
         
@@ -567,19 +598,21 @@
             businesses.forEach(event => {
                 const eventCard = createEventCard(event);
                 container.appendChild(eventCard);
+                startCountdown(event);
             });
         }
         
         function createEventCard(event) {
             const card = document.createElement('div');
             card.className = 'event-card';
-            card.setAttribute('data-category', event.category);
+            const categories = Array.isArray(event.category) ? event.category.join(',') : event.category;
+            card.setAttribute('data-category', categories);
             
-            const imageUrl = event.image || "assets/cheetah-running-in-african-wild-animalgraphy-generative-ai-free-photo.jpg";
+            const imageUrl = event.image || "assets/football-finals.png"; // Example image
             
             card.innerHTML = `
                 <div class="event-image" style="background-image: url('${imageUrl}')">
-                    <div class="event-category">${event.category}</div>
+                    <div class="event-category">${categories}</div>
                 </div>
                 <div class="event-content">
                     <h3 class="event-title">${event.title}</h3>
@@ -609,10 +642,61 @@
                             <span class="sr-only">(opens in a new tab)</span>
                         </a>
                     </div>
+                    <div class="event-countdown" id="countdown-${event.id}"></div>
                 </div>
             `;
-            
+
+            // Add click event to open modal
+            card.addEventListener('click', () => {
+                openModal(event);
+            });
+
             return card;
+        }
+        
+        function startCountdown(event) {
+            const countdownElement = document.getElementById(`countdown-${event.id}`);
+            
+            // Extract the first valid time from the event time string
+            const timeMatch = event.time.match(/(\d{1,2}:\d{2}\s?(AM|PM)?)/i);
+            const timeString = timeMatch ? timeMatch[0] : "12:00 AM"; // Default to midnight if no time is found
+            const eventDate = new Date(`${event.date} ${timeString}`);
+
+            function updateCountdown() {
+                const now = new Date();
+                const timeDifference = eventDate - now;
+
+                if (isNaN(eventDate.getTime())) {
+                    // If the event date is invalid (no specific time), show nothing
+                    countdownElement.textContent = '';
+                    return;
+                }
+
+                if (timeDifference <= 0) {
+                    countdownElement.textContent = 'Expired';
+                    countdownElement.style.color = 'red';
+                    countdownElement.style.display = 'inline-block';
+                    clearInterval(interval);
+                    return;
+                }
+
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+                countdownElement.textContent = `Starts in ${days}d ${hours}h`;
+                countdownElement.style.display = 'inline-block';
+                countdownElement.style.padding = '10px 15px';
+                countdownElement.style.border = '1px solid var(--nepal-red)';
+                countdownElement.style.borderRadius = '5px';
+                countdownElement.style.backgroundColor = 'white';
+                countdownElement.style.color = 'var(--nepal-red)';
+                countdownElement.style.fontWeight = 'bold';
+                countdownElement.style.textAlign = 'center';
+                countdownElement.style.cursor = 'pointer'; // Makes it look like a button
+            }
+
+            updateCountdown();
+            const interval = setInterval(updateCountdown, 3600000); // Update every hour
         }
         
         function filterEvents(category) {
@@ -651,9 +735,13 @@
                 const eventA = businesses.find(event => event.title === a.querySelector('.event-title').textContent);
                 const eventB = businesses.find(event => event.title === b.querySelector('.event-title').textContent);
 
+                // Create Date objects for comparison
+                const timeA = new Date(eventA.date + ' ' + eventA.time);
+                const timeB = new Date(eventB.date + ' ' + eventB.time);
+
                 switch (criteria) {
                     case 'time':
-                        return new Date(eventA.date) - new Date(eventB.date);
+                        return timeA - timeB; // Sort by time ascending
                     case 'popularity':
                         // Assuming you have a popularity metric, otherwise this is a placeholder
                         return eventB.popularity - eventA.popularity;
@@ -669,6 +757,55 @@
             // Clear and re-append sorted events
             container.innerHTML = '';
             eventsArray.forEach(event => container.appendChild(event));
+        }
+
+        function openModal(event) {
+            const modal = document.getElementById('event-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalSummary = document.getElementById('modal-summary');
+            const modalAttendees = document.getElementById('modal-attendees');
+            const modalHighlights = document.getElementById('modal-highlights');
+
+            // Populate modal with event details
+            modalTitle.textContent = event.title;
+            modalSummary.textContent = event.description;
+
+            // Clear previous attendees and highlights
+            modalAttendees.innerHTML = '';
+            modalHighlights.innerHTML = '';
+
+            // Add attendees and highlights if available
+            if (event.attendees) {
+                event.attendees.forEach(attendee => {
+                    const li = document.createElement('li');
+                    li.textContent = attendee;
+                    modalAttendees.appendChild(li);
+                });
+            }
+
+            if (event.highlights) {
+                event.highlights.forEach(highlight => {
+                    const li = document.createElement('li');
+                    li.textContent = highlight;
+                    modalHighlights.appendChild(li);
+                });
+            }
+
+            // Show the modal
+            modal.style.display = 'block';
+
+            // Close modal when the close button is clicked
+            const closeButton = document.querySelector('.close-button');
+            closeButton.onclick = function() {
+                modal.style.display = 'none';
+            }
+
+            // Close modal when clicking outside of the modal content
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
         }
     </script>
 </body>
