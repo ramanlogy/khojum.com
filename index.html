@@ -196,12 +196,12 @@
         }
         
         .event-card {
-            position: relative;
             background-color: var(--card-bg);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
         
         .event-card:hover {
@@ -380,7 +380,8 @@
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
         }
         
         .modal-content {
@@ -451,46 +452,6 @@
             background-color: #ffe6e6;
             color: #cc0000;
         }
-
-        .attend-icon {
-            position: absolute; /* Keep the icon positioned absolutely within the card */
-            bottom: 10px; /* Distance from the bottom */
-            right: 30px; /* Distance from the right */
-            background-color: rgba(255, 255, 255, 0.8); /* Background for the icon */
-            border-radius: 50%; /* Rounded corners */
-            padding: 10px; /* Padding around the icon */
-            cursor: pointer; /* Pointer cursor on hover */
-            display: flex; /* Flexbox for centering */
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-        }
-
-        .attend-icon i {
-            color: red; /* Set the icon color to red */
-        }
-
-        .tooltip {
-            visibility: hidden; /* Hidden by default */
-            width: 120px; /* Set width of tooltip */
-            background-color: rgba(0, 0, 0, 0.7); /* Dark background */
-            color: #fff; /* White text */
-            text-align: center; /* Center text */
-            border-radius: 5px; /* Rounded corners */
-            padding: 5px; /* Padding */
-            position: absolute; /* Positioning */
-            bottom: 30px; /* Position above the icon */
-            left: 50%; /* Center horizontally */
-            transform: translate(-50%, -10%); /* Center the tooltip and move it slightly up */
-            z-index: 1; /* Ensure it appears above other elements */
-            transition: visibility 0.2s, opacity 0.2s; /* Smooth transition */
-            opacity: 0; /* Start as invisible */
-        }
-
-        .attend-icon:hover .tooltip {
-            visibility: visible; /* Show tooltip on hover */
-            opacity: 1; /* Make it fully visible */
-        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
@@ -515,10 +476,6 @@
                 <h2>What are you doing this week?</h2>
                 <p>Discover the best events happening in Nepal this week</p>
                 <span class="date-display" id="date-range">Current Week: {{currentWeek}}</span>
-            </div>
-            <div class="username-input">
-                <input type="text" id="username" placeholder="Enter your Instagram username (e.g., @username)" />
-                <button id="submit-username">Submit Username</button>
             </div>
         </div>
     </header>
@@ -578,16 +535,6 @@
         </div>
     </div>
 
-    <!-- Modal Structure -->
-    <div id="username-modal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close-button" id="close-modal">&times;</span>
-            <h2>Enter Your Instagram Username</h2>
-            <input type="text" id="modal-username" placeholder="e.g., @username" />
-            <button id="modal-submit-username">Submit</button>
-        </div>
-    </div>
-
     <script>
         // Set the date range for "this week"
         document.addEventListener('DOMContentLoaded', function() {
@@ -637,7 +584,7 @@
             });
         });
         
-        // Sample business data with random attendees
+        // Sample business data
         const businesses = [
             {
                 id: 1,
@@ -647,11 +594,10 @@
                 time: "7:00 PM onwards",
                 location: "LOD, Thamel",
                 price: "Rs. 2,000 to Rs. 3,000",
-                image: "assets/dj_alok.png",
+                image: "assets/dj alok.png",
                 category: "music",
                 url: "https://www.instagram.com/p/DGJDIzISsW6/?utm_source=ig_web_copy_link",
-                popularity: 8,
-                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
+                popularity: 8
             },
             {
                 id: 2,
@@ -664,8 +610,7 @@
                 image: "assets/storyyellers.png",
                 category: "talk",
                 url: "https://www.instagram.com/p/DGaohi5vTCK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-                popularity: 4,
-                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
+                popularity: 4
             },
             {
                 id: 3,
@@ -675,12 +620,15 @@
                 time: "3:00 PM",
                 location: "Dasharath Stadium",
                 price: "Free",
-                image: "assets/kp_oli_cup.png",
+                image: "assets/kp oli cup.png",
                 category: "sports",
                 url: "https://www.facebook.com/kpolicup/",
-                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
+                attendees: ["World Cup-winning Italian legend Gianluigi Buffon", "Kuma sagar and khowpa", "Purna Rai and daju bhai"],
+                highlights: ["Live music performance", "Special guest appearances", "Food stalls available"],
+                popularity: 3
             },
             {
+                
                 id: 4,
                 title: "Sushant KC Live in Nepal",
                 description: "Sushant KC is a prominent Nepali singer-songwriter and musician known for his heartfelt lyrics, soulful melodies, and emotional storytelling through music. Some of his hit songs are: 'Sarangi', 'Parkha Na', 'Kya Kardiya', 'Bardali'. His songs are widely celebrated for his soulful music and heartfelt lyrics that often explore themes of love, nostalgia, and life. His unique blend of contemporary pop with Nepali melodies has made him one of the most beloved artists in Nepal and among the Nepali diaspora.",
@@ -691,8 +639,7 @@
                 image: "assets/susants.png", // Add the appropriate image path
                 category: "music",
                 url: "https://events.khalti.com/events/ET25DZREURPZ", // Example URL
-                popularity: 9,
-                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
+                popularity: 9
             },
             {
                 id: 5,
@@ -705,8 +652,7 @@
                 image: "assets/dreamon.png", // Add the appropriate image path
                 category: "music",
                 url: "https://events.khalti.com/events/ET257HPZKA7K", // Example URL
-                popularity: 7,
-                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
+                popularity: 7
             },
             {
                 id: 6,
@@ -719,8 +665,7 @@
                 image: "assets/holirewind.png", // Add the appropriate image path
                 category: "holi", // Tag for filtering
                 url: "https://events.khalti.com/events/ET25WAA2W3FQ",// Example URL
-                popularity: 6,
-                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
+                popularity: 6
             },
             {
                 id: 7,
@@ -734,8 +679,7 @@
                 category: "event",
                 url: "https://english.aarthiknews.com/news/detail/17981/", // Example URL for more information
                 highlights: ["Chance to win iPhone 16", "Experience driving luxury cars for free"],
-                popularity: 5,
-                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
+                popularity: 5
             },
             {
                 id: 8,
@@ -748,8 +692,7 @@
                 image: "assets/hatihati.png", // Add the appropriate image path
                 category: "event", // Tag for filtering
                 url: "https://www.instagram.com/p/DGxkRoqsapH/", // Example URL for more information
-                popularity: 4,
-                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
+                popularity: 4
             }
         ];
         
@@ -811,13 +754,7 @@
                         <div class="event-time-counter" id="countdown-${event.id}"></div>
                     </div>
                 </div>
-                <div class="attend-icon" onclick="toggleAttendance(event, ${event.id})">
-                    <i class="fas fa-users"></i> 
-                    <span class="attendee-count">${event.attendees.length}</span>
-                    <span class="tooltip">Attending: ${event.attendees.length}</span>
-                </div>
             `;
-            
 
             // Add click event to open modal
             card.addEventListener('click', () => {
@@ -1089,75 +1026,6 @@
         // Call the function when the page loads and update periodically
         document.addEventListener('DOMContentLoaded', createEventTimeCounter);
         setInterval(createEventTimeCounter, 60000); // Update every minute
-
-        // Show the modal when the submit button is clicked
-        document.getElementById('submit-username').addEventListener('click', function() {
-            document.getElementById('username-modal').style.display = 'block';
-        });
-
-        // Close the modal when the close button is clicked
-        document.getElementById('close-modal').addEventListener('click', function() {
-            document.getElementById('username-modal').style.display = 'none';
-        });
-
-        // Handle the modal submit button
-        document.getElementById('modal-submit-username').addEventListener('click', function() {
-            const username = document.getElementById('modal-username').value.trim();
-            if (username) {
-                // Send the username to the backend
-                fetch('/api/attend', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ username }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Username submitted successfully!');
-                        document.getElementById('modal-username').value = ''; // Clear input
-                        document.getElementById('username-modal').style.display = 'none'; // Close modal
-                    } else {
-                        alert(data.message); // Show error message
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-            } else {
-                alert('Please enter a valid username.');
-            }
-        });
-
-        // Close the modal if the user clicks outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById('username-modal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        };
-
-        // Function to toggle attendance
-        function toggleAttendance(event, eventId) {
-            event.stopPropagation(); // Prevent the click from bubbling up to the card
-            const username = document.getElementById('username').value.trim();
-            const eventDetails = businesses.find(e => e.id === eventId);
-            
-            if (!username) {
-                alert('Please enter your Instagram username to attend.');
-                return;
-            }
-
-            // Check if the username is already in the attendees list
-            if (eventDetails.attendees.includes(username)) {
-                alert('You have already submitted your attendance.');
-                return;
-            }
-
-            // Add username to attendees
-            eventDetails.attendees.push(username);
-            const attendeeCountElement = event.currentTarget.querySelector('.attendee-count');
-            attendeeCountElement.textContent = eventDetails.attendees.length; // Update count
-        }
     </script>
 </body>
 </html>
