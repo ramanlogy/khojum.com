@@ -17,7 +17,7 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?fami~ly=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
             --nepal-red: #dc143c;
@@ -129,6 +129,8 @@
             border-radius: 0 0 10px 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             margin-bottom: 40px;
+            position: relative;
+            z-index: 10;
         }
         
         .filter-buttons {
@@ -397,6 +399,31 @@
             text-decoration: none;
             cursor: pointer;
         }
+        
+        .countdown {
+            display: inline-block;
+            padding: 10px 15px;
+            border: 1px solid var(--nepal-red);
+            border-radius: 5px;
+            background-color: white;
+            color: var(--nepal-red);
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .expired {
+            color: red;
+        }
+
+        .sprinkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 1;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
@@ -422,9 +449,6 @@
                 <p>Discover the best events happening in Nepal this week</p>
                 <span class="date-display" id="date-range">Current Week: {{currentWeek}}</span>
             </div>
-            <div class="action-button-container">
-                <button class="action-button" onclick="performAction()">Get Suggestions</button>
-            </div>
         </div>
     </header>
     
@@ -434,7 +458,7 @@
                 <button class="filter-button active" data-filter="all">All Events</button>
                 <button class="filter-button" data-filter="Free">Free</button>
                 <button class="filter-button" data-filter="music">Music</button>
-                <button class="filter-button" data-filter="food">Holi</button>
+                <button class="filter-button" data-filter="holi" id="filter-button">Holi</button>
                 <button class="filter-button" data-filter="arts">Arts</button>
                 <button class="filter-button" data-filter="business">Offers</button>
                 <button class="filter-button" data-filter="sports">Sports</button>
@@ -516,6 +540,11 @@
                     // Filter events
                     const filter = this.getAttribute('data-filter');
                     filterEvents(filter);
+
+                    // Check if the clicked button is the "Holi" button
+                    if (filter === 'holi') {
+                        createSprinkles(event);
+                    }
                 });
             });
 
@@ -571,7 +600,7 @@
                 
                 id: 4,
                 title: "Sushant KC Live in Nepal",
-                description: "Sushant KC is a prominent Nepali singer-songwriter and musician known for his heartfelt lyrics, soulful melodies, and emotional storytelling through music. Some of his hit songs are “Sarangi”, “Parkha Na”, “Kya Kardiya”, “Bardali”. His songs are widely celebrated for his soulful music and heartfelt lyrics that often explore themes of love, nostalgia, and life. His unique blend of contemporary pop with Nepali melodies has made him one of the most beloved artists in Nepal and among the Nepali diaspora.",
+                description: "Sushant KC is a prominent Nepali singer-songwriter and musician known for his heartfelt lyrics, soulful melodies, and emotional storytelling through music. Some of his hit songs are: 'Sarangi', 'Parkha Na', 'Kya Kardiya', 'Bardali'. His songs are widely celebrated for his soulful music and heartfelt lyrics that often explore themes of love, nostalgia, and life. His unique blend of contemporary pop with Nepali melodies has made him one of the most beloved artists in Nepal and among the Nepali diaspora.",
                 date: "March 8, 2025",
                 time: "3:00 PM Onwards",
                 location: "Sallaghari Ground, Bhaktapur",
@@ -602,12 +631,12 @@
                 price: "Rs. 799", // Price
                 image: "assets/holirewind.png", // Add the appropriate image path
                 category: "holi", // Tag for filtering
-                url: "https://events.khalti.com/events/ET25WAA2W3FQ" // Example URL
+                url: "https://events.khalti.com/events/ET25WAA2W3FQ"// Example URL
             },
             {
                 id: 7,
                 title: "EV Carnival by MAW Vriddhi",
-                description: " This is your chance to  Test drive the latest EV models from Deepal, Nami, and Seres, including the world’s first Transformer SUV FOR FREE!!!. Enjoy exclusive offers, cash discounts, and a chance to win exciting prizes!",
+                description: " This is your chance to  Test drive the latest EV models from Deepal, Nami, and Seres, including the world's first Transformer SUV FOR FREE!!!. Enjoy exclusive offers, cash discounts, and a chance to win exciting prizes!",
                 date: "March 1 - 4, 2025",
                 time: "11:00 AM - 6:00 PM",
                 location: "Amrapali Banquet, Naxal, Kathmandu",
@@ -621,15 +650,18 @@
         
         function loadEvents() {
             const container = document.getElementById('events-container');
-            container.innerHTML = '';
+            container.innerHTML = ''; // Clear previous content
+
+            const fragment = document.createDocumentFragment();
             
             businesses.forEach(event => {
                 const eventCard = createEventCard(event);
-                container.appendChild(eventCard);
-                startCountdown(event);
+                fragment.appendChild(eventCard);
             });
+
+            container.appendChild(fragment); // Append all elements at once
         }
-        
+
         function createEventCard(event) {
             const card = document.createElement('div');
             card.className = 'event-card';
@@ -670,7 +702,6 @@
                             <span class="sr-only">(opens in a new tab)</span>
                         </a>
                     </div>
-                    <div class="event-countdown" id="countdown-${event.id}"></div>
                 </div>
             `;
 
@@ -682,56 +713,13 @@
             return card;
         }
         
-        function startCountdown(event) {
-            const countdownElement = document.getElementById(`countdown-${event.id}`);
-            
-            // Extract the first valid time from the event time string
-            const timeMatch = event.time.match(/(\d{1,2}:\d{2}\s?(AM|PM)?)/i);
-            const timeString = timeMatch ? timeMatch[0] : "12:00 AM"; // Default to midnight if no time is found
-            const eventDate = new Date(`${event.date} ${timeString}`);
-
-            function updateCountdown() {
-                const now = new Date();
-                const timeDifference = eventDate - now;
-
-                if (isNaN(eventDate.getTime())) {
-                    // If the event date is invalid (no specific time), show nothing
-                    countdownElement.textContent = '';
-                    return;
-                }
-
-                if (timeDifference <= 0) {
-                    countdownElement.textContent = 'Expired';
-                    countdownElement.style.color = 'red';
-                    countdownElement.style.display = 'inline-block';
-                    clearInterval(interval);
-                    return;
-                }
-
-                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-                countdownElement.textContent = `Starts in ${days}d ${hours}h`;
-                countdownElement.style.display = 'inline-block';
-                countdownElement.style.padding = '10px 15px';
-                countdownElement.style.border = '1px solid var(--nepal-red)';
-                countdownElement.style.borderRadius = '5px';
-                countdownElement.style.backgroundColor = 'white';
-                countdownElement.style.color = 'var(--nepal-red)';
-                countdownElement.style.fontWeight = 'bold';
-                countdownElement.style.textAlign = 'center';
-                countdownElement.style.cursor = 'pointer'; // Makes it look like a button
-            }
-
-            updateCountdown();
-            const interval = setInterval(updateCountdown, 3600000); // Update every hour
-        }
+    
         
         function filterEvents(category) {
             const allEvents = document.querySelectorAll('.event-card');
             
             allEvents.forEach(event => {
-                const eventCategories = event.getAttribute('data-category').split(' ');
+                const eventCategories = event.getAttribute('data-category').split(',');
                 const priceElement = event.querySelector('.event-price-tag');
                 const isFreePrice = priceElement && priceElement.textContent.trim().includes('Free');
                 
@@ -745,13 +733,17 @@
                         event.style.display = 'none';
                     }
                 } else {
-                    // Filter by category
-                    if (eventCategories.includes(category)) {
+                    // Update the condition to check for category match
+                    if (eventCategories.some(cat => cat.trim().toLowerCase() === category.trim().toLowerCase())) {
+
                         event.style.display = 'block';
                     } else {
                         event.style.display = 'none';
                     }
                 }
+                
+                // Debugging log
+                console.log(`Event: ${event.querySelector('.event-title').textContent}, Category: ${eventCategories}`);
             });
         }
 
@@ -835,6 +827,50 @@
                 }
             }
         }
+
+        function createSprinkles(event) {
+            const sprinkleContainer = document.createElement("div");
+            sprinkleContainer.classList.add("sprinkle-container");
+            document.body.appendChild(sprinkleContainer);
+
+            const numSprinkles = 20; // Number of sprinkles to generate
+            for (let i = 0; i < numSprinkles; i++) {
+                const sprinkle = document.createElement("div");
+                sprinkle.classList.add("sprinkle");
+                sprinkle.style.backgroundColor = getRandomColor();
+
+                const x = event.clientX;
+                const y = event.clientY;
+                sprinkle.style.left = `${x}px`;
+                sprinkle.style.top = `${y}px`;
+
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = Math.random() * 100;
+                const finalX = x + Math.cos(angle) * distance;
+                const finalY = y + Math.sin(angle) * distance;
+
+                document.body.appendChild(sprinkle);
+
+                animateSprinkle(sprinkle, finalX, finalY);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyImages = document.querySelectorAll("img.lazy-load");
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove("lazy-load");
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => observer.observe(img));
+        });
     </script>
 </body>
 </html>
