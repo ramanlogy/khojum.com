@@ -196,12 +196,12 @@
         }
         
         .event-card {
+            position: relative;
             background-color: var(--card-bg);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
         }
         
         .event-card:hover {
@@ -277,12 +277,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: nowrap;
+            margin-top: 10px;
         }
         
         .event-price-tag {
             font-weight: 700;
             font-size: 1.1rem;
             color: var(--nepal-blue);
+            flex: 1;
+            min-width: 100px;
         }
         
         .event-price-tag.free {
@@ -300,6 +304,8 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: background-color 0.2s ease;
+            flex-shrink: 0;
+            margin-left: 10px;
         }
         
         .event-button:hover {
@@ -374,8 +380,7 @@
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
         }
         
         .modal-content {
@@ -424,6 +429,68 @@
             pointer-events: none;
             opacity: 1;
         }
+
+        .event-time-counter {
+            margin-right: 10px;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 8px;
+            background-color: white;
+            border: 2px solid var(--nepal-red);
+            color: #aa2121;
+        }
+        .event-time-counter.upcoming {
+            background-color: hwb(0 100% 0%);
+            color: #dc143c;
+        }
+        .event-time-counter.happening {
+            background-color: #e6ffe6;
+            color: #006600;
+        }
+        .event-time-counter.expired {
+            background-color: #ffe6e6;
+            color: #cc0000;
+        }
+
+        .attend-icon {
+            position: absolute; /* Keep the icon positioned absolutely within the card */
+            bottom: 10px; /* Distance from the bottom */
+            right: 30px; /* Distance from the right */
+            background-color: rgba(255, 255, 255, 0.8); /* Background for the icon */
+            border-radius: 50%; /* Rounded corners */
+            padding: 10px; /* Padding around the icon */
+            cursor: pointer; /* Pointer cursor on hover */
+            display: flex; /* Flexbox for centering */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        .attend-icon i {
+            color: red; /* Set the icon color to red */
+        }
+
+        .tooltip {
+            visibility: hidden; /* Hidden by default */
+            width: 120px; /* Set width of tooltip */
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background */
+            color: #fff; /* White text */
+            text-align: center; /* Center text */
+            border-radius: 5px; /* Rounded corners */
+            padding: 5px; /* Padding */
+            position: absolute; /* Positioning */
+            bottom: 30px; /* Position above the icon */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -10%); /* Center the tooltip and move it slightly up */
+            z-index: 1; /* Ensure it appears above other elements */
+            transition: visibility 0.2s, opacity 0.2s; /* Smooth transition */
+            opacity: 0; /* Start as invisible */
+        }
+
+        .attend-icon:hover .tooltip {
+            visibility: visible; /* Show tooltip on hover */
+            opacity: 1; /* Make it fully visible */
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
@@ -449,6 +516,10 @@
                 <p>Discover the best events happening in Nepal this week</p>
                 <span class="date-display" id="date-range">Current Week: {{currentWeek}}</span>
             </div>
+            <div class="username-input">
+                <input type="text" id="username" placeholder="Enter your Instagram username (e.g., @username)" />
+                <button id="submit-username">Submit Username</button>
+            </div>
         </div>
     </header>
     
@@ -457,8 +528,8 @@
             <div class="filter-buttons">
                 <button class="filter-button active" data-filter="all">All Events</button>
                 <button class="filter-button" data-filter="Free">Free</button>
-                <button class="filter-button" data-filter="music">Music</button>
                 <button class="filter-button" data-filter="holi" id="filter-button">Holi</button>
+                <button class="filter-button" data-filter="music">Music</button>
                 <button class="filter-button" data-filter="arts">Arts</button>
                 <button class="filter-button" data-filter="business">Offers</button>
                 <button class="filter-button" data-filter="sports">Sports</button>
@@ -504,6 +575,16 @@
             <ul id="modal-attendees"></ul>
             <h3>Special Highlights:</h3>
             <ul id="modal-highlights"></ul>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="username-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <h2>Enter Your Instagram Username</h2>
+            <input type="text" id="modal-username" placeholder="e.g., @username" />
+            <button id="modal-submit-username">Submit</button>
         </div>
     </div>
 
@@ -556,7 +637,7 @@
             });
         });
         
-        // Sample business data
+        // Sample business data with random attendees
         const businesses = [
             {
                 id: 1,
@@ -566,9 +647,11 @@
                 time: "7:00 PM onwards",
                 location: "LOD, Thamel",
                 price: "Rs. 2,000 to Rs. 3,000",
-                image: "assets/dj alok.png",
+                image: "assets/dj_alok.png",
                 category: "music",
-                url: "https://www.instagram.com/p/DGJDIzISsW6/?utm_source=ig_web_copy_link"
+                url: "https://www.instagram.com/p/DGJDIzISsW6/?utm_source=ig_web_copy_link",
+                popularity: 8,
+                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
             },
             {
                 id: 2,
@@ -580,7 +663,9 @@
                 price: "Rs. 300 to Rs. 350",
                 image: "assets/storyyellers.png",
                 category: "talk",
-                url: "https://www.instagram.com/p/DGaohi5vTCK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+                url: "https://www.instagram.com/p/DGaohi5vTCK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+                popularity: 4,
+                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
             },
             {
                 id: 3,
@@ -590,14 +675,12 @@
                 time: "3:00 PM",
                 location: "Dasharath Stadium",
                 price: "Free",
-                image: "assets/kp oli cup.png",
+                image: "assets/kp_oli_cup.png",
                 category: "sports",
                 url: "https://www.facebook.com/kpolicup/",
-                attendees: ["World Cup-winning Italian legend Gianluigi Buffon", "Kuma sagar and khowpa", "Purna Rai and daju bhai"],
-                highlights: ["Live music performance", "Special guest appearances", "Food stalls available"]
+                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
             },
             {
-                
                 id: 4,
                 title: "Sushant KC Live in Nepal",
                 description: "Sushant KC is a prominent Nepali singer-songwriter and musician known for his heartfelt lyrics, soulful melodies, and emotional storytelling through music. Some of his hit songs are: 'Sarangi', 'Parkha Na', 'Kya Kardiya', 'Bardali'. His songs are widely celebrated for his soulful music and heartfelt lyrics that often explore themes of love, nostalgia, and life. His unique blend of contemporary pop with Nepali melodies has made him one of the most beloved artists in Nepal and among the Nepali diaspora.",
@@ -607,7 +690,9 @@
                 price: "Rs. 1050 to Rs. 3000", // Table will be announced soon
                 image: "assets/susants.png", // Add the appropriate image path
                 category: "music",
-                url: "https://events.khalti.com/events/ET25DZREURPZ" // Example URL
+                url: "https://events.khalti.com/events/ET25DZREURPZ", // Example URL
+                popularity: 9,
+                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
             },
             {
                 id: 5,
@@ -619,7 +704,9 @@
                 price: "Rs. 899 to Rs. 5,000", // Price range
                 image: "assets/dreamon.png", // Add the appropriate image path
                 category: "music",
-                url: "https://events.khalti.com/events/ET257HPZKA7K" // Example URL
+                url: "https://events.khalti.com/events/ET257HPZKA7K", // Example URL
+                popularity: 7,
+                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
             },
             {
                 id: 6,
@@ -631,7 +718,9 @@
                 price: "Rs. 799", // Price
                 image: "assets/holirewind.png", // Add the appropriate image path
                 category: "holi", // Tag for filtering
-                url: "https://events.khalti.com/events/ET25WAA2W3FQ"// Example URL
+                url: "https://events.khalti.com/events/ET25WAA2W3FQ",// Example URL
+                popularity: 6,
+                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
             },
             {
                 id: 7,
@@ -644,7 +733,23 @@
                 image: "assets/evcar.png", // Add the appropriate image path
                 category: "event",
                 url: "https://english.aarthiknews.com/news/detail/17981/", // Example URL for more information
-                highlights: ["Chance to win iPhone 16", "Experience driving luxury cars for free"]
+                highlights: ["Chance to win iPhone 16", "Experience driving luxury cars for free"],
+                popularity: 5,
+                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
+            },
+            {
+                id: 8,
+                title: "Support Women's work this Women's day. ",
+                description: "Shop unique, handcrafted products\n💜Come celebrate Women's Day with us at the HattiHatti x International Club Market! ✨🎉\n\n🛍️  Support women & sustainability\n🎶 Enjoy a vibrant market experience",
+                date: "March 7, 2025 - March 9, 2025",
+                time: "10 AM - 6 PM",
+                location: "International Club, Lalitpur",
+                price: "Free",
+                image: "assets/hatihati.png", // Add the appropriate image path
+                category: "event", // Tag for filtering
+                url: "https://www.instagram.com/p/DGxkRoqsapH/", // Example URL for more information
+                popularity: 4,
+                attendees: Array.from({ length: Math.floor(Math.random() * 100) }, (_, i) => `User${i + 1}`) // Random number of attendees
             }
         ];
         
@@ -702,8 +807,17 @@
                             <span class="sr-only">(opens in a new tab)</span>
                         </a>
                     </div>
+                    <div class="countdown-container">
+                        <div class="event-time-counter" id="countdown-${event.id}"></div>
+                    </div>
+                </div>
+                <div class="attend-icon" onclick="toggleAttendance(event, ${event.id})">
+                    <i class="fas fa-users"></i> 
+                    <span class="attendee-count">${event.attendees.length}</span>
+                    <span class="tooltip">Attending: ${event.attendees.length}</span>
                 </div>
             `;
+            
 
             // Add click event to open modal
             card.addEventListener('click', () => {
@@ -755,16 +869,13 @@
                 const eventA = businesses.find(event => event.title === a.querySelector('.event-title').textContent);
                 const eventB = businesses.find(event => event.title === b.querySelector('.event-title').textContent);
 
-                // Create Date objects for comparison
-                const timeA = new Date(eventA.date + ' ' + eventA.time);
-                const timeB = new Date(eventB.date + ' ' + eventB.time);
-
                 switch (criteria) {
                     case 'time':
+                        const timeA = new Date(eventA.date + ' ' + eventA.time);
+                        const timeB = new Date(eventB.date + ' ' + eventB.time);
                         return timeA - timeB; // Sort by time ascending
                     case 'popularity':
-                        // Assuming you have a popularity metric, otherwise this is a placeholder
-                        return eventB.popularity - eventA.popularity;
+                        return eventB.popularity - eventA.popularity; // Sort by popularity descending
                     case 'price':
                         const priceA = parseFloat(eventA.price.replace(/[^0-9.-]+/g, "")) || 0;
                         const priceB = parseFloat(eventB.price.replace(/[^0-9.-]+/g, "")) || 0;
@@ -871,6 +982,182 @@
 
             lazyImages.forEach(img => observer.observe(img));
         });
+
+        function createEventTimeCounter() {
+            // Get all event cards
+            const eventCards = document.querySelectorAll('.event-card');
+
+            eventCards.forEach(card => {
+                // Find the event in the businesses array
+                const eventTitle = card.querySelector('.event-title').textContent;
+                const event = businesses.find(e => e.title === eventTitle);
+
+                if (event) {
+                    // Create or find the time counter element
+                    let timeCounterEl = card.querySelector('.event-time-counter');
+                    if (!timeCounterEl) {
+                        timeCounterEl = document.createElement('div');
+                        timeCounterEl.classList.add('event-time-counter');
+                        card.querySelector('.event-footer').insertBefore(timeCounterEl, card.querySelector('.event-button'));
+                    }
+
+                    // Parse the event date and time
+                    const eventDateTime = parseEventDateTime(event.date, event.time);
+                    
+                    // Calculate time difference
+                    const now = new Date();
+                    const timeDiff = eventDateTime - now;
+
+                    // Check if the event spans multiple days
+                    const eventEndDateTime = new Date(eventDateTime);
+                    eventEndDateTime.setDate(eventEndDateTime.getDate() + 1); // Assuming the event lasts for one day
+
+                    // Style and text for different event states
+                    if (timeDiff > 0) {
+                        // Event is in the future
+                        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        
+                        timeCounterEl.textContent = `Starts in ${days}d ${hours}h`;
+                        timeCounterEl.style.display = 'inline-block';
+                        timeCounterEl.style.padding = '10px 15px';
+                        timeCounterEl.style.border = '1px solid var(--nepal-red)';
+                        timeCounterEl.style.borderRadius = '5px';
+                        timeCounterEl.style.backgroundColor = 'white';
+                        timeCounterEl.style.color = 'var(--nepal-red)';
+                        timeCounterEl.style.fontWeight = 'bold';
+                        timeCounterEl.style.textAlign = 'center';
+                        timeCounterEl.style.cursor = 'pointer';
+                        timeCounterEl.classList.add('upcoming');
+                        timeCounterEl.classList.remove('happening', 'expired');
+                    } else if (now >= eventDateTime && now < eventEndDateTime) { // Check if the event is happening now
+                        // Event is happening now
+                        timeCounterEl.textContent = 'Happening Now!';
+                        timeCounterEl.style.display = 'inline-block';
+                        timeCounterEl.style.padding = '10px 15px';
+                        timeCounterEl.style.border = '1px solid var(--nepal-red)';
+                        timeCounterEl.style.borderRadius = '5px';
+                        timeCounterEl.style.backgroundColor = 'white';
+                        timeCounterEl.style.color = 'var(--nepal-red)';
+                        timeCounterEl.style.fontWeight = 'bold';
+                        timeCounterEl.style.textAlign = 'center';
+                        timeCounterEl.style.cursor = 'pointer';
+                        timeCounterEl.classList.add('happening');
+                        timeCounterEl.classList.remove('upcoming', 'expired');
+                    } else {
+                        // Event has passed
+                        timeCounterEl.textContent = 'Expired';
+                        timeCounterEl.style.display = 'inline-block';
+                        timeCounterEl.style.padding = '10px 15px';
+                        timeCounterEl.style.border = '1px solid var(--nepal-red)';
+                        timeCounterEl.style.borderRadius = '5px';
+                        timeCounterEl.style.backgroundColor = 'white';
+                        timeCounterEl.style.color = 'var(--nepal-red)';
+                        timeCounterEl.style.fontWeight = 'bold';
+                        timeCounterEl.style.textAlign = 'center';
+                        timeCounterEl.style.cursor = 'pointer';
+                        timeCounterEl.classList.add('expired');
+                        timeCounterEl.classList.remove('upcoming', 'happening');
+                    }
+                }
+            });
+        }
+
+        function parseEventDateTime(dateString, timeString) {
+            // Clean and parse the time string
+            const timeParts = timeString.toLowerCase().replace(/\s*(am|pm|onwards)/g, '').trim();
+            let [hours, minutes] = timeParts.split(':').map(Number);
+            
+            // Adjust for 12-hour format if needed
+            if (timeString.toLowerCase().includes('pm') && hours !== 12) {
+                hours += 12;
+            }
+            if (timeString.toLowerCase().includes('am') && hours === 12) {
+                hours = 0;
+            }
+
+            // Parse the date
+            const dateParts = dateString.split(/\s*-\s/); // Handle date ranges
+            const parsedDate = new Date(dateParts[0]);
+
+            // Set time
+            parsedDate.setHours(hours || 0, minutes || 0, 0, 0);
+
+            return parsedDate;
+        }
+
+        // Call the function when the page loads and update periodically
+        document.addEventListener('DOMContentLoaded', createEventTimeCounter);
+        setInterval(createEventTimeCounter, 60000); // Update every minute
+
+        // Show the modal when the submit button is clicked
+        document.getElementById('submit-username').addEventListener('click', function() {
+            document.getElementById('username-modal').style.display = 'block';
+        });
+
+        // Close the modal when the close button is clicked
+        document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('username-modal').style.display = 'none';
+        });
+
+        // Handle the modal submit button
+        document.getElementById('modal-submit-username').addEventListener('click', function() {
+            const username = document.getElementById('modal-username').value.trim();
+            if (username) {
+                // Send the username to the backend
+                fetch('/api/attend', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Username submitted successfully!');
+                        document.getElementById('modal-username').value = ''; // Clear input
+                        document.getElementById('username-modal').style.display = 'none'; // Close modal
+                    } else {
+                        alert(data.message); // Show error message
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            } else {
+                alert('Please enter a valid username.');
+            }
+        });
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('username-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+
+        // Function to toggle attendance
+        function toggleAttendance(event, eventId) {
+            event.stopPropagation(); // Prevent the click from bubbling up to the card
+            const username = document.getElementById('username').value.trim();
+            const eventDetails = businesses.find(e => e.id === eventId);
+            
+            if (!username) {
+                alert('Please enter your Instagram username to attend.');
+                return;
+            }
+
+            // Check if the username is already in the attendees list
+            if (eventDetails.attendees.includes(username)) {
+                alert('You have already submitted your attendance.');
+                return;
+            }
+
+            // Add username to attendees
+            eventDetails.attendees.push(username);
+            const attendeeCountElement = event.currentTarget.querySelector('.attendee-count');
+            attendeeCountElement.textContent = eventDetails.attendees.length; // Update count
+        }
     </script>
 </body>
 </html>
