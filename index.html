@@ -486,6 +486,10 @@
                 transform: scale(1); /* Scale back */
             }
         }
+
+        #days-left {
+            display: none; /* Hide the element */
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
@@ -503,7 +507,6 @@
 <body>
     <div class="fixed-button-container">
         
-        <span id="days-left" class="days-left-message"></span> <!-- Countdown message -->
     </div>
 
     <a href="holi.html" class="animated-holi-button" id="holi-button">
@@ -516,8 +519,8 @@
                 <h1><span>खो</span>जुम</h1>
             </div>
             <div class="title-section">
-                <h2>What are you doing this <span class="animated-holi">Holi</span>?</h2>
-                <p>Discover the best events happening in Nepal this Holi</p>
+                <h2>What are you doing this Week?</h2>
+                <p>Discover the best events happening in Nepal this Week</p>
                 <span class="date-display" id="date-range">Date: March 13</span>
             </div>
         </div>
@@ -1077,14 +1080,6 @@
 
             // Calculate days left
             const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-            // Update the countdown in the button
-            const daysLeftElement = document.getElementById('days-left');
-            if (daysLeft > 0) {
-                daysLeftElement.textContent = `(${daysLeft} days left)`;
-            } else {
-                daysLeftElement.textContent = '(Event has passed)';
-            }
 
             // Update the animated button with days left
             const holiButton = document.getElementById('holi-button');
