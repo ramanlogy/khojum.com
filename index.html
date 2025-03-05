@@ -283,7 +283,7 @@
         
         .event-price-tag {
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--nepal-blue);
             flex: 1;
             min-width: 100px;
@@ -452,6 +452,40 @@
             background-color: #ffe6e6;
             color: #cc0000;
         }
+
+        .animated-holi-button {
+            position: fixed; /* Fix the position */
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            background-image: linear-gradient(45deg, #FF4136, #FF6B6B, #FFD700, #4ECDC4, #9D4EDD); /* Colorful gradient */
+            color: white; /* Text color */
+            padding: 10px 20px; /* Padding */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 1rem; /* Font size */
+            font-weight: bold; /* Bold text */
+            text-decoration: none; /* No underline */
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Animation on hover */
+            z-index: 1000; /* Ensure it stays on top */
+            animation: pulse 1.5s infinite; /* Add pulse animation */
+        }
+
+        .animated-holi-button:hover {
+            transform: scale(1.05); /* Slightly scale up on hover */
+            background-image: linear-gradient(45deg, #FFD700, #FF6B6B, #4ECDC4, #9D4EDD, #FF4136); /* Change gradient on hover */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1); /* Scale up */
+            }
+            100% {
+                transform: scale(1); /* Scale back */
+            }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
@@ -467,15 +501,24 @@
     </script>
 </head>
 <body>
+    <div class="fixed-button-container">
+        
+        <span id="days-left" class="days-left-message"></span> <!-- Countdown message -->
+    </div>
+
+    <a href="holi.html" class="animated-holi-button" id="holi-button">
+        Celebrate Holi!
+    </a>
+
     <header>
         <div class="container">
             <div class="logo">
                 <h1><span>खो</span>जुम</h1>
             </div>
             <div class="title-section">
-                <h2>What are you doing this week?</h2>
-                <p>Discover the best events happening in Nepal this week</p>
-                <span class="date-display" id="date-range">Current Week: {{currentWeek}}</span>
+                <h2>What are you doing this <span class="animated-holi">Holi</span>?</h2>
+                <p>Discover the best events happening in Nepal this Holi</p>
+                <span class="date-display" id="date-range">Date: March 13</span>
             </div>
         </div>
     </header>
@@ -1026,6 +1069,36 @@
         // Call the function when the page loads and update periodically
         document.addEventListener('DOMContentLoaded', createEventTimeCounter);
         setInterval(createEventTimeCounter, 60000); // Update every minute
+
+        function updateCountdown() {
+            const targetDate = new Date('March 13, 2025');
+            const now = new Date();
+            const timeDiff = targetDate - now;
+
+            // Calculate days left
+            const daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+            // Update the countdown in the button
+            const daysLeftElement = document.getElementById('days-left');
+            if (daysLeft > 0) {
+                daysLeftElement.textContent = `(${daysLeft} days left)`;
+            } else {
+                daysLeftElement.textContent = '(Event has passed)';
+            }
+
+            // Update the animated button with days left
+            const holiButton = document.getElementById('holi-button');
+            if (daysLeft > 0) {
+                holiButton.textContent = `Celebrate Holi! (${daysLeft} days left)`;
+            } else {
+                holiButton.textContent = 'Celebrate Holi! (Event has passed)';
+            }
+        }
+
+        // Update countdown on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCountdown(); // Call the function to set the initial value
+        });
     </script>
 </body>
 </html>
