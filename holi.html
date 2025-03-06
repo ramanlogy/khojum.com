@@ -607,7 +607,36 @@
         
         // Sample business data
         const businesses = [
-       {
+   
+            {
+                id: 9, // New ID for the event
+                title: "HOLI Daurbarmarg",
+                description: "Let's celebrate Holi together at Daurbarmarg with popular artists like Wangden Sherpa, Jhilkey and the Company, Ekdev Limbu, Pariwartan, DJ Midday, DJ Saroj, DJ Dan, DJ DripX.",
+                date: "March 13, 2025",
+                time: "11:00 AM Onwards",
+                location: "Daurbarmarg Streets",
+                price: "Free", // Price
+                image: "assets/daurbarholi.png", // Add the appropriate image path
+                category: "public place", // Tag for filtering
+                url: "https://events.khalti.com/events/HOLI_DAURBARMARG", // Example URL
+                popularity: 5, // Adjust popularity as needed
+                attendees: ["Wangden Sherpa", "Jhilkey and the Company", "Ekdev Limbu", "Pariwartan", "DJ Midday", "DJ Saroj", "DJ Dan", "DJ DripX"], // Special attendees
+            },
+            {
+                id: 8, // New ID for the event
+                title: "Holi Kuma sagar and Khowpa",
+                description: "Who better to hype up the party than the amazing @malvikasubbaofficial? Catch her live as she hosts Tilt Your World with Color Splash 2025 on 13th March—bringing her signature fun and infectious energy to the stage! Performing Live: @kumasagar_ :: @kumasagar_and_thekhowpa_ Also performing: @finz0k :: @dj_ikandy :: @dixxuug :: @_limeili_ :: @beebass_official :: @roheel_",
+                date: "March 13, 2025",
+                time: "11:00 AM Onwards",
+                location: "Malla Hotel, Lainchaur",
+                price: "Rs. 1000/- per person",
+                image: "assets/kumarholi.png", // Add the appropriate image path
+                category: "concert", // Tag for filtering
+                url: "https://esewaevents.com/booking/color-splash-2025", // Example URL
+                popularity: 10, // Adjust popularity as needed
+                highlights: ["With purchase of every ticket, get a chance to win a diamond ring worth NRs. 60,000/- )"],
+            },
+            {
                 id: 6,
                 title: "Holi Rewind 2025",
                 description: "Tilt Your World - Holi Rewind 2025 Reliving Holi, Reliving Memories",
@@ -620,7 +649,6 @@
                 url: "https://events.khalti.com/events/ET25WAA2W3FQ",// Example URL
                 popularity: 6
             },
-           
         ];
         
         function loadEvents() {
