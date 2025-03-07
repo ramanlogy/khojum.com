@@ -15,6 +15,10 @@
     <title>Discover trendy Events easily | Upcoming Events in Kathmandu | Khojum.com</title>
     <meta name="description" content="Nepal's top event discovery platform. Browse upcoming concerts, cultural festivals, art exhibitions, and entertainment in Kathmandu and beyond. Plan your perfect outing with Khojum.">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/home/raman/Downloads/khojum-master/assets/logo/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/home/raman/Downloads/khojum-master/assets/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/home/raman/Downloads/khojum-master/assets/logo/favicon-16x16.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?fami~ly=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
@@ -76,6 +80,11 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 20px;
+        }
+        
+        .logo a {
+            text-decoration: none;
+            color: inherit;
         }
         
         .logo h1 {
@@ -792,6 +801,42 @@
             color: #880e0e;
             margin-top: 3px;
         }
+        .archived-events-icon {
+            position: bottom; /* Changed to fixed for consistent positioning */
+            bottom: 20px; /* Adjusted for desired position */
+            right: 20px; /* Adjusted for desired position */
+            background-color: var(--nepal-red); /* Background color */
+            color: white; /* Text color */
+            padding: 10px 15px; /* Padding */
+            font-weight: bold;
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* Remove underline */
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            transition: background-color 0.3s; /* Smooth background color transition */
+            z-index: 1000; /* Ensure it stays on top */
+        }
+
+        .archived-events-icon:hover {
+            background-color: #b01030; /* Darker shade on hover */
+        }
+        @media (max-width: 768px) {
+  #fixedButton {
+    top: 5px; /* Adjusted position for smaller screens */
+    right: 5px; /* Adjusted position for smaller screens */
+  }
+}
+
+
+        .icon-box {
+            display: flex; /* Flexbox for icon and text */
+            align-items: center; /* Center items vertically */
+        }
+
+        .icon-box i {
+            margin-right: 7px; /* Space between icon and text */
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
@@ -817,7 +862,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <h1><span>खो</span>जुम</h1>
+                <h1 id="khojum-logo"><span>खो</span>जुम</h1>
             </div>
             <div class="title-section">
                 <h2>What are you doing this Week?</h2>
@@ -827,7 +872,7 @@
         </div>
     </header>
     
-    <div class="filter-bar">
+    <div class="filter-bar" id="filterBar">
         <div class="container">
             <div class="filter-buttons">
                 <button class="filter-button active" data-filter="all">All Events</button>
@@ -847,6 +892,7 @@
             </div>
         </div>
     </div>
+   
     
     <main class="container">
         <div class="events-grid" id="events-container">
@@ -865,13 +911,20 @@
                 <span>खो</span>जुम
             </div>
             <p>Discover and explore the best events happening in Nepal</p>
-
+            <p class="copyright">&copy; 2025 Khojum. All rights reserved.</p>
             <p class="support-message">
                 We value your feedback! <br>
                 Help us grow or share your thoughts and suggestions at 
                 <a href="mailto:ceo@khojum.com?subject=Feedback%20for%20Khojum" class="email-link">ceo@khojum.com</a>
             </p>
-            <p class="copyright">&copy; 2025 Khojum. All rights reserved.</p>
+            <!-- Moved Archived Events Icon to Footer -->
+            <div class="icon-box">
+                <a href="expired.html" class="archived-events-icon" title="Archived Events">
+                    <i class="fa fa-archive"></i> <!-- Font Awesome down arrow icon -->
+                    <span>Archived Events</span>
+                </a>
+            </div>
+            <!-- End of Archived Events Icon -->
         </div>
     </footer>
 
@@ -1007,19 +1060,7 @@
                 url: "https://www.instagram.com/p/DGJDIzISsW6/?utm_source=ig_web_copy_link",
                 popularity: 8
             },
-            {
-                id: 2,
-                title: "61st Session of The StoryYellers",
-                description: "The StoryYellers is organising its 61st session featuring Srichchha Pradhan, Miss Nepal World 2023, Monish Niraula, Music Director, Nitesh Tandukar, Content Creator, and Basanta Pandey, CFO, fonepay as the speakers.",
-                date: "March 5, 2025",
-                time: "5:45 PM",
-                location: "Moksh, Jhamsikhel",
-                price: "Rs. 300 to Rs. 350",
-                image: "assets/storyyellers.png",
-                category: "talk",
-                url: "https://www.instagram.com/p/DGaohi5vTCK/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-                popularity: 4
-            },
+            
             {
                 id: 3,
                 title: "KP OLI CUP 2025 Finals",
@@ -1101,19 +1142,6 @@
                 category: "event", // Tag for filtering
                 url: "https://www.instagram.com/p/DGxkRoqsapH/", // Example URL for more information
                 popularity: 4
-            },
-           {
-                id: 9,
-                title: "Yuwahub Upskill Event Pt. 2: TECHCAMP – Your Gateway to Nepal's IT Industry",
-                description: "If you're looking to break into IT, find job opportunities, or build valuable connections, TechCamp is the place to be. Whether you're just starting out or already in the field, this event is designed to give you the skills, network, and opportunities you need.",
-                date: "March 8, 2025",
-                time: "9:00 AM - 6:00 PM",
-                location: "Herald International College, Basundhara",
-                price: "Free",
-                image: "assets/upskill.png",
-                category: "workshop",
-                url: "https://www.yuwahub.com/opportunity/upskill-techcamp-by-yuwahub-80",
-                popularity: 10
             },
             
         ];
@@ -1794,6 +1822,10 @@
             
             // Initialize calendar with current month
             generateCalendar(currentMonth, currentYear);
+        });
+
+        document.getElementById('khojum-logo').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Navigate to the main page
         });
     </script>
 </body>
