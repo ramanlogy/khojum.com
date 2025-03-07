@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover trendy Events easily | Upcoming Events in Kathmandu | Khojum.com</title>
     <meta name="description" content="Nepal's top event discovery platform. Browse upcoming concerts, cultural festivals, art exhibitions, and entertainment in Kathmandu and beyond. Plan your perfect outing with Khojum.">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/home/raman/Downloads/khojum-master/assets/logo/android-chrome-192x192.png">
+    <link rel="icon" type="image/x-icon" href="assets/logo/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/home/raman/Downloads/khojum-master/assets/logo/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/home/raman/Downloads/khojum-master/assets/logo/favicon-16x16.png">
 
@@ -467,21 +467,23 @@
             top: 20px; /* Distance from the top */
             right: 20px; /* Distance from the right */
             background-image: linear-gradient(45deg, #FF4136, #FF6B6B, #FFD700, #4ECDC4, #9D4EDD); /* Colorful gradient */
-            color: white; /* Text color */
-            padding: 8px 15px; /* Reduced padding for a smaller button */
+            color: rgb(5, 0, 0); /* Text color */
+            padding: 12px 20px; /* Increased padding for a larger button */
             border: none; /* No border */
-            border-radius: 5px; /* Rounded corners */
-            font-size: 0.9rem; /* Reduced font size */
+            border-radius: 20px; /* More rounded corners */
+            font-size: 1rem; /* Increased font size */
             font-weight: bold; /* Bold text */
             text-decoration: none; /* No underline */
-            transition: transform 0.2s ease, background-color 0.2s ease; /* Shortened animation duration */
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; /* Shortened animation duration */
             z-index: 1000; /* Ensure it stays on top */
             animation: pulse 1.5s infinite; /* Add pulse animation */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
         }
 
         .animated-holi-button:hover {
-            transform: scale(1.03); /* Slightly scale up on hover */
+            transform: scale(1.05); /* Slightly scale up on hover */
             background-image: linear-gradient(45deg, #FFD700, #FF6B6B, #4ECDC4, #9D4EDD, #FF4136); /* Change gradient on hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
         }
 
         @keyframes pulse {
@@ -543,9 +545,9 @@
             position: absolute;
             top: 60px;
             right: 20px;
-            width: 40px;
+            width: 60px;
             height: 40px;
-            background-color: #efbf04;
+            background-color: #ff5722;
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -557,14 +559,20 @@
         }
         
         .calendar-icon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-        }
+  background-color: #ff5722; /* Added hover effect */
+  transform: scale(1.05); /* Added scale effect on hover */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Enhanced shadow on hover */
+}
         
         .calendar-icon svg {
             width: 24px;
-            height: 24px;
+            height: 45px;
             fill: rgb(245, 230, 230);
+        }
+        .calendar-label {
+            margin-top: 72px;
+            font-weight: Bold;
+            color: white;
         }
 
         .calendar-popup {
@@ -633,6 +641,13 @@
             justify-content: center;
             padding: 8px;
             border-bottom: 1px solid #eee;
+            font-size: 13px;
+            text-align: right;
+        }
+        .toggle-label
+        {
+            text-align: left;
+            margin-left: -110px;
         }
         
         .switch {
@@ -656,7 +671,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #272020;
+            background-color: #adabab;
             transition: .4s;
         }
         
@@ -667,12 +682,12 @@
             width: 18px;
             left: 3px;
             bottom: 3px;
-            background-color: white;
+            background-color: rgb(253, 246, 246);
             transition: .4s;
         }
         
         input:checked + .slider {
-            background-color: #4a6fa5;
+            background-color: #b3b9c4;
         }
         
         input:checked + .slider:before {
@@ -690,7 +705,7 @@
         .toggle-label {
             font-size: 14px;
             font-weight: 500;
-            color: #333;
+            color: #000000;
         }
         
         .calendar-grid {
@@ -965,10 +980,12 @@
 
     <!-- Calendar Icon -->
     <div class="calendar-icon" id="calendarIcon">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" > 
             <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7z" fill="white"/>
         </svg>
+    
     </div>
+    
 
     <!-- Calendar Popup -->
     <div class="calendar-popup" id="calendarPopup">
@@ -992,7 +1009,7 @@
         <div class="calendar-toggle">
             <label class="switch">
                 <input type="checkbox" id="calendarTypeToggle">
-                <span class="slider round"></span>
+                <span class="slider round">nep</span>
             </label>
             <span class="toggle-label" id="calendarTypeLabel">English</span>
         </div>
@@ -1511,7 +1528,7 @@
             const holiButton = document.getElementById('holi-button');
             const daysLeftElement = document.getElementById('days-left');
             if (daysLeft > 0) {
-                holiButton.textContent = 'Holi Events';
+                holiButton.textContent = 'Search Holi Events';
                 daysLeftElement.textContent = `(${daysLeft} days left)`; // Update countdown message
             } else {
                 holiButton.textContent = 'Celebrate Holi! (Event has passed)';
