@@ -482,6 +482,8 @@
             border-radius: 50%; /* Make the splash circular */
             pointer-events: none; /* Prevent interaction */
         }
+
+       
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
@@ -510,7 +512,7 @@
             <div class="title-section">
                 <h2>What are you doing this <span class="animated-holi">Holi</span>?</h2>
                 <p>Discover the best events happening in Kathmandu this Holi</p>
-                <span class="date-display" id="date-range">Date: March 13th</span>
+                <span class="date-display" id="date-range">Date: March 13</span>
             </div>
         </div>
     </header>
@@ -522,7 +524,8 @@
                 <button class="filter-button" data-filter="Free">Free</button>
                 <button class="filter-button" data-filter="holi" id="filter-button">Concerts</button>
                 <button class="filter-button" data-filter="music">Public places</button>
-             
+                <button class="filter-button" data-filter="music">Offers</button>
+                <button class="filter-button" data-filter="music">Things to do at Holi</button>
             </div>
             <div class="sort-dropdown">
                 <select id="sort-options">
@@ -552,6 +555,13 @@
             </div>
             <p>Discover and explore the best events happening in Nepal</p>
             <p class="copyright">&copy; 2025 Khojum. All rights reserved.</p>
+            <p class="support-message">
+                We value your feedback! <br>
+                Help us grow or share your thoughts and suggestions at 
+                <a href="mailto:ceo@khojum.com" class="email-link">ceo@khojum.com</a>
+            </p>
+            <!-- Archived Events Icon -->
+            
         </div>
     </footer>
 
@@ -619,13 +629,13 @@
                 image: "assets/daurbarholi.png", // Add the appropriate image path
                 category: "public place", // Tag for filtering
                 url: "https://events.khalti.com/events/HOLI_DAURBARMARG", // Example URL
-                popularity: 8, // Adjust popularity as needed
+                popularity: 5, // Adjust popularity as needed
                 attendees: ["Wangden Sherpa", "Jhilkey and the Company", "Ekdev Limbu", "Pariwartan", "DJ Midday", "DJ Saroj", "DJ Dan", "DJ DripX"], // Special attendees
             },
             {
                 id: 8, // New ID for the event
                 title: "Holi Kuma sagar and Khowpa",
-                description: "Who better to hype up the party than the amazing @malvikasubbaofficial? Catch her live as she hosts Tilt Your World with Color Splash 2025 on 13th March—bringing her signature fun and infectious energy to the stage! Performing Live: @kumasagar_ :: @kumasagar_and_thekhowpa_ Also performing: @finz0k :: @dj_ikandy :: @dixxuug :: @_limeili_ :: @beebass_official :: @roheel_",
+                description: "Who better to hype up the party than the amazing @malvikasubbaofficial? Catch her live as she hosts Tilt Your World with Color Splash 2025 on 13th March—bringing her signature fun and infectious energy to the stage! Performing Live: @kumasagar_ :: @kumasagar_and_thekhowpa_ Also performing: @finz0k :: @dixxuug :: @_limeili_ :: @beebass_official :: @roheel_",
                 date: "March 13, 2025",
                 time: "11:00 AM Onwards",
                 location: "Malla Hotel, Lainchaur",
@@ -639,7 +649,7 @@
             {
                 id: 6,
                 title: "Holi Rewind 2025",
-                description: "Tilt Your World - Holi Rewind 2025 Reliving Holi, Reliving Memories",
+                description: " Tilt Your World brings back the ultimate Holi experience, filled with pulsating beats, vibrant colors, and non-stop energy. Get ready for a legendary lineup of DJs, including DJ Sundyp, DJ BKICool, DJ Black, Iraz Music, DJ Khatra, DJ Kush High, and Alis Lamar",
                 date: "March 13, 2025",
                 time: "10:00 AM Onwards",
                 location: "International Club, Sanepa, Lalitpur",
@@ -659,9 +669,36 @@
                 price: "Free", // Price
                 image: "assets/basantapurholi.png", // Add the appropriate image path
                 category: "Public places", // Tag for filtering
-                url: "https://risingnepaldaily.com/news/40331", // Example URL
-                popularity: 9, // Adjust popularity as needed
+                url: "https://events.khalti.com/events/HOLI_BASANTAPUR", // Example URL
+                popularity: 5, // Adjust popularity as needed
             },
+            {
+                id: 11, // New ID for the Holi celebration event
+                title: " Holi at Yak and Yeti | ft. Dj Almost Human",
+                description: "Make your Holi unforgettable with popular DJ Almost HUMAN. Club Fahrenheit is organising Holi at Yak and Yeti",
+                date: "March 13, 2025",
+                time: "1:00 PM",
+                location: "Yak & Yeti, Nepal",
+                price: "Rs.1000 to Rs.3000", // Assuming the event is free
+                image: "assets/djhuman.png", // Add the appropriate image path
+                category: "holi", // Tag for filtering
+                url: "https://example.com/holi-celebration", // Example URL for more information
+                popularity: 8 // Adjust popularity as needed
+            },
+            {
+                id: 13, // New ID for the Heritage Holi bash event
+                title: "Heritage Holi Bash",
+                description: "HeritageHoli is bringing the ULTIMATE Holi bash to Heritage Garden, Sanepa, on March 13th! 🎉\n\n💃 Ladies, you're in luck—FREE ENTRY & UNLIMITED DRINKS till 1 PM! 🍹\n\nExpect crazy colors, non-stop music, and festive madness! Tag your squad & grab your tickets via @khaltiofficial before they're gone! 🎫",
+                date: "March 13, 2025",
+                time: "10:00 AM Onwards",
+                location: "Heritage Garden, Sanepa",
+                price: "Rs.1000-3000 (Free entry for womens till 1pm)", // Early Bird price
+                image: "assets/heritageholi.png", // Add the appropriate image path
+                category: "holi", // Tag for filtering
+                url: "https://events.khalti.com/events/ET2556P586EZ", // Example URL for more information
+                popularity: 8 // Adjust popularity as needed
+            },
+
         ];
         
         function loadEvents() {
@@ -682,7 +719,7 @@
             const card = document.createElement('div');
             card.className = 'event-card';
             const categories = Array.isArray(event.category) ? event.category.join(',') : event.category;
-            card.setAttribute('data-category', categories);
+            card.setAttribute('data-category', categories.trim()); // Ensure no extra spaces
             
             const imageUrl = event.image || "assets/football-finals.png"; // Example image
             
@@ -738,10 +775,13 @@
             const allEvents = document.querySelectorAll('.event-card');
             
             allEvents.forEach(event => {
-                const eventCategories = event.getAttribute('data-category').split(',');
+                const eventCategories = event.getAttribute('data-category').split(',').map(cat => cat.trim()); // Trim whitespace
                 const priceElement = event.querySelector('.event-price-tag');
                 const isFreePrice = priceElement && priceElement.textContent.trim().includes('Free');
                 
+                // Debugging log for event categories
+                console.log(`Event: ${event.querySelector('.event-title').textContent}, Categories: ${eventCategories}`);
+
                 if (category === 'all') {
                     event.style.display = 'block';
                 } else if (category === 'Free') {
@@ -751,18 +791,23 @@
                     } else {
                         event.style.display = 'none';
                     }
+                } else if (category === 'concert' || category === 'public places') { // Added filtering for concerts and public places
+                    if (eventCategories.includes(category)) {
+                        event.style.display = 'block';
+                    } else {
+                        event.style.display = 'none';
+                    }
                 } else {
-                    // Update the condition to check for category match
-                    if (eventCategories.some(cat => cat.trim().toLowerCase() === category.trim().toLowerCase())) {
-
+                    // Check for category match (case insensitive)
+                    if (eventCategories.some(cat => cat.toLowerCase() === category.toLowerCase())) {
                         event.style.display = 'block';
                     } else {
                         event.style.display = 'none';
                     }
                 }
                 
-                // Debugging log
-                console.log(`Event: ${event.querySelector('.event-title').textContent}, Category: ${eventCategories}`);
+                // Debugging log for visibility
+                console.log(`Event: ${event.querySelector('.event-title').textContent}, Display: ${event.style.display}`);
             });
         }
 
