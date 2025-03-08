@@ -1,23 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-             <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7LWHSBNXT5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7LWHSBNXT5');
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Primary Meta Tags -->
     <title>Discover trendy Events easily | Upcoming Events in Kathmandu | Khojum.com</title>
-    <meta name="description" content="Nepal's top event discovery platform. Browse upcoming concerts, cultural festivals, art exhibitions, and entertainment in Kathmandu and beyond. Plan your perfect outing with Khojum.">
-    <link rel="icon" type="image/x-icon" href="assets/logo/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/home/raman/Downloads/khojum-master/assets/logo/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/home/raman/Downloads/khojum-master/assets/logo/favicon-16x16.png">
+    <meta name="title" content="Discover trendy Events easily | Upcoming Events in Kathmandu | Khojum.com">
+    <meta name="description" content="Nepal's top event discovery platform. Browse upcoming concerts, cultural festivals, art exhibitions, and entertainment in Kathmandu and beyond. Find the latest events happening today and tomorrow.">
+    
+    <!-- Keywords - include all relevant event categories and locations -->
+    <meta name="keywords" content="events in kathmandu, nepal events, concerts in kathmandu, cultural events nepal, art exhibitions kathmandu, entertainment kathmandu, today's events kathmandu, upcoming events nepal, festivals kathmandu, live music nepal, theater shows kathmandu, comedy shows nepal, workshops kathmandu, seminars nepal, food festivals kathmandu, sports events nepal, khojum events">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://khojum.com">
+    
+    <!-- Language and Locale -->
+    <meta name="language" content="English">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ne_NP">
+
+    <!-- Structured Data for Events -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Khojum Events",
+        "url": "https://khojum.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://khojum.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <!-- Dynamic Structured Data for Events -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "Event",
+                "name": "Example Event 1",
+                "description": "Description of event 1",
+                "startDate": "2024-03-21T19:00",
+                "endDate": "2024-03-21T22:00",
+                "location": {
+                    "@type": "Place",
+                    "name": "Venue Name",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Kathmandu",
+                        "addressRegion": "Bagmati",
+                        "addressCountry": "NP"
+                    }
+                },
+                "image": "https://khojum.com/assets/images/event1.jpg",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "1000",
+                    "priceCurrency": "NPR"
+                }
+            }
+            // Add more events dynamically
+        ]
+    }
+    </script>
+
+    <!-- Site Verification -->
+    <meta name="google-site-verification" content="your-verification-code">
+    
+    <!-- Mobile Optimization -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#dc143c">
+    
+    <!-- Existing favicon and other meta tags -->
+    <link rel="icon" type="image/x-icon" href="/assets/logo/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo/favicon-16x16.png">
+    
+    <!-- Open Graph Meta Tags for better social sharing -->
+    <meta property="og:title" content="Discover trendy Events easily | Upcoming Events in Kathmandu | Khojum.com">
+    <meta property="og:description" content="Nepal's top event discovery platform. Browse upcoming concerts, cultural festivals, art exhibitions, and entertainment in Kathmandu and beyond.">
+    <meta property="og:image" content="/assets/logo/og-image.png">
+    <meta property="og:url" content="https://khojum.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Discover trendy Events easily | Khojum.com">
+    <meta name="twitter:description" content="Nepal's top event discovery platform. Browse upcoming concerts, cultural festivals, art exhibitions, and entertainment in Kathmandu.">
+    <meta name="twitter:image" content="/assets/logo/twitter-card.png">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#dc143c">
+    <link rel="canonical" href="https://khojum.com">
+    <meta name="robots" content="index, follow">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -204,6 +284,17 @@
             }
         }
         
+        .event-image {
+            position: relative;
+            width: 100%;
+            height: 200px; /* Fixed height for consistent image containers */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: zoom-in;
+            overflow: hidden; /* Ensure content stays within bounds */
+        }
+        
         .event-card {
             background-color: var(--card-bg);
             border-radius: 10px;
@@ -211,18 +302,13 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
         
         .event-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        }
-        
-        .event-image {
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
         }
         
         .event-category {
@@ -272,14 +358,41 @@
         }
         
         .event-description {
-            font-size: 0.95rem;
-            color: var(--light-text);
-            margin-bottom: 20px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            max-height: 150px; /* Adjust this value based on your needs */
+            overflow-y: auto;
+            padding-right: 10px;
+            position: relative;
+            scrollbar-width: thin;
+            scrollbar-color: var(--nepal-red) #f0f0f0;
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(transparent, white);
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--nepal-red);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+        
+        /* Custom scrollbar styles */
+        .event-description::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .event-description::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 3px;
+        }
+        
+        .event-description::-webkit-scrollbar-thumb {
+            background: var(--nepal-red);
+            border-radius: 3px;
         }
         
         .event-footer {
@@ -541,282 +654,393 @@
             color: #3fc909; /* Change color on hover for visibility */
         }
 
-        .calendar-icon {
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            width: 60px;
-            height: 40px;
-            background-color: #ff5722;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
-            z-index: 1000;
-        }
-        
-        .calendar-icon:hover {
-  background-color: #ff5722; /* Added hover effect */
-  transform: scale(1.05); /* Added scale effect on hover */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Enhanced shadow on hover */
+        :root {
+  --nepal-red: #c8102e; /* Nepal flag's crimson red */
+  --nepal-blue: #003893; /* Nepal flag's deep blue */
+  --calendar-background: #ffffff;
+  --calendar-header: #003893; /* Using Nepal blue for header */
+  --calendar-text: #333333;
+  --calendar-inactive: #cccccc;
+  --calendar-today: #e7f0f9;
+  --calendar-selected: #c8102e; /* Using Nepal red for selected */
+  --calendar-hover: #f0f0f0;
+  --calendar-event-dot: #c8102e; /* Using Nepal red for event indicators */
+  --calendar-border: #eeeeee;
+  --calendar-shadow: rgba(0, 0, 0, 0.15);
 }
-        
-        .calendar-icon svg {
-            width: 24px;
-            height: 45px;
-            fill: rgb(245, 230, 230);
-        }
-        .calendar-label {
-            margin-top: 72px;
-            font-weight: Bold;
-            color: white;
-        }
 
-        .calendar-popup {
-            position: absolute;
-            top: 150px;
-            right: 20px;
-            width: 300px;
-            background-color: rgb(253, 253, 253);
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-            overflow: hidden;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
-            z-index: 1000;
-        }
-        
-        .calendar-popup.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .calendar-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px;
-            background-color: #83a83e;
-            color: white;
-        }
-        
-        .month-year {
-            font-weight: 700;
-            font-size: 22px;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .nav-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            color: white;
-            transition: background-color 0.2s;
-        }
-        
-        .nav-btn:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
-        
-        /* Calendar Toggle Styles */
-        .calendar-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px;
-            border-bottom: 1px solid #eee;
-            font-size: 13px;
-            text-align: right;
-        }
-        .toggle-label
-        {
-            text-align: left;
-            margin-left: -110px;
-        }
-        
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 46px;
-            height: 24px;
-            margin-right: 8px;
-        }
-        
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #adabab;
-            transition: .4s;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
-            background-color: rgb(253, 246, 246);
-            transition: .4s;
-        }
-        
-        input:checked + .slider {
-            background-color: #b3b9c4;
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(22px);
-        }
-        
-        .slider.round {
-            border-radius: 24px;
-        }
-        
-        .slider.round:before {
-            border-radius: 50%;
-        }
-        
-        .toggle-label {
-            font-size: 14px;
-            font-weight: 500;
-            color: #000000;
-        }
-        
-        .calendar-grid {
-            padding: 10px;
-        }
-        
-        .weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            font-weight: 600;
-            color: #666;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            text-align: center;
-        }
-        
-        .day {
-            aspect-ratio: 1/1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            cursor: pointer;
-            position: relative;
-            font-size: 14px;
-            color: #333;
-            transition: background-color 0.2s;
-        }
-        
-        .day.event:after {
-            content: '';
-            position: absolute;
-            bottom: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 4px;
-            background-color: #e74c3c;
-            border-radius: 50%;
-        }
-        
-        .day:not(.inactive):hover {
-            background-color: #f0f0f0;
-        }
-        
-        .day.today {
-            background-color: #e7f0f9;
-            font-weight: bold;
-        }
-        
-        .day.selected {
-            background-color: #3e5e04;
-            color: rgb(138, 126, 126);
-            font-weight: bold;
-        }
-        
-        .day.inactive {
-            color: #ccc;
-            cursor: default;
-        }
-        
-        .events-panel {
-            background-color: #f9f9f9;
-            border-top: 1px solid #eee;
-            padding: 10px 16px;
-            max-height: 150px;
-            overflow-y: auto;
-        }
-        
-        .event-date {
-            font-weight: 600;
-            color: #4a6fa5;
-            margin-bottom: 4px;
-            font-size: 14px;
-        }
-        
-        .event-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .event-item {
-            padding: 6px 0;
-            border-bottom: 1px solid #eee;
-            color: #333;
-            font-size: 14px;
-        }
-        
-        .event-item:last-child {
-            border-bottom: none;
-        }
-        
-        .no-events {
-            color: #999;
-            font-style: italic;
-            font-size: 14px;
-        }
+/* Calendar Icon Button */
+.calendar-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px; /* Increased height for better touchability */
+  background-color: var(--nepal-red);
+  border-radius: 12px; /* Slightly more rounded */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 1000;
+}
 
-        .nepali-date {
-            font-size: 12px;
-            color: #880e0e;
-            margin-top: 3px;
-        }
+.calendar-icon:hover, .calendar-icon:active {
+  transform: scale(1.05);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.35);
+}
+
+.calendar-icon svg {
+  width: 28px;
+  height: 32px;
+  fill: white;
+  margin-bottom: -5px;
+}
+
+.calendar-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Calendar Popup */
+.calendar-popup {
+  position: fixed; /* Changed to fixed for better mobile positioning */
+  top: 140px;
+  right: 20px;
+  width: 320px; /* Slightly wider for mobile */
+  max-width: calc(100vw - 40px); /* Ensures it doesn't overflow on small screens */
+  background-color: var(--calendar-background);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px var(--calendar-shadow);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+  z-index: 1000;
+}
+
+.calendar-popup.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Calendar Header */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: var(--calendar-header);
+  color: white;
+}
+
+.month-year {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; /* Larger for better touch targets */
+  height: 32px; /* Larger for better touch targets */
+  border-radius: 50%;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.nav-btn:hover, .nav-btn:active {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Calendar Toggle Styles */
+.calendar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Changed to better space the elements */
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--calendar-border);
+}
+
+.toggle-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--calendar-text);
+  margin-right: auto; /* Pushes it to the left */
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #adabab;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--nepal-blue); /* Changed to match theme */
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+  
+}
+
+/* Calendar Grid */
+.calendar-grid {
+  padding: 14px;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.day {
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  font-size: 14px;
+  color: var(--calendar-text);
+  transition: background-color 0.2s;
+  padding: 8px 0; /* Added padding for better spacing */
+}
+
+.day.event:after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background-color: var(--calendar-event-dot);
+  border-radius: 50%;
+}
+
+.day:not(.inactive):hover, .day:not(.inactive):active {
+  background-color: var(--calendar-hover);
+}
+
+.day.today {
+  background-color: var(--calendar-today);
+  font-weight: bold;
+}
+
+.day.selected {
+  background-color: var(--calendar-selected);
+  color: white;
+  font-weight: bold;
+}
+
+.day.inactive {
+  color: var(--calendar-inactive);
+  cursor: default;
+}
+
+.nepali-date {
+  font-size: 18px;
+  color: var(--nepal-red);
+  margin-top: 2px;
+  /* Added line height limiting for compact display */
+  line-height: 1;
+}
+
+/* Events Panel */
+.events-panel {
+  background-color: #f9f9f9;
+  border-top: 1px solid var(--calendar-border);
+  padding: 12px 16px;
+  max-height: 180px; /* Slightly increased height */
+  overflow-y: auto;
+}
+
+.event-date {
+  font-weight: 600;
+  color: var(--nepal-blue);
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.event-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--calendar-border);
+  color: var(--calendar-text);
+  font-size: 14px;
+}
+
+.event-item:last-child {
+  border-bottom: none;
+}
+
+.no-events {
+  color: #999;
+  font-style: italic;
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+/* Archived Events Button */
+.archived-events-icon {
+  position: sticky;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--nepal-red);
+  color: white;
+  padding: 12px 16px;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.2s;
+  z-index: 1000;
+}
+
+.archived-events-icon:hover, .archived-events-icon:active {
+  background-color: #a70d26; /* Slightly darker on hover */
+  transform: scale(1.03);
+}
+
+.archived-events-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .calendar-popup {
+    right: 50%;
+    transform: translateX(50%) translateY(-10px);
+    width: 90%;
+    max-width: 350px;
+  }
+  
+  .calendar-popup.active {
+    transform: translateX(50%) translateY(0);
+  }
+  
+  .calendar-icon {
+    right: 15px;
+    top: 15px;
+  }
+  
+  .archived-events-icon {
+    right: 15px;
+    bottom: 15px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  .day {
+    font-size: 13px;
+  }
+  
+  .nepali-date {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-grid {
+    padding: 10px;
+  }
+  
+  .weekdays {
+    font-size: 12px;
+  }
+  
+  .day {
+    font-size: 12px;
+  }
+  
+  .nepali-date {
+    font-size: 16px;
+  }
+  
+  .events-panel {
+    max-height: 160px;
+  }
+}
         .archived-events-icon {
             position: bottom; /* Changed to fixed for consistent positioning */
             bottom: 20px; /* Adjusted for desired position */
@@ -833,6 +1057,8 @@
             transition: background-color 0.3s; /* Smooth background color transition */
             z-index: 1000; /* Ensure it stays on top */
         }
+
+       
 
         .archived-events-icon:hover {
             background-color: #b01030; /* Darker shade on hover */
@@ -869,6 +1095,140 @@
     margin-right: 5px; 
     margin-top: 20px;/* Space between icon and text */
 }
+
+/* Updated styles for image and description */
+.event-image {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Fixed height for consistent image containers */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: zoom-in;
+    overflow: hidden; /* Ensure content stays within bounds */
+}
+
+.expand-image-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.event-image:hover .expand-image-icon {
+    opacity: 1;
+}
+
+.event-description {
+    max-height: 150px; /* Adjust this value based on your needs */
+    overflow-y: auto;
+    padding-right: 10px;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--nepal-red) #f0f0f0;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(transparent, white);
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--nepal-red);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Custom scrollbar styles */
+.event-description::-webkit-scrollbar {
+    width: 6px;
+}
+
+.event-description::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 3px;
+}
+
+.event-description::-webkit-scrollbar-thumb {
+    background: var(--nepal-red);
+    border-radius: 3px;
+}
+
+/* Image modal styles */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 90vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain; /* Ensures image maintains aspect ratio */
+}
+
+.expand-image-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.event-image:hover .expand-image-icon {
+    opacity: 1;
+}
+
+.expand-image-icon svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .event-image {
+        height: 180px; /* Slightly smaller height for mobile */
+    }
+}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
@@ -877,7 +1237,7 @@
         "@type": "Organization",
         "name": "Khojum",
         "url": "https://www.khojum.com",
-        "logo": "https://www.khojum.com/assets/favicon.ico" 
+        "logo": "/home/raman/Downloads/khojum-master/assets/logo/favicon.ico"
     
         
     }
@@ -908,18 +1268,20 @@
         <div class="container">
             <div class="filter-buttons">
                 <button class="filter-button active" data-filter="all">All Events</button>
+                <button class="filter-button" data-filter="today">Today</button>
+                <button class="filter-button" data-filter="tomorrow">Tomorrow</button>
                 <button class="filter-button" data-filter="Free">Free</button>
                 <button class="filter-button" data-filter="holi" id="filter-button">Holi</button>
-                <button class="filter-button" data-filter="music">Music</button>
-                <button class="filter-button" data-filter="arts">Arts</button>
+                <button class="filter-button" data-filter="music">Music</button><br>
+  
                 <button class="filter-button" data-filter="business">Offers</button>
                 <button class="filter-button" data-filter="sports">Sports</button>
             </div>
             <div class="sort-dropdown">
                 <select id="sort-options">
-                    <option value="time">Sort by Time</option>
+                    <option value="time">Sort by Price</option>
                     <option value="popularity">Sort by Popularity</option>
-                    <option value="price">Sort by Price</option>
+                    <option value="price">Sort by Time</option>
                 </select>
             </div>
         </div>
@@ -979,11 +1341,11 @@
     </div>
 
     <!-- Calendar Icon -->
-    <div class="calendar-icon" id="calendarIcon">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" > 
-            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7z" fill="white"/>
+    <div class="calendar-icon" id="calendarToggleBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19,4H17V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V10H20Zm0-11H4V7A1,1,0,0,1,5,6H7V7A1,1,0,0,0,9,7V6h6V7a1,1,0,0,0,2,0V6h2a1,1,0,0,1,1,1Z"/>
         </svg>
-    
+        <span class="calendar-label">Calendar</span>
     </div>
     
 
@@ -1009,9 +1371,9 @@
         <div class="calendar-toggle">
             <label class="switch">
                 <input type="checkbox" id="calendarTypeToggle">
-                <span class="slider round">nep</span>
+                <span class="slider round"></span>
             </label>
-            <span class="toggle-label" id="calendarTypeLabel">English</span>
+            <span class="toggle-label" id="calendarTypeLabel">ON (नेपाली calendar)</span>
         </div>
         
         <div class="calendar-grid">
@@ -1032,6 +1394,17 @@
         <div class="events-panel" id="eventsPanel">
             <div class="event-date">No date selected</div>
             <div class="no-events">No events for this day</div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="zoom-controls">
+            <button id="zoomIn">+</button>
+            <button id="zoomOut">-</button>
+            <button id="resetZoom">Reset</button>
         </div>
     </div>
 
@@ -1086,38 +1459,12 @@
         
         // Sample business data
         const businesses = [
-            {
-                id: 1,
-                title: "DJ Alok Live in Nepal",
-                description: "DJ Alok takes the stage for a live performance, bringing hits like 'Hear Me Now' and 'Piece of Your Heart' to the crowd. This event marks his first performance in Nepal.",
-                date: "March 7, 2025",
-                time: "7:00 PM onwards",
-                location: "LOD, Thamel",
-                price: "Rs. 2,000 to Rs. 3,000",
-                image: "assets/dj alok.png",
-                category: "music",
-                url: "https://www.instagram.com/p/DGJDIzISsW6/?utm_source=ig_web_copy_link",
-                popularity: 8
-            },
             
-            {
-                id: 3,
-                title: "KP OLI CUP 2025 Finals",
-                description: "Machhindra FC vs KP OLI FC at KP oli cup Final 2025 happening grand with live music and special guests.",
-                date: "March 3, 2025",
-                time: "3:00 PM",
-                location: "Dasharath Stadium",
-                price: "Free",
-                image: "assets/kp oli cup.png",
-                category: "sports",
-                url: "https://www.facebook.com/kpolicup/",
-                attendees: ["World Cup-winning Italian legend Gianluigi Buffon", "Kuma sagar and khowpa", "Purna Rai and daju bhai"],
-                highlights: ["Live music performance", "Special guest appearances", "Food stalls available"],
-                popularity: 3
-            },
+            
+           
             {
                 
-                id: 4,
+                id: 1,
                 title: "Sushant KC Live in Nepal",
                 description: "Sushant KC is a prominent Nepali singer-songwriter and musician known for his heartfelt lyrics, soulful melodies, and emotional storytelling through music. Some of his hit songs are: 'Sarangi', 'Parkha Na', 'Kya Kardiya', 'Bardali'. His songs are widely celebrated for his soulful music and heartfelt lyrics that often explore themes of love, nostalgia, and life. His unique blend of contemporary pop with Nepali melodies has made him one of the most beloved artists in Nepal and among the Nepali diaspora.",
                 date: "March 8, 2025",
@@ -1130,7 +1477,7 @@
                 popularity: 9
             },
             {
-                id: 5,
+                id: 2,
                 title: "Dream On Music Fest",
                 description: " Albatross, Sabin Rai & The Pharaoh, Swar and The Rockheads take the stage for an electrifying live performance! An unforgettable experience of a lifetime filled with high-energy beats, soulful tunes, and pure musical magic which will be hosted by Malvika Subba.",
                 date: "March 8, 2025",
@@ -1143,7 +1490,7 @@
                 popularity: 7
             },
             {
-                id: 6,
+                id: 3,
                 title: "Holi Rewind 2025",
                 description: "Tilt Your World - Holi Rewind 2025 Reliving Holi, Reliving Memories",
                 date: "March 13, 2025",
@@ -1155,22 +1502,9 @@
                 url: "https://events.khalti.com/events/ET25WAA2W3FQ",// Example URL
                 popularity: 6
             },
+            
             {
-                id: 7,
-                title: "EV Carnival by MAW Vriddhi",
-                description: " This is your chance to  Test drive the latest EV models from Deepal, Nami, and Seres, including the world's first Transformer SUV FOR FREE!!!. Enjoy exclusive offers, cash discounts, and a chance to win exciting prizes!",
-                date: "March 1 - 4, 2025",
-                time: "11:00 AM - 6:00 PM",
-                location: "Amrapali Banquet, Naxal, Kathmandu",
-                price: "Free Test Drive",
-                image: "assets/evcar.png", // Add the appropriate image path
-                category: "event",
-                url: "https://english.aarthiknews.com/news/detail/17981/", // Example URL for more information
-                highlights: ["Chance to win iPhone 16", "Experience driving luxury cars for free"],
-                popularity: 5
-            },
-            {
-                id: 8,
+                id: 4,
                 title: "Support Women's work this Women's day. ",
                 description: "Shop unique, handcrafted products\n💜Come celebrate Women's Day with us at the HattiHatti x International Club Market! ✨🎉\n\n🛍️  Support women & sustainability\n🎶 Enjoy a vibrant market experience",
                 date: "March 7, 2025 - March 9, 2025",
@@ -1183,7 +1517,66 @@
                 popularity: 4
             },
             
+            {
+                id: 5,
+                title: "Yuwahub Upskill Event Pt. 2: TECHCAMP – Your Gateway to Nepal's IT Industry",
+                description: "If you're looking to break into IT, find job opportunities, or build valuable connections, TechCamp is the place to be. Whether you're just starting out or already in the field, this event is designed to give you the skills, network, and opportunities you need.\n\n📅 Date: 8th March, Saturday\n📍 Venue: Herald International College, Basundhara\n\nWhat to Expect:\n• 8+ skill-boosting workshops covering what colleges don't teach\n• Job & internship fair with top IT companies hiring on the spot\n• Exclusive panel discussion with CEOs and founders of Nepal's leading IT companies (featured on Paradygm Podcast)\n• Networking with over 100 IT professionals and recruiters\n\nEvent Schedule:\n• 9:00 AM – Registration for panel\n• 10:00 AM - 12:00 PM – Panel discussion\n• 1:00 PM - 3:00 PM – First workshop slot\n• 4:00 PM - 6:00 PM – Second workshop slot\n• 10:00 AM - 6:00 PM – Job fair, activity stalls, and more\n\nLimited spots available for the panel. To secure yours, send a message saying, \"Book my spot for Panel.\"\n\nRegister now: www.yuwahub.com/opportunity/upskill-techcamp-by-yuwahub-80\n\nThis is an opportunity you don't want to miss.",
+                date: "March 8, 2025",
+                time: "10 AM - 6 PM",
+                location: "Herald International College, Basundhara",
+                price: "Free",
+                image: "assets/upskill.png", // Add the appropriate image path
+                category: "event", // Tag for filtering
+                url: "https://www.yuwahub.com/opportunity/upskill-techcamp-by-yuwahub-80", // Example URL for more information
+                popularity: 5
+            },
+            {
+                id: 6, // New ID for the Holi celebration event
+                title: " Holi at Yak and Yeti | ft. Dj Almost Human",
+                description: "Make your Holi unforgettable with popular DJ Almost HUMAN. Club Fahrenheit is organising Holi at Yak and Yeti",
+                date: "March 13, 2025",
+                time: "1:00 PM",
+                location: "Yak & Yeti, Nepal",
+                price: "Rs.1000 to Rs.3000", // Assuming the event is free
+                image: "assets/djhuman.png", // Add the appropriate image path
+                category: "holi", // Tag for filtering
+                url: "https://example.com/holi-celebration", // Example URL for more information
+                popularity: 8 // Adjust popularity as needed
+            },
+            {
+                id: 7, // New ID for the Heritage Holi bash event
+                title: "Heritage Holi Bash",
+                description: "HeritageHoli is bringing the ULTIMATE Holi bash to Heritage Garden, Sanepa, on March 13th! 🎉\n\n💃 Ladies, you're in luck—FREE ENTRY & UNLIMITED DRINKS till 1 PM! 🍹\n\nExpect crazy colors, non-stop music, and festive madness! Tag your squad & grab your tickets via @khaltiofficial before they're gone! 🎫",
+                date: "March 13, 2025",
+                time: "10:00 AM Onwards",
+                location: "Heritage Garden, Sanepa",
+                price: "Rs.1000-3000 (Free entry for womens till 1pm)", // Early Bird price
+                image: "assets/heritageholi.png", // Add the appropriate image path
+                category: "holi", // Tag for filtering
+                url: "https://events.khalti.com/events/ET2556P586EZ", // Example URL for more information
+                popularity: 8 // Adjust popularity as needed
+            },
+            {
+                id: 8, // New ID for the New Year Fest 2082 event
+                title: "New Year Fest 2082",
+                description: "New Year Fest 2082 is the ultimate way to kick off the Nepali New Year with high-energy live music, electrifying performances, and an unforgettable atmosphere! If you're searching for events in Nepal, upcoming events in Nepal, or concerts near you, this festival at Bhutandevi School Ground, Hetauda, is where you need to be!\n\nBrought to you by 8 Peaks Nepal, this festival features Albatross as the headliner, along with The Elements and more artists, ready to set the stage on fire! Get ready for a night of powerful beats, thrilling performances, and pure musical magic as we welcome Baisakh 1 with style, energy, and excitement! Don't miss out on the biggest New Year's Eve party in Nepal!",
+                date: "April 14, 2025", // Date of the event
+                time: "4:00 PM Onwards", // Time of the event
+                location: "Bhutandevi Higher Secondary School, Hetauda, Nepal", // Venue
+                price: "Early bird: RS. 500", // Price can be updated later
+                image: "assets/elements.png", // Add the appropriate image path
+                category: "Music", // Tags for filtering
+                url: "https://events.khalti.com/events/ET25A9N43LYQ", // Example URL for more information
+                popularity: 9 // Adjust popularity as needed
+            },
+
+
         ];
+        
+        // Debugging: Log the businesses array before and after adding the new event
+        console.log("Before adding new event:", businesses);
+        // Add the new event here if not already included
+        console.log("After adding new event:", businesses);
         
         function loadEvents() {
             const container = document.getElementById('events-container');
@@ -1273,9 +1666,8 @@
                         event.style.display = 'none';
                     }
                 } else {
-                    // Update the condition to check for category match
+                    // Check if the event's categories include the selected category
                     if (eventCategories.some(cat => cat.trim().toLowerCase() === category.trim().toLowerCase())) {
-
                         event.style.display = 'block';
                     } else {
                         event.style.display = 'none';
@@ -1542,330 +1934,903 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            const calendarIcon = document.getElementById('calendarIcon');
-            const calendarPopup = document.getElementById('calendarPopup');
-            const monthYearElement = document.getElementById('monthYear');
-            const calendarDaysElement = document.getElementById('calendarDays');
-            const calendarWeekdays = document.getElementById('calendarWeekdays');
-            const eventsPanel = document.getElementById('eventsPanel');
-            const prevMonthBtn = document.getElementById('prevMonth');
-            const nextMonthBtn = document.getElementById('nextMonth');
-            const calendarToggle = document.getElementById('calendarTypeToggle');
-            const calendarTypeLabel = document.getElementById('calendarTypeLabel');
+    const calendarIcon = document.getElementById('calendarToggleBtn');
+    const calendarPopup = document.getElementById('calendarPopup');
+    const monthYearElement = document.getElementById('monthYear');
+    const calendarDaysElement = document.getElementById('calendarDays');
+    const calendarWeekdays = document.getElementById('calendarWeekdays');
+    const eventsPanel = document.getElementById('eventsPanel');
+    const prevMonthBtn = document.getElementById('prevMonth');
+    const nextMonthBtn = document.getElementById('nextMonth');
+    const calendarToggle = document.getElementById('calendarTypeToggle');
+    const calendarTypeLabel = document.getElementById('calendarTypeLabel');
+    const addEventBtn = document.getElementById('addEventBtn');
+    const eventForm = document.getElementById('eventForm');
+    const shareButton = document.getElementById('shareCalendarBtn');
+    
+    // Sample events data - replace with your own
+    let events = {
+        "2025-03-13": [
+            { id: 1, description: "Kuma sagar and khowpa at malla hotel", isPublic: true },
+            { id: 2, description: "HOli daurbarmarg", isPublic: true }
+        ],
+        "2025-03-15": [
+            { id: 3, description: "Product launch", isPublic: false },
+            { id: 4, description: "Marketing review", isPublic: true }
+        ],
+        "2025-03-20": [
+            { id: 5, description: "Quarterly review", isPublic: false }
+        ],
+        "2025-03-25": [
+            { id: 6, description: "Training session", isPublic: true },
+            { id: 7, description: "Budget planning", isPublic: false }
+        ]
+    };
+    
+    // Holiday data
+    const holidays = {
+        // English calendar holidays (YYYY-MM-DD)
+        "english": {
+            "2025-03-08": "International Women's Day",
+            "2025-03-17": "St. Patrick's Day",
+            "2025-03-20": "March Equinox",
+            "2025-03-29": "Holi",
+            "2025-04-13": "Nepali New Year (Baisakh 1)"
+        },
+        // Nepali calendar holidays (YYYY-MM-DD)
+        "nepali": {
+            "2081-12-25": "Holi",
+            "2082-01-01": "Nepali New Year",
+            "2081-12-13": "International Women's Day",
+            "2081-12-30": "Rama Navami"
+        }
+    };
+    
+    let currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+    let selectedDate = null;
+    let isNepaliCalendar = false;
+    
+    // Function to close calendar
+    function closeCalendar() {
+        if (calendarPopup) {
+            calendarPopup.classList.remove('active');
+        }
+    }
+
+    // Toggle calendar when icon is clicked
+    calendarIcon.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation(); // Stop the click from bubbling up
+        calendarPopup.classList.toggle('active');
+        if (calendarPopup.classList.contains('active')) {
+            generateCalendar(currentMonth, currentYear);
+        }
+    });
+
+    // Close calendar when clicking anywhere on the document
+    document.addEventListener('click', function(e) {
+        // Check if click is outside calendar popup and icon
+        if (!calendarPopup.contains(e.target) && !calendarIcon.contains(e.target)) {
+            closeCalendar();
+        }
+    });
+
+    // Prevent calendar from closing when clicking inside it
+    calendarPopup.addEventListener('click', function(e) {
+        e.stopPropagation(); // Stop the click from reaching the document
+    });
+
+    // Close calendar with ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeCalendar();
+        }
+    });
+    
+    // Toggle between English and Nepali calendars
+    calendarToggle.addEventListener('change', function() {
+        isNepaliCalendar = this.checked;
+        calendarTypeLabel.textContent = isNepaliCalendar ? 'OFF (English Calendar)' : 'ON (Nepali Calendar)';
+        
+        // Smooth transition effect
+        calendarDaysElement.classList.add('calendar-transition');
+        calendarWeekdays.classList.add('calendar-transition');
+        
+        setTimeout(() => {
+            // Update weekday names
+            updateWeekdayLabels();
             
-            // Sample events data - replace with your own
-            const events = {
-                "2025-03-13": [
-                    { id: 1, description: "Kuma sagar and khowpa at malla hotel" },
-                    { id: 2, description: "HOli daurbarmarg" }
-                ],
-                "2025-03-15": [
-                    { id: 3, description: "Product launch" },
-                    { id: 4, description: "Marketing review" }
-                ],
-                "2025-03-20": [
-                    { id: 5, description: "Quarterly review" }
-                ],
-                "2025-03-25": [
-                    { id: 6, description: "Training session" },
-                    { id: 7, description: "Budget planning" }
-                ]
-            };
+            // Regenerate calendar
+            generateCalendar(currentMonth, currentYear);
             
-            let currentDate = new Date();
-            let currentMonth = currentDate.getMonth();
-            let currentYear = currentDate.getFullYear();
-            let selectedDate = null;
-            let isNepaliCalendar = false;
-            
-            // Toggle calendar popup
-            calendarIcon.addEventListener('click', function() {
-                calendarPopup.classList.toggle('active');
-                if (calendarPopup.classList.contains('active')) {
-                    generateCalendar(currentMonth, currentYear);
-                }
-            });
-            
-            // Close calendar when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!calendarPopup.contains(e.target) && !calendarIcon.contains(e.target)) {
-                    calendarPopup.classList.remove('active');
-                }
-            });
-            
-            // Toggle between English and Nepali calendars
-            calendarToggle.addEventListener('change', function() {
-                isNepaliCalendar = this.checked;
-                calendarTypeLabel.textContent = isNepaliCalendar ? 'नेपाली' : 'English';
+            // Remove transition class after animation completes
+            setTimeout(() => {
+                calendarDaysElement.classList.remove('calendar-transition');
+                calendarWeekdays.classList.remove('calendar-transition');
+            }, 300);
+        }, 150);
+    });
+    
+    // Navigate to previous month
+    prevMonthBtn.addEventListener('click', function() {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11; // Wrap to December
+            currentYear--; // Decrease year
+        }
+        generateCalendar(currentMonth, currentYear); // Regenerate calendar
+        updateMonthYearDisplay(); // Update displayed month and year
+    });
+    
+    // Navigate to next month
+    nextMonthBtn.addEventListener('click', function() {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0; // Wrap to January
+            currentYear++; // Increase year
+        }
+        generateCalendar(currentMonth, currentYear); // Regenerate calendar
+        updateMonthYearDisplay(); // Update displayed month and year
+    });
+    
+    // Add event button click
+    addEventBtn.addEventListener('click', function() {
+        if (!selectedDate) {
+            selectedDate = new Date();
+        }
+        
+        const dateStr = formatDateDisplay(selectedDate, false);
+        document.getElementById('eventDate').value = formatDateKey(selectedDate);
+        document.getElementById('selectedDateDisplay').textContent = dateStr;
+        document.getElementById('eventPublic').checked = true;
+        document.getElementById('eventDescription').value = '';
+        
+        eventForm.classList.add('active');
+    });
+    
+    // Share calendar button
+    shareButton.addEventListener('click', function() {
+        const publicEvents = {};
+        
+        // Filter for public events only
+        for (const dateKey in events) {
+            const publicDateEvents = events[dateKey].filter(event => event.isPublic);
+            if (publicDateEvents.length > 0) {
+                publicEvents[dateKey] = publicDateEvents;
+            }
+        }
+        
+        // Generate shareable link
+        const shareableData = btoa(JSON.stringify(publicEvents));
+        const shareableLink = `${window.location.origin}${window.location.pathname}?shared=${shareableData}`;
+        
+        // Display sharing modal with link
+        alert(`Share this link with others:\n${shareableLink}`);
+        
+        // In a real implementation, you would show a proper modal with copy functionality
+    });
+    
+    // Handle event form submission
+    document.getElementById('eventSubmitBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const dateKey = document.getElementById('eventDate').value;
+        const description = document.getElementById('eventDescription').value.trim();
+        const isPublic = document.getElementById('eventPublic').checked;
+        
+        if (!description) {
+            alert('Please enter an event description');
+            return;
+        }
+        
+        // Create event object
+        const newEvent = {
+            id: Date.now(), // Simple unique ID
+            description: description,
+            isPublic: isPublic
+        };
+        
+        // Add to events object
+        if (!events[dateKey]) {
+            events[dateKey] = [];
+        }
+        events[dateKey].push(newEvent);
+        
+        // Reset form
+        eventForm.classList.remove('active');
+        document.getElementById('eventDescription').value = '';
+        
+        // Refresh calendar
+        generateCalendar(currentMonth, currentYear);
+        
+        // If selected date has the new event, update events panel
+        if (selectedDate && formatDateKey(selectedDate) === dateKey) {
+            displayEvents(selectedDate);
+        }
+    });
+    
+    // Cancel event form
+    document.getElementById('eventCancelBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        eventForm.classList.remove('active');
+    });
+    
+    // Update weekday labels based on calendar type
+    function updateWeekdayLabels() {
+        const englishWeekdays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+        const nepaliWeekdays = ['आ', 'सो', 'मं', 'बु', 'बि', 'शु', 'श'];
+        
+        const weekdays = isNepaliCalendar ? nepaliWeekdays : englishWeekdays;
+        
+        calendarWeekdays.innerHTML = '';
+        weekdays.forEach(day => {
+            const dayElement = document.createElement('div');
+            dayElement.textContent = day;
+            calendarWeekdays.appendChild(dayElement);
+        });
+    }
+    
+    // Format date for events lookup
+    function formatDateKey(date) {
+        return date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, '0') + "-" + String(date.getDate()).padStart(2, '0');
+    }
+    
+    // Format date for display
+    function formatDateDisplay(date, includeWeekday = true) {
+        const options = includeWeekday
+            ? { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+            : { year: 'numeric', month: 'long', day: 'numeric' };
+        
+        return date.toLocaleDateString('en-US', options);
+    }
+    
+    // Check if date has events
+    function hasEvents(date) {
+        const dateKey = formatDateKey(date);
+        return events[dateKey] !== undefined && events[dateKey].length > 0;
+    }
+    
+    // Check if date is a holiday
+    function isHoliday(date) {
+        if (isNepaliCalendar) {
+            const nepaliDate = convertToNepaliDate(date.getFullYear(), date.getMonth(), date.getDate());
+            const nepaliDateKey = `${nepaliDate.year}-${String(nepaliDate.month + 1).padStart(2, '0')}-${String(nepaliDate.day).padStart(2, '0')}`;
+            return holidays.nepali[nepaliDateKey];
+        } else {
+            const dateKey = formatDateKey(date);
+            return holidays.english[dateKey];
+        }
+    }
+    
+    // Get holiday name
+    function getHolidayName(date) {
+        if (isNepaliCalendar) {
+            const nepaliDate = convertToNepaliDate(date.getFullYear(), date.getMonth(), date.getDate());
+            const nepaliDateKey = `${nepaliDate.year}-${String(nepaliDate.month + 1).padStart(2, '0')}-${String(nepaliDate.day).padStart(2, '0')}`;
+            return holidays.nepali[nepaliDateKey];
+        } else {
+            const dateKey = formatDateKey(date);
+            return holidays.english[dateKey];
+        }
+    }
+    
+    // Convert English date to Nepali date
+    function convertToNepaliDate(year, month, day) {
+        // This is a more accurate conversion than the original code
+        // Using a reference date approach
+        
+        // Reference: Jan 1, 2025 is Poush 17, 2081 in Nepali calendar
+        const referenceEnglishDate = new Date(2025, 0, 1); // Jan 1, 2025
+        const referenceNepaliYear = 2081;
+        const referenceNepaliMonth = 8; // Poush (0-indexed)
+        const referenceNepaliDay = 17;
+        
+        // Nepali month names and days in month
+        const nepaliMonths = [
+            'बैशाख', 'जेठ', 'असार', 'श्रावण', 'भदौ', 'असोज', 
+            'कार्तिक', 'मंसिर', 'पुष', 'माघ', 'फागुन', 'चैत'
+        ];
+        
+        const nepaliDaysInMonth = {
+            2081: [31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30], // Days in each month for Nepali year 2081
+            2082: [31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30]  // Days in each month for Nepali year 2082
+        };
+        
+        // Calculate days difference
+        const targetDate = new Date(year, month, day);
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const daysDifference = Math.round((targetDate - referenceEnglishDate) / millisecondsPerDay);
+        
+        // Start with reference Nepali date and add the difference
+        let nepaliYear = referenceNepaliYear;
+        let nepaliMonth = referenceNepaliMonth;
+        let nepaliDay = referenceNepaliDay;
+        
+        let remainingDays = daysDifference;
+        
+        if (remainingDays >= 0) {
+            // Moving forward in time
+            while (remainingDays > 0) {
+                const daysInCurrentMonth = nepaliDaysInMonth[nepaliYear][nepaliMonth];
+                const daysRemainingInMonth = daysInCurrentMonth - nepaliDay;
                 
-                // Update weekday names
-                updateWeekdayLabels();
-                
-                // Regenerate calendar
-                generateCalendar(currentMonth, currentYear);
-            });
-            
-            // Navigate to previous month
-            prevMonthBtn.addEventListener('click', function() {
-                currentMonth--;
-                if (currentMonth < 0) {
-                    currentMonth = 11;
-                    currentYear--;
+                if (remainingDays <= daysRemainingInMonth) {
+                    nepaliDay += remainingDays;
+                    remainingDays = 0;
+                } else {
+                    remainingDays -= (daysRemainingInMonth + 1);
+                    nepaliMonth++;
+                    nepaliDay = 1;
+                    
+                    if (nepaliMonth > 11) {
+                        nepaliMonth = 0;
+                        nepaliYear++;
+                    }
                 }
-                generateCalendar(currentMonth, currentYear);
-            });
-            
-            // Navigate to next month
-            nextMonthBtn.addEventListener('click', function() {
-                currentMonth++;
-                if (currentMonth > 11) {
-                    currentMonth = 0;
-                    currentYear++;
+            }
+        } else {
+            // Moving backward in time
+            remainingDays = Math.abs(remainingDays);
+            while (remainingDays > 0) {
+                if (nepaliDay > 1) {
+                    nepaliDay--;
+                    remainingDays--;
+                } else {
+                    nepaliMonth--;
+                    if (nepaliMonth < 0) {
+                        nepaliMonth = 11;
+                        nepaliYear--;
+                    }
+                    nepaliDay = nepaliDaysInMonth[nepaliYear][nepaliMonth];
+                    remainingDays--;
                 }
-                generateCalendar(currentMonth, currentYear);
-            });
+            }
+        }
+        
+        // Convert Nepali digits if needed
+        const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+        
+        return {
+            year: nepaliYear,
+            month: nepaliMonth,
+            day: nepaliDay,
+            monthName: nepaliMonths[nepaliMonth],
+            // Convert regular digits to Nepali digits
+            dayNepali: nepaliDay.toString().split('').map(d => nepaliDigits[parseInt(d)]).join(''),
+            yearNepali: nepaliYear.toString().split('').map(d => nepaliDigits[parseInt(d)]).join('')
+        };
+    }
+    
+    // Convert Nepali date to English date
+    function convertToEnglishDate(nepaliYear, nepaliMonth, nepaliDay) {
+        // Reference: Poush 17, 2081 is Jan 1, 2025 in English calendar
+        const referenceEnglishDate = new Date(2025, 0, 1); // Jan 1, 2025
+        const referenceNepaliYear = 2081;
+        const referenceNepaliMonth = 8; // Poush (0-indexed)
+        const referenceNepaliDay = 17;
+        
+        const nepaliDaysInMonth = {
+            2081: [31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30], // Days in each month for Nepali year 2081
+            2082: [31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30]  // Days in each month for Nepali year 2082
+        };
+        
+        // Calculate days difference from reference Nepali date
+        let daysDifference = 0;
+        
+        // For different years
+        for (let year = referenceNepaliYear; year < nepaliYear; year++) {
+            for (let month = 0; month < 12; month++) {
+                daysDifference += nepaliDaysInMonth[year][month];
+            }
+        }
+        
+        // For same year but different months
+        for (let month = referenceNepaliMonth; month < nepaliMonth; month++) {
+            daysDifference += nepaliDaysInMonth[nepaliYear][month];
+        }
+        
+        // For same month but different days
+        daysDifference += nepaliDay - referenceNepaliDay;
+        
+        // Calculate the resulting English date
+        const resultEnglishDate = new Date(referenceEnglishDate);
+        resultEnglishDate.setDate(resultEnglishDate.getDate() + daysDifference);
+        
+        return {
+            year: resultEnglishDate.getFullYear(),
+            month: resultEnglishDate.getMonth(),
+            day: resultEnglishDate.getDate()
+        };
+    }
+    
+    // Display events for selected date
+    function displayEvents(date) {
+        const dateKey = formatDateKey(date);
+        let formattedDate;
+        let holidayInfo = '';
+        
+        if (isNepaliCalendar) {
+            const nepaliDate = convertToNepaliDate(date.getFullYear(), date.getMonth(), date.getDate());
+            formattedDate = `${nepaliDate.dayNepali} ${nepaliDate.monthName} ${nepaliDate.yearNepali}`;
             
-            // Update weekday labels based on calendar type
-            function updateWeekdayLabels() {
-                const englishWeekdays = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-                const nepaliWeekdays = ['आ', 'सो', 'मं', 'बु', 'बि', 'शु', 'श'];
-                
-                const weekdays = isNepaliCalendar ? nepaliWeekdays : englishWeekdays;
-                
-                calendarWeekdays.innerHTML = '';
-                weekdays.forEach(day => {
-                    const dayElement = document.createElement('div');
-                    dayElement.textContent = day;
-                    calendarWeekdays.appendChild(dayElement);
-                });
+            // Check for holiday
+            const nepaliDateKey = `${nepaliDate.year}-${String(nepaliDate.month + 1).padStart(2, '0')}-${String(nepaliDate.day).padStart(2, '0')}`;
+            if (holidays.nepali[nepaliDateKey]) {
+                holidayInfo = `<div class="holiday-badge">${holidays.nepali[nepaliDateKey]}</div>`;
             }
             
-            // Format date for events lookup
-            function formatDateKey(date) {
-                return date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, '0') + "-" + String(date.getDate()).padStart(2, '0');
+            // Also show English date for reference
+            const englishDateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const englishDate = date.toLocaleDateString('en-US', englishDateOptions);
+            formattedDate += `<div class="english-date">(${englishDate})</div>`;
+        } else {
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            formattedDate = date.toLocaleDateString('en-US', dateOptions);
+            
+            // Check for holiday
+            if (holidays.english[dateKey]) {
+                holidayInfo = `<div class="holiday-badge">${holidays.english[dateKey]}</div>`;
+            }
+            
+            // Show Nepali date for reference
+            const nepaliDate = convertToNepaliDate(date.getFullYear(), date.getMonth(), date.getDate());
+            formattedDate += `<div class="nepali-date">${nepaliDate.dayNepali} ${nepaliDate.monthName} ${nepaliDate.yearNepali}</div>`;
+        }
+        
+        let html = '<div class="event-date">' + formattedDate + '</div>' + holidayInfo;
+        
+        if (events[dateKey] && events[dateKey].length > 0) {
+            html += '<ul class="event-list">';
+            events[dateKey].forEach(function(event) {
+                html += `
+                    <li class="event-item" data-event-id="${event.id}">
+                        <div class="event-content">
+                            <span>${event.description}</span>
+                            ${event.isPublic ? '<span class="public-badge">Public</span>' : '<span class="private-badge">Private</span>'}
+                        </div>
+                        <button class="delete-event" data-id="${event.id}">×</button>
+                    </li>`;
+            });
+            html += '</ul>';
+        } else {
+            html += '<div class="no-events">No events for this day</div>';
+        }
+        
+        eventsPanel.innerHTML = html;
+        
+        // Add event listeners for delete buttons
+        document.querySelectorAll('.delete-event').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const eventId = parseInt(this.getAttribute('data-id'));
+                
+                // Filter out the event with matching ID
+                events[dateKey] = events[dateKey].filter(event => event.id !== eventId);
+                
+                // Remove the date key if no events remain
+                if (events[dateKey].length === 0) {
+                    delete events[dateKey];
+                }
+                
+                // Refresh the events panel
+                displayEvents(selectedDate);
+                
+                // Refresh the calendar to update event indicators
+                generateCalendar(currentMonth, currentYear);
+            });
+        });
+    }
+    
+    // Generate calendar grid
+    function generateCalendar(month, year) {
+        // Clear previous days
+        calendarDaysElement.innerHTML = '';
+        
+        // Update header month and year
+        if (isNepaliCalendar) {
+            const nepaliMonths = [
+                'बैशाख', 'जेठ', 'असार', 'श्रावण', 'भदौ', 'असोज', 
+                'कार्तिक', 'मंसिर', 'पुष', 'माघ', 'फागुन', 'चैत'
+            ];
+            
+            const nepaliDate = convertToNepaliDate(year, month, 1);
+            const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+            const nepaliYear = nepaliDate.year.toString().split('').map(d => nepaliDigits[parseInt(d)]).join('');
+            
+            monthYearElement.textContent = nepaliMonths[nepaliDate.month] + ' ' + nepaliYear;
+        } else {
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            monthYearElement.textContent = monthNames[month] + ' ' + year;
+        }
+        
+        // Get first day of month and number of days
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        
+        // Get last day of previous month
+        const prevMonthDays = new Date(year, month, 0).getDate();
+        
+        // Previous month's days
+        for (let i = 0; i < firstDay; i++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'day inactive';
+            
+            const dayNum = prevMonthDays - (firstDay - i - 1);
+            const prevDate = new Date(year, month - 1, dayNum);
+            
+            if (isNepaliCalendar) {
+                const prevMonth = month - 1 < 0 ? 11 : month - 1;
+                const prevYear = prevMonth === 11 ? year - 1 : year;
+                const nepaliDate = convertToNepaliDate(prevYear, prevMonth, dayNum);
+                dayElement.textContent = nepaliDate.dayNepali;
+            } else {
+                dayElement.textContent = dayNum;
+            }
+            
+            calendarDaysElement.appendChild(dayElement);
+        }
+        
+        // Current month's days
+        const today = new Date();
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'day';
+            
+            // Create date object for this calendar day
+            const calendarDate = new Date(year, month, i);
+            
+            // Display the date
+            if (isNepaliCalendar) {
+                const nepaliDate = convertToNepaliDate(year, month, i);
+                dayElement.textContent = nepaliDate.dayNepali;
+            } else {
+                dayElement.textContent = i;
+            }
+            
+            // Check if it's today
+            if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                dayElement.classList.add('today');
+            }
+            
+            // Check if it's the selected date
+            if (selectedDate && i === selectedDate.getDate() && month === selectedDate.getMonth() && year === selectedDate.getFullYear()) {
+                dayElement.classList.add('selected');
             }
             
             // Check if date has events
-            function hasEvents(date) {
-                const dateKey = formatDateKey(date);
-                return events[dateKey] !== undefined;
+            if (hasEvents(calendarDate)) {
+                dayElement.classList.add('event');
             }
             
-            // Convert English date to Nepali date (simplified conversion)
-            function convertToNepaliDate(year, month, day) {
-                // This is a simplified conversion for demonstration
-                // In a real application, you would use a proper Nepali date conversion library
+            // Check if date is a holiday
+            if (isHoliday(calendarDate)) {
+                dayElement.classList.add('holiday');
                 
-                // Nepali month names
-                const nepaliMonths = [
-                    'बैशाख', 'जेठ', 'असार', 'श्रावण', 'भदौ', 'असोज', 
-                    'कार्तिक', 'मंसिर', 'पुष', 'माघ', 'फागुन', 'चैत'
-                ];
+                // Add tooltip for holiday name
+                const holidayName = getHolidayName(calendarDate);
+                dayElement.setAttribute('title', holidayName);
                 
-                // Simple offset-based conversion (this is highly simplified)
-                // Actual conversion would require proper algorithmic conversion
-                // March 2025 roughly corresponds to Chaitra 2081
-                let nepaliYear = year + 56; // Simplified offset
-                let nepaliMonth;
-                let nepaliDay;
+                // Add holiday indicator dot
+                const holidayDot = document.createElement('span');
+                holidayDot.className = 'holiday-dot';
+                dayElement.appendChild(holidayDot);
+            }
+            
+            // Handle click on day
+            dayElement.addEventListener('click', function() {
+                // Remove selected class from all days
+                document.querySelectorAll('.day.selected').forEach(function(el) {
+                    el.classList.remove('selected');
+                });
                 
-                // Simple offset for demo (proper conversion would be more complex)
-                if (month === 2) { // March
-                    nepaliMonth = 11; // Chaitra
-                    nepaliDay = day + 15 // Simple offset
-                    if (nepaliDay > 30) {
-                        nepaliDay = nepaliDay - 30;
-                        nepaliMonth = 0; // Baisakh
+                // Add selected class to clicked day
+                dayElement.classList.add('selected');
+                
+                // Update selected date
+                selectedDate = new Date(year, month, i);
+                
+                // Display events for this date
+                displayEvents(selectedDate);
+            });
+            
+            calendarDaysElement.appendChild(dayElement);
+        }
+        
+        // Next month's days to fill remaining cells
+        const totalCells = 42; // 6 rows × 7 days
+        const remainingCells = totalCells - (firstDay + daysInMonth);
+        
+        for (let i = 0; i < remainingCells; i++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'day inactive';
+            
+            const dayNum = i + 1;
+            
+            if (isNepaliCalendar) {
+                const nextMonth = month + 1 > 11 ? 0 : month + 1;
+                const nextYear = nextMonth === 0 ? year + 1 : year;
+                const nepaliDate = convertToNepaliDate(nextYear, nextMonth, dayNum);
+                dayElement.textContent = nepaliDate.dayNepali;
+            } else {
+                dayElement.textContent = dayNum;
+            }
+            
+            calendarDaysElement.appendChild(dayElement);
+        }
+        
+        // If no date is selected, select today (first time) or keep current selection
+        if (!selectedDate) {
+            selectedDate = new Date();
+            displayEvents(selectedDate);
+        }
+    }
+    
+    // Check for shared calendar in URL
+    function loadSharedCalendar() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const sharedParam = urlParams.get('shared');
+        
+        if (sharedParam) {
+            try {
+                const sharedEvents = JSON.parse(atob(sharedParam));
+                
+                // Merge shared events with user's events (or replace entirely)
+                // This implementation merges them, keeping user's private events
+                for (const dateKey in sharedEvents) {
+                    if (!events[dateKey]) {
+                        events[dateKey] = [];
                     }
-                } else {
-                    // Apply simple offsets for other months (very approximate)
-                    nepaliMonth = (month + 7) % 12;
-                    nepaliDay = ((day + 16) % 30) || 30;
-                }
-                
-                return {
-                    year: nepaliYear,
-                    month: nepaliMonth,
-                    day: nepaliDay,
-                    monthName: nepaliMonths[nepaliMonth]
-                };
-            }
-            
-            // Display events for selected date
-            function displayEvents(date) {
-                const dateKey = formatDateKey(date);
-                let formattedDate;
-                
-                if (isNepaliCalendar) {
-                    const nepaliDate = convertToNepaliDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
-                    formattedDate = `${nepaliDate.day} ${nepaliDate.monthName} ${nepaliDate.year}`;
                     
-                    // Also show English date for reference
-                    const englishDateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                    const englishDate = date.toLocaleDateString('en-US', englishDateOptions);
-                    formattedDate += `<div class="english-date">(${englishDate})</div>`;
-                } else {
-                    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                    formattedDate = date.toLocaleDateString('en-US', dateOptions);
-                    
-                    // Show Nepali date for reference
-                    const nepaliDate = convertToNepaliDate(date.getFullYear(), date.getMonth() + 1, date.getDate());
-                    formattedDate += `<div class="nepali-date">${nepaliDate.day} ${nepaliDate.monthName} ${nepaliDate.year}</div>`;
-                }
-                
-                let html = '<div class="event-date">' + formattedDate + '</div>';
-                
-                if (events[dateKey]) {
-                    html += '<ul class="event-list">';
-                    events[dateKey].forEach(function(event) {
-                        html += `<li class="event-item" data-event-id="${event.id}">${event.description}</li>`;
+                    // Add shared events with isShared flag
+                    sharedEvents[dateKey].forEach(event => {
+                        // Check if this shared event is already in the user's calendar
+                        const isDuplicate = events[dateKey].some(e => 
+                            e.description === event.description);
+                        
+                        if (!isDuplicate) {
+                            events[dateKey].push({
+                                ...event,
+                                isShared: true
+                            });
+                        }
                     });
-                    html += '</ul>';
-                } else {
-                    html += '<div class="no-events">No events for this day</div>';
                 }
                 
-                eventsPanel.innerHTML = html;
+                // Show notification
+                alert('Shared calendar events have been loaded!');
+                
+                // Refresh calendar
+                generateCalendar(currentMonth, currentYear);
+            } catch (e) {
+                console.error('Error loading shared calendar:', e);
             }
-            
-            // Generate calendar grid
-            function generateCalendar(month, year) {
-                // Clear previous days
-                calendarDaysElement.innerHTML = '';
-                
-                // Update header month and year
-                if (isNepaliCalendar) {
-                    const nepaliMonths = [
-                        'बैशाख', 'जेठ', 'असार', 'श्रावण', 'भदौ', 'असोज', 
-                        'कार्तिक', 'मंसिर', 'पुष', 'माघ', 'फागुन', 'चैत'
-                    ];
-                    
-                    const nepaliYear = year + 56; // Approximate offset
-                    const nepaliMonth = (month + 8) % 12; // Approximate offset
-                    
-                    monthYearElement.textContent = nepaliMonths[nepaliMonth] + ' ' + nepaliYear;
-                } else {
-                    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                    monthYearElement.textContent = monthNames[month] + ' ' + year;
-                }
-                
-                // Get first day of month and number of days
-                const firstDay = new Date(year, month, 1).getDay();
-                const daysInMonth = new Date(year, month + 1, 0).getDate();
-                
-                // Get last day of previous month
-                const prevMonthDays = new Date(year, month, 0).getDate();
-                
-                // Previous month's days
-                for (let i = 0; i < firstDay; i++) {
-                    const dayElement = document.createElement('div');
-                    dayElement.className = 'day inactive';
-                    
-                    const dayNum = prevMonthDays - (firstDay - i - 1);
-                    
-                    if (isNepaliCalendar) {
-                        const prevMonth = month - 1 < 0 ? 11 : month - 1;
-                        const prevYear = prevMonth === 11 ? year - 1 : year;
-                        const nepaliDate = convertToNepaliDate(prevYear, prevMonth + 1, dayNum);
-                        dayElement.textContent = nepaliDate.day;
-                    } else {
-                        dayElement.textContent = dayNum;
-                    }
-                    
-                    calendarDaysElement.appendChild(dayElement);
-                }
-                
-                // Current month's days
-                const today = new Date();
-                for (let i = 1; i <= daysInMonth; i++) {
-                    const dayElement = document.createElement('div');
-                    dayElement.className = 'day';
-                    
-                    // Create date object for this calendar day
-                    const calendarDate = new Date(year, month, i);
-                    
-                    // Display the date
-                    if (isNepaliCalendar) {
-                        const nepaliDate = convertToNepaliDate(year, month + 1, i);
-                        dayElement.textContent = nepaliDate.day;
-                    } else {
-                        dayElement.textContent = i;
-                    }
-                    
-                    // Check if it's today
-                    if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
-                        dayElement.classList.add('today');
-                    }
-                    
-                    // Check if it's the selected date
-                    if (selectedDate && i === selectedDate.getDate() && month === selectedDate.getMonth() && year === selectedDate.getFullYear()) {
-                        dayElement.classList.add('selected');
-                    }
-                    
-                    // Check if date has events
-                    if (hasEvents(calendarDate)) {
-                        dayElement.classList.add('event');
-                    }
-                    
-                    // Handle click on day
-                    dayElement.addEventListener('click', function() {
-                        // Remove selected class from all days
-                        document.querySelectorAll('.day.selected').forEach(function(el) {
-                            el.classList.remove('selected');
-                        });
-                        
-                        // Add selected class to clicked day
-                        dayElement.classList.add('selected');
-                        
-                        // Update selected date
-                        selectedDate = new Date(year, month, i);
-                        
-                        // Display events for this date
-                        displayEvents(selectedDate);
-                    });
-                    
-                    calendarDaysElement.appendChild(dayElement);
-                }
-                
-                // Next month's days to fill remaining cells
-                const totalCells = 42; // 6 rows × 7 days
-                const remainingCells = totalCells - (firstDay + daysInMonth);
-                
-                for (let i = 0; i < remainingCells; i++) {
-                    const dayElement = document.createElement('div');
-                    dayElement.className = 'day inactive';
-                    
-                    const dayNum = i + 1;
-                    
-                    if (isNepaliCalendar) {
-                        const nextMonth = month + 1 > 11 ? 0 : month + 1;
-                        const nextYear = nextMonth === 0 ? year + 1 : year;
-                        const nepaliDate = convertToNepaliDate(nextYear, nextMonth + 1, dayNum);
-                        dayElement.textContent = nepaliDate.day;
-                    } else {
-                        dayElement.textContent = dayNum;
-                    }
-                    
-                    calendarDaysElement.appendChild(dayElement);
-                }
-                
-                // If no date is selected, select today (first time) or keep current selection
-                if (!selectedDate) {
-                    selectedDate = new Date();
-                    displayEvents(selectedDate);
-                }
+        }
+    }
+    
+    // Initialize weekday labels
+    updateWeekdayLabels();
+    
+    // Initialize calendar with current month
+    generateCalendar(currentMonth, currentYear);
+    
+    // Load shared calendar if present in URL
+    loadSharedCalendar();
+});
+
+document.getElementById('khojum-logo').addEventListener('click', function() {
+    window.location.href = 'index.html'; // Navigate to the main page
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Add expand icons to all event images
+    document.querySelectorAll('.event-image').forEach(imageContainer => {
+        // Create expand icon
+        const expandIcon = document.createElement('div');
+        expandIcon.className = 'expand-image-icon';
+        expandIcon.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+            </svg>`;
+        imageContainer.appendChild(expandIcon);
+
+        // Extract background image URL
+        const computedStyle = window.getComputedStyle(imageContainer);
+        const backgroundImage = computedStyle.backgroundImage;
+        const imageUrl = backgroundImage.slice(4, -1).replace(/["']/g, "");
+
+        // Store the original image URL as a data attribute
+        imageContainer.setAttribute('data-image-url', imageUrl);
+
+        // Add click event to the entire image container
+        imageContainer.addEventListener('click', function(e) {
+            const imgUrl = this.getAttribute('data-image-url');
+            if (imgUrl) {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImage');
+                modal.style.display = "block";
+                modalImg.src = imgUrl;
             }
+        });
+    });
+
+    // Image Modal functionality
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+
+    // Close modal when clicking anywhere
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            this.style.display = "none";
+        }
+    });
+
+    // Close modal with Escape key
+    window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = "none";
+        }
+    });
+
+    // Handle modal image loading error
+    modalImg.addEventListener('error', function() {
+        console.error('Failed to load image');
+        modal.style.display = "none";
+        // Optionally show an error message to the user
+        alert('Failed to load image');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to check if a date is today
+    function isToday(date) {
+        const today = new Date();
+        return date.getDate() === today.getDate() &&
+               date.getMonth() === today.getMonth() &&
+               date.getFullYear() === today.getFullYear();
+    }
+
+    // Function to check if a date is tomorrow
+    function isTomorrow(date) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        return date.getDate() === tomorrow.getDate() &&
+               date.getMonth() === tomorrow.getMonth() &&
+               date.getFullYear() === tomorrow.getFullYear();
+    }
+
+    // Filter button click handlers
+    document.querySelectorAll('.filter-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
             
-            // Initialize weekday labels
-            updateWeekdayLabels();
+            // Remove active class from all buttons
+            document.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
             
-            // Initialize calendar with current month
-            generateCalendar(currentMonth, currentYear);
+            // Add active class to clicked button
+            this.classList.add('active');
+
+            // Filter events
+            const eventCards = document.querySelectorAll('.event-card');
+            let foundEvents = false;
+
+            eventCards.forEach(card => {
+                const dateText = card.querySelector('.event-date').textContent;
+                const eventDate = new Date(dateText);
+
+                switch(filter) {
+                    case 'today':
+                        card.style.display = isToday(eventDate) ? 'block' : 'none';
+                        if (isToday(eventDate)) foundEvents = true;
+                        break;
+                    case 'tomorrow':
+                        card.style.display = isTomorrow(eventDate) ? 'block' : 'none';
+                        if (isTomorrow(eventDate)) foundEvents = true;
+                        break;
+                    case 'all':
+                        card.style.display = 'block';
+                        foundEvents = true;
+                        break;
+                    default:
+                        // Handle category filtering
+                        const category = card.querySelector('.event-category').textContent.toLowerCase();
+                        card.style.display = (filter === 'all' || category === filter.toLowerCase()) ? 'block' : 'none';
+                        if (card.style.display === 'block') foundEvents = true;
+                }
+            });
+
+            // Show/hide no events message
+            const messageContainer = document.getElementById('no-events-message') || 
+                                  createNoEventsMessage();
+            messageContainer.style.display = foundEvents ? 'none' : 'block';
+            messageContainer.textContent = foundEvents ? '' : 
+                                        `No events ${filter === 'today' ? 'today' : 
+                                          filter === 'tomorrow' ? 'tomorrow' : 
+                                          'in this category'}`;
+        });
+    });
+
+    function createNoEventsMessage() {
+        const messageContainer = document.createElement('div');
+        messageContainer.id = 'no-events-message';
+        messageContainer.style.cssText = `
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            background: #f8f8f8;
+            border-radius: 8px;
+            margin: 20px 0;
+            grid-column: 1 / -1;
+        `;
+        document.querySelector('.events-grid').appendChild(messageContainer);
+        return messageContainer;
+    }
+
+    // Trigger "All" filter by default instead of "Today"
+    document.querySelector('.filter-button[data-filter="all"]').click();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to generate structured data for events
+    function generateEventStructuredData() {
+        const eventCards = document.querySelectorAll('.event-card');
+        const structuredData = {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": []
+        };
+
+        eventCards.forEach((card, index) => {
+            const eventData = {
+                "@type": "Event",
+                "name": card.querySelector('.event-title')?.textContent,
+                "description": card.querySelector('.event-description')?.textContent,
+                "startDate": card.querySelector('.event-date')?.getAttribute('data-date'),
+                "location": {
+                    "@type": "Place",
+                    "name": card.querySelector('.event-venue')?.textContent,
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Kathmandu",
+                        "addressRegion": "Bagmati",
+                        "addressCountry": "NP"
+                    }
+                },
+                "image": card.querySelector('.event-image')?.getAttribute('data-image-url'),
+                "offers": {
+                    "@type": "Offer",
+                    "price": card.querySelector('.event-price')?.textContent.replace(/[^0-9]/g, ''),
+                    "priceCurrency": "NPR"
+                }
+            };
+            structuredData.itemListElement.push(eventData);
         });
 
-        document.getElementById('khojum-logo').addEventListener('click', function() {
-            window.location.href = 'index.html'; // Navigate to the main page
+        // Update or create structured data script tag
+        let scriptTag = document.querySelector('script[data-type="event-structured-data"]');
+        if (!scriptTag) {
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('type', 'application/ld+json');
+            scriptTag.setAttribute('data-type', 'event-structured-data');
+            document.head.appendChild(scriptTag);
+        }
+        scriptTag.textContent = JSON.stringify(structuredData);
+    }
+
+    // Generate structured data when page loads
+    generateEventStructuredData();
+
+    // Update structured data when events are filtered
+    document.querySelectorAll('.filter-button').forEach(button => {
+        button.addEventListener('click', () => {
+            setTimeout(generateEventStructuredData, 100);
         });
+    });
+});
     </script>
 </body>
 </html>
