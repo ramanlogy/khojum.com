@@ -607,21 +607,63 @@
         
         // Sample business data
         const businesses = [
-          {
-             id: 0,
-                title: "Raja Aau desh bachau Rally",
-                description: "Welcome your king back home. This Sunday afternoon at TIA GAte. How many of you want Raja back in his throne? ",
-                date: "March 9, 2025",
-                time: "10:00 AM onwards",
-                location: "Tribhuvan International Airport,Gate",
-                price: "Free",
-                image: "assets/raja.png",
-                category: "Rally",
-                url: "https://kathmandupost.com/politics/2025/03/09/mainstream-parties-struggle-to-respond-as-pro-monarchy-forces-hit-the-streets",
-                popularity: 10
-          },
         {
-                id: 1,
+        
+        id: 1,
+        title: "Sushant KC Live in Nepal",
+        description: "Sushant KC is a prominent Nepali singer-songwriter and musician known for his heartfelt lyrics, soulful melodies, and emotional storytelling through music. Some of his hit songs are: 'Sarangi', 'Parkha Na', 'Kya Kardiya', 'Bardali'. His songs are widely celebrated for his soulful music and heartfelt lyrics that often explore themes of love, nostalgia, and life. His unique blend of contemporary pop with Nepali melodies has made him one of the most beloved artists in Nepal and among the Nepali diaspora.",
+        date: "March 8, 2025",
+        time: "3:00 PM Onwards",
+        location: "Sallaghari Ground, Bhaktapur",
+        price: "Rs. 1050 to Rs. 3000", // /* */Table will be announced soon
+        image: "assets/susants.png", // Add the appropriate image path
+        category: "music",
+        url: "https://events.khalti.com/events/ET25DZREURPZ", // Example URL
+        popularity: 9
+    },
+    {
+        id: 2,
+        title: "Dream On Music Fest",
+        description: " Albatross, Sabin Rai & The Pharaoh, Swar and The Rockheads take the stage for an electrifying live performance! An unforgettable experience of a lifetime filled with high-energy beats, soulful tunes, and pure musical magic which will be hosted by Malvika Subba.",
+        date: "March 8, 2025",
+        time: "1:00 PM Onwards",
+        location: "Hyatt Ground, Boudha",
+        price: "Rs. 899 to Rs. 5,000", // Price range
+        image: "assets/dreamon.png", // Add the appropriate image path
+        category: "music",
+        url: "https://events.khalti.com/events/ET257HPZKA7K", // Example URL
+        popularity: 7
+    },
+
+    {
+        id: 3,
+        title: "Support Women's work this Women's day. ",
+        description: "Shop unique, handcrafted products\n💜Come celebrate Women's Day with us at the HattiHatti x International Club Market! ✨🎉\n\n🛍️  Support women & sustainability\n🎶 Enjoy a vibrant market experience",
+        date: "March 7, 2025 - March 9, 2025",
+        time: "10 AM - 6 PM",
+        location: "International Club, Lalitpur",
+        price: "Free",
+        image: "assets/hatihati.png", // Add the appropriate image path
+        category: "event", // Tag for filtering
+        url: "https://www.instagram.com/p/DGxkRoqsapH/", // Example URL for more information
+        popularity: 4
+    },
+    
+    {
+        id: 4,
+        title: "Yuwahub Upskill Event Pt. 2: TECHCAMP – Your Gateway to Nepal's IT Industry",
+        description: "If you're looking to break into IT, find job opportunities, or build valuable connections, TechCamp is the place to be. Whether you're just starting out or already in the field, this event is designed to give you the skills, network, and opportunities you need.\n\n📅 Date: 8th March, Saturday\n📍 Venue: Herald International College, Basundhara\n\nWhat to Expect:\n• 8+ skill-boosting workshops covering what colleges don't teach\n• Job & internship fair with top IT companies hiring on the spot\n• Exclusive panel discussion with CEOs and founders of Nepal's leading IT companies (featured on Paradygm Podcast)\n• Networking with over 100 IT professionals and recruiters\n\nEvent Schedule:\n• 9:00 AM – Registration for panel\n• 10:00 AM - 12:00 PM – Panel discussion\n• 1:00 PM - 3:00 PM – First workshop slot\n• 4:00 PM - 6:00 PM – Second workshop slot\n• 10:00 AM - 6:00 PM – Job fair, activity stalls, and more\n\nLimited spots available for the panel. To secure yours, send a message saying, \"Book my spot for Panel.\"\n\nRegister now: www.yuwahub.com/opportunity/upskill-techcamp-by-yuwahub-80\n\nThis is an opportunity you don't want to miss.",
+        date: "March 8, 2025",
+        time: "10 AM - 6 PM",
+        location: "Herald International College, Basundhara",
+        price: "Free",
+        image: "assets/upskill.png", // Add the appropriate image path
+        category: "event", // Tag for filtering
+        url: "https://www.yuwahub.com/opportunity/upskill-techcamp-by-yuwahub-80", // Example URL for more information
+        popularity: 5
+    },
+        {
+                id: 5,
                 title: "DJ Alok Live in Nepal",
                 description: "DJ Alok takes the stage for a live performance, bringing hits like 'Hear Me Now' and 'Piece of Your Heart' to the crowd. This event marks his first performance in Nepal.",
                 date: "March 7, 2025",
@@ -634,7 +676,7 @@
                 popularity: 8
             },
         {
-                id: 2,
+                id: 6,
                 title: "61st Session of The StoryYellers",
                 description: "The StoryYellers is organising its 61st session featuring Srichchha Pradhan, Miss Nepal World 2023, Monish Niraula, Music Director, Nitesh Tandukar, Content Creator, and Basanta Pandey, CFO, fonepay as the speakers.",
                 date: "March 5, 2025",
@@ -647,7 +689,7 @@
                 popularity: 4
             },
             {
-                id: 3,
+                id: 7,
                 title: "KP OLI CUP 2025 Finals",
                 description: "Machhindra FC vs KP OLI FC at KP oli cup Final 2025 happening grand with live music and special guests.",
                 date: "March 3, 2025",
@@ -662,7 +704,7 @@
                 popularity: 3
             },
             {
-                id: 4,
+                id: 8,
                 title: "EV Carnival by MAW Vriddhi",
                 description: " This is your chance to  Test drive the latest EV models from Deepal, Nami, and Seres, including the world's first Transformer SUV FOR FREE!!!. Enjoy exclusive offers, cash discounts, and a chance to win exciting prizes!",
                 date: "March 1 - 4, 2025",
