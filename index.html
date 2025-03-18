@@ -1541,13 +1541,7 @@ input:checked + .slider:before {
             container.appendChild(fragment); // Append all elements at once
         }
 
-function openWhatsApp() {
-    const phoneNumber = "9779861828821"; // Replace with your WhatsApp number in international format without '+'
-    const message = "Message to get discount on tickets.!!"; // Customize your message
-    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-}
-        function createEventCard(event) {
+     function createEventCard(event) {
             const card = document.createElement('div');
             card.className = 'event-card';
             const categories = Array.isArray(event.category) ? event.category.join(',') : event.category;
@@ -1601,7 +1595,13 @@ function openWhatsApp() {
             return card;
         }
         
-    
+    function openWhatsApp() {
+    const phoneNumber = "9779861828821"; // Replace with your WhatsApp number in international format without '+'
+    const message = "Message to get discount on tickets.!!"; // Customize your message
+    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+}
+   
         
         function filterEvents(category) {
             const allEvents = document.querySelectorAll('.event-card');
