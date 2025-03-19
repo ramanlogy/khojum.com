@@ -101,7 +101,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?fami~ly=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --nepal-red: #dc143c;
@@ -120,7 +120,7 @@
         }
         
         body {
-            font-family: 'Mukta', sans-serif;
+            font-family: 'Poppins', sans-serif; /* Use Poppins as the primary font */
             line-height: 1.6;
             color: var(--dark-text);
             background-color: var(--lightest-bg);
@@ -168,7 +168,7 @@
         }
         
         .logo h1 {
-            font-family: 'Mukta', sans-serif;
+            font-family: 'Lora', serif; /* Use Lora for headings */
             font-size: 2.5rem;
             font-weight: 700;
             margin: 0;
@@ -189,7 +189,7 @@
         }
         
         .title-section h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Lora', serif; /* Use Lora for headings */
             font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 10px;
@@ -204,7 +204,7 @@
         }
         
         .date-display {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Lora', serif; /* Use Lora for headings */
             font-style: italic;
             font-size: 1.3rem;
             font-weight: 500;
@@ -235,7 +235,7 @@
             color: var(--nepal-red);
             padding: 8px 16px;
             border-radius: 100px;
-            font-family: 'Mukta', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
             cursor: pointer;
@@ -259,7 +259,7 @@
             border-radius: 100px;
             background-color: transparent;
             color: var(--nepal-red);
-            font-family: 'Mukta', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
             cursor: pointer;
@@ -296,19 +296,44 @@
         }
         
         .event-card {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* Stack elements vertically */
+            margin: 20px; /* Add margin for spacing */
+            border: 1px solid #ddd; /* Optional: Add border for better visibility */
+            border-radius: 8px; /* Optional: Rounded corners */
+            overflow: hidden; /* Prevent overflow */
+            width:  96%;
         }
         
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        .event-details {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            padding: 15px; /* Add padding for better spacing */
+        }
+        
+        .event-time-counter {
+            margin-top: 10px; /* Add margin to separate from price */
+            margin-bottom: 10px; /* Add margin for spacing */
+            font-weight: bold;
+            padding: 10px; /* Increased padding for better visibility */
+            border-radius: 8px;
+            background-color: white;
+            border: 2px solid var(--nepal-red);
+            color: #aa2121;
+            text-align: center; /* Center the text for better visibility */
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .event-card {
+                margin: 10px; /* Adjust margin for mobile */
+            }
+
+            .event-time-counter {
+                width: 100%; /* Make it full width on mobile */
+                margin-top: 5px; /* Ensure it appears below the price */
+                font-size: 1rem; /* Adjust font size for better readability */
+            }
         }
         
         .event-category {
@@ -329,7 +354,7 @@
         }
         
         .event-title {
-            font-family: 'Mukta', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 10px;
@@ -348,7 +373,6 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            padding-bottom: 8px;
             font-size: 0.9rem;
             color: var(--light-text);
         }
@@ -410,6 +434,7 @@
             color: var(--nepal-blue);
             flex: 1;
             min-width: 100px;
+          
         }
         
         .event-price-tag.free {
@@ -422,7 +447,7 @@
             border: none;
             padding: 8px 16px;
             border-radius: 100px;
-            font-family: 'Mukta', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
             cursor: pointer;
@@ -443,7 +468,7 @@
         }
         
         .logo-small {
-            font-family: 'Mukta', sans-serif;
+            font-family: 'Lora', serif; /* Use Lora for headings */
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 20px;
@@ -555,13 +580,15 @@
         }
 
         .event-time-counter {
+        
             margin-right: 10px;
             font-weight: bold;
-            padding: 5px;
+            padding: 10px;
             border-radius: 8px;
             background-color: white;
             border: 2px solid var(--nepal-red);
             color: #aa2121;
+           
         }
         .event-time-counter.upcoming {
             background-color: hwb(0 100% 0%);
@@ -1811,6 +1838,10 @@ body {
         opacity: 1;
     }
 
+    .nepal-red {
+        color: #dc143c; /* Nepal red color */
+    }
+
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="application/ld+json">
@@ -2262,7 +2293,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="event-location">
-                        <i class="fas fa-map-marker-alt nepal-red"></i>
+                        <i class="fas fa-map-marker-alt nepal-red"></i> <!-- Add the nepal-red class here -->
                         <span>${event.location}</span>
                     </div>
                     <p class="event-description">${event.description}</p>
@@ -3556,36 +3587,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 option.addEventListener('click', function(e) {
                     e.stopPropagation(); // Prevent triggering document click
                     
-                    // Get the event card and extract event details
-                    const eventCard = this.closest('.event-card');
-                    const eventTitle = eventCard.querySelector('.event-title').textContent;
-                    const eventImage = eventCard.querySelector('.event-image').style.backgroundImage.slice(5, -2);
+                    // Get the event ID from the data attribute
+                    const eventId = this.getAttribute('data-id');
                     
-                    // Create the event URL (you may need to adjust this based on your actual URL structure)
-                    const eventUrl = window.location.origin + window.location.pathname + '?event=' + encodeURIComponent(eventTitle);
+                    // Find the event data based on the ID (you may need to adjust this based on your data structure)
+                    const eventData = events.find(event => event.id == eventId); // Assuming 'events' is your array of event objects
                     
-                    // Handle different share platforms
-                    const platform = this.getAttribute('data-platform');
-                    
-                    switch(platform) {
-                        case 'whatsapp':
-                            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(eventTitle + ' - ' + eventUrl)}`, '_blank');
-                            break;
-                        case 'instagram':
-                            // Instagram doesn't support direct sharing via URL, so copy to clipboard and show instructions
-                            copyToClipboard(eventUrl);
-                            alert('Link copied to clipboard. Open Instagram and paste in your story or direct message.');
-                            break;
-                        case 'facebook':
-                            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(eventUrl)}`, '_blank');
-                            break;
-                        case 'twitter':
-                            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(eventTitle)}&url=${encodeURIComponent(eventUrl)}`, '_blank');
-                            break;
-                        case 'copy':
-                            copyToClipboard(eventUrl);
-                            showCopySuccess();
-                            break;
+                    if (eventData) {
+                        const eventTitle = eventData.title;
+                        const eventUrl = eventData.url; // Use the URL from the event data
+                        
+                        // Handle different share platforms
+                        const platform = this.getAttribute('data-platform');
+                        
+                        switch(platform) {
+                            case 'whatsapp':
+                                window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(eventTitle + ' - ' + eventUrl)}`, '_blank');
+                                break;
+                            case 'instagram':
+                                // Instagram doesn't support direct sharing via URL, so copy to clipboard and show instructions
+                                copyToClipboard(eventUrl);
+                                alert('Link copied to clipboard. Open Instagram and paste in your story or direct message.');
+                                break;
+                            case 'facebook':
+                                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(eventUrl)}`, '_blank');
+                                break;
+                            case 'twitter':
+                                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(eventTitle)}&url=${encodeURIComponent(eventUrl)}`, '_blank');
+                                break;
+                            case 'copy':
+                                copyToClipboard(eventUrl);
+                                showCopySuccess();
+                                break;
+                        }
                     }
                     
                     // Close dropdown after selection
@@ -3596,18 +3630,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Function to copy text to clipboard
         function copyToClipboard(text) {
-            // Create a temporary input element
             const input = document.createElement('input');
             input.style.position = 'fixed';
             input.style.opacity = 0;
             input.value = text;
             document.body.appendChild(input);
             
-            // Select and copy the text
             input.select();
             document.execCommand('copy');
-            
-            // Remove the temporary input
             document.body.removeChild(input);
         }
         
@@ -3616,7 +3646,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const successMsg = document.querySelector('.copy-success');
             successMsg.classList.add('show');
             
-            // Hide after 2 seconds
             setTimeout(() => {
                 successMsg.classList.remove('show');
             }, 2000);
