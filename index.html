@@ -76,10 +76,10 @@
     <meta name="theme-color" content="#dc143c">
     
     <!-- Existing favicon and other meta tags -->
-    <link rel="icon" type="image/x-icon" href="/assets/logo/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logo/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
     
     <!-- Open Graph Meta Tags for better social sharing -->
     <meta property="og:title" content="Discover trendy Events easily | Upcoming Events in Kathmandu | Khojum.com">
@@ -312,8 +312,8 @@
         }
         
         .event-time-counter {
-            margin-top: 10px; /* Add margin to separate from price */
-            margin-bottom: 10px; /* Add margin for spacing */
+            margin-top: 10px; /* Space above the counter */
+            margin-bottom: 10px; /* Space below the counter */
             font-weight: bold;
             padding: 10px; /* Increased padding for better visibility */
             border-radius: 8px;
@@ -321,6 +321,7 @@
             border: 2px solid var(--nepal-red);
             color: #aa2121;
             text-align: center; /* Center the text for better visibility */
+            white-space: nowrap; /* Prevent text wrapping */
         }
         
         /* Mobile Styles */
@@ -580,8 +581,8 @@
         }
 
         .event-time-counter {
-        
-            margin-right: 10px;
+          
+            margin-top: 10px;
             font-weight: bold;
             padding: 10px;
             border-radius: 8px;
@@ -1311,12 +1312,13 @@ input:checked + .slider:before {
 .filter-dropdown {
     display: none; /* Initially hidden */
     position: absolute;
-    background: white;
-    border: 1px solid #ccc;
+    background: rgb(255, 253, 253);
+    border: 1px solid #f3e7e7;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 100;
     width: 200px; /* Adjust width as needed */
+   
 }
 
 .filter-dropdown.show {
@@ -1336,6 +1338,7 @@ input:checked + .slider:before {
     border: none;
     cursor: pointer;
     transition: background 0.3s;
+  
 }
 
 .filter-button:hover {
@@ -1355,7 +1358,8 @@ input:checked + .slider:before {
 }
 
 .filter-container {
-    position: relative; /* Needed for absolute positioning of dropdown */
+    position: relative;
+/* Needed for absolute positioning of dropdown */
 }
 
 .filter-toggle {
@@ -1365,10 +1369,12 @@ input:checked + .slider:before {
     padding: 10px 15px;
     border-radius: 50px;
     cursor: pointer;
+   
 }
 
 .filter-toggle:hover {
     background: #a70d26;
+    
 }
 
 .filter-options {
@@ -1877,9 +1883,9 @@ body {
                     <i class="fas fa-calendar-alt"></i>
                     <span>Events</span>
                 </button>
-                <button class="nav-item" data-page="explore">
-                    <i class="fas fa-compass"></i>
-                    <span>Explore</span>
+                <button class="nav-item" data-page="Missions" onclick="loadMissionPage()">
+                    <i class="fa-solid fa-gun"></i>
+                    <span><b>Missions</b></span>
                 </button>
                 <button class="nav-item" data-page="archived">
                     <i class="fas fa-archive"></i>
@@ -1903,19 +1909,19 @@ body {
         <div class="nav-container">
             <button class="nav-item" data-page="home">
                 <i class="fas fa-home"></i>
-                <span>Home</span>
+                <span><b>Home</b></span>
             </button>
             <button class="nav-item" data-page="events">
                 <i class="fas fa-calendar-alt"></i>
-                <span>Events</span>
+                <span><b>Events</b></span>
             </button>
-            <button class="nav-item" data-page="explore">
-                <i class="fas fa-compass"></i>
-                <span>Explore</span>
+            <button class="nav-item" data-page="Missions">
+                <i class="fa-solid fa-gun"></i>
+                <span><b>Missions</b></span>
             </button>
             <button class="nav-item" data-page="archived">
                 <i class="fas fa-archive"></i>
-                <span>Archived</span>
+                <span><b>Archived</b></span>
             </button>
         </div>
     </nav>
@@ -2243,7 +2249,51 @@ document.addEventListener('DOMContentLoaded', function() {
         popularity: 9 // Adjust popularity as needed
     },
 
-  
+    {
+    id: 5, // New ID for the BRAVE CF 93 event
+    title: "BRAVE CF 93: Himalion vs. Magician (MMA)",
+    description: "Nepal's MMA star, Rabindra Dhant aka Himalion is set to face China's Egiyuebu aka Magician at BRAVE CF 93. This event promises to be an electrifying showdown between two talented fighters, showcasing the best of mixed martial arts. Don't miss this thrilling encounter!",
+    date: "April 18, 2025", // Date of the event
+    time: "7:45 PM Onwards", // Time of the event (to be announced)
+    location: "Zhengzhou, China", // Venue
+    price: "7 crore", // Price can be updated later
+    image: "assets/chinaboy.png", // Add the appropriate image path
+    category: "Sports", // Tags for filtering
+    url: "https://www.bravecf.com/events/93", // Example URL for more information
+    popularity: 8,// Adjust popularity as needed
+    highlights: ['Big news for Nepali MMA Fans.']
+},
+
+{
+    id: 6, // New ID for the Nepal Super League 2025 event
+    title: "Nepal Super League (NSL) 2025",
+    description: "From: sat, chaitra 16 - sat baisakh 13 (FINALLLL MATCH) The Nepal Super League (NSL) 2025 is the third edition of Nepal's first professional franchise-based football league, organized by Nepal Sports and Events Management (NSEM) with technical support from the All Nepal Football Association (ANFA). This league features seven teams: Butwal Lumbini FC, Dhangadhi FC, FC Chitwan, Jhapa FC, Kathmandu Rayzrs FC, Lalitpur City FC, and Pokhara Thunders FC. The league aims to enhance football development in Nepal, promote regional pride, and provide a platform for local footballers to excel.",
+    date: "March 29, 2025 - April 25, 2025 ", // Start date of the event
+    time: "6:00 PM everymatch", // Time of the event (to be announced)
+    location: "Dasrath Rangasala, Tripureshowr", // Venue
+    price: "Rs.200 to Rs.500", // Price can be updated later
+    image: "assets/nsl.png", // Add the appropriate image path
+    category: "Sports", // Tags for filtering
+    url: "https://events.khalti.com/events/ET257PPR6M74", // Example URL for more information
+    popularity: 9, // Adjust popularity as needed
+    highlights: ['Teams: The league will feature seven teams: Butwal Lumbini FC, Dhangadhi FC, FC Chitwan, Jhapa FC, Kathmandu Rayzrs FC, Lalitpur City FC, and Pokhara Thunders FC.'] // Special highlights
+},
+{
+    id: 7, // New ID for the Men's PM Cup 2025 event
+    title: "🔥 𝗠𝗲𝗻'𝘀 𝗣𝗠 𝗖𝘂𝗽 𝟮𝟬𝟮𝟱  🔥",
+    description: "🏏 The Ultimate Battle for Nepal's Domestic Crown! 🏆\n📅 Tournament Dates: 9th March – 29th March\n\n3 venues, 46 matches – Who will rise as Nepal's Domestic Champions? 🇳🇵💥\n\n#PMCup2025 | #NepalCricket | #domesticchampions",
+    date:"March 20, 2025",
+    startDate: "March 9, 2025", // Start date of the tournament
+    endDate: "March 29, 2025", // End date of the tournament
+    time: "9:00 AM every match", // Time of the event (to be announced)
+    location: "Siddhartha Rangasala & Extra Tech & Lamahi", // Venues
+    price: "Free on youtube", // Price can be updated later
+    image: "assets/pmcup.png", // Add the appropriate image path
+    category: "Sports", // Tags for filtering
+    url: "https://www.youtube.com/@KantipurMaxHD", // Example URL for more information
+    popularity: 9, // Adjust popularity as needed
+    highlights: ['46 matches across 3 venues!', 'Who will be crowned the champions?'] // Special highlights
+},
    
 
 
@@ -2291,18 +2341,19 @@ document.addEventListener('DOMContentLoaded', function() {
                             <i class="far fa-clock"></i>
                             <span>${event.time}</span>
                         </div>
-                    </div>
-                    <div class="event-location">
+                         <div class="event-location">
                         <i class="fas fa-map-marker-alt nepal-red"></i> <!-- Add the nepal-red class here -->
                         <span>${event.location}</span>
                     </div>
+                    </div>
+                   
                     <p class="event-description">${event.description}</p>
                     <div class="event-footer">
                         <div class="event-price-tag${event.price === 'Free' ? ' free' : ''}">
                             ${event.price}
                         </div>
-                        <a href="${event.url}" class="event-button" target="_blank">
-                            View Post <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        <a href="${event.url}" class="event-button" ">
+                       Buy Tickets <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                             <span class="sr-only">(opens in a new tab)</span>
                         </a>
                     </div>
@@ -3651,6 +3702,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 2000);
         }
     });
+
+    function loadMissionPage() {
+        const contentDiv = document.getElementById('content'); // Assuming you have a div with id 'content' to load the new page
+        fetch('mission.html')
+            .then(response => response.text())
+            .then(data => {                contentDiv.innerHTML = data; // Load the content of mission.html
+                contentDiv.classList.add('fade-in'); // Add a class for animation
+                setTimeout(() => {
+                    contentDiv.classList.remove('fade-in'); // Remove class after animation
+                }, 500); // Adjust duration to match your CSS animation
+            })
+            .catch(error => console.error('Error loading mission page:', error));
+    }
     </script>
 </body>
 </html>
+
