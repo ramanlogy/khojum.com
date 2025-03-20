@@ -294,15 +294,18 @@
             cursor: zoom-in;
             overflow: hidden; /* Ensure content stays within bounds */
         }
-        
         .event-card {
-            display: flex;
-            flex-direction: column; /* Stack elements vertically */
-            margin: 20px; /* Add margin for spacing */
-            border: 1px solid #ddd; /* Optional: Add border for better visibility */
-            border-radius: 8px; /* Optional: Rounded corners */
-            overflow: hidden; /* Prevent overflow */
-            width:  96%;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
         
         .event-details {
@@ -315,22 +318,23 @@
             margin-top: 10px; /* Space above the counter */
             margin-bottom: 10px; /* Space below the counter */
             font-weight: bold;
-            padding: 10px; /* Increased padding for better visibility */
+            padding: 100px; /* Increased padding for better visibility */
             border-radius: 8px;
             background-color: white;
             border: 2px solid var(--nepal-red);
             color: #aa2121;
             text-align: center; /* Center the text for better visibility */
-            white-space: nowrap; /* Prevent text wrapping */
+
         }
         
         /* Mobile Styles */
         @media (max-width: 768px) {
             .event-card {
                 margin: 10px; /* Adjust margin for mobile */
+                padding: 2vw 4vw;
             }
 
-            .event-time-counter {
+        .event-time-counter {
                 width: 100%; /* Make it full width on mobile */
                 margin-top: 5px; /* Ensure it appears below the price */
                 font-size: 1rem; /* Adjust font size for better readability */
@@ -603,7 +607,13 @@
             background-color: #ffe6e6;
             color: #cc0000;
         }
-
+        @keyframes colorChange {
+            0% { color: #dc143c; }
+            25% { color: #f9d949; }
+            50% { color: #003893; }
+            75% { color: #2ecc71; }
+            100% { color: #dc143c; }
+        }
         .animated-holi-button {
             position: fixed; /* Fix the position */
             top: 20px; /* Distance from the top */
@@ -644,12 +654,7 @@
             display: none; /* Hide the element */
         }
 
-        .days-left-message {
-            margin-left: 10px; /* Space between button and countdown message */
-            font-size: 0.9rem; /* Font size */
-            color: #333; /* Color to match your theme */
-            font-weight: bold; /* Make it bold */
-        }
+       
 
         /* Media Queries for Mobile Responsiveness */
         @media (max-width: 768px) {
@@ -741,7 +746,7 @@
 .calendar-popup {
   position: fixed; /* Changed to fixed for better mobile positioning */
   top: 140px;
-  right: 20px;
+  right: 0px;
   width: 320px; /* Slightly wider for mobile */
   max-width: calc(100vw - 40px); /* Ensures it doesn't overflow on small screens */
   background-color: var(--calendar-background);
@@ -752,7 +757,7 @@
   visibility: hidden;
   transform: translateY(-10px);
   transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
-  z-index: 1000;
+  z-index: 1000000;
 }
 
 .calendar-popup.active {
@@ -2357,8 +2362,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span class="sr-only">(opens in a new tab)</span>
                         </a>
                     </div>
+                    <div class="countdown-container">
+                        <div class="event-time-counter" id="countdown-${event.id}"></div>
+                    </div>
                 </div>
             `;
+               
 
             // Add click event to open modal
             card.addEventListener('click', () => {
