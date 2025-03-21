@@ -77,7 +77,6 @@
     
     <!-- Existing favicon and other meta tags -->
     <link rel="icon" href="/favicon.ico">
-    <link rel="icon" href="/assets/favicon.ico">
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
@@ -310,11 +309,7 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
         
-        .event-details {
-            display: flex;
-            flex-direction: column; /* Stack elements vertically */
-            padding: 15px; /* Add padding for better spacing */
-        }
+     
         
         .event-time-counter {
             margin-top: 10px; /* Space above the counter */
@@ -329,7 +324,14 @@
 
         }
         
- 
+      
+
+        .event-time-counter {
+                width: 100%; /* Make it full width on mobile */
+                margin-top: 5px; /* Ensure it appears below the price */
+                font-size: 1rem; /* Adjust font size for better readability */
+            }
+        
         
         .event-category {
             position: absolute;
@@ -934,7 +936,7 @@ input:checked + .slider:before {
 .nepali-date {
   font-size: 18px;
   color: var(--nepal-red);
-  margin-top: 2px;
+  margin-top: 1px;
   /* Added line height limiting for compact display */
   line-height: 1;
 }
@@ -1104,14 +1106,14 @@ input:checked + .slider:before {
             margin-right: 7px; /* Space between icon and text */
         }
         .twitter-link {
-    font-size: 1.1rem; /* Increase font size */
+    font-size: 1rem; /* Increase font size */
     color: #0a0a0a; /* Twitter blue color */
     text-decoration: none; /* Remove underline */
     transition: color 0.3s; /* Smooth color transition */
 }
 
 .twitter-link:hover {
-    color: #0d8bdb; /* Darker blue on hover */
+    color: #fdfdfd; /* Darker blue on hover */
 }
 
 .twitter-link i {
@@ -1843,8 +1845,28 @@ body {
         color: #dc143c; /* Nepal red color */
     }
 
+    .discord-link, .github-link {
+        margin-left: 10px; /* Space between links */
+        color: #000000; /* Discord color */
+        text-decoration: none; /* Remove underline */
+        font-size: 1rem;
+        transition: color 0.3sec;
+    }
+
+    .github-link {
+        color: #000000; /* GitHub color */
+    }
+
+
+.github-link:hover {
+    color: #fdfdfd; /* Darker blue on hover */
+}
+.discord-link:hover {
+    color: #fdfdfd; /* Darker blue on hover */
+}
+
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -1989,9 +2011,15 @@ body {
             </p>
         </p> 
         <a href="https://x.com/ramanLogy" target="_blank" title="X" class="twitter-link">
-            <i class="fab fa-twitter"></i> Twitter ( 𝕏 )
+             𝕏 
         </a>
-        <p class="copyright">&copy; 2025 Khojum. All rights reserved.</p>
+        <a href="https://discord.gg/ncvvvPqT" target="_blank" title="Discord" class="discord-link">
+           <i class="fab fa-discord"></i> 
+        </a>
+        <a href="https://github.com/ramanlogy/khojum.com.git" target="_blank" title="GitHub" class="github-link">
+            <i class="fab fa-github"></i> 
+        </a>
+        <p class="copyright"> Khojum Inc. &copy; 2025</p>
             <!-- Moved Archived Events Icon to Footer -->
             
             <!-- End of Archived Events Icon -->
