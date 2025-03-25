@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LWHSBNXT5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-7LWHSBNXT5');
+    </script>
     <!-- Primary Meta Tags -->
     <title>Discover trendy Events easily | Upcoming Events in Kathmandu | Khojum.com</title>
     <meta name="title" content="Discover trendy Events easily | Upcoming Events in Kathmandu | Khojum.com">
@@ -1896,7 +1904,7 @@ body {
                     <i class="fas fa-home"></i>
                     <span>Home</span>
                 </button>
-                <button class="nav-item" data-page="events">
+                <button class="nav-item" data-page="events" onclick="loadPage('events.html')">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Events</span>
                 </button>
@@ -2005,8 +2013,7 @@ body {
   
            
             <p class="support-message">
-                We value your feedback! <br>
-                Help us grow or share your thoughts and suggestions at 
+              <b>Help Us Improve</b>
                 <a href="mailto:ceo@khojum.com?subject=Feedback%20for%20Khojum" class="email-link">ceo@khojum.com</a>
             </p>
         </p> 
@@ -2212,11 +2219,26 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Sample business data
         const businesses = [
-
-             {
-        id: 1, 
-        title: "Bring back kulman ghising protest.",
-        description: "Different protest are happening to bring back the kulman ghising back to this ",
+         
+        {
+    id: 0, // New ID for the protest event
+    title: "Protest to Bring Back Kulman Ghising",
+    description: "Join us in a protest to bring back Kulman Ghising as the Executive Director of the Nepal Electricity Authority (NEA). After his recent dismissal, we stand together to demand his reinstatement and support his leadership in the energy sector.",
+    date: "March 25, 2025", // Date of the event
+    time: "12:00 AM", // Time of the event
+    location: "NEA office", // Location can be specified if needed
+    price: "Free", // Price can be updated later
+    image: "assets/kulman.png", // Add the appropriate image path
+    category: "Protest", // Tags for filtering
+    url: "https://www.aninews.in/news/world/asia/student-union-burns-effigy-of-nepali-minister-protesting-deposition-of-electricity-authority-chief20250325122015/",
+    popularity: 10, // Adjust popularity as needed
+    highlights: ['Join us to support Kulman Ghising!', 'Stand for good governance in the energy sector.'] // Special highlights
+},
+        {
+        id: 1, // New ID for the Jameson Patan Fest 2025 event
+        title: "Jameson Patan Fest 2025",
+        description: "Jameson Patan Fest 2025 is set to be one of the biggest events in Nepal this year! If you're searching for upcoming events in Nepal, concerts near me, or festivals in Kathmandu, this is where you need to be! On April 5, 2025, from 2:00 PM onwards, Chyasal Stadium will transform into a high-energy celebration of music, culture, and entertainment, featuring some of Nepal's most electrifying performers!\n\nOur first headline act is here—John & The Locals! 🔥 Known for their unmatched energy and electrifying live performances, they're ready to take Jameson Patan Fest to the next level! But this is just the beginning—more powerhouse artists are set to be revealed soon! Stay tuned as we build up to an epic music festival that will keep you on your feet all night long!",
+        date: "April 5, 2025", // Date of the event
         time: "2:00 PM Onwards", // Time of the event
         location: "Chyasal Stadium, Lalitpur, Nepal", // Venue
         price: "Rs. 900 to Rs. 1500", // Price can be updated later
@@ -2225,7 +2247,6 @@ document.addEventListener('DOMContentLoaded', function() {
         url: "https://events.khalti.com/events/ET25HCWK4QJV", // Example URL for more information
         popularity: 10 // Adjust popularity as needed
          }, 
-            
              {
         id: 2, // New ID for the Jameson Patan Fest 2025 event
         title: "Jameson Patan Fest 2025",
@@ -3737,7 +3758,40 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => console.error('Error loading mission page:', error));
     }
+
+    function loadPage(page) {
+        const contentContainer = document.getElementById('content-container');
+
+        // Optional: Add a loading animation or effect
+        contentContainer.innerHTML = '<p>Loading...</p>'; // Show loading text
+
+        // Fetch the content of the specified page
+        fetch(page)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Smooth transition effect
+                contentContainer.style.opacity = 0; // Fade out
+                setTimeout(() => {
+                    contentContainer.innerHTML = data; // Load new content
+                    contentContainer.style.opacity = 1; // Fade in
+                }, 300); // Match this duration with your CSS transition duration
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                contentContainer.innerHTML = '<p>Error loading content.</p>'; // Show error message
+            });
+    }
     </script>
 </body>
 </html>
+
+#content-container {
+    transition: opacity 0.3s ease; /* Adjust duration as needed */
+    opacity: 1; /* Initial opacity */
+}
 
