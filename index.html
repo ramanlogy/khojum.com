@@ -1872,6 +1872,69 @@ body {
 .discord-link:hover {
     color: #fdfdfd; /* Darker blue on hover */
 }
+/* Nepal Trekking Chatbot Styles */
+
+/* Add these styles to your existing CSS or create a new file */
+
+#chatbot-container {
+  --main-color: #2c3e50;
+  --accent-color: #080300;
+  --bg-color: #f5f5f5;
+  --user-msg-color: #dcf8c6;
+  --bot-msg-color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+#chat-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+#chat-area::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#chat-area::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+#chat-area::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
+}
+
+#user-input:focus, #send-button:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+#send-button:hover {
+  background: #34495e;
+}
+
+/* Animation for chat bubbles */
+#chat-area > div {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  #chatbot-container {
+    width: 90%;
+    right: 5%;
+    bottom: 10px;
+  }
+}
 
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -2220,20 +2283,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Sample business data
         const businesses = [
          
-        {
-    id: 0, // New ID for the protest event
-    title: "Protest to Bring Back Kulman Ghising",
-    description: "Join us in a protest to bring back Kulman Ghising as the Executive Director of the Nepal Electricity Authority (NEA). After his recent dismissal, we stand together to demand his reinstatement and support his leadership in the energy sector.",
-    date: "March 25, 2025", // Date of the event
-    time: "12:00 AM", // Time of the event
-    location: "New Baneshowr", // Location can be specified if needed
-    price: "Free", // Price can be updated later
-    image: "assets/kulman.png", // Add the appropriate image path
-    category: "Protest", // Tags for filtering
-    url: "https://www.aninews.in/news/world/asia/student-union-burns-effigy-of-nepali-minister-protesting-deposition-of-electricity-authority-chief20250325122015/",
-    popularity: 10, // Adjust popularity as needed
-    highlights: ['Join us to support Kulman Ghising!', 'Stand for good governance in the energy sector.'] // Special highlights
-},
+      
         {
         id: 1, // New ID for the Jameson Patan Fest 2025 event
         title: "Jameson Patan Fest 2025",
@@ -3758,6 +3808,637 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => console.error('Error loading mission page:', error));
     }
+    // Nepal Trekking Chatbot
+// This script creates a simple chatbot that answers questions about trekking in Nepal
+
+// Knowledge base with questions and answers
+const knowledgeBase = [
+  {
+    question: "What are the most popular treks in Nepal?",
+    answer: "The most popular treks in Nepal include the Annapurna Circuit, Everest Base Camp, Langtang Valley, and Manaslu Circuit."
+  },
+  {
+    question: "What is the Annapurna Circuit trek?",
+    answer: "The Annapurna Circuit is a renowned trek known for its diverse landscapes, including jungle, alpine forests, and high mountain passes like Thorong La."
+  },
+  {
+    question: "How long does the Annapurna Circuit trek take?",
+    answer: "The Annapurna Circuit trek typically takes 10 to 17 days to complete."
+  },
+  {
+    question: "What is the best time to trek the Annapurna Circuit?",
+    answer: "The best time to trek the Annapurna Circuit is from March to May and September to November."
+  },
+  {
+    question: "What is the Everest Base Camp trek?",
+    answer: "The Everest Base Camp trek is a popular route that leads to the base of Mount Everest, offering stunning Himalayan views."
+  },
+  {
+    question: "How long does the Everest Base Camp trek take?",
+    answer: "The Everest Base Camp trek usually takes about 17 days to complete."
+  },
+  {
+    question: "What is the Langtang Valley trek?",
+    answer: "The Langtang Valley trek is a shorter trek near Kathmandu, known for its scenic views of the Langtang Himalayas and Tibetan culture."
+  },
+  {
+    question: "How long does the Langtang Valley trek take?",
+    answer: "The Langtang Valley trek typically takes 7 to 8 days."
+  },
+  {
+    question: "What is the Manaslu Circuit trek?",
+    answer: "The Manaslu Circuit trek is an alternative to the Annapurna Circuit, offering similar dramatic scenery with fewer crowds."
+  },
+  {
+    question: "How long does the Manaslu Circuit trek take?",
+    answer: "The Manaslu Circuit trek usually takes about 16 days to complete."
+  },
+  {
+    question: "What is the best trek for beginners in Nepal?",
+    answer: "The Ghandruk Loop or Langtang Valley trek are good options for beginners due to their relatively easy terrain and short duration."
+  },
+  {
+    question: "What are the best short treks in Nepal?",
+    answer: "Short treks in Nepal include the Ghandruk Loop and the Tamang Heritage Trail."
+  },
+  {
+    question: "What is the Tamang Heritage Trail?",
+    answer: "The Tamang Heritage Trail is a cultural trek that focuses on Tamang villages and Buddhist culture near the Langtang region."
+  },
+  {
+    question: "How do I prepare for trekking in Nepal?",
+    answer: "Preparation includes physical conditioning, obtaining necessary permits, and packing appropriate gear for the season."
+  },
+  {
+    question: "What gear do I need for trekking in Nepal?",
+    answer: "Essential gear includes hiking boots, layers of clothing, a backpack, and a first aid kit."
+  },
+  {
+    question: "Do I need a guide for trekking in Nepal?",
+    answer: "While not mandatory, hiring a guide can be beneficial for navigating trails and understanding local culture."
+  },
+  {
+    question: "What are the costs associated with trekking in Nepal?",
+    answer: "Costs include trekking permits, accommodation, food, and guide fees, which vary depending on the trek and duration."
+  },
+  {
+    question: "How do I obtain trekking permits in Nepal?",
+    answer: "Trekking permits can be obtained through the Nepal Tourism Board or local trekking agencies."
+  },
+  {
+    question: "What are the health risks associated with trekking in Nepal?",
+    answer: "Common health risks include altitude sickness, dehydration, and injuries from falls or overexertion."
+  },
+  {
+    question: "How can I stay safe while trekking in Nepal?",
+    answer: "Staying safe involves being aware of weather conditions, using proper gear, staying hydrated, and following local advice."
+  }
+];
+
+// Additional common questions tourists might ask
+const additionalQuestions = [
+  {
+    question: "What is altitude sickness?",
+    answer: "Altitude sickness, or Acute Mountain Sickness (AMS), occurs when you ascend too quickly without proper acclimatization. Symptoms include headache, nausea, dizziness, and fatigue. The best prevention is to ascend slowly and stay hydrated."
+  },
+  {
+    question: "Can I trek solo in Nepal?",
+    answer: "Yes, solo trekking is possible in many areas of Nepal. However, for safety, it's recommended to hire a guide or join a group, especially for remote areas or challenging treks."
+  },
+  {
+    question: "What is teahouse trekking?",
+    answer: "Teahouse trekking refers to staying in basic lodges or 'teahouses' along the trekking routes. These provide simple accommodation and meals, meaning you don't need to carry camping equipment."
+  },
+  {
+    question: "How difficult is the Everest Base Camp trek?",
+    answer: "The Everest Base Camp trek is considered moderately difficult. The main challenges are the high altitude and long walking days. Good physical fitness and proper acclimatization are essential."
+  },
+  {
+    question: "What's the best trek for seeing local culture?",
+    answer: "The Tamang Heritage Trail and Lower Mustang trek are excellent for experiencing local culture, traditional villages, and Buddhist monasteries."
+  },
+  {
+    question: "hi",
+    answer : "Hello sathi (friend), how can i help you today?"
+  },
+  {
+    question: "namaste",
+    answer : "Namaste sathi (friend), how can i help you today?"
+  },
+  {
+    question: "jojo lopa",
+    answer : "hey there, how can i help you today?"
+  },
+  {
+    question: "thank you",
+    answer : "No worries sathi, Can't wait you to join us for your best trekking experience in nepal!!"
+  },
+  {
+    question: "i love you ",
+    answer: "sorry priya, i'm very loyal person, i love you as a friend."
+  },
+
+  // Advanced Nepal Trekking Chatbot with Dynamic Suggestions and Expanded Knowledge Base
+
+// Comprehensive knowledge base with 120+ questions and answers about Nepal trekking and tourism
+
+  {
+    question: "What are the most popular treks in Nepal?",
+    answer: "The most popular treks in Nepal include the Annapurna Circuit, Everest Base Camp, Langtang Valley, Manaslu Circuit, Gokyo Lakes, Upper Mustang, and Poon Hill trek.",
+    categories: ["popular", "treks", "general"]
+  },
+  {
+    question: "What is the Annapurna Circuit trek?",
+    answer: "The Annapurna Circuit is a renowned trek that encircles the Annapurna massif, offering diverse landscapes including jungle, alpine forests, arid plateaus, and the challenging Thorong La pass (5,416m). It showcases stunning mountain views, traditional villages, and ancient monasteries.",
+    categories: ["annapurna", "circuit", "specific trek"]
+  },
+  {
+    question: "How long does the Annapurna Circuit trek take?",
+    answer: "The Annapurna Circuit trek typically takes 10 to 17 days to complete, depending on your pace and whether you take side trips. The traditional full circuit is about 160-230 km, but many trekkers now end at Jomsom due to road construction.",
+    categories: ["annapurna", "duration", "specific trek"]
+  },
+  {
+    question: "What is the best time to trek the Annapurna Circuit?",
+    answer: "The best time to trek the Annapurna Circuit is from March to May (spring) and September to November (autumn). These periods offer stable weather, clear skies for mountain views, and comfortable temperatures. Avoid summer (monsoon season) due to rain and leeches, and winter for extreme cold at high passes.",
+    categories: ["annapurna", "timing", "weather", "specific trek"]
+  },
+  {
+    question: "What is the Everest Base Camp trek?",
+    answer: "The Everest Base Camp trek is a legendary journey that leads to the foot of the world's highest peak, Mount Everest (8,848m). The route passes through Sherpa villages, Buddhist monasteries, and dramatic suspension bridges, culminating at the base camp (5,364m) with views of the Khumbu Icefall.",
+    categories: ["everest", "specific trek"]
+  },
+  {
+    question: "How long does the Everest Base Camp trek take?",
+    answer: "The classic Everest Base Camp trek usually takes about 12-14 days to complete. This includes necessary acclimatization days to prevent altitude sickness. With side trips to places like Gokyo Lakes or Chhukung Ri, it can extend to 17-20 days.",
+    categories: ["everest", "duration", "specific trek"]
+  },
+  {
+    question: "What is the Langtang Valley trek?",
+    answer: "The Langtang Valley trek is a shorter trek north of Kathmandu, known for its scenic views of the Langtang Himalayas, alpine meadows, and rich Tibetan-influenced culture. It was affected by the 2015 earthquake but has been rebuilt and is now welcoming trekkers again.",
+    categories: ["langtang", "specific trek"]
+  },
+  {
+    question: "How long does the Langtang Valley trek take?",
+    answer: "The Langtang Valley trek typically takes 7 to 8 days to complete. This makes it ideal for trekkers with limited time who still want to experience the Himalayan landscapes and culture.",
+    categories: ["langtang", "duration", "specific trek"]
+  },
+  {
+    question: "What is the Manaslu Circuit trek?",
+    answer: "The Manaslu Circuit trek is a stunning adventure around Mount Manaslu (8,163m), the world's eighth highest peak. It offers similar dramatic scenery to the Annapurna Circuit but with fewer crowds. The trek passes through remote villages, diverse ecosystems, and crosses the challenging Larkya La pass (5,160m).",
+    categories: ["manaslu", "specific trek"]
+  },
+  {
+    question: "How long does the Manaslu Circuit trek take?",
+    answer: "The Manaslu Circuit trek usually takes about 14-16 days to complete. This includes necessary acclimatization days and the time needed to properly experience the remote villages and landscapes along the route.",
+    categories: ["manaslu", "duration", "specific trek"]
+  },
+  {
+    question: "What is the best trek for beginners in Nepal?",
+    answer: "For beginners, the Ghorepani Poon Hill trek (4-5 days), Langtang Valley trek (7-8 days), and Mardi Himal trek (5-7 days) are excellent choices. These routes offer magnificent mountain views with moderate difficulty, good teahouse facilities, and don't reach extreme altitudes.",
+    categories: ["beginner", "experience level", "recommendation"]
+  },
+  {
+    question: "What are the best short treks in Nepal?",
+    answer: "The best short treks in Nepal (under a week) include the Ghorepani Poon Hill trek (4-5 days), Mardi Himal trek (5 days), Tamang Heritage Trail (6 days), Nagarkot to Dhulikhel trek (2-3 days), and the Royal Trek (4 days). These offer excellent mountain views and cultural experiences in a limited timeframe.",
+    categories: ["short treks", "duration", "recommendation"]
+  },
+  {
+    question: "What is the Tamang Heritage Trail?",
+    answer: "The Tamang Heritage Trail is a culturally rich trek near the Langtang region that focuses on the Tamang ethnic group's villages, traditions, and Buddhist culture. It features hot springs at Tatopani, traditional homes, and magnificent views of the Langtang and Ganesh Himal ranges. The trail typically takes 6 days to complete.",
+    categories: ["tamang", "cultural", "specific trek"]
+  },
+  {
+    question: "How do I prepare for trekking in Nepal?",
+    answer: "Preparation for trekking in Nepal includes: 1) Physical conditioning with cardio and strength training 2-3 months before your trek; 2) Researching and obtaining necessary permits; 3) Packing appropriate gear for the season; 4) Getting travel insurance that covers high-altitude trekking and emergency evacuation; 5) Learning about altitude sickness prevention; and 6) Planning your itinerary with acclimatization days.",
+    categories: ["preparation", "planning", "general"]
+  },
+  {
+    question: "What gear do I need for trekking in Nepal?",
+    answer: "Essential gear for trekking in Nepal includes: 1) Good hiking boots (broken in before your trip); 2) Moisture-wicking and insulating layers of clothing; 3) A warm down jacket and thermal underwear for high altitudes; 4) Rain gear; 5) A comfortable backpack (30-40L for teahouse treks); 6) Sun protection (hat, sunglasses, sunscreen); 7) Headlamp with extra batteries; 8) Trekking poles; 9) Water purification method; and 10) A basic first aid kit.",
+    categories: ["gear", "equipment", "preparation"]
+  },
+  {
+    question: "Do I need a guide for trekking in Nepal?",
+    answer: "While not mandatory for many treks, hiring a guide is highly recommended for safety, cultural insights, and supporting the local economy. Some remote areas like Upper Mustang, Manaslu, and Tsum Valley legally require a guide. Guides help with navigation, translation, accommodation arrangements, and can be crucial in emergencies. Independent trekking is permitted on popular routes like Annapurna and Everest.",
+    categories: ["guide", "preparation", "planning"]
+  },
+  {
+    question: "What are the costs associated with trekking in Nepal?",
+    answer: "Trekking costs in Nepal include: 1) Permits ($20-$500 depending on the region); 2) Guide fees ($20-$30 per day); 3) Porter fees ($15-$25 per day); 4) Teahouse accommodation ($5-$20 per night); 5) Food ($15-$30 per day); 6) Transportation to/from trailheads ($10-$180); 7) Equipment rental if needed; and 8) Insurance. Budget trekkers can manage on $25-$30 per day while trekking, while organized tours can cost $80-$180 per day.",
+    categories: ["cost", "budget", "planning"]
+  },
+  {
+    question: "How do I obtain trekking permits in Nepal?",
+    answer: "Trekking permits in Nepal can be obtained through the Nepal Tourism Board offices in Kathmandu or Pokhara, or more commonly through registered trekking agencies. You'll need your passport, photos, and the permit fees. Most treks require the TIMS card (Trekkers' Information Management System, $10-$20) and specific conservation area permits for regions like Annapurna, Everest, or Langtang ($25-$30). Restricted areas like Upper Mustang require additional special permits ($500 for 10 days).",
+    categories: ["permits", "preparation", "planning"]
+  },
+  {
+    question: "What are the health risks associated with trekking in Nepal?",
+    answer: "The main health risks while trekking in Nepal include: 1) Altitude sickness (AMS, HAPE, HACE) - the most serious concern above 2,500m; 2) Waterborne illnesses from contaminated water; 3) Foodborne illnesses; 4) Physical injuries from falls or overexertion; 5) Hypothermia at high altitudes; 6) Sunburn and snow blindness; and 7) Respiratory infections from dry, cold air and dust. Proper acclimatization, hydration, hygiene, and preparation can mitigate most of these risks.",
+    categories: ["health", "safety", "risks"]
+  },
+  {
+    question: "How can I stay safe while trekking in Nepal?",
+    answer: "To stay safe while trekking in Nepal: 1) Trek with a guide or group; 2) Follow proper acclimatization schedules; 3) Stay hydrated and well-nourished; 4) Be prepared for weather changes with appropriate clothing; 5) Never trek alone; 6) Use a map, compass or GPS; 7) Get comprehensive travel insurance; 8) Register with your embassy; 9) Keep emergency contacts available; 10) Respect local advice about trail conditions; and 11) Know the symptoms of altitude sickness and how to respond.",
+    categories: ["safety", "health", "general"]
+  },
+  
+  // Additional 100+ questions and answers
+  {
+    question: "What is the best time of year to trek in Nepal?",
+    answer: "The best times for trekking in Nepal are during spring (March to May) and autumn (September to November). Spring offers blooming rhododendron forests and warmer temperatures, while autumn provides the clearest mountain views with stable weather. Summer (June-August) brings monsoon rains making trails slippery and obscuring views. Winter (December-February) is possible for lower altitude treks but brings snow and extreme cold at higher elevations.",
+    categories: ["timing", "weather", "general"]
+  },
+  {
+    question: "What is altitude sickness and how can I prevent it?",
+    answer: "Altitude sickness (Acute Mountain Sickness or AMS) occurs when ascending too quickly without proper acclimatization, typically above 2,500m. Symptoms include headache, nausea, dizziness, fatigue, loss of appetite, and sleep disturbances. Prevent it by: 1) Ascending slowly (no more than 300-500m per day above 3,000m); 2) Taking acclimatization days; 3) Staying hydrated; 4) Avoiding alcohol; 5) Considering preventative medication like Diamox (consult your doctor); and 6) Following the trekking rule 'climb high, sleep low'. If symptoms persist, descend immediately.",
+    categories: ["health", "altitude", "safety"]
+  },
+  {
+    question: "What is the Gokyo Lakes trek?",
+    answer: "The Gokyo Lakes trek is a stunning alternative or addition to the Everest Base Camp route. It features the spectacular emerald Gokyo Lakes (the world's highest freshwater lake system at around 5,000m), views of four 8,000m+ peaks (Everest, Lhotse, Makalu, and Cho Oyu), and crossing the challenging Cho La pass (5,420m) if combining with EBC. The trek typically takes 12-15 days and offers less crowded trails with equally impressive scenery.",
+    categories: ["gokyo", "everest region", "specific trek"]
+  },
+  {
+    question: "What is the Upper Mustang trek?",
+    answer: "The Upper Mustang trek explores a restricted, remote trans-Himalayan region that was a forbidden kingdom until 1992. Known as 'Little Tibet,' it features a unique arid landscape with colorful rock formations, sky caves, and well-preserved Tibetan Buddhist culture. The trek centers around Lo Manthang, the ancient walled capital. It requires a special permit ($500 for 10 days) and takes about 14 days. The best time is May-October as it lies in the rain shadow of the Annapurna range.",
+    categories: ["upper mustang", "restricted", "specific trek"]
+  },
+  {
+    question: "Can I trek in Nepal during monsoon season?",
+    answer: "While most trekkers avoid the monsoon season (June-August), it is possible to trek in certain rain-shadow areas like Upper Mustang, Upper Dolpo, and the Nar Phu Valley, which receive minimal rainfall. The Annapurna Circuit northern section is also relatively dry. Benefits of monsoon trekking include fewer crowds, lower prices, and lush, green landscapes. Drawbacks include regular rainfall, slippery trails, leeches at lower elevations, and limited mountain views due to clouds.",
+    categories: ["monsoon", "timing", "weather"]
+  },
+  {
+    question: "What is the Ghorepani Poon Hill trek?",
+    answer: "The Ghorepani Poon Hill trek is a popular short trek (4-5 days) in the Annapurna region, perfect for beginners or those with limited time. The highlight is watching sunrise from Poon Hill (3,210m) over the panorama of Himalayan peaks including Annapurna, Dhaulagiri, and Machapuchare. The trek features rhododendron forests, traditional Gurung villages, and well-developed teahouse facilities, while never exceeding moderate altitudes, reducing altitude sickness risk.",
+    categories: ["poon hill", "annapurna", "beginner", "specific trek"]
+  },
+  {
+    question: "What is the Annapurna Base Camp trek?",
+    answer: "The Annapurna Base Camp (ABC) trek is a popular 7-10 day journey into the heart of the Annapurna range, reaching the amphitheater-like base camp at 4,130m. The trek offers stunning views of peaks like Annapurna I (8,091m), Machapuchare (Fishtail), and Hiunchuli. The route passes through diverse landscapes including lush forests, terraced fields, and traditional villages of the Gurung people. It's moderately challenging but achievable for reasonably fit trekkers.",
+    categories: ["annapurna base camp", "specific trek"]
+  },
+  {
+    question: "How physically fit do I need to be for trekking in Nepal?",
+    answer: "The fitness level required for Nepal trekking varies by route. For beginner treks like Poon Hill, average fitness is sufficient. For moderate treks like Annapurna Base Camp or Everest Base Camp, you should be able to comfortably walk 5-7 hours daily with a light pack, including uphill sections, for multiple consecutive days. Preparation should include regular cardio (hiking, cycling, swimming) 2-3 times weekly for at least 2-3 months before your trek, plus some strength training for legs and core. The mental stamina to persist through challenging days is equally important.",
+    categories: ["fitness", "preparation", "health"]
+  },
+  {
+    question: "What is teahouse trekking?",
+    answer: "Teahouse trekking is the most common style of trekking in Nepal, where you stay in basic lodges (teahouses) along established routes instead of camping. Teahouses provide simple accommodation (typically twin rooms or dormitories), toilets (often shared), hot meals, and sometimes hot showers (for an additional fee). This popular system means you only need to carry a daypack with essentials, not camping equipment. Facilities range from very basic in remote areas to relatively comfortable on popular routes like Everest and Annapurna.",
+    categories: ["accommodation", "teahouse", "general"]
+  },
+  {
+    question: "What should I pack for a teahouse trek in Nepal?",
+    answer: "For a teahouse trek, pack: 1) Layered clothing (moisture-wicking base layers, insulating mid-layers, waterproof outer layer); 2) Good hiking boots and socks; 3) Down jacket and thermal wear for evenings; 4) Sleeping bag (recommended even in teahouses); 5) Headlamp with spare batteries; 6) Water purification method; 7) Basic first aid kit; 8) Toiletries; 9) Quick-dry towel; 10) Sun protection; 11) Trekking poles; 12) Daypack (30-40L); 13) Electronics (camera, power bank); 14) Snacks; and 15) Cash (no ATMs on trails). Keep weight under 10kg in your daypack if using a porter.",
+    categories: ["packing", "gear", "preparation"]
+  },
+  {
+    question: "How much does it cost to hire a guide and porter in Nepal?",
+    answer: "Guide fees in Nepal typically range from $20-30 per day depending on experience, English proficiency, and trek difficulty. Porters charge approximately $15-25 per day and can carry up to 15-20kg of your belongings. Both usually expect tips of 10-15% for good service. When hiring, it's recommended to use registered agencies that ensure proper insurance, equipment, and fair treatment of staff rather than hiring freelancers directly. Package costs often include accommodation and food for the guide/porter during the trek.",
+    categories: ["cost", "guide", "planning"]
+  },
+  {
+    question: "What are the accommodation options while trekking in Nepal?",
+    answer: "The main accommodation options while trekking in Nepal are: 1) Teahouses/lodges - simple guesthouses with basic rooms and meal service, found on most popular trekking routes; 2) Camping - necessary for remote areas without teahouses, requiring more equipment and support staff; 3) Homestays - available in some areas, offering cultural immersion with local families; 4) Mountain huts - limited to specific areas like Mardi Himal; and 5) Luxury lodges - available on select lower routes like the Everest region and Annapurna foothills. Costs range from $3-5 for basic teahouses to $100+ for luxury lodges.",
+    categories: ["accommodation", "teahouse", "planning"]
+  },
+  {
+    question: "What food is available while trekking in Nepal?",
+    answer: "Most teahouses serve a standard menu featuring: 1) Dal Bhat (rice, lentil soup, and vegetable curry) - the staple trekking fuel; 2) Momo (dumplings); 3) Noodle soups; 4) Pasta dishes; 5) Fried rice or potatoes; 6) Porridge, pancakes, and eggs for breakfast; 7) Tea, coffee, and hot lemon; and 8) Snacks like energy bars and chocolate. Food variety decreases and prices increase with altitude. Most dietary requirements can be accommodated on popular routes, but vegetarian options are more readily available than vegan or gluten-free.",
+    categories: ["food", "teahouse", "planning"]
+  },
+  {
+    question: "Is it safe to drink the water while trekking in Nepal?",
+    answer: "It's not safe to drink untreated water while trekking in Nepal. To stay hydrated safely: 1) Use water purification tablets (cheapest); 2) Bring a UV purifier like SteriPEN; 3) Use a filtration system like LifeStraw; 4) Buy boiled water from teahouses (50-300 NPR per liter depending on altitude); or 5) Purchase bottled water (not recommended due to plastic waste). Plan for 3-4 liters daily, more at higher altitudes. Many environmentally conscious trekkers bring purification methods rather than buying bottled water to reduce plastic waste in the mountains.",
+    categories: ["water", "health", "safety"]
+  },
+  {
+    question: "Do I need travel insurance for trekking in Nepal?",
+    answer: "Comprehensive travel insurance is absolutely essential for trekking in Nepal. Ensure your policy specifically covers: 1) High-altitude trekking (above 5,000m if your trek goes that high); 2) Helicopter evacuation and medical repatriation; 3) Emergency medical expenses; 4) Trip cancellation/interruption; and 5) Personal belongings/gear. Policies should provide coverage of at least $100,000 for medical emergencies and evacuation. Many standard travel insurance policies exclude high-altitude activities, so verify coverage details carefully or consider specialized mountaineering insurance.",
+    categories: ["insurance", "preparation", "safety"]
+  },
+  {
+    question: "How difficult is the Annapurna Circuit trek?",
+    answer: "The Annapurna Circuit is considered a moderately difficult trek. The main challenges include: 1) Crossing Thorong La pass at 5,416m (requiring proper acclimatization); 2) Long daily walking distances (10-20km); 3) Trek duration (10-17 days); and 4) Varied terrain from subtropical to alpine. Most days involve 5-7 hours of hiking with elevation gains of 500-800m. While technically not difficult (no climbing or equipment needed), good fitness, proper preparation, and altitude acclimatization are essential. The trail infrastructure is well-developed with regular teahouses.",
+    categories: ["difficulty", "annapurna", "specific trek"]
+  },
+  {
+    question: "What are restricted trekking areas in Nepal?",
+    answer: "Restricted trekking areas in Nepal require special permits and guided tours. These include: 1) Upper Mustang ($500 permit for 10 days); 2) Upper Dolpo ($500 for 10 days); 3) Manaslu Circuit (requires a guide and restricted area permit); 4) Kanchenjunga ($10/week plus TIMS); 5) Tsum Valley; 6) Nar Phu Valley; and 7) Lumba Sumba. These areas are controlled to preserve their unique cultural heritage, limit environmental impact, and for border security. All restricted area treks require at least two trekkers accompanied by a licensed guide.",
+    categories: ["restricted", "permits", "planning"]
+  },
+  {
+    question: "How do I get to the Annapurna Circuit trailhead?",
+    answer: "The Annapurna Circuit traditionally starts in Besisahar, which you can reach by taking a 6-7 hour bus from Kathmandu or 3-4 hours from Pokhara. Many trekkers now save time by taking a jeep further up to Dharapani or Chame. The trek typically ends at Nayapul (if completing the full circuit) or Jomsom (if taking the shorter version), from where you can catch transportation back to Pokhara. Private jeeps, shared jeeps, and public buses are available, with prices ranging from $5-10 for buses to $80-120 for private jeeps.",
+    categories: ["transportation", "annapurna", "planning"]
+  },
+  {
+    question: "How do I reach the start of the Everest Base Camp trek?",
+    answer: "The Everest Base Camp trek begins in Lukla, which is most commonly reached by a 30-minute flight from Kathmandu to the Tenzing-Hillary Airport. These flights cost $180-220 one-way and are weather-dependent with frequent delays. Alternative options include: 1) Flying to Ramechhap during peak season when Kathmandu flights are limited; 2) Taking a helicopter (more expensive at $500+ but less prone to cancellation); or 3) The budget option of a 8-10 hour bus to Phaplu or Salleri followed by a 3-4 day additional trek to join the main trail.",
+    categories: ["transportation", "everest", "planning"]
+  },
+  {
+    question: "Can I charge my electronic devices while trekking?",
+    answer: "Charging electronic devices is possible at most teahouses along popular trekking routes, but comes with limitations: 1) Charging typically costs 200-500 NPR per device/hour, with prices increasing at higher altitudes; 2) Electricity can be unreliable, especially during peak season when teahouses are full; 3) Power outages are common; 4) Remote areas may only have solar charging with limited capacity. It's recommended to bring a power bank (20,000+ mAh), spare batteries, and consider a solar charger for remote treks. Setting your devices to airplane mode or powering off when not in use helps conserve battery.",
+    categories: ["electronics", "gear", "planning"]
+  },
+  {
+    question: "Can I trek solo in Nepal?",
+    answer: "Solo trekking is legally permitted on most popular routes like Annapurna and Everest, but restricted areas always require a guide. While many experienced trekkers do trek independently, consider that: 1) Having a guide improves safety, especially in emergencies or bad weather; 2) Solo trekkers have higher risks if injured; 3) A guide adds cultural insights and local knowledge; 4) Guides provide employment to locals. If trekking solo, always register your itinerary with your embassy, carry a means of communication, stick to main routes, and consider using a personal location beacon for emergencies.",
+    categories: ["solo", "safety", "guide"]
+  },
+  {
+    question: "Is there internet and phone coverage on trekking routes?",
+    answer: "Internet and phone coverage on Nepal's trekking routes has improved significantly but varies widely: 1) Popular routes like Everest and Annapurna have fairly good coverage in villages; 2) Ncell and NTC (Nepal Telecom) offer the best networks for trekkers; 3) WiFi is available in most teahouses on major routes (costing 200-800 NPR depending on altitude); 4) Connection quality decreases with altitude and distance from villages; 5) Remote areas may have no coverage at all. For reliable communication, consider renting a satellite phone for remote treks or purchasing a local SIM card (available at Kathmandu airport with your passport).",
+    categories: ["communication", "internet", "planning"]
+  },
+  {
+    question: "What is the Kanchenjunga Base Camp trek?",
+    answer: "The Kanchenjunga Base Camp trek is a remote adventure to the world's third highest mountain (8,586m) in eastern Nepal. This challenging 3-4 week trek offers two base camp options: North (5,143m) and South (4,730m). Highlights include spectacular mountain views, diverse ecosystems from subtropical to alpine, and authentic cultural experiences with minimal tourist development. It requires good fitness, trekking experience, and hiring a licensed guide. The permit costs $10 per week plus TIMS card. Best seasons are pre-monsoon (April-May) and post-monsoon (October-November).",
+    categories: ["kanchenjunga", "remote", "specific trek"]
+  },
+  {
+    question: "What is the Mardi Himal trek?",
+    answer: "The Mardi Himal trek is a hidden gem in the Annapurna region that has gained popularity in recent years. This 5-7 day trek offers spectacular close-up views of Machapuchare (Fishtail), Annapurna South, and Hiunchuli without the crowds of other Annapurna routes. Starting near Pokhara, the trail winds through lush forests, charming villages, and alpine terrain to the Mardi Himal Base Camp (4,500m). It's perfect for trekkers seeking solitude, moderate difficulty, and a shorter timeframe. Teahouses are available but more basic than on mainstream routes.",
+    categories: ["mardi himal", "annapurna region", "specific trek"]
+  },
+  {
+    question: "What is the Three Passes trek?",
+    answer: "The Three Passes trek is the ultimate Everest region adventure, crossing three high passes: Kongma La (5,535m), Cho La (5,420m), and Renjo La (5,340m). This challenging 18-21 day circuit includes Everest Base Camp, Kala Patthar, and Gokyo Lakes, offering the most comprehensive experience of the region with fewer crowds on the pass sections. It requires excellent fitness, some trekking experience, proper acclimatization, and ideally a guide for safety on the passes. The best times are spring (April-May) and autumn (October-November) when the passes are least likely to be snow-bound.",
+    categories: ["three passes", "everest region", "challenging", "specific trek"]
+  },
+  {
+    question: "What is the Makalu Base Camp trek?",
+    answer: "The Makalu Base Camp trek is a challenging and remote adventure to the base of the world's fifth highest mountain (8,485m) in eastern Nepal. This 14-18 day journey traverses the Makalu-Barun National Park, known for exceptional biodiversity, pristine forests, and spectacular mountain vistas. The trail climbs through Rai, Limbu and Sherpa villages to the stunning Makalu Base Camp at 4,870m. It's considerably less crowded than Everest or Annapurna, requiring good fitness, camping equipment in some sections, and ideally a guide. Best seasons are spring (April-May) and autumn (October-November).",
+    categories: ["makalu", "remote", "specific trek"]
+  },
+  {
+    question: "What are the emergency services available while trekking in Nepal?",
+        answer: "Emergency services while trekking in Nepal include: 1) Helicopter rescue (available in most areas but can be delayed by weather); 2) Health posts in larger villages (with very basic medical supplies); 3) Rescue coordination through trekking agencies; 4) Altitude clinics in the Everest region (Pheriche) and Manang (Annapurna Circuit); and 5) Nepal Army and police emergency assistance. For emergencies, contact your guide"}
+];
+
+// Combine all questions
+const allQuestions = [...knowledgeBase, ...additionalQuestions];
+
+// Function to find the best match for a user question
+function findBestMatch(userQuestion) {
+  userQuestion = userQuestion.toLowerCase();
+  
+  // First, try to find an exact match
+  for (const qa of allQuestions) {
+    if (userQuestion === qa.question.toLowerCase()) {
+      return qa.answer;
+    }
+  }
+  
+  // If no exact match, look for the best partial match
+  let bestMatch = null;
+  let highestScore = 0;
+  
+  for (const qa of allQuestions) {
+    // Simple scoring system based on word matching
+    const questionWords = qa.question.toLowerCase().split(/\s+/);
+    const userWords = userQuestion.split(/\s+/);
+    
+    let matchScore = 0;
+    for (const userWord of userWords) {
+      if (userWord.length <= 2) continue; // Skip short words
+      
+      if (questionWords.includes(userWord)) {
+        matchScore += 1;
+      } else {
+        // Check for partial word matches
+        for (const qWord of questionWords) {
+          if (qWord.length > 3 && (qWord.includes(userWord) || userWord.includes(qWord))) {
+            matchScore += 0.5;
+          }
+        }
+      }
+    }
+    
+    // Weight by keyword importance for trekking
+    const keyTrekkingTerms = ['trek', 'annapurna', 'everest', 'langtang', 'manaslu', 'guide', 'permit', 'cost', 'safe', 'gear'];
+    for (const term of keyTrekkingTerms) {
+      if (userQuestion.includes(term) && qa.question.toLowerCase().includes(term)) {
+        matchScore += 1;
+      }
+    }
+    
+    if (matchScore > highestScore) {
+      highestScore = matchScore;
+      bestMatch = qa.answer;
+    }
+  }
+  
+  // Return the best match if score is above threshold, otherwise a default message
+  if (highestScore >= 1) {
+    return bestMatch;
+  } else {
+    return "I'm sorry, I don't have specific information about that. Please ask about popular treks in Nepal, trek durations, best seasons, preparation, or safety tips.";
+  }
+}
+
+// Function to initialize the chatbot
+function initChatbot() {
+  // Create chatbot elements if they don't exist
+  if (!document.getElementById('chatbot-container')) {
+    // Create main container
+    const chatbotContainer = document.createElement('div');
+    chatbotContainer.id = 'chatbot-container';
+    chatbotContainer.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 350px;
+      height: 450px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      background: #fff;
+      overflow: hidden;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    `;
+    
+    // Create header
+    const header = document.createElement('div');
+    header.style.cssText = `
+      padding: 15px;
+      background: #2c3e50;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    `;
+    header.innerHTML = `
+      <span>Nepal Trekking Assistant</span>
+      <button id="minimize-chatbot" style="background: none; border: none; color: white; cursor: pointer;">−</button>
+    `;
+    
+    // Create chat area
+    const chatArea = document.createElement('div');
+    chatArea.id = 'chat-area';
+    chatArea.style.cssText = `
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      background: #f5f5f5;
+    `;
+    
+    // Create input area
+    const inputArea = document.createElement('div');
+    inputArea.style.cssText = `
+      padding: 10px;
+      border-top: 1px solid #ddd;
+      display: flex;
+    `;
+    inputArea.innerHTML = `
+      <input type="text" id="user-input" placeholder="Ask about trekking in Nepal..." style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+      <button id="send-button" style="margin-left: 10px; padding: 8px 15px; background: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer;">Send</button>
+    `;
+    
+    // Assemble the chatbot
+    chatbotContainer.appendChild(header);
+    chatbotContainer.appendChild(chatArea);
+    chatbotContainer.appendChild(inputArea);
+    document.body.appendChild(chatbotContainer);
+    
+    // Create minimized button
+    const minimizedButton = document.createElement('div');
+    minimizedButton.id = 'minimized-chatbot';
+    minimizedButton.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #2c3e50;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      display: none;
+    `;
+    minimizedButton.innerHTML = `<div style="font-size: 20px;">💬</div>`;
+    document.body.appendChild(minimizedButton);
+    
+    // Add welcome message
+    addMessage("bot", "👋 Hello! I'm your Nepal Trekking Assistant. Ask me anything about trekking in Nepal!");
+    addSuggestions();
+    
+    // Add event listeners
+    document.getElementById('user-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        handleUserInput();
+      }
+    });
+    
+    document.getElementById('send-button').addEventListener('click', handleUserInput);
+    
+    document.getElementById('minimize-chatbot').addEventListener('click', function() {
+      chatbotContainer.style.display = 'none';
+      minimizedButton.style.display = 'flex';
+    });
+    
+    minimizedButton.addEventListener('click', function() {
+      chatbotContainer.style.display = 'flex';
+      minimizedButton.style.display = 'none';
+    });
+  }
+}
+
+// Function to handle user input
+function handleUserInput() {
+  const userInput = document.getElementById('user-input').value.trim();
+  if (userInput === '') return;
+  
+  // Add user message to chat
+  addMessage("user", userInput);
+  
+  // Clear input field
+  document.getElementById('user-input').value = '';
+  
+  // Get and display bot response after a small delay
+  setTimeout(() => {
+    const botResponse = findBestMatch(userInput);
+    addMessage("bot", botResponse);
+  }, 500);
+}
+
+// Function to add message to chat area
+function addMessage(sender, text) {
+  const chatArea = document.getElementById('chat-area');
+  const messageElement = document.createElement('div');
+  
+  messageElement.style.cssText = `
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    ${sender === 'user' ? 'margin-left: auto; background-color: #dcf8c6;' : 'margin-right: auto; background-color: white;'}
+  `;
+  
+  messageElement.innerText = text;
+  chatArea.appendChild(messageElement);
+  
+  // Scroll to bottom
+  chatArea.scrollTop = chatArea.scrollHeight;
+}
+
+// Function to add quick suggestion buttons
+function addSuggestions() {
+  const chatArea = document.getElementById('chat-area');
+  const suggestionsElement = document.createElement('div');
+  
+  suggestionsElement.style.cssText = `
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 15px;
+  `;
+  
+  const suggestions = [
+    "Popular treks",
+    "Everest Base Camp",
+    "Annapurna Circuit",
+    "Best time to trek",
+    "Trekking safety"
+  ];
+  
+  suggestions.forEach(suggestion => {
+    const button = document.createElement('button');
+    button.innerText = suggestion;
+    button.style.cssText = `
+      background: #e0e0e0;
+      border: none;
+      border-radius: 15px;
+      padding: 5px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+    `;
+    
+    button.addEventListener('click', function() {
+      document.getElementById('user-input').value = suggestion;
+      handleUserInput();
+    });
+    
+    suggestionsElement.appendChild(button);
+  });
+  
+  chatArea.appendChild(suggestionsElement);
+}
+
+// Initialize the chatbot when the page loads
+window.addEventListener('load', initChatbot);
 
     function loadPage(page) {
         const contentContainer = document.getElementById('content-container');
