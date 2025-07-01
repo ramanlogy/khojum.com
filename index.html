@@ -2174,22 +2174,24 @@ document.addEventListener('DOMContentLoaded', function() {
         // Sample business data
         const businesses = [
          
+   
         {
-    id: 0, // New ID for the protest event
-    title: "Protest to Bring Back Kulman Ghising",
-    description: "Join us in a protest to bring back Kulman Ghising as the Executive Director of the Nepal Electricity Authority (NEA). After his recent dismissal, we stand together to demand his reinstatement and support his leadership in the energy sector.",
-    date: "March 25, 2025", // Date of the event
-    time: "12:00 AM", // Time of the event
-    location: "New Baneshowr", // Location can be specified if needed
-    price: "Free", // Price can be updated later
-    image: "assets/kulman.png", // Add the appropriate image path
-    category: "Protest", // Tags for filtering
-    url: "https://www.aninews.in/news/world/asia/student-union-burns-effigy-of-nepali-minister-protesting-deposition-of-electricity-authority-chief20250325122015/",
-    popularity: 10, // Adjust popularity as needed
-    highlights: ['Join us to support Kulman Ghising!', 'Stand for good governance in the energy sector.'] // Special highlights
-},
-        {
-        id: 1, // New ID for the Jameson Patan Fest 2025 event
+        id: 1, // New ID for the Shark Tank Nepal event
+        title: "Shark Tank Nepal - Season 1",
+        description: "Shark tank is for the businesses that are already generating revenue and seeking investment to scale up their business. The entrepreneurs need to present their data related to their business seeking investment in return for a certain percentage of the business's equity or debt.",
+        date: "July 2, 2025", // Updated date of the event
+        time: "9:00 PM", // Updated time of the event
+        location: "Himalayan TV HD", // Venue
+        price: "Every Wed & Thurs | 9 PM", // Price can be updated later if needed
+        image: "assets/sharktank.png", // Add the appropriate image path
+        category: "Show", // Updated category
+        url: "https://www.youtube.com/@himalayatvnepal", // Example URL for more information
+        buttonText: "Watch on YouTube Live", // New property for button text
+        buttonUrl: "https://www.youtube.com/@himalayatvnepal", // New property for button URL
+        popularity: 10 // Adjust popularity as needed
+        }, 
+             {
+        id: 2, // New ID for the Jameson Patan Fest 2025 event
         title: "Jameson Patan Fest 2025",
         description: "Jameson Patan Fest 2025 is set to be one of the biggest events in Nepal this year! If you're searching for upcoming events in Nepal, concerts near me, or festivals in Kathmandu, this is where you need to be! On April 5, 2025, from 2:00 PM onwards, Chyasal Stadium will transform into a high-energy celebration of music, culture, and entertainment, featuring some of Nepal's most electrifying performers!\n\nOur first headline act is here—John & The Locals! 🔥 Known for their unmatched energy and electrifying live performances, they're ready to take Jameson Patan Fest to the next level! But this is just the beginning—more powerhouse artists are set to be revealed soon! Stay tuned as we build up to an epic music festival that will keep you on your feet all night long!",
         date: "April 5, 2025", // Date of the event
@@ -2253,7 +2255,7 @@ document.addEventListener('DOMContentLoaded', function() {
     image: "assets/chinaboy.png", // Add the appropriate image path
     category: "Sports", // Tags for filtering
     url: "https://www.bravecf.com/events/93", // Example URL for more information
-    popularity: 8,// Adjust popularity as needed
+    popularity: 8,// Adjust popularity as needed,
     highlights: ['Big news for Nepali MMA Fans.']
 },
 
@@ -2346,7 +2348,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${event.price}
                         </div>
                         <a href="${event.url}" class="event-button" ">
-                       Buy Tickets <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                       Watch on YouTube<i class="fas fa-external-link-alt" aria-hidden="true"></i>
                             <span class="sr-only">(opens in a new tab)</span>
                         </a>
                     </div>
