@@ -222,56 +222,66 @@
         }
         
         .filter-bar {
-            background-color: white;
-            padding: 15px 0;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 10;
+            background-color: #f9f9f9; /* Light background for contrast */
+            padding: 10px; /* Reduced padding */
+            border-radius: 5px; /* Slightly rounded corners */
+            box-shadow: none; /* No shadow for a flat design */
+            margin-bottom: 20px; /* Space below the filter bar */
         }
         
-        .filter-buttons {
+        .filter-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
+            justify-content: space-between; /* Space between filters and dropdown */
+            align-items: center; /* Center items vertically */
+        }
+        
+        .filter-options {
+            display: flex;
+            gap: 5px; /* Reduced space between filter buttons */
         }
         
         .filter-button {
-            background-color: transparent;
-            border: 1px solid var(--nepal-red);
-            color: var(--nepal-red);
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            background-color: transparent; /* Transparent background */
+            border: 1px solid #dc143c; /* Border color */
+            color: #dc143c; /* Text color */
+            padding: 8px 12px; /* Padding for buttons */
+            border-radius: 3px; /* Slightly rounded buttons */
+            font-family: 'Mukta', sans-serif; /* Font family */
+            font-weight: 500; /* Font weight */
+            font-size: 0.85rem; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.2s, color 0.2s; /* Smooth transition */
         }
         
-        .filter-button:hover, .filter-button.active {
-            background-color: var(--nepal-red);
-            color: white;
+        .filter-button:hover {
+            background-color: #dc143c; /* Background color on hover */
+            color: white; /* Text color on hover */
+        }
+        
+        .filter-button.active {
+            background-color: #dc143c; /* Active button color */
+            color: white; /* Text color for active button */
         }
         
         .sort-dropdown {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
+            margin-left: 10px; /* Space between filters and sort dropdown */
         }
         
         .sort-dropdown select {
-            padding: 8px 16px;
-            border: 1px solid var(--nepal-red);
-            border-radius: 100px;
-            background-color: transparent;
-            color: var(--nepal-red);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
+            padding: 8px; /* Padding for dropdown */
+            border: 1px solid #dc143c; /* Border color */
+            border-radius: 3px; /* Rounded corners */
+            background-color: white; /* White background */
+            color: #dc143c; /* Text color */
+            font-family: 'Mukta', sans-serif; /* Font family */
+            font-weight: 500; /* Font weight */
+            font-size: 0.85rem; /* Font size */
+            cursor: pointer; /* Pointer cursor */
+            transition: border-color 0.2s; /* Smooth transition */
+        }
+        
+        .sort-dropdown select:hover {
+            border-color: #b01030; /* Change border color on hover */
         }
         
         .events-grid {
@@ -533,16 +543,21 @@
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
         }
         
         .modal-content {
-            background-color: #fefefe;
+            background-color: white;
             margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
+            width: 90%; /* Responsive width */
+            max-width: 500px; /* Max width for larger screens */
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
+            position: relative; /* For positioning close button */
         }
         
         .close-button {
@@ -550,13 +565,49 @@
             float: right;
             font-size: 28px;
             font-weight: bold;
+            cursor: pointer;
         }
         
-        .close-button:hover,
-        .close-button:focus {
+        .close-button:hover {
             color: black;
-            text-decoration: none;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--nepal-red);
+        }
+        
+        .modal-event-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+        
+        .share-options {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 10px; /* Space between buttons */
+        }
+        
+        .share-button {
+            background-color: var(--nepal-red);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
             cursor: pointer;
+            display: flex;
+            align-items: center; /* Center icon and text */
+            transition: background-color 0.3s;
+        }
+        
+        .share-button:hover {
+            background-color: #b01030; /* Darker red on hover */
+        }
+        
+        .share-button i {
+            margin-right: 5px; /* Space between icon and text */
         }
         
         .countdown {
@@ -2190,6 +2241,21 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonUrl: "https://example.com/artha-run-club/join", // URL for more information
         popularity: 10 // Adjust popularity as needed
         }, 
+        {
+        id: 5, // New ID for the Tokha Saturday Mela event
+        title: "Tokha Saturday Mela",
+        description: "Join us every Saturday for the Tokha Mela near Ganesh Temple. Enjoy a food hunt featuring Newari cuisine. Tips: Visit at 4 PM before the food runs out! Enjoy Saturday with your friends and family and immerse yourself in the culture.",
+        date: "July 5,2025 ", // Date of the event
+        time: "3:00 PM - 7:00 PM", // Time of the event
+        location: "Tokha, near Ganesh Temple", // Venue
+        price: "Every Saturday", // Price of the event
+        image: "assets/tokhamela.png", // Add the appropriate image path
+        category: "Cultural Event", // Category of the event
+        url: "https://vt.tiktok.com/ZSB2ohNDg/", // Example URL for more information
+        buttonText: "Join the Mela", // Button text
+        buttonUrl: "https://example.com/tokha-saturday-mela/join", // URL for more information
+        popularity: 10 // Adjust popularity as needed
+        },
         // ... other events
     ];
         
@@ -2216,10 +2282,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const card = document.createElement('div');
             card.className = 'event-card';
             const categories = Array.isArray(event.category) ? event.category.join(',') : event.category;
-            card.setAttribute('data-category', categories);
+            card.setAttribute('data-category', categories.trim()); // Ensure no extra spaces
             
-            const imageUrl = event.image || "assets/football-finals.png"; // Example image
+            const imageUrl = event.image || "assets/default-image.jpg"; // Example image
             
+            // Wrap the entire card content in an anchor tag
             card.innerHTML = `
                 <div class="event-image" style="background-image: url('${imageUrl}')">
                     <div class="event-category">${categories}</div>
@@ -2235,33 +2302,24 @@ document.addEventListener('DOMContentLoaded', function() {
                             <i class="far fa-clock"></i>
                             <span>${event.time}</span>
                         </div>
-                         <div class="event-location">
-                        <i class="fas fa-map-marker-alt nepal-red"></i> <!-- Add the nepal-red class here -->
-                        <span>${event.location}</span>
                     </div>
+                    <div class="event-meta">
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${event.location}</span>
+                        </div>
                     </div>
-                   
                     <p class="event-description">${event.description}</p>
                     <div class="event-footer">
                         <div class="event-price-tag${event.price === 'Free' ? ' free' : ''}">
                             ${event.price}
                         </div>
-                        <a href="${event.url}" class="event-button" ">
-                       View Post<i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                            <span class="sr-only">(opens in a new tab)</span>
-                        </a>
-                    </div>
-                    <div class="countdown-container">
-                        <div class="event-time-counter" id="countdown-${event.id}"></div>
+                        <button class="event-button" onclick="openShareModal('${event.title}', '${event.url}')">
+                             <i class="fas fa-share" aria-hidden="true"></i>
+                        </button>
                     </div>
                 </div>
             `;
-               
-
-            // Add click event to open modal
-            card.addEventListener('click', () => {
-                openModal(event);
-            });
 
             return card;
         }
@@ -3630,7 +3688,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function isEventOngoing(event) {
-        const currentDate = new Date();
+        const currentDate = new Date(); 
         const [startDateStr, endDateStr] = event.date.split(' to ');
         const startDate = new Date(startDateStr);
         const endDate = new Date(endDateStr);
@@ -3661,6 +3719,38 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('expired-button').addEventListener('click', () => {
         window.location.href = 'expired.html'; // Redirect to expired.html
     });
+
+    function openShareModal(title, url) {
+        document.getElementById('share-event-title').textContent = title;
+        document.getElementById('copyLinkButton').setAttribute('data-url', url); // Store the URL in the button
+        document.getElementById('shareModal').style.display = 'flex'; // Show modal
+    }
+
+    function closeShareModal() {
+        document.getElementById('shareModal').style.display = 'none'; // Hide modal
+    }
+
+    function copyLink() {
+        const url = document.getElementById('copyLinkButton').getAttribute('data-url');
+        navigator.clipboard.writeText(url).then(() => {
+            alert('Link copied to clipboard!'); // Notify user
+        });
+    }
     </script>
+
+    <!-- Share Modal Structure -->
+    <div id="shareModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeShareModal()">&times;</span>
+            <h2>Share this event</h2>
+            <p id="share-event-title"></p>
+            <div class="share-options">
+                <button onclick="copyLink()" id="copyLinkButton" class="flex items-center">
+                    <i class="fas fa-link mr-2"></i> <!-- Chain icon -->
+                    Copy Link
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
