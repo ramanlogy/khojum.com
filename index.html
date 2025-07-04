@@ -71,857 +71,177 @@
             --transition: all 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* GENERAL STYLES */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-primary); line-height: 1.6; color: var(--text-primary); background-color: var(--bg-main); padding-top: var(--header-height); }
+        .container { width: 90%; max-width: 1280px; margin: 0 auto; padding: 0 15px; }
 
-        body {
-            font-family: var(--font-primary);
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-main);
-            padding-top: var(--header-height);
-        }
+        /* HEADER */
+        header.main-header { background-color: rgba(255, 255, 255, 0.95); height: var(--header-height); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; box-shadow: var(--shadow-sm); display: flex; align-items: center; backdrop-filter: blur(10px); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+        .logo span { color: var(--brand-red); }
 
-        .container {
-            width: 90%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+        /* HEADER POPUP */
+        .header-popup { position: absolute; right: 20px; top: 15px; background-color: #1e293b; padding: 8px 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); z-index: 1001; display: flex; align-items: center; }
+        .close-button { background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; margin-right: 10px; padding: 0 5px; }
+        .header-popup .button { padding: 5px 10px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9rem; transition: background-color 0.3s; }
+        .header-popup .button:hover { background-color: #1d4ed8; }
 
-        /* ENHANCED HEADER DESIGN */
-        header.main-header {
-            background-color: var(--bg-card);
-            height: var(--header-height);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.95);
-        }
+        /* HERO SECTION */
+        .hero-section { text-align: center; padding: 60px 0 40px; }
+        .hero-section h1 { font-family: var(--font-display); font-size: 3rem; margin-bottom: 16px; background: linear-gradient(135deg, var(--text-primary) 0%, var(--brand-red) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-section p { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
         
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-
-        .logo {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .logo span {
-            color: var(--brand-red);
-        }
-
-        .header-center {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background-color: var(--bg-main);
-            border-radius: 50px;
-            padding: 8px;
-            border: 1px solid var(--border-color);
-            flex-grow: 1;
-            max-width: 600px;
-            transition: var(--transition);
-        }
-
-        .header-center:focus-within {
-            border-color: var(--brand-red);
-            box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-        }
-
-        .search-bar i {
-            color: var(--text-secondary);
-            margin: 0 10px;
-        }
-
-        .search-bar input {
-            border: none;
-            outline: none;
-            background: transparent;
-            width: 100%;
-            font-size: 1rem;
-        }
-
-        .search-bar input::placeholder {
-            color: var(--text-light);
-        }
-
-        .location-filter select {
-            border: none;
-            outline: none;
-            background: transparent;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            border-left: 1px solid var(--border-color);
-            padding-left: 15px;
-            cursor: pointer;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .header-right a {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .header-right a:hover {
-            color: var(--brand-red);
-            transform: scale(1.1);
-        }
-
-        .login-btn {
-            background-color: var(--brand-red);
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .login-btn:hover {
-            background-color: var(--brand-red-dark);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        /* IMPROVED HERO SECTION */
-        .hero-section {
-            text-align: center;
-            padding: 60px 0 40px;
-            background: linear-gradient(135deg, var(--bg-main) 0%, #ffffff 100%);
-        }
-
-        .hero-section h1 {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--brand-red) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-section p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-        
-        /* ENHANCED FILTERING SYSTEM */
-        .filter-section {
-            padding: 30px 0;
-            background-color: var(--bg-card);
-            margin: 0 -15px 30px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .filter-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            align-items: center;
-            justify-content: center;
-            padding: 0 30px;
-        }
-
-        .filter-button {
-            background-color: transparent;
-            border: 2px solid var(--border-color);
-            color: var(--text-secondary);
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .filter-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .filter-button:hover::before {
-            left: 100%;
-        }
-        
-        .filter-button:hover {
-            border-color: var(--brand-red);
-            color: var(--brand-red);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .filter-button.active {
-            background-color: var(--brand-red);
-            color: white;
-            border-color: var(--brand-red);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* ENHANCED EVENTS GRID */
-        .events-section {
-            margin-bottom: 60px;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .results-count {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        /* REDESIGNED EVENT CARDS */
-        .event-card {
-            background-color: var(--bg-card);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            border: 1px solid transparent;
-        }
-
-        .event-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--brand-red);
-        }
-        
-        .event-image-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            overflow: hidden;
-        }
-        
-        .event-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: var(--transition);
-        }
-
-        .event-card:hover .event-image {
-            transform: scale(1.05);
-        }
-
-        .image-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            pointer-events: none;
-        }
-
-        .card-top-icons {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            display: flex;
-            gap: 10px;
-            z-index: 2;
-        }
-
-        .save-btn, .share-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.9);
-            color: var(--text-secondary);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        .save-btn:hover, .share-btn:hover {
-            background-color: var(--brand-red);
-            color: white;
-            transform: scale(1.1);
-        }
-        
-        .save-btn.saved {
-            background-color: var(--brand-red);
-            color: white;
-        }
-        
-        .ticket-status {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            z-index: 2;
-        }
-        
-        .ticket-status.available { 
-            background-color: var(--success-color);
-            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
-        }
-        .ticket-status.limited { 
-            background-color: var(--warning-color); 
-            color: var(--text-primary);
-            box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
-        }
-        .ticket-status.sold-out { 
-            background-color: var(--danger-color);
-            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
-        }
-
-        .event-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .event-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            line-height: 1.3;
-            color: var(--text-primary);
-        }
-
-        .event-meta-grid {
-            display: grid;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .event-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-        
-        .event-meta-item i {
-            color: var(--brand-red);
-            width: 18px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .event-meta-item .highlight {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .verified-badge {
-            color: var(--brand-blue);
-            margin-left: 5px;
-        }
-
-        .event-tags {
-            margin-top: auto;
-            padding-top: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .event-tag {
-            background-color: var(--bg-main);
-            color: var(--text-secondary);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .event-tag.primary-cat {
-            background-color: var(--brand-red);
-            color: white;
-            border-color: var(--brand-red);
-        }
-
-        .event-tag:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .event-footer {
-            padding: 20px 25px;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(248, 249, 250, 0.5);
-        }
-
-        .event-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--brand-blue);
-        }
-
-        .event-price .free {
-            color: var(--success-color);
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .action-btn {
-            border: none;
-            padding: 10px 16px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .action-btn.secondary {
-            background-color: var(--bg-main);
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-        }
-        
-        .action-btn.secondary:hover {
-            background-color: var(--text-secondary);
-            color: white;
-            transform: translateY(-1px);
-        }
-        
-        .action-btn.primary {
-            background-color: var(--brand-red);
-            color: white;
-            box-shadow: 0 2px 8px rgba(200, 16, 46, 0.3);
-        }
-
-        .action-btn.primary:hover {
-            background-color: var(--brand-red-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(200, 16, 46, 0.4);
-        }
-
-        /* LOADING STATES */
-        .skeleton {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        .skeleton-card {
-            background-color: var(--bg-card);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            height: 400px;
-        }
-
-        .skeleton-image {
-            height: 200px;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-
-        /* EMPTY STATE */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-secondary);
-        }
-
-        .empty-state i {
-            font-size: 4rem;
-            color: var(--border-color);
-            margin-bottom: 20px;
-        }
-
-        .empty-state h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-        }
-
-        /* MOBILE BOTTOM NAVIGATION */
-        .bottom-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--bg-card);
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.95);
-        }
-
-        .bottom-nav-container {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 12px 10px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            flex-grow: 1;
-            transition: var(--transition);
-        }
-
-        .nav-item i {
-            font-size: 20px;
-            margin-bottom: 4px;
-        }
-
-        .nav-item span {
-            font-size: 11px;
-            font-weight: 500;
-        }
-
-        .nav-item.active {
-            color: var(--brand-red);
-        }
-
-        .nav-item:hover {
-            color: var(--brand-red);
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--brand-red) 100%);
-            color: white;
-            margin-top: 60px;
-        }
-
-        .footer-links a {
-            margin: 0 15px;
-            color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            transform: scale(1.2);
-            opacity: 0.8;
-        }
-
-        .copyright {
-            margin-top: 20px;
-            opacity: 0.8;
-        }
+        /* FILTERS */
+        .filter-section { padding: 30px 0; background-color: var(--bg-card); border-radius: var(--border-radius); box-shadow: var(--shadow-sm); }
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; }
+        .filter-button { background-color: transparent; border: 2px solid var(--border-color); color: var(--text-secondary); padding: 12px 24px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 0.9rem; }
+        .filter-button:hover, .filter-button.active { border-color: var(--brand-red); color: white; background-color: var(--brand-red); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+        /* EVENTS GRID & CARDS */
+        .events-section { margin-bottom: 60px; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .section-title { font-size: 1.5rem; font-weight: 700; }
+        .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .event-card { background-color: var(--bg-card); border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column; position: relative; border: 1px solid transparent; }
+        .event-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--brand-red); }
+        .event-image-container { position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; }
+        .event-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.3s ease; }
+        .event-card:hover .event-image { transform: scale(1.05); }
+        .image-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
+        .card-top-icons { position: absolute; top: 15px; right: 15px; display: flex; gap: 10px; z-index: 2; }
+        .save-btn, .share-btn { width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255,255,255,0.9); color: var(--text-secondary); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .save-btn:hover, .share-btn:hover, .save-btn.saved { background-color: var(--brand-red); color: white; }
+        .ticket-status { position: absolute; top: 15px; left: 15px; padding: 8px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; color: white; text-transform: uppercase; z-index: 2; }
+        .ticket-status.available { background-color: var(--success-color); } .ticket-status.limited { background-color: var(--warning-color); color: var(--text-primary); } .ticket-status.sold-out { background-color: var(--danger-color); }
+        .event-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .event-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 15px; }
+        .event-meta-grid { display: grid; gap: 12px; margin-bottom: 20px; }
+        .event-meta-item { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-secondary); }
+        .event-meta-item i { color: var(--brand-red); width: 18px; text-align: center; }
+        .event-meta-item .highlight { color: var(--text-primary); font-weight: 600; }
+        .verified-badge { color: var(--brand-blue); margin-left: 5px; }
+        .event-tags { margin-top: auto; padding-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
+        .event-tag { background-color: var(--bg-main); color: var(--text-secondary); padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
+        .event-tag.primary-cat { background-color: var(--brand-red); color: white; border-color: var(--brand-red); }
+        .event-footer { padding: 20px 25px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+        .event-price { font-size: 1.3rem; font-weight: 700; color: var(--brand-blue); } .event-price .free { color: var(--success-color); }
+        .action-btn { border: none; padding: 10px 16px; border-radius: 25px; font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 6px; }
+        .action-btn.secondary { background-color: var(--bg-main); color: var(--text-secondary); border: 1px solid var(--border-color); }
+        .action-btn.primary { background-color: var(--brand-red); color: white; }
+        .action-btn:hover { transform: translateY(-1px); }
+
+        /* SKELETON & EMPTY STATE */
+        .skeleton-card { background-color: var(--bg-card); border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow-sm); height: 450px; }
+        .skeleton-image { height: 220px; } .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
+        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); } .empty-state i { font-size: 4rem; color: var(--border-color); margin-bottom: 20px; }
+
+        /* EVENT DETAIL VIEW */
+        #event-detail-view { padding: 40px 0; }
+        .detail-card { background: var(--bg-card); border-radius: var(--border-radius); box-shadow: var(--shadow-lg); overflow: hidden; }
+        .detail-header { position: relative; height: 400px; }
+        .detail-image { width: 100%; height: 100%; object-fit: cover; }
+        .detail-header-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 20%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; }
+        .detail-title { font-size: 2.5rem; font-weight: 700; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); margin-bottom: 10px; }
+        .detail-venue { font-size: 1.2rem; color: #eee; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
+        .detail-body { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 40px; }
+        .detail-main-content h3 { font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--brand-red); padding-bottom: 10px; }
+        .detail-description p { margin-bottom: 1.2em; color: var(--text-secondary); line-height: 1.8; }
+        .detail-sidebar { background: var(--bg-main); padding: 30px; border-radius: var(--border-radius); }
+        .detail-meta-list { list-style: none; }
+        .detail-meta-list li { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; font-size: 1rem; }
+        .detail-meta-list i { color: var(--brand-red); font-size: 1.1rem; margin-top: 4px; width: 20px; }
+        .detail-sidebar .action-btn.primary { width: 100%; padding: 15px; font-size: 1.1rem; justify-content: center; margin-top: 20px; }
+        .back-to-events-btn { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; background: transparent; border: 2px solid var(--border-color); padding: 10px 20px; border-radius: 50px; font-weight: 600; color: var(--text-secondary); cursor: pointer; transition: var(--transition); }
+        .back-to-events-btn:hover { background: var(--bg-main); color: var(--text-primary); border-color: var(--text-secondary); }
+
+        /* BOTTOM NAV & FOOTER */
+        .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.95); box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 1000; backdrop-filter: blur(10px); }
+        .bottom-nav-container { display: flex; justify-content: space-around; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; padding: 12px 10px; color: var(--text-secondary); text-decoration: none; flex-grow: 1; }
+        .nav-item i { font-size: 20px; margin-bottom: 4px; } .nav-item span { font-size: 11px; } .nav-item.active, .nav-item:hover { color: var(--brand-red); }
+        footer { text-align: center; padding: 50px 0; background: linear-gradient(135deg, var(--text-primary) 0%, var(--brand-red) 100%); color: white; margin-top: 60px; }
+        .footer-links a { margin: 0 15px; color: white; font-size: 1.5rem; transition: var(--transition); } .footer-links a:hover { transform: scale(1.2); opacity: 0.8; }
+        .copyright { margin-top: 20px; opacity: 0.8; }
 
         /* RESPONSIVE DESIGN */
-        @media (max-width: 1024px) {
-            .events-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 25px;
-            }
-        }
-
         @media (max-width: 768px) {
-            body {
-                padding-bottom: 80px;
-            }
-            
-            .header-center {
-                display: none;
-            }
-            
-            .header-right .login-btn, .header-right a:not(.login-btn) {
-                display: none;
-            }
-            
-            .bottom-nav {
-                display: block;
-            }
-            
-            .hero-section h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-section p {
-                font-size: 1.1rem;
-            }
-            
-            .filter-bar {
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding: 0 15px;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-            
-            .filter-bar::-webkit-scrollbar {
-                display: none;
-            }
-            
-            .filter-button {
-                white-space: nowrap;
-                flex-shrink: 0;
-            }
-            
-            .events-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
+            body { padding-bottom: 80px; }
+            .bottom-nav { display: block; }
+            .hero-section h1 { font-size: 2.2rem; }
+            .filter-bar { justify-content: flex-start; overflow-x: auto; padding: 0 15px; scrollbar-width: none; -ms-overflow-style: none; }
+            .filter-bar::-webkit-scrollbar { display: none; }
+            .filter-button { white-space: nowrap; flex-shrink: 0; }
+            .events-grid { grid-template-columns: 1fr; gap: 20px; }
+            .detail-body { grid-template-columns: 1fr; padding: 25px; }
+            .detail-title { font-size: 2rem; }
         }
-
-        @media (max-width: 480px) {
-            .container {
-                width: 95%;
-                padding: 0 10px;
-            }
-            
-            .event-content {
-                padding: 20px;
-            }
-            
-            .event-footer {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 15px;
-                align-items: stretch;
-            }
-            
-            .card-actions {
-                justify-content: space-between;
-            }
-            
-        }
-
-        .banner {
-            background-color: #1e293b; /* Dark background for the banner */
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 20px; /* Space above the banner */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-        }
-
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #2563eb; /* Blue 600 */
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2rem; /* Larger font size */
-            transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
-        }
-
-        .button:hover {
-            background-color: #1d4ed8; /* Darker blue on hover */
-            transform: translateY(-2px); /* Slight lift effect */
-        }
-
-        .header-popup {
-            position: absolute; /* Position it relative to the header */
-            right: 20px; /* Distance from the right edge */
-            top: 20px; /* Distance from the top edge */
-            background-color: #1e293b; /* Dark background for the popup */
-            padding: 10px 15px; /* Smaller padding */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-            z-index: 1000; /* Ensure it appears above other content */
-            display: flex; /* Flexbox for alignment */
-            align-items: center; /* Center items vertically */
-        }
-
-        .close-button {
-            background: none; /* No background */
-            border: none; /* No border */
-            color: white; /* White color for the close icon */
-            font-size: 1.2rem; /* Size of the close icon */
-            cursor: pointer; /* Pointer cursor on hover */
-            margin-right: 10px; /* Space between close button and text */
-        }
-
-        .button {
-            display: inline-block;
-            padding: 5px 10px; /* Smaller padding */
-            background-color: #2563eb; /* Blue 600 */
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.9rem; /* Smaller font size */
-            transition: background-color 0.3s; /* Smooth transition */
-        }
-
-        .button:hover {
-            background-color: #1d4ed8; /* Darker blue on hover */
-        }
-
     </style>
 </head>
 <body>
-    <header>
-        <header class="main-header">
-            <div class="container header-content">
-                <a href="/" class="logo"><span>खो</span>जुम</a>
-        <!-- Small Popup Banner -->
-        <div class="header-popup" id="headerPopup">
-            <button class="close-button" id="closePopup">&times;</button> <!-- Close button -->
-            <a href="sharktank.html" class="button">Track Shark Tank Investments</a>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="/" class="logo"><span>खो</span>जुम</a>
+            <div class="header-popup" id="headerPopup">
+                <button class="close-button" id="closePopup">×</button>
+                <a href="sharktank.html" class="button">Track Shark Tank</a>
+            </div>
         </div>
     </header>
+
     <main class="container">
-        <section class="hero-section">
-            <h1>What are you doing this week?</h1>
-            <p>Discover the best events happening in Nepal. Your next great experience is just a click away.</p>
-        </section>
-        
-        <div class="filter-section">
-            <div class="filter-bar">
-                <button class="filter-button active" data-filter="all">All Events</button>
-                <button class="filter-button" data-filter="music">🎵 Music</button>
-                <button class="filter-button" data-filter="art">🎨 Art</button>
-                <button class="filter-button" data-filter="business">💼 Business</button>
-                <button class="filter-button" data-filter="food">🍽️ Food</button>
-                <button class="filter-button" data-filter="health">💪 Health</button>
-                <button class="filter-button" data-filter="weekend">This Weekend</button>
-                <button class="filter-button" data-filter="free">Free Events</button>
+        <!-- Main Grid View (shown by default) -->
+        <div id="main-grid-view">
+            <section class="hero-section">
+                <h1>What are you doing this week?</h1>
+                <p>Discover the best events happening in Nepal. Your next great experience is just a click away.</p>
+            </section>
+            
+            <div class="filter-section">
+                <div class="filter-bar">
+                    <button class="filter-button active" data-filter="all">All Events</button>
+                    <button class="filter-button" data-filter="music">🎵 Music</button>
+                    <button class="filter-button" data-filter="art">🎨 Art</button>
+                    <button class="filter-button" data-filter="business">💼 Business</button>
+                    <button class="filter-button" data-filter="food">🍽️ Food</button>
+                    <button class="filter-button" data-filter="health">💪 Health</button>
+                    <button class="filter-button" data-filter="weekend">This Weekend</button>
+                    <button class="filter-button" data-filter="free">Free Events</button>
+                </div>
             </div>
+
+            <section class="events-section">
+                <div class="section-header">
+                    <h2 class="section-title">Upcoming Events</h2>
+                    <div class="results-count" id="results-count">Showing all events</div>
+                </div>
+                
+                <div class="events-grid" id="events-container">
+                    <!-- Event cards are rendered here by JS -->
+                </div>
+                
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>No events found</h3>
+                    <p>Try adjusting your filters or search terms</p>
+                </div>
+            </section>
         </div>
 
-        <section class="events-section">
-            <div class="section-header">
-                <h2 class="section-title">Upcoming Events</h2>
-                <div class="results-count" id="results-count">Showing all events</div>
-            </div>
-            
-            <div class="events-grid" id="events-container">
-                <!-- Loading skeletons will be shown initially -->
-            </div>
-            
-            <div class="empty-state" id="empty-state" style="display: none;">
-                <i class="fas fa-calendar-times"></i>
-                <h3>No events found</h3>
-                <p>Try adjusting your filters or search terms</p>
-            </div>
-        </section>
+        <!-- Event Detail View (hidden by default) -->
+        <div id="event-detail-view" style="display: none;">
+            <!-- Content for single event is rendered here by JS -->
+        </div>
     </main>
 
     <nav class="bottom-nav">
         <div class="bottom-nav-container">
-            <a href="#" class="nav-item active">
-                <i class="fas fa-compass"></i>
-                <span>Discover</span>
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fas fa-search"></i>
-                <span>Search</span>
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fas fa-heart"></i>
-                <span>Saved</span>
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fas fa-user-circle"></i>
-                <span>Profile</span>
-            </a>
+            <a href="#" class="nav-item active"><i class="fas fa-compass"></i><span>Discover</span></a>
+            <a href="#" class="nav-item"><i class="fas fa-search"></i><span>Search</span></a>
+            <a href="#" class="nav-item"><i class="fas fa-heart"></i><span>Saved</span></a>
+            <a href="#" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
         </div>
     </nav>
 
@@ -937,122 +257,158 @@
         </div>
     </footer>
     
-
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Enhanced event data with richer information
         const eventsData = [
-            
-        
-  {
-    id: 1,
-    title: "Shark Tank Nepal - Season 1",
-    date: "2025-07-02",
-    time: "9:00 PM",
-    venue: "Himalayan TV HD",
-    price: "Free",
-    image: "/assets/sharktank.png",
-    category: "business",
-    tags: ["TV Show", "Startups", "Investment"],
-    organizer: { name: "Himalayan TV", verified: true },
-    availability: "available",
-    attendeeCount: 15000,
-    duration: "1 hour",
-    description: "Watch entrepreneurs pitch their ideas to celebrity investors on national television."
-  },
-  {
-    id: 2,
-    title: "John and The Locals Concert",
-    date: "2025-07-12",
-    time: "9:00 PM Onwards",
-    venue: "XO Club, Thamel",
-    price: "Rs. 1500",
-    image: "/assets/jhonconcert.png",
-    category: "music",
-    tags: ["Live Music", "Rock", "Nightlife"],
-    organizer: { name: "XO Club", verified: false },
-    availability: "limited",
-    attendeeCount: 450,
-    duration: "3 hours",
-    description: "Experience an electrifying night of rock music with John and The Locals live in Thamel."
-  },
-  {
-    id: 3,
-    title: "Interdependence: Art Exhibition",
-    date: "2025-07-12",
-    time: "11:00 AM - 5:00 PM",
-    venue: "Nepal Art Council",
-    price: "Free",
-    image: "assets/artexhibiton.png",
-    category: "art",
-    tags: ["Exhibition", "Fine Arts", "Culture"],
-    organizer: { name: "Nepal Art Council", verified: true },
-    availability: "available",
-    attendeeCount: 1200,
-    duration: "All day",
-    description: "An exploration of human connection through contemporary Nepali art and cultural expression."
-  },
-  {
-    id: 4,
-    title: "Artha Run Club",
-    date: "2025-07-05",
-    time: "6:00 AM",
-    venue: "International Club, Lalitpur",
-    price: "Free",
-    image: "assets/runclub.png",
-    tags: ["Running", "Fitness", "Community"],
-    organizer: { name: "Artha Group", verified: false },
-    availability: "available",
-    attendeeCount: 85,
-    duration: "1.5 hours",
-    description: "Join fellow runners for a healthy start to your weekend with Artha Run Club."
-  },
-  {
-    id: 5,
-    title: "Tokha Saturday Mela",
-    date: "2025-07-05",
-    time: "3:00 PM - 7:00 PM",
-    venue: "Tokha, near Ganesh Temple",
-    price: "Free",
-    image: "assets/tokhamela.png",
-    category: "food",
-    tags: ["Cultural", "Food Festival", "Newari Cuisine"],
-    organizer: { name: "Local Community", verified: false },
-    availability: "available",
-    attendeeCount: 2000,
-    duration: "4 hours",
-    description: "Celebrate community and cuisine at Tokha's vibrant Saturday food and culture mela."
-  }
-];
-
+          {
+            id: 1, title: "Shark Tank Nepal - Season 1", date: "2025-07-08", time: "9:00 PM", venue: "Himalayan TV HD", price: "Free", image: "assets/sharktank.png", category: "business", tags: ["TV Show", "Startups", "Investment"], organizer: { name: "Himalayan TV", verified: true }, availability: "available", attendeeCount: 15000, duration: "1 hour", description: "Watch entrepreneurs pitch their ideas to celebrity investors on national television. This season promises bigger deals, tougher negotiations, and groundbreaking innovations from across Nepal.", bookingUrl: "https://www.youtube.com/watch?v=bp4NDX-WMlA"
+          },
+          {
+            id: 2, title: "John and The Locals Concert", date: "2025-07-12", time: "9:00 PM Onwards", venue: "XO Club, Thamel", price: "Rs. 1500", image: "assets/jhonconcert.png", category: "music", tags: ["Live Music", "Rock", "Nightlife"], organizer: { name: "XO Club", verified: false }, availability: "limited", attendeeCount: 450, duration: "3 hours", description: "Experience an electrifying night of rock music with John and The Locals live in Thamel. Get ready for high-energy performances and unforgettable anthems.", bookingUrl: "https://events.khalti.com/events/ET259U4Z5ADC"
+          },
+          {
+            id: 3, title: "Interdependence: Art Exhibition", date: "2025-07-12", time: "11:00 AM - 5:00 PM", venue: "Nepal Art Council", price: "Free", image: "assets/artexhibiton.png", category: "art", tags: ["Exhibition", "Fine Arts", "Culture"], organizer: { name: "Nepal Art Council", verified: true }, availability: "available", attendeeCount: 1200, duration: "All day", description: "An exploration of human connection through contemporary Nepali art and cultural expression. Featuring works from over 20 renowned and emerging artists.", bookingUrl: "https://vt.tiktok.com/ZSB2P4tYS/"
+          },
+          {
+            id: 4, title: "Artha Run Club", date: "2025-07-05", time: "6:00 AM", venue: "International Club, Lalitpur", price: "Free", image: "assets/runclub.png", category: "health", tags: ["Running", "Fitness", "Community"], organizer: { name: "Artha Group", verified: false }, availability: "available", attendeeCount: 85, duration: "1.5 hours", description: "Join fellow runners for a healthy start to your weekend with Artha Run Club. All fitness levels are welcome for a scenic 5k run.", bookingUrl: "https://lu.ma/0yjhvggo"
+          },
+          {
+            id: 5, title: "Tokha Saturday Mela", date: "2025-07-05", time: "3:00 PM - 7:00 PM", venue: "Tokha, near Ganesh Temple", price: "Free", image: "assets/tokhamela.png", category: "food", tags: ["Cultural", "Food Festival", "Newari Cuisine"], organizer: { name: "Local Community", verified: false }, availability: "available", attendeeCount: 2000, duration: "4 hours", description: "Celebrate community and cuisine at Tokha's vibrant Saturday food and culture mela. Enjoy traditional Newari delicacies, live music, and local crafts.", bookingUrl: "https://www.tiktok.com/@storiesofmanisha/video/7474071111668600082"
+          },
+          {
+            id: 6,
+            title: "Benambari Theater Show",
+            date: "2025-07-05",
+            time: "12:00 PM and 4:00 PM",
+            venue: "Mandala Theater, Thapagaun",
+            price: "Rs. 350",
+            image: "assets/benambari.png",
+            category: "theater",
+            tags: ["Theater", "Performance", "Cultural"],
+            organizer: { name: "Ace Theater club", verified: true },
+            availability: "available",
+            attendeeCount: 0,
+            duration: "2 hours",
+            description: "Experience the captivating Benambari Theater Show at Mandala Theater. A must-see performance that showcases the rich cultural heritage of Nepal.",
+            bookingUrl: "https://www.instagram.com/ace_theater_club?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+          },
+          {
+            id: 7,
+            title: "Kaiser Library",
+            date: "ALlday",
+            time: "9:00 AM - 5:00 PM",
+            venue: "Kantipath",
+            price: "Free",
+            image: "assets/kaiserlibrary.png",
+            category: "library",
+            tags: ["Reading", "Quiet", "Productive"],
+            organizer: { name: "Kaiser Library", verified: true },
+            availability: "available",
+            attendeeCount: 149,
+            duration: "All day",
+            description: "Kaiser Library offers a serene environment to spend time and read books in the courtyard and inside the library. One of the rare gems of Nepal that most don't know about. If you live around there, this is a must-visit place.",
+            bookingUrl: "https://www.tiktok.com/@adorrree_me/video/7493883616259296520?is_from_webapp=1&sender_device=pc&web_id=7428614612804961799"
+          },
+          {
+            id: 8,
+            title: "Kausi theater: Sickroom",
+            date: "20th June to 12th July (Asar 6 to Asar 28)",
+            time: "5:15 PM | 1 PM shows on Saturdays",
+            venue: "Kausi Theater, Teku",
+            price: "Ticket prices: Rs. 300, Rs. 500 (General), Rs. 1000 (Best seats + Contribution)",
+            image: "assets/sickroom.png",
+            category: "theater",
+            tags: ["Theater", "Performance", "Cultural"],
+            organizer: { name: "Katha Ghera", verified: true },
+            availability: "available",
+            attendeeCount: 250,
+            duration: "2 hours",
+            description: "Katha Ghera is excited to present our upcoming theatre production 'Sickroom', a Nepali adaptation of Rajiv Joseph's play Gruesome Playground Injuries, directed by Akanchha Karki. A raw, intimate exploration of pain, connection, and memory, where scars, both visible and hidden, come to the surface. Trigger Warning: Mentions of self-harm and injuries. Recommended Age: 13+.20th June to 12th July (Asar 6 to Asar 28)",
+            bookingUrl: "https://www.instagram.com/p/DK30ORgNJnL/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+          }
+        ];
 
         let currentFilter = 'all';
-        let currentSearchTerm = '';
         let savedEvents = new Set();
         
-        // DOM Elements
+        const mainGridView = document.getElementById('main-grid-view');
+        const eventDetailView = document.getElementById('event-detail-view');
         const eventsContainer = document.getElementById('events-container');
         const emptyState = document.getElementById('empty-state');
         const resultsCount = document.getElementById('results-count');
-        const searchInput = document.getElementById('search-input');
-        const locationSelect = document.getElementById('location-select');
         const filterButtons = document.querySelectorAll('.filter-button');
 
-        // Initialize the application
         function init() {
+            setupEventListeners();
+            handleRouting();
+            window.addEventListener('hashchange', handleRouting);
+        }
+
+        function handleRouting() {
+            const hash = window.location.hash;
+            if (hash.startsWith('#event-')) {
+                const eventId = parseInt(hash.substring('#event-'.length), 10);
+                showDetailPage(eventId);
+            } else {
+                showGridView();
+            }
+        }
+
+        function showGridView() {
+            mainGridView.style.display = 'block';
+            eventDetailView.style.display = 'none';
+            if (window.location.hash) {
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            }
             showLoadingState();
             setTimeout(() => {
                 hideLoadingState();
-                renderEvents(eventsData);
-                updateResultsCount(eventsData.length);
-            }, 1000);
-            
-            setupEventListeners();
+                applyFilters();
+            }, 300);
         }
 
-        // Event Listeners
+        function showDetailPage(eventId) {
+            const event = eventsData.find(e => e.id === eventId);
+            mainGridView.style.display = 'none';
+            eventDetailView.style.display = 'block';
+            window.scrollTo(0, 0);
+
+            if (!event) {
+                eventDetailView.innerHTML = `<div class="empty-state"><h3>Event Not Found</h3><p>The event you are looking for does not exist.</p><button class="back-to-events-btn" onclick="window.location.hash=''">Back to All Events</button></div>`;
+                return;
+            }
+            
+            const formattedDate = new Date(event.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+            eventDetailView.innerHTML = `
+                <button class="back-to-events-btn" onclick="window.location.hash=''"><i class="fas fa-arrow-left"></i> Back to All Events</button>
+                <div class="detail-card">
+                    <header class="detail-header">
+                        <img src="${event.image}" alt="${event.title}" class="detail-image">
+                        <div class="detail-header-overlay">
+                            <h1 class="detail-title">${event.title}</h1>
+                            <p class="detail-venue"><i class="fas fa-map-marker-alt"></i> ${event.venue}</p>
+                        </div>
+                    </header>
+                    <div class="detail-body">
+                        <div class="detail-main-content">
+                            <h3>About the Event</h3>
+                            <div class="detail-description"><p>${event.description.replace(/\n/g, '</p><p>')}</p></div>
+                        </div>
+                        <aside class="detail-sidebar">
+                            <ul class="detail-meta-list">
+                                <li><i class="fas fa-calendar-day"></i><div><strong>Date:</strong><br>${formattedDate}</div></li>
+                                <li><i class="fas fa-clock"></i><div><strong>Time:</strong><br>${event.time}</div></li>
+                                <li><i class="fas fa-ticket-alt"></i><div><strong>Price:</strong><br>${event.price}</div></li>
+                                <li><i class="fas fa-building"></i><div><strong>Organizer:</strong><br>${event.organizer.name} ${event.organizer.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}</div></li>
+                            </ul>
+                            <button class="action-btn primary" onclick="bookTicket(event, ${event.id})"><i class="fas fa-ticket-alt"></i> ${event.availability === 'sold-out' ? 'Sold Out' : 'Book Now'}</button>
+                        </aside>
+                    </div>
+                </div>
+            `;
+        }
+        
         function setupEventListeners() {
-            // Filter buttons
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -1061,333 +417,85 @@
                     applyFilters();
                 });
             });
-
-            // Search input
-            searchInput.addEventListener('input', debounce((e) => {
-                currentSearchTerm = e.target.value.toLowerCase();
-                applyFilters();
-            }, 300));
-
-            // Location filter
-            locationSelect.addEventListener('change', applyFilters);
+            document.getElementById('closePopup').addEventListener('click', () => document.getElementById('headerPopup').style.display = 'none');
         }
 
-        // Apply all filters
         function applyFilters() {
             let filteredEvents = eventsData;
-
-            // Apply category filter
             if (currentFilter !== 'all') {
                 if (currentFilter === 'weekend') {
                     const weekendDates = getWeekendDates();
-                    filteredEvents = filteredEvents.filter(event => 
-                        weekendDates.includes(event.date)
-                    );
+                    filteredEvents = filteredEvents.filter(event => weekendDates.includes(event.date));
                 } else if (currentFilter === 'free') {
-                    filteredEvents = filteredEvents.filter(event => 
-                        event.price.toLowerCase().includes('free')
-                    );
+                    filteredEvents = filteredEvents.filter(event => event.price.toLowerCase().includes('free'));
                 } else {
-                    filteredEvents = filteredEvents.filter(event => 
-                        event.category === currentFilter
-                    );
+                    filteredEvents = filteredEvents.filter(event => event.category === currentFilter);
                 }
             }
-
-            // Apply search filter
-            if (currentSearchTerm) {
-                filteredEvents = filteredEvents.filter(event =>
-                    event.title.toLowerCase().includes(currentSearchTerm) ||
-                    event.venue.toLowerCase().includes(currentSearchTerm) ||
-                    event.organizer.name.toLowerCase().includes(currentSearchTerm) ||
-                    event.tags.some(tag => tag.toLowerCase().includes(currentSearchTerm))
-                );
-            }
-
             renderEvents(filteredEvents);
             updateResultsCount(filteredEvents.length);
         }
 
-        // Get weekend dates
-        function getWeekendDates() {
-            const today = new Date();
-            const saturday = new Date(today);
-            const sunday = new Date(today);
-            
-            // Find next Saturday and Sunday
-            const daysUntilSaturday = (6 - today.getDay()) % 7;
-            saturday.setDate(today.getDate() + daysUntilSaturday);
-            sunday.setDate(saturday.getDate() + 1);
-            
-            return [
-                saturday.toISOString().split('T')[0],
-                sunday.toISOString().split('T')[0]
-            ];
-        }
-
-        // Render events
         function renderEvents(events) {
-            if (events.length === 0) {
-                eventsContainer.style.display = 'none';
-                emptyState.style.display = 'block';
-                return;
-            }
-
-            eventsContainer.style.display = 'grid';
-            emptyState.style.display = 'none';
-            
+            emptyState.style.display = events.length === 0 ? 'block' : 'none';
             eventsContainer.innerHTML = events.map(event => createEventCard(event)).join('');
-            
-            // Add event listeners to interactive elements
-            addCardEventListeners();
         }
 
-        // Create event card HTML
         function createEventCard(event) {
             const eventDate = new Date(event.date);
-            const formattedDate = eventDate.toLocaleDateString('en-US', {
-                weekday: 'short',
-                month: 'short',
-                day: 'numeric'
-            });
-
-            const ticketStatusClass = event.availability === 'available' ? 'available' : 
-                                    event.availability === 'limited' ? 'limited' : 'sold-out';
-            
-            const ticketStatusText = event.availability === 'available' ? 'Available' : 
-                                   event.availability === 'limited' ? 'Few Left' : 'Sold Out';
-
-            const priceDisplay = event.price.toLowerCase().includes('free') ? 
-                               `<span class="free">${event.price}</span>` : event.price;
+            const formattedDate = eventDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+            const ticketStatusClass = event.availability;
+            const ticketStatusText = event.availability === 'limited' ? 'Few Left' : event.availability;
+            const priceDisplay = event.price.toLowerCase().includes('free') ? `<span class="free">${event.price}</span>` : event.price;
 
             return `
-                <div class="event-card" data-event-id="${event.id}">
-                    <div class="event-image-container">
+                <div class="event-card">
+                    <div class="event-image-container" onclick="viewDetails(event, ${event.id})">
                         <div class="event-image" style="background-image: url('${event.image}')"></div>
                         <div class="image-overlay"></div>
                         <div class="card-top-icons">
-                            <button class="save-btn ${savedEvents.has(event.id) ? 'saved' : ''}" 
-                                    onclick="toggleSave(${event.id})">
-                                <i class="fas fa-heart"></i>
-                            </button>
-                            <button class="share-btn" onclick="shareEvent(${event.id})">
-                                <i class="fas fa-share-alt"></i>
-                            </button>
+                            <button class="save-btn ${savedEvents.has(event.id) ? 'saved' : ''}" onclick="toggleSave(event, ${event.id})"><i class="fas fa-heart"></i></button>
+                            <button class="share-btn" onclick="shareEvent(event, ${event.id})"><i class="fas fa-share-alt"></i></button>
                         </div>
                         <div class="ticket-status ${ticketStatusClass}">${ticketStatusText}</div>
                     </div>
-                    
-                    <div class="event-content">
+                    <div class="event-content" onclick="viewDetails(event, ${event.id})">
                         <h3 class="event-title">${event.title}</h3>
-                        
                         <div class="event-meta-grid">
-                            <div class="event-meta-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span class="highlight">${formattedDate}</span> at ${event.time}
-                            </div>
-                            <div class="event-meta-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span class="highlight">${event.venue}</span>
-                            </div>
-                            <div class="event-meta-item">
-                                <i class="fas fa-user-friends"></i>
-                                <span>${event.attendeeCount.toLocaleString()} interested</span>
-                            </div>
-                            <div class="event-meta-item">
-                                <i class="fas fa-building"></i>
-                                <span>${event.organizer.name}</span>
-                                ${event.organizer.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}
-                            </div>
+                            <div class="event-meta-item"><i class="fas fa-calendar-alt"></i><span class="highlight">${formattedDate}</span> at ${event.time}</div>
+                            <div class="event-meta-item"><i class="fas fa-map-marker-alt"></i><span class="highlight">${event.venue}</span></div>
                         </div>
-                        
                         <div class="event-tags">
                             <span class="event-tag primary-cat">${getCategoryName(event.category)}</span>
                             ${event.tags.map(tag => `<span class="event-tag">${tag}</span>`).join('')}
                         </div>
                     </div>
-                    
                     <div class="event-footer">
                         <div class="event-price">${priceDisplay}</div>
                         <div class="card-actions">
-                            <button class="action-btn secondary" onclick="viewDetails(${event.id})">
-                                <i class="fas fa-info-circle"></i> Details
-                            </button>
-                            <button class="action-btn primary" onclick="bookTicket(${event.id})">
-                                <i class="fas fa-ticket-alt"></i> Book Now
-                            </button>
+                            <button class="action-btn secondary" onclick="viewDetails(event, ${event.id})"><i class="fas fa-info-circle"></i> Details</button>
+                            <button class="action-btn primary" onclick="bookTicket(event, ${event.id})"><i class="fas fa-ticket-alt"></i> Book Now</button>
                         </div>
                     </div>
                 </div>
             `;
         }
 
-        // Get category display name
-        function getCategoryName(category) {
-            const categoryMap = {
-                'music': '🎵 Music',
-                'art': '🎨 Art',
-                'business': '💼 Business',
-                'food': '🍽️ Food',
-                'health': '💪 Health',
-                'entertainment': '🎬 Entertainment'
-            };
-            return categoryMap[category] || category;
-        }
+        // --- Global Functions for onclick Handlers ---
+        window.toggleSave = (e, eventId) => { e.stopPropagation(); const btn = document.querySelector(`[data-event-id="${eventId}"] .save-btn`); savedEvents.has(eventId) ? (savedEvents.delete(eventId), btn.classList.remove('saved')) : (savedEvents.add(eventId), btn.classList.add('saved')); };
+        window.shareEvent = (e, eventId) => { e.stopPropagation(); const url = `${window.location.origin}${window.location.pathname}#event-${eventId}`; navigator.clipboard.writeText(url).then(() => showNotification('Event link copied!')); };
+        window.viewDetails = (e, eventId) => { e.stopPropagation(); window.location.hash = `#event-${eventId}`; };
+        window.bookTicket = (e, eventId) => { e.stopPropagation(); const event = eventsData.find(ev => ev.id === eventId); if (event.availability !== 'sold-out' && event.bookingUrl) window.open(event.bookingUrl, '_blank'); else if (event.availability === 'sold-out') showNotification('Sorry, this event is sold out!', 'error'); };
 
-        // Add event listeners to card elements
-        function addCardEventListeners() {
-            // Card click handler (excluding buttons)
-            document.querySelectorAll('.event-card').forEach(card => {
-                card.addEventListener('click', (e) => {
-                    if (!e.target.closest('button')) {
-                        const eventId = parseInt(card.dataset.eventId);
-                        viewDetails(eventId);
-                    }
-                });
-            });
-        }
+        // --- Helper Functions ---
+        const getCategoryName = category => ({ music: '🎵 Music', art: '🎨 Art', business: '💼 Business', food: '🍽️ Food', health: '💪 Health', theater: 'Theater', library: 'Library' }[category] || category);
+        const getWeekendDates = () => { const today = new Date(); const sat = new Date(today); sat.setDate(today.getDate() + (6 - today.getDay() + 7) % 7); return [sat.toISOString().split('T')[0]]; };
+        const showLoadingState = () => { eventsContainer.innerHTML = Array(6).fill('<div class="skeleton-card"><div class="skeleton-image skeleton"></div></div>').join(''); };
+        const hideLoadingState = () => { eventsContainer.innerHTML = ''; };
+        const updateResultsCount = count => { resultsCount.textContent = `Showing ${count} result${count !== 1 ? 's' : ''}`; };
+        function showNotification(message, type = 'info') { const el = document.createElement('div'); el.style.cssText = `position:fixed;top:20px;right:20px;padding:15px 20px;border-radius:8px;z-index:10000;font-weight:500;transition:transform .3s ease;transform:translateX(120%);background:${type==='error'?'#dc3545':'#28a745'};color:white;`; el.textContent = message; document.body.appendChild(el); setTimeout(() => el.style.transform = 'translateX(0)', 10); setTimeout(() => { el.style.transform = 'translateX(120%)'; setTimeout(() => el.remove(), 300); }, 3000); }
 
-        // Toggle save event
-        function toggleSave(eventId) {
-            const saveBtn = document.querySelector(`[data-event-id="${eventId}"] .save-btn`);
-            
-            if (savedEvents.has(eventId)) {
-                savedEvents.delete(eventId);
-                saveBtn.classList.remove('saved');
-                showNotification('Event removed from saved list', 'info');
-            } else {
-                savedEvents.add(eventId);
-                saveBtn.classList.add('saved');
-                showNotification('Event saved successfully!', 'success');
-            }
-        }
-
-        // Share event
-        function shareEvent(eventId) {
-            const event = eventsData.find(e => e.id === eventId);
-            if (navigator.share) {
-                navigator.share({
-                    title: event.title,
-                    text: `Check out this event: ${event.title}`,
-                    url: window.location.href
-                });
-            } else {
-                // Fallback for browsers that don't support Web Share API
-                navigator.clipboard.writeText(window.location.href);
-                showNotification('Link copied to clipboard!', 'success');
-            }
-        }
-
-        // View event details
-        function viewDetails(eventId) {
-            const event = eventsData.find(e => e.id === eventId);
-            showNotification(`Opening details for: ${event.title}`, 'info');
-            // In a real app, this would navigate to a detail page
-        }
-
-        // Book ticket
-        function bookTicket(eventId) {
-            const event = eventsData.find(e => e.id === eventId);
-            if (event.availability === 'sold-out') {
-                showNotification('Sorry, this event is sold out!', 'error');
-                return;
-            }
-            showNotification(`Redirecting to booking for: ${event.title}`, 'success');
-            // In a real app, this would redirect to booking page
-        }
-
-        // Show loading state
-        function showLoadingState() {
-            const skeletons = Array(6).fill().map(() => `
-                <div class="skeleton-card">
-                    <div class="skeleton-image"></div>
-                    <div style="padding: 20px;">
-                        <div class="skeleton" style="height: 20px; margin-bottom: 15px; border-radius: 4px;"></div>
-                        <div class="skeleton" style="height: 16px; margin-bottom: 10px; border-radius: 4px; width: 80%;"></div>
-                        <div class="skeleton" style="height: 16px; margin-bottom: 10px; border-radius: 4px; width: 60%;"></div>
-                        <div class="skeleton" style="height: 16px; border-radius: 4px; width: 40%;"></div>
-                    </div>
-                </div>
-            `).join('');
-            
-            eventsContainer.innerHTML = skeletons;
-        }
-
-        // Hide loading state
-        function hideLoadingState() {
-            eventsContainer.innerHTML = '';
-        }
-
-        // Update results count
-        function updateResultsCount(count) {
-            const filterText = currentFilter === 'all' ? 'all events' : 
-                             currentFilter === 'weekend' ? 'weekend events' :
-                             currentFilter === 'free' ? 'free events' :
-                             `${currentFilter} events`;
-            
-            resultsCount.textContent = `Showing ${count} ${filterText}`;
-        }
-
-        // Show notification
-        function showNotification(message, type = 'info') {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <div style="
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#007bff'};
-                    color: white;
-                    padding: 15px 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                    z-index: 10000;
-                    font-weight: 500;
-                    transform: translateX(100%);
-                    transition: transform 0.3s ease;
-                ">
-                    ${message}
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Animate in
-            setTimeout(() => {
-                notification.firstElementChild.style.transform = 'translateX(0)';
-            }, 10);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                notification.firstElementChild.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        // Debounce function for search
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        // Initialize the application
         init();
-    });
-
-    document.getElementById('closePopup').addEventListener('click', function() {
-        const popup = document.getElementById('headerPopup');
-        popup.style.display = 'none'; // Hide the popup
     });
     </script>
 </body>
