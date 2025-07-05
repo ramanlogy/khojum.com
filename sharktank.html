@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Shark Tank Nepal - The Leaderboard</title>
     <style>
         :root {
@@ -105,6 +107,7 @@
             align-items: center;
             border-left: 5px solid transparent;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative; /* Needed for the link icon */
         }
 
         .leaderboard-card:hover {
@@ -121,6 +124,7 @@
             font-weight: 800;
             color: var(--text-secondary);
             text-align: center;
+            width: 60px;
         }
 
         .leaderboard-card.rank-1 .rank { color: var(--gold); }
@@ -188,6 +192,22 @@
             color: #bbf7d0; /* Green 200 */
         }
 
+        /* NEW: Styles for the external link icon */
+        .company-link {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .company-link:hover {
+            color: var(--accent);
+            transform: scale(1.15);
+        }
+
         .no-results {
             text-align: center;
             padding: 4rem;
@@ -212,6 +232,7 @@
             }
             .rank {
                 font-size: 2rem;
+                width: 100%;
             }
             .deal-info {
                 justify-content: center;
@@ -270,18 +291,22 @@
     </div>
 
     <script>
-        // Sample data for Shark Tank Nepal
-        // NOTE: Data has been cleaned and structured for clarity and accuracy.
+        // Sample data for Shark Tank Nepal with websiteUrl added
         const companies = [
             {
                 id: 1,
                 name: "Bhola Foods",
-                season: 1, episode: 1, category: "Food & Beverage", dealMade: true,
-                askAmount: 8500000, askEquity: 12,
+                websiteUrl: "https://bholafoods.com/",
+                season: 1,
+                episode: 1,
+                category: "Food & Beverage",
+                dealMade: true,
+                askAmount: 8500000,
+                askEquity: 12,
                 sharks: {
-                    "Saurabh Jyoti": { invested: true, amount: 2500000, equity: 5},
+                    "Saurabh Jyoti": { invested: true, amount: 2500000, equity: 5 },
                     "Cabinet Shrestha": { invested: true, amount: 2500000, equity: 5 },
-                    "Hem Raj Dhakal": { invested: true, amount: 2500000, equity: 5},
+                    "Hem Raj Dhakal": { invested: true, amount: 2500000, equity: 5 },
                     "Anand Bagaria": { invested: true, amount: 2500000, equity: 5 },
                     "Ritu Singh Vaidya": { invested: false }
                 }
@@ -289,47 +314,85 @@
             {
                 id: 2,
                 name: "Sandhya Pote House",
-                season: 1, episode: 1, category: "Handicrafts", dealMade: true,
-                askAmount: 2000000, askEquity: 35,
+                websiteUrl: "https://www.facebook.com/sandhya.gaire.127/reels/", // No website
+                season: 1,
+                episode: 1,
+                category: "Handicrafts",
+                dealMade: true,
+                askAmount: 2000000,
+                askEquity: 35,
                 sharks: {
                     "Cabinet Shrestha": { invested: true, amount: 2000000, equity: 35 },
-                    "Hem Raj Dhakal": { invested: false }, "Ritu Singh Vaidya": { invested: false }, "Anand Bagaria": { invested: false }, "Saurabh Jyoti": { invested: false }
+                    "Hem Raj Dhakal": { invested: false },
+                    "Ritu Singh Vaidya": { invested: false },
+                    "Anand Bagaria": { invested: false },
+                    "Saurabh Jyoti": { invested: false }
                 }
             },
             {
                 id: 3,
                 name: "Elletra DRP",
-                season: 1, episode: 3, category: "Cosmetics", dealMade: false,
-                askAmount: 1000000, askEquity: 10,
-                sharks: { "Hem Raj Dhakal": { invested: false }, "Cabinet Shrestha": { invested: false }, "Ritu Singh Vaidya": { invested: false }, "Anand Bagaria": { invested: false }, "Saurabh Jyoti": { invested: false } }
+                websiteUrl: "https://elletradrp.com/",
+                season: 1,
+                episode: 3,
+                category: "Cosmetics",
+                dealMade: false,
+                askAmount: 1000000,
+                askEquity: 10,
+                sharks: {
+                    "Hem Raj Dhakal": { invested: false },
+                    "Cabinet Shrestha": { invested: false },
+                    "Ritu Singh Vaidya": { invested: false },
+                    "Anand Bagaria": { invested: false },
+                    "Saurabh Jyoti": { invested: false }
+                }
             },
             {
                 id: 4,
                 name: "Art Maya Exim",
-                season: 1, episode: 2, category: "Decor & Furniture", dealMade: true,
-                askAmount: 1000000, askEquity: 6,
+                websiteUrl: "https://artmayanepal.com/",
+                season: 1,
+                episode: 2,
+                category: "Decor & Furniture",
+                dealMade: true,
+                askAmount: 1000000,
+                askEquity: 6,
                 sharks: {
                     "Hem Raj Dhakal": { invested: true, amount: 1000000, equity: 10 },
                     "Saurabh Jyoti": { invested: true, amount: 1000000, equity: 10 },
-                    "Cabinet Shrestha": { invested: false }, "Anand Bagaria": { invested: false }, "Ritu Singh Vaidya": { invested: false }
+                    "Cabinet Shrestha": { invested: false },
+                    "Anand Bagaria": { invested: false },
+                    "Ritu Singh Vaidya": { invested: false }
                 }
             },
             {
                 id: 5,
                 name: "Mero Coding Classes",
-                season: 1, episode: 2, category: "Education", dealMade: true,
-                askAmount: 3000000, askEquity: 10,
+                websiteUrl: "https://merocodingclass.com/",
+                season: 1,
+                episode: 2,
+                category: "Education",
+                dealMade: true,
+                askAmount: 3000000,
+                askEquity: 10,
                 sharks: {
-                    "Cabinet Shrestha": { invested: true, amount: 1500000, equity: 8.5 },
-                    "Hem Raj Dhakal": { invested: true, amount: 1500000, equity: 8.5 },
-                    "Ritu Singh Vaidya": { invested: false }, "Anand Bagaria": { invested: false }, "Saurabh Jyoti": { invested: false }
+                    "Cabinet Shrestha": { invested: true, amount: 5100000, equity: 17 },
+                    "Hem Raj Dhakal": { invested: true, amount: 5100000, equity: 17 },
+                    "Ritu Singh Vaidya": { invested: false },
+                    "Anand Bagaria": { invested: false },
+                    "Saurabh Jyoti": { invested: false }
                 }
             },
             {
                 id: 6,
                 name: "Sathi Pad",
-                season: 1, episode: 2, category: "Health & Wellness", dealMade: true,
-                askAmount: 5000000, askEquity: 25,
+                websiteUrl: "https://saathipads.com/",
+                season: 1,
+                episode: 2,
+                category: "Health & Wellness",
+                dealMade: true,
+                askAmount: 5000000,
+                askEquity: 25,
                 sharks: {
                     "All 5 Sharks": { invested: true, amount: 5000000, equity: 40 }
                 }
@@ -337,9 +400,38 @@
             {
                 id: 7,
                 name: "SabKo Phone",
-                season: 1, episode: 2, category: "Technology", dealMade: false,
-                askAmount: 20000000, askEquity: 20,
-                sharks: { "Hem Raj Dhakal": { invested: false }, "Cabinet Shrestha": { invested: false }, "Ritu Singh Vaidya": { invested: false }, "Anand Bagaria": { invested: false }, "Saurabh Jyoti": { invested: false } }
+                websiteUrl: "https://sabkophone.com/",
+                season: 1,
+                episode: 2,
+                category: "Technology",
+                dealMade: false,
+                askAmount: 20000000,
+                askEquity: 20,
+                sharks: {
+                    "Hem Raj Dhakal": { invested: false },
+                    "Cabinet Shrestha": { invested: false },
+                    "Ritu Singh Vaidya": { invested: false },
+                    "Anand Bagaria": { invested: false },
+                    "Saurabh Jyoti": { invested: false }
+                }
+            },
+            {
+                id: 8, // New event ID for Shanta Ko Achar
+                name: "Shanta Ko Achar",
+                websiteUrl: "https://santakoachaar.com.np", // No website
+                season: 1,
+                episode: 1,
+                category: "Homemade",
+                dealMade: false,
+                askAmount: 20000000, // 2 Crore
+                askEquity: 30,
+                sharks: {
+                    "Hem Raj Dhakal": { invested: false },
+                    "Cabinet Shrestha": { invested: false },
+                    "Ritu Singh Vaidya": { invested: false },
+                    "Anand Bagaria": { invested: false },
+                    "Saurabh Jyoti": { invested: false }
+                }
             }
         ];
         
@@ -356,9 +448,27 @@
                 company.valuation = 0;
             }
         });
+        
+        function formatNpr(amount) {
+            if (typeof amount !== 'number' || isNaN(amount)) return 'N/A';
+            if (amount === 0) return "NPR 0";
 
-        // Format currency in NPR
-        const formatCurrency = (amount) => new Intl.NumberFormat('en-NP', { style: 'currency', currency: 'NPR', minimumFractionDigits: 0 }).format(amount);
+            let value;
+            let suffix;
+
+            if (amount >= 10000000) { // 1 Crore
+                value = amount / 10000000;
+                suffix = 'Cr';
+            } else if (amount >= 100000) { // 1 Lakh
+                value = amount / 100000;
+                suffix = 'Lakh';
+            } else {
+                return new Intl.NumberFormat('en-NP', { style: 'currency', currency: 'NPR', minimumFractionDigits: 0 }).format(amount);
+            }
+            const formattedValue = Number(value.toFixed(2));
+            return `NPR ${formattedValue} ${suffix}`;
+        }
+
 
         function initializeFilters() {
             const categories = [...new Set(companies.map(c => c.category))].sort();
@@ -382,7 +492,15 @@
                 .filter(([_, shark]) => shark.invested)
                 .map(([name, _]) => name);
 
+            // NEW: Conditionally create the link icon if a URL exists
+            const linkIconHtml = company.websiteUrl ? `
+                <a href="${company.websiteUrl}" target="_blank" rel="noopener noreferrer" class="company-link" title="Visit Website">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                </a>
+            ` : '';
+
             card.innerHTML = `
+                ${linkIconHtml}
                 <div class="rank">#${rank}</div>
                 <div class="company-content">
                     <div class="company-details">
@@ -394,11 +512,11 @@
                         ${company.dealMade ? `
                             <div class="deal-metric">
                                 <div class="label">DEAL</div>
-                                <div class="value">${formatCurrency(company.totalInvestment)} for ${company.totalEquity}%</div>
+                                <div class="value">${formatNpr(company.totalInvestment)} for ${company.totalEquity}%</div>
                             </div>
                             <div class="deal-metric">
                                 <div class="label">VALUATION</div>
-                                <div class="value">${formatCurrency(company.valuation)}</div>
+                                <div class="value">${formatNpr(company.valuation)}</div>
                             </div>
                         ` : `
                             <div class="deal-metric">
@@ -407,7 +525,7 @@
                             </div>
                             <div class="deal-metric">
                                 <div class="label">ASK</div>
-                                <div class="value no-deal">${formatCurrency(company.askAmount)} for ${company.askEquity}%</div>
+                                <div class="value no-deal">${formatNpr(company.askAmount)} for ${company.askEquity}%</div>
                             </div>
                         `}
                     </div>
@@ -429,7 +547,6 @@
             const categoryFilter = document.getElementById('categoryFilter').value;
             const sortBy = document.getElementById('sortBy').value;
 
-            // 1. Filter
             let filtered = companies.filter(company => {
                 const matchesSearch = company.name.toLowerCase().includes(searchTerm);
                 const matchesDeal = !dealFilter || (dealFilter === 'deal' && company.dealMade) || (dealFilter === 'no-deal' && !company.dealMade);
@@ -437,7 +554,6 @@
                 return matchesSearch && matchesDeal && matchesCategory;
             });
 
-            // 2. Sort
             filtered.sort((a, b) => {
                 switch (sortBy) {
                     case 'valuation':
