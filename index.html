@@ -224,6 +224,8 @@
     
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        
+            
         const eventsData = [
             
             {
@@ -232,15 +234,15 @@
                 date: "2025-07-12",
                 time: "9:00 PM Onwards",
                 venue: "XO Club, Thamel",
+                gmapsUrl: "https://maps.app.goo.gl/GEMJ3pNuCVT9Uo5c8",
                 price: "Rs. 1500",
                 image: "assets/jhonconcert.png",
                 category: "music",
                 tags: ["Live Music", "Rock", "Nightlife"],
                 organizer: { name: "XO Club", verified: false },
+                availability: "limited",
                 description: "Experience an electrifying night of rock music with John and The Locals live in Thamel. Get ready for high-energy performances and unforgettable anthems.",
-                bookingUrl: "https://events.khalti.com/events/ET259U4Z5ADC",
-                actionText: "Get Tickets",
-                actionIcon: "fa-ticket-alt"
+                bookingUrl: "https://events.khalti.com/events/ET259U4Z5ADC"
             },
             {
                 id: 3,
@@ -248,15 +250,15 @@
                 date: "2025-07-12",
                 time: "11:00 AM - 5:00 PM",
                 venue: "Nepal Art Council",
+                gmapsUrl: "https://maps.app.goo.gl/zKzsceB5Uq7nBbqd7",
                 price: "Free",
                 image: "assets/artexhibiton.png",
                 category: "art",
                 tags: ["Exhibition", "Fine Arts", "Culture"],
                 organizer: { name: "Nepal Art Council", verified: true },
+                availability: "available",
                 description: "An exploration of human connection through contemporary Nepali art and cultural expression. Featuring works from over 20 renowned and emerging artists.",
-                bookingUrl: "https://vt.tiktok.com/ZSB2P4tYS/",
-                actionText: "Learn More",
-                actionIcon: "fa-info-circle"
+                bookingUrl: "https://vt.tiktok.com/ZSB2P4tYS/"
             },
             {
                 id: 4,
@@ -264,12 +266,20 @@
                 date: "Every Saturday",
                 time: "6:00 AM",
                 venue: "International Club, Lalitpur",
+                gmapsUrl: "https://maps.app.goo.gl/Mt5qZZBGyhVjXKUYA",
                 price: "Free",
                 image: "assets/runclub.png",
                 category: "health",
                 tags: ["Running", "Fitness", "Community"],
-                organizer: { name: "Artha Group", verified: true },
-                description: "All paces and ages are welcome, so bring your energy and your smiles! Come for the run, stay for the coffee, conversations, and connections after.",
+                organizer: { 
+                    name: "Artha Group", 
+                    verified: true,
+                    instagram: "https://www.instagram.com/arthagroup"
+                },
+                availability: "available",
+                attendeeCount: 85,
+                duration: "1.5 hours",
+                description: "All paces and ages are welcome, so bring your energy, your smiles, and maybe a friend or two!<br><br>Location: International Club, Lalitpur<br>Meetup Time: 6:00 AM<br>Start Time: 7:00 AM<br>Distance: 6k<br><br>• Parking: Available for two-wheelers and four-wheelers (Rs 30/hr)<br>• Bag Drop: Safe space to leave your belongings<br><br>Come for the run, stay for the coffee, conversations, and connections after. See you Saturday!<br><b>\n Things you need:</b><br>• Register for the Run<br>• Download Strava: <a href='https://www.strava.com/mobile' target='_blank'>Strava App</a> & register<br>• Choose a comfortable pace group<br>• Be you, no pressure. <br> •Follow Organizer on instagram <a href='https://www.instagram.com/artha.runclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' target='_blank'>Instagram</a> ",
                 bookingUrl: "https://lu.ma/jb7oav4k",
                 actionText: "Register Now",
                 actionIcon: "fa-running"
@@ -280,15 +290,15 @@
                 date: "2025-07-05",
                 time: "12:00 PM and 4:00 PM",
                 venue: "Mandala Theater, Thapagaun",
+                gmapsUrl: "https://maps.app.goo.gl/Y5Zjc7YpGbCU5Vau9",
                 price: "Rs. 350",
                 image: "assets/benambari.png",
                 category: "art",
                 tags: ["Theater", "Performance", "Cultural"],
                 organizer: { name: "Ace Theater club", verified: true },
+                availability: "available",
                 description: "Experience the captivating Benambari Theater Show at Mandala Theater. A must-see performance that showcases the rich cultural heritage of Nepal.",
-                bookingUrl: "https://www.instagram.com/ace_theater_club?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-                actionText: "Get Tickets",
-                actionIcon: "fa-ticket-alt"
+                bookingUrl: "https://www.instagram.com/ace_theater_club?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             },
             {
                 id: 8,
@@ -296,15 +306,15 @@
                 date: "Everyday",
                 time: "10 AM - 6 PM",
                 venue: "Jan Kath, near Boudha",
+                gmapsUrl: "https://maps.app.goo.gl/7DGgzws3tod8j3AW8",
                 price: "Free",
                 image: "assets/rugmuseum.png",
-                category: "art",
+                category: "Art",
                 tags: ["Rugs", "Art", "Asthetic"],
                 organizer: { name: "Rug Museum", verified: false },
+                availability: "available",
                 description: "Explore a variety of traditional and contemporary rugs showcasing the rich heritage of Nepal.",
-                bookingUrl: "https://www.tiktok.com/@te4nz/video/7299830094464437505",
-                actionText: "Learn More",
-                actionIcon: "fa-info-circle"
+                bookingUrl: "https://www.tiktok.com/@te4nz/video/7299830094464437505"
             },
             {
                 id: 5,
@@ -312,15 +322,15 @@
                 date: "2025-07-05",
                 time: "3:00 PM - 7:00 PM",
                 venue: "Tokha, near Ganesh Temple",
+                gmapsUrl: "https://maps.app.goo.gl/YLEH9Z5SStiW6Jn38",
                 price: "Free",
                 image: "assets/tokhamela.png",
                 category: "food",
                 tags: ["Cultural", "Food Festival", "Newari Cuisine"],
                 organizer: { name: "Local Community", verified: false },
+                availability: "available",
                 description: "Celebrate community and cuisine at Tokha's vibrant Saturday food and culture mela. Enjoy traditional Newari delicacies, live music, and local crafts.",
-                bookingUrl: "https://www.tiktok.com/@storiesofmanisha/video/7474071111668600082",
-                actionText: "View on TikTok",
-                actionIcon: "fa-video"
+                bookingUrl: "https://www.tiktok.com/@storiesofmanisha/video/7474071111668600082"
             },
             {
                 id: 7,
@@ -328,15 +338,15 @@
                 date: "Every Day",
                 time: "9:00 AM - 5:00 PM",
                 venue: "Kantipath",
+                gmapsUrl: "https://maps.app.goo.gl/rfbpUsCGgnbLXvMS7",
                 price: "Free",
                 image: "assets/kaiserlibrary.png",
                 category: "art",
                 tags: ["Reading", "Quiet", "Productive"],
                 organizer: { name: "Kaiser Library", verified: true },
+                availability: "available",
                 description: "Kaiser Library offers a serene environment to spend time and read books in the courtyard and inside the library. One of the rare gems of Nepal that most don't know about.",
-                bookingUrl: "https://www.tiktok.com/@adorrree_me/video/7493883616259296520",
-                actionText: "Learn More",
-                actionIcon: "fa-info-circle"
+                bookingUrl: "https://www.tiktok.com/@adorrree_me/video/7493883616259296520"
             },
             {
                 id: 1,
@@ -344,18 +354,17 @@
                 date: "2025-07-08",
                 time: "9:00 PM",
                 venue: "Himalayan TV HD",
+                gmapsUrl: "https://maps.app.goo.gl/9m2L7G8pY6X3A7Z79",
                 price: "Free",
                 image: "assets/sharktank.png",
                 category: "business",
                 tags: ["TV Show", "Startups", "Investment"],
                 organizer: { name: "Himalayan TV", verified: true },
+                availability: "available",
                 description: "Watch entrepreneurs pitch their ideas to celebrity investors on national television. This season promises bigger deals, tougher negotiations, and groundbreaking innovations.",
-                bookingUrl: "https://www.youtube.com/watch?v=bp4NDX-WMlA",
-                actionText: "Watch on YouTube",
-                actionIcon: "fa-play-circle"
+                bookingUrl: "https://www.youtube.com/watch?v=bp4NDX-WMlA"
             },
         ];
-
         let currentFilter = 'all';
         let savedEvents = new Set();
         
