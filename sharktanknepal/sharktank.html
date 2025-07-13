@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Shark Tank Nepal - Investment Leaderboard</title>
+    <style>
+        :root {
+            --background: #0f172a; /* Slate 900 */
+            --card-bg: #1e293b; /* Slate 800 */
+            --text-primary: #f8fafc; /* Slate 50 */
+            --text-secondary: #94a3b8; /* Slate 400 */
+            --accent: #2563eb; /* Blue 600 */
+            --accent-light: #60a5fa; /* Blue 400 */
+            --deal-green: #22c55e; /* Green 500 */
+            --deal-green-bg: #166534; /* Green 800 */
+            --danger-red: #ef4444; /* Red 500 */
+            --gold: #f59e0b; --silver: #a8a29e; --bronze: #a16207;
+            --gold-bg: rgba(245, 158, 11, 0.15);
+            --silver-bg: rgba(168, 162, 158, 0.15);
+            --bronze-bg: rgba(161, 98, 7, 0.15);
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: var(--background); color: var(--text-primary); line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .header h1 span { color: var(--accent); }
+        .header p { color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* FILTERS & LEADERBOARD */
+        .filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; align-items: end; }
+        .filter-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem; }
+        .filter-input { width: 100%; padding: 0.75rem; border: 1px solid #334155; border-radius: 8px; font-size: 1rem; background: #334155; color: var(--text-primary); }
+        .sort-toggle { display: flex; gap: 0.5rem; background: #334155; border-radius: 8px; padding: 0.25rem; }
+        .sort-btn { flex: 1; padding: 0.5rem; background: transparent; border: none; color: var(--text-secondary); font-weight: 600; cursor: pointer; transition: var(--transition); border-radius: 6px; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .sort-btn.active, .sort-btn:hover { color: var(--text-primary); background: var(--accent); }
+
+        .leaderboard-list { display: grid; gap: 1.5rem; }
+        .leaderboard-card { background: var(--card-bg); border-radius: 12px; padding: 1rem; display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; align-items: center; transition: var(--transition); overflow: hidden; position: relative; }
+        .leaderboard-card.rank-1 { background: linear-gradient(90deg, var(--gold-bg), var(--card-bg) 60%); }
+        .leaderboard-card.rank-2 { background: linear-gradient(90deg, var(--silver-bg), var(--card-bg) 60%); }
+        .leaderboard-card.rank-3 { background: linear-gradient(90deg, var(--bronze-bg), var(--card-bg) 60%); }
+        
+        .card-logo { width: 100px; height: 100px; border-radius: 8px; overflow: hidden; background-color: #334155; }
+        .card-logo img { width: 100%; height: 100%; object-fit: cover; }
+        .card-rank { position: absolute; top: 1rem; left: 1rem; background: var(--accent); color: white; padding: 0.1rem 0.6rem; font-size: 1.1rem; font-weight: 700; border-radius: 6px; z-index: 2; }
+        .leaderboard-card.rank-1 .card-rank { background: var(--gold); color: var(--background); }
+        .leaderboard-card.rank-2 .card-rank { background: var(--silver); color: var(--background); }
+        .leaderboard-card.rank-3 .card-rank { background: var(--bronze); color: var(--background); }
+
+        .card-details { display: flex; flex-direction: column; gap: 0.75rem; }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+        .card-header h3 { font-size: 1.5rem; margin-right: 1rem; }
+        .company-link { font-size: 1.1rem; color: var(--text-secondary); text-decoration: none; transition: var(--transition); flex-shrink: 0; }
+        .company-link:hover { color: var(--accent); transform: scale(1.15); }
+        .category { color: var(--text-secondary); font-size: 0.9rem; }
+        
+        .deal-info { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .deal-metric .label { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; }
+        .deal-metric .value { font-size: 1.2rem; font-weight: 600; color: var(--deal-green); }
+        .deal-metric .value.ask-value { color: var(--accent-light); font-weight: 500; }
+        .deal-metric .value.no-deal { color: var(--danger-red); }
+        
+        .sharks-list { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+        .sharks-label { font-size: 0.9rem; color: var(--text-secondary); margin-right: 0.5rem; }
+        .shark-chip { padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; background: var(--deal-green-bg); color: #bbf7d0; cursor: pointer; transition: background-color 0.2s; }
+        .shark-chip:hover { background-color: var(--deal-green); }
+
+        .no-results { text-align: center; background: var(--card-bg); padding: 2rem; border-radius: 12px; }
+        .no-results h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .no-results p { color: var(--text-secondary); }
+
+        @media (max-width: 600px) {
+            .leaderboard-card { grid-template-columns: 1fr; text-align: center; }
+            .card-logo { margin: 0 auto; }
+            .card-rank { top: 0; left: 50%; transform: translateX(-50%); border-radius: 0 0 8px 8px; }
+            .card-header { flex-direction: column; align-items: center; gap: 0.5rem; }
+            .deal-info, .sharks-list { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏆 Shark Tank Nepal <span>Leaderboard</span></h1>
+            <p>An overview of all the pitches and deals from this season.</p>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label for="search">Search Company</label>
+                <input type="text" id="search" class="filter-input" placeholder="e.g. Bhola Foods">
+            </div>
+            <div class="filter-group">
+                <label for="categoryFilter">Category</label>
+                <select id="categoryFilter" class="filter-input"><option value="">All Categories</option></select>
+            </div>
+            <div class="filter-group">
+                <label for="dealFilter">Deal Status</label>
+                <select id="dealFilter" class="filter-input"><option value="">All</option><option value="deal">Deal Made</option><option value="no-deal">No Deal</option></select>
+            </div>
+            <div class="filter-group">
+                <label>Sort By</label>
+                <div class="sort-toggle" id="sort-toggle-buttons">
+                    <button class="sort-btn active" data-sort="investment"><i class="fas fa-sack-dollar"></i> Investment</button>
+                    <button class="sort-btn" data-sort="recent"><i class="fas fa-calendar-alt"></i> Recent</button>
+                    <button class="sort-btn" data-sort="valuation"><i class="fas fa-chart-line"></i> Valuation</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="leaderboard-list" id="leaderboardList"></div>
+        <div class="no-results" id="noResults" style="display: none;">
+            <h3>No Companies Found</h3>
+            <p>Try adjusting your search or filter criteria.</p>
+        </div>
+    </div>
+
+    <script>
+        const companies = [
+            { 
+                id: 1, 
+                name: "Bhola Foods", 
+                photoUrl: "assets/sharktanks/bhola.png", 
+                websiteUrl: "https://bholafoods.com/", 
+                season: 1, 
+                episode: 1, 
+                category: "Food & Beverage", 
+                dealMade: true, 
+                askAmount: 8500000, 
+                askEquity: 12, 
+                sharks: { 
+                    "Saurabh Jyoti": { invested: true, amount: 2500000, equity: 5 }, 
+                    "Cabinet Shrestha": { invested: true, amount: 2500000, equity: 5 }, 
+                    "Hem Raj Dhakal": { invested: true, amount: 2500000, equity: 5 }, 
+                    "Anand Bagaria": { invested: true, amount: 2500000, equity: 5 } 
+                } 
+            },
+            { 
+                id: 2, 
+                name: "Sandhya Pote House", 
+                photoUrl: "assets/sharktanks/sandhya.png", 
+                websiteUrl: "https://www.facebook.com/sandhya.gaire.127/reels/", 
+                season: 1, 
+                episode: 1, 
+                category: "Handicrafts", 
+                dealMade: true, 
+                askAmount: 2000000, 
+                askEquity: 35, 
+                sharks: { 
+                    "Cabinet Shrestha": { invested: true, amount: 2000000, equity: 35 } 
+                } 
+            },
+            { 
+                id: 3, 
+                name: "Elletra DRP", 
+                photoUrl: "https://placehold.co/100x100/1e293b/f8fafc?text=Elletra", 
+                websiteUrl: "https://elletradrp.com/", 
+                season: 1, 
+                episode: 2, 
+                category: "Cosmetics", 
+                dealMade: false, 
+                askAmount: 1000000, 
+                askEquity: 10, 
+                sharks: {} 
+            },
+            { 
+                id: 4, 
+                name: "Art Maya Exim", 
+                photoUrl: "assets/sharktanks/artmaya.png", 
+                websiteUrl: "https://artmayanepal.com/", 
+                season: 1, 
+                episode: 2, 
+                category: "Decor & Furniture", 
+                dealMade: true, 
+                askAmount: 1000000, 
+                askEquity: 6, 
+                sharks: { 
+                    "Hem Raj Dhakal": { invested: true, amount: 1000000, equity: 10 }, 
+                    "Saurabh Jyoti": { invested: true, amount: 1000000, equity: 10 } 
+                } 
+            },
+            { 
+                id: 5, 
+                name: "Mero Coding Classes", 
+                photoUrl: "assets/sharktanks/merocoding.png", 
+                websiteUrl: "https://merocodingclass.com/", 
+                season: 1, 
+                episode: 2, 
+                category: "Education", 
+                dealMade: true, 
+                askAmount: 3000000, 
+                askEquity: 10, 
+                sharks: { 
+                    "Cabinet Shrestha": { invested: true, amount: 5100000, equity: 17 }, 
+                    "Hem Raj Dhakal": { invested: true, amount: 5100000, equity: 17 } 
+                } 
+            },
+            { 
+                id: 6, 
+                name: "Sathi Pad", 
+                photoUrl: "assets/sharktanks/sathi.png", 
+                websiteUrl: "https://saathipads.com/", 
+                season: 1, 
+                episode: 2, 
+                category: "Health & Wellness", 
+                dealMade: true, 
+                askAmount: 5000000, 
+                askEquity: 25, 
+                sharks: { 
+                    "All 5 Sharks": { invested: true, amount: 5000000, equity: 40 } 
+                } 
+            },
+            { 
+                id: 7, 
+                name: "Moon Wake", 
+                photoUrl: "assets/sharktanks/moonwake.png", 
+                websiteUrl: "https://moonwakeskincare.com.np/", 
+                season: 1, 
+                episode: 3, 
+                category: "Cosmetics", 
+                dealMade: true, 
+                askAmount: 1500000, 
+                askEquity: 10, 
+                sharks: { 
+                    "Ritu Singh Vaidya": { invested: true, amount: 3000000, equity: 20 } 
+                } 
+            },
+            { 
+                id: 8, 
+                name: "Neil Orthotics", 
+                photoUrl: "assets/sharktanks/neil.png", 
+                websiteUrl: "https://neilorthotics.com.np/", 
+                season: 1, 
+                episode: 3, 
+                category: "Healthcare", 
+                dealMade: true, 
+                askAmount: 4000000, 
+                askEquity: 10, 
+                sharks: { 
+                    "Hem Raj Dhakal": { invested: true, amount: 2000000, equity: 10 }, 
+                    "Cabinet Shrestha": { invested: true, amount: 2000000, equity: 10 }, 
+                    "Saurabh Jyoti": { invested: true, amount: 2000000, equity: 10 } 
+                } 
+            },
+            { 
+                id: 9, 
+                name: "Jay Deurali Krishi Farm", 
+                photoUrl: "assets/sharktanks/jay.png", 
+                websiteUrl: "https://jayadeurali.pages.dev/", 
+                season: 1, 
+                episode: 4, 
+                category: "Agriculture", 
+                dealMade: true, 
+                askAmount: 5000000, 
+                askEquity: 20, 
+                sharks: { 
+                    "Cabinet Shrestha": { invested: true, amount: 5000000, equity: 30 } 
+                } 
+            },
+            { 
+                id: 10, 
+                name: "One Horn", 
+                photoUrl: "assets/sharktanks/onehorn.png", 
+                websiteUrl: "https://www.instagram.com/onehornofficial", 
+                season: 1, 
+                episode: 4, 
+                category: "Clothing", 
+                dealMade: false, 
+                askAmount: 2500000, 
+                askEquity: 10, 
+                sharks: {} 
+            },
+            { 
+                id: 11, 
+                name: "Prem Nisa Allo Dhago Udyog", 
+                photoUrl: "", 
+                websiteUrl: null, 
+                season: 1, 
+                episode: 4, 
+                category: "Ayurvedic", 
+                dealMade: false, 
+                askAmount: 25000000, 
+                askEquity: 20, 
+                sharks: {} 
+            },
+            { 
+                id: 12, 
+                name: "Veda", 
+                photoUrl: "assets/sharktanks/veda.png", // Updated photo URL
+                websiteUrl: "https://veda-app.com", 
+                season: 1, 
+                episode: 4, 
+                category: "Education", 
+                dealMade: true, 
+                askAmount: 60000000, 
+                askEquity: 10, 
+                sharks: { 
+                    "Hem Raj Dhakal": { invested: true, amount: 60000000, equity: 20 } 
+                } 
+            },
+            {
+                id: 13, // New event ID for SabKo Phone
+                name: "SabKo Phone",
+                photoUrl:"assets/sharktanks/sabkophone.png",
+                websiteUrl: "https://sabkophone.com/", // No website provided
+                season: 1,
+                episode: 3,
+                category: "Technology",
+                dealMade: false, // No deal was made
+                askAmount: 20000000, // 2 Crores
+                askEquity: 20,
+                sharks: {
+                    // No sharks invested since no deal was made
+                }
+            },
+            {
+                id: 14, // New event ID for Shanta Ko Achar
+                name: "Shanta Ko Achar",
+                photoUrl: "assets/sharktanks/shanta.png",
+                websiteUrl: "https://santakoachaar.com.np/", // No website provided
+                season: 1,
+                episode: 3,
+                category: "Homemade",
+                dealMade: false, // No deal was made
+                askAmount: 20000000, // 2 Crores
+                askEquity: 30,
+                sharks: {
+                    // No sharks invested since no deal was made
+                }
+            },
+            {
+                id: 15, // New event ID for Nepal Ayurveda
+                name: "Nepal Ayurveda",
+                photoUrl:"assets/sharktanks/nepalauyurveda.png",
+                websiteUrl: "https://www.facebook.com/nepalayurvedahome/", // No website provided
+                season: 1,
+                episode: 3,
+                category: "Healthcare",
+                dealMade: false, // No deal was made
+                askAmount: 30000000, // 3 Crores
+                askEquity: 15,
+                sharks: {
+                    // No sharks invested since no deal was made
+                }
+            },
+            {
+                id: 16, // New event ID for Jattis Agro Food Product
+                name: "Jattis Agro Food Product",
+                websiteUrl: null, // No website provided
+                season: 1,
+                episode: 3,
+                category: "Food",
+                dealMade: false, // No deal was made
+                askAmount: 10000000, // 1 Crore
+                askEquity: 10,
+                sharks: {
+                    // No sharks invested since no deal was made
+                }
+            }
+        ];
+        
+        let currentSort = 'investment';
+        
+        companies.forEach(company => {
+            if (company.dealMade) {
+                const investingSharks = Object.values(company.sharks);
+                company.totalInvestment = investingSharks.reduce((sum, shark) => sum + (shark.amount || 0), 0);
+                const totalEquity = investingSharks.reduce((sum, shark) => sum + (shark.equity || 0), 0);
+                company.finalEquity = totalEquity; // Store the final equity
+                company.valuation = totalEquity > 0 ? (company.totalInvestment / (totalEquity / 100)) : 0;
+            } else {
+                company.totalInvestment = 0;
+                company.finalEquity = 0;
+                company.valuation = 0;
+            }
+        });
+        
+        function formatNpr(amount) {
+            if (amount >= 10000000) return `NPR ${(amount / 10000000).toFixed(2)} Cr`;
+            if (amount >= 100000) return `NPR ${(amount / 100000).toFixed(2)} Lakh`;
+            return new Intl.NumberFormat('en-NP', { style: 'currency', currency: 'NPR', minimumFractionDigits: 0 }).format(amount);
+        }
+
+        function initializeFilters() {
+            const categories = [...new Set(companies.map(c => c.category))].sort();
+            const categoryFilter = document.getElementById('categoryFilter');
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
+        }
+        
+        function createLeaderboardCard(company, rank) {
+            const card = document.createElement('div');
+            card.className = 'leaderboard-card';
+            if (rank <= 3 && company.dealMade) card.classList.add(`rank-${rank}`);
+            
+            const investedSharksNames = Object.keys(company.sharks).filter(name => company.sharks[name].invested);
+            const linkIconHtml = company.websiteUrl ? `<a href="${company.websiteUrl}" target="_blank" rel="noopener noreferrer" class="company-link" title="Visit Website"><i class="fas fa-arrow-up-right-from-square"></i></a>` : '';
+
+            card.innerHTML = `
+                <div class="card-rank">#${rank}</div>
+                <div class="card-logo">
+                    <img src="${company.photoUrl}" alt="${company.name} Logo">
+                </div>
+                <div class="card-details">
+                    <div class="card-header">
+                        <h3>${company.name}</h3>
+                        ${linkIconHtml}
+                    </div>
+                    <div class="category">S${company.season} E${company.episode} • ${company.category}</div>
+                    
+                    <div class="deal-info">
+                        <div class="deal-metric">
+                            <div class="label">Original Ask</div>
+                            <div class="value ask-value">${formatNpr(company.askAmount)} for ${company.askEquity}%</div>
+                        </div>
+
+                        ${company.dealMade ? `
+                            <div class="deal-metric">
+                                <div class="label">Final Deal</div>
+                                <div class="value">${formatNpr(company.totalInvestment)} for ${company.finalEquity}% Equity</div>
+                            </div>
+                            <div class="deal-metric">
+                                <div class="label">Valuation</div>
+                                <div class="value">${formatNpr(company.valuation)}</div>
+                            </div>
+                        ` : `
+                            <div class="deal-metric">
+                                <div class="label">Status</div>
+                                <div class="value no-deal">No Deal</div>
+                            </div>
+                        `}
+                    </div>
+
+                    ${investedSharksNames.length > 0 ? `
+                        <div class="sharks-list">
+                            <span class="sharks-label">Investors:</span>
+                            ${investedSharksNames.map(name => `<span class="shark-chip">${name}</span>`).join('')}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            return card;
+        }
+
+        function applyFiltersAndSort() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const dealFilter = document.getElementById('dealFilter').value;
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            
+            let filtered = companies.filter(c => 
+                c.name.toLowerCase().includes(searchTerm) && 
+                (!dealFilter || (dealFilter === 'deal' && c.dealMade) || (dealFilter === 'no-deal' && !c.dealMade)) && 
+                (!categoryFilter || c.category === categoryFilter)
+            );
+
+            filtered.sort((a, b) => {
+                if (currentSort === 'valuation') return b.valuation - a.valuation;
+                if (currentSort === 'recent') return (b.season * 100 + b.episode) - (a.season * 100 + a.episode);
+                return b.totalInvestment - a.totalInvestment;
+            });
+            renderLeaderboard(filtered);
+        }
+
+        function renderLeaderboard(data) {
+            const listContainer = document.getElementById('leaderboardList');
+            const noResults = document.getElementById('noResults');
+            listContainer.innerHTML = '';
+            
+            if (data.length === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+                data.forEach((company, index) => {
+                    listContainer.appendChild(createLeaderboardCard(company, index + 1));
+                });
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeFilters();
+            applyFiltersAndSort();
+            
+            document.getElementById('search').addEventListener('input', applyFiltersAndSort);
+            document.getElementById('dealFilter').addEventListener('change', applyFiltersAndSort);
+            document.getElementById('categoryFilter').addEventListener('change', applyFiltersAndSort);
+
+            const sortButtonsContainer = document.getElementById('sort-toggle-buttons');
+            sortButtonsContainer.addEventListener('click', (e) => {
+                const clickedButton = e.target.closest('.sort-btn');
+                if (clickedButton) {
+                    sortButtonsContainer.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+                    clickedButton.classList.add('active');
+                    currentSort = clickedButton.dataset.sort;
+                    applyFiltersAndSort();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
