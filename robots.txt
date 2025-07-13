@@ -1,0 +1,92 @@
+User-agent: *
+Allow: /
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Block unnecessary bots that can slow down your site
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Allow access to important assets for SEO
+Allow: /assets/
+Allow: /favicon.ico
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.svg
+
+# Block potential sensitive or unnecessary directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /backup/
+Disallow: /logs/
+Disallow: /config/
+Disallow: /api/internal/
+Disallow: /test/
+Disallow: /staging/
+
+# Block search result pages and filters to avoid duplicate content
+Disallow: /*?filter=
+Disallow: /*?search=
+Disallow: /*?sort=
+Disallow: /*&filter=
+Disallow: /*&search=
+Disallow: /*&sort=
+
+# Block session and tracking parameters
+Disallow: /*?sessionid=
+Disallow: /*?sid=
+Disallow: /*?utm_source=
+Disallow: /*?utm_medium=
+Disallow: /*?utm_campaign=
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
+
+# Allow event detail pages (these are important for SEO)
+Allow: /#event-*
+
+# Crawl-delay to be respectful to server resources
+Crawl-delay: 1
+
+# Sitemap location (you should create this)
+Sitemap: https://khojum.com/sitemap.xml
