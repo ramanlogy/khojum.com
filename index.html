@@ -151,11 +151,58 @@
         .action-btn.primary { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; font-size: 1.1rem; background-color: var(--brand-red); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
         .back-to-events-btn { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; background: transparent; border: none; font-size: 1.5rem; color: var(--text-primary); cursor: pointer; padding: 10px; }
 
+        /* NEW: INVITE SECTION STYLES */
+        .invite-section { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-color); }
+        .invite-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .invite-btn { background-color: transparent; border: 2px solid var(--brand-red); color: var(--brand-red); padding: 8px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 0.9rem; }
+        .invite-btn:hover { background-color: var(--brand-red); color: white; }
+        .invite-btn i { margin-right: 8px; }
+        .guest-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; }
+        .guest-item { display: flex; align-items: center; gap: 15px; }
+        .guest-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-color); }
+        .guest-name { font-weight: 600; color: var(--text-primary); }
+        .guest-status { font-size: 0.85rem; }
+        .guest-status.going { color: var(--success-color); }
+        .guest-status.invited { color: var(--text-light); }
+        .guest-status.organizer { color: var(--brand-blue); font-weight: 500; }
+
         /* FOOTER */
         footer { text-align: center; padding: 40px 20px; background: var(--bg-main); color: var(--text-secondary); margin-top: 40px; border-top: 1px solid var(--border-color); }
         .footer-links { margin-top: 15px; }
         .footer-links a { margin: 0 12px; color: var(--text-secondary); font-size: 1.4rem; transition: var(--transition); } .footer-links a:hover { color: var(--brand-red); }
         .copyright { margin-top: 15px; opacity: 0.8; font-size: 0.9rem;}
+
+        .link-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0; /* Increased margin for better spacing */
+        }
+        .link {
+            text-decoration: none;
+            color: #333; /* Darker color for a premium look */
+            font-size: 1.2rem;
+            margin: 0 20px;
+            position: relative;
+            padding: 10px 15px; /* Padding for a button-like feel */
+            border: 2px solid transparent; /* Border for hover effect */
+            border-radius: 5px; /* Rounded corners */
+            transition: all 0.3s ease; /* Smooth transition */
+        }
+        .link::after {
+            content: '→'; /* Slanted arrow */
+            position: absolute;
+            right: -25px; /* Position the arrow */
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        .link:hover {
+            color: #fff; /* Change text color on hover */
+            background-color: var(--brand-red); /* Background color on hover */
+            border-color: var(--brand-red); /* Border color on hover */
+        }
+        .link:hover::after {
+            transform: translateX(5px); /* Arrow movement on hover */
+        }
 
         @media (min-width: 768px) {
             .event-card { border-radius: var(--border-radius); }
@@ -216,7 +263,10 @@
                 <a href="https://www.instagram.com/khojum.comm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Follow on Instagram">
                     <i class="fab fa-instagram"></i> 
                 </a>
-
+            </div>
+            <div class="link-container">
+                <a href="sharktank.html" class="link">Shark Tank Nepal</a>
+                <a href="expired.html" class="link">Expired Events</a>
             </div>
             <p class="copyright">Khojum Inc. © 2025</p>
         </div>
@@ -225,41 +275,9 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         
-            
+        // --- DATA ---
+        // Note: I've added a new 'invite' object to the "Artha Run Club" event
         const eventsData = [
-            
-            {
-                id: 2,
-                title: "John and The Locals Concert",
-                date: "2025-07-12",
-                time: "9:00 PM Onwards",
-                venue: "XO Club, Thamel",
-                gmapsUrl: "https://maps.app.goo.gl/GEMJ3pNuCVT9Uo5c8",
-                price: "Rs. 1500",
-                image: "assets/jhonconcert.png",
-                category: "music",
-                tags: ["Live Music", "Rock", "Nightlife"],
-                organizer: { name: "XO Club", verified: false },
-                availability: "limited",
-                description: "Experience an electrifying night of rock music with John and The Locals live in Thamel. Get ready for high-energy performances and unforgettable anthems.",
-                bookingUrl: "https://events.khalti.com/events/ET259U4Z5ADC"
-            },
-            {
-                id: 3,
-                title: "Interdependence: Art Exhibition",
-                date: "2025-07-12",
-                time: "11:00 AM - 5:00 PM",
-                venue: "Nepal Art Council",
-                gmapsUrl: "https://maps.app.goo.gl/zKzsceB5Uq7nBbqd7",
-                price: "Free",
-                image: "assets/artexhibiton.png",
-                category: "art",
-                tags: ["Exhibition", "Fine Arts", "Culture"],
-                organizer: { name: "Nepal Art Council", verified: true },
-                availability: "available",
-                description: "An exploration of human connection through contemporary Nepali art and cultural expression. Featuring works from over 20 renowned and emerging artists.",
-                bookingUrl: "https://vt.tiktok.com/ZSB2P4tYS/"
-            },
             {
                 id: 4,
                 title: "Artha Run Club",
@@ -282,23 +300,22 @@
                 description: "All paces and ages are welcome, so bring your energy, your smiles, and maybe a friend or two!<br><br>Location: International Club, Lalitpur<br>Meetup Time: 6:00 AM<br>Start Time: 7:00 AM<br>Distance: 6k<br><br>• Parking: Available for two-wheelers and four-wheelers (Rs 30/hr)<br>• Bag Drop: Safe space to leave your belongings<br><br>Come for the run, stay for the coffee, conversations, and connections after. See you Saturday!<br><b>\n Things you need:</b><br>• Register for the Run<br>• Download Strava: <a href='https://www.strava.com/mobile' target='_blank'>Strava App</a> & register<br>• Choose a comfortable pace group<br>• Be you, no pressure. <br> •Follow Organizer on instagram <a href='https://www.instagram.com/artha.runclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' target='_blank'>Instagram</a> ",
                 bookingUrl: "https://lu.ma/jb7oav4k",
                 actionText: "Register Now",
-                actionIcon: "fa-running"
-            },
-            {
-                id: 6,
-                title: "Benambari Theater Show",
-                date: "2025-07-05",
-                time: "12:00 PM and 4:00 PM",
-                venue: "Mandala Theater, Thapagaun",
-                gmapsUrl: "https://maps.app.goo.gl/Y5Zjc7YpGbCU5Vau9",
-                price: "Rs. 350",
-                image: "assets/benambari.png",
-                category: "art",
-                tags: ["Theater", "Performance", "Cultural"],
-                organizer: { name: "Ace Theater club", verified: true },
-                availability: "available",
-                description: "Experience the captivating Benambari Theater Show at Mandala Theater. A must-see performance that showcases the rich cultural heritage of Nepal.",
-                bookingUrl: "https://www.instagram.com/ace_theater_club?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                actionIcon: "fa-running",
+                // NEW: Invite-only data
+                invite: {
+                    enabled: true,
+                    organizer: {
+                        name: "Aman Adhikari",
+                        avatarUrl: "https://randomuser.me/api/portraits/men/1.jpg"
+                    },
+                    guests: [
+                        { name: "Sanjaya Subedi", avatarUrl: "https://randomuser.me/api/portraits/men/2.jpg", status: "Going" },
+                        { name: "Pukar Jha", avatarUrl: "https://randomuser.me/api/portraits/women/3.jpg", status: "Going" },
+                        { name: "Rohit Paudel", avatarUrl: "https://randomuser.me/api/portraits/men/4.jpg", status: "Invited" },
+                        { name: "Rabina Joshi", avatarUrl: "https://randomuser.me/api/portraits/women/5.jpg", status: "Going" },
+                        { name: "Kushal Bhurtel", avatarUrl: "https://randomuser.me/api/portraits/men/6.jpg", status: "Invited" },
+                    ]
+                }
             },
             {
                 id: 8,
@@ -314,12 +331,14 @@
                 organizer: { name: "Rug Museum", verified: false },
                 availability: "available",
                 description: "Explore a variety of traditional and contemporary rugs showcasing the rich heritage of Nepal.",
-                bookingUrl: "https://www.tiktok.com/@te4nz/video/7299830094464437505"
+                bookingUrl: "https://www.tiktok.com/@te4nz/video/7299830094464437505",
+                actionText: "Watch Video", 
+                actionIcon: "fa-arrow-right"
             },
             {
                 id: 5,
                 title: "Tokha Saturday Mela",
-                date: "2025-07-05",
+                date: "2025-07-19",
                 time: "3:00 PM - 7:00 PM",
                 venue: "Tokha, near Ganesh Temple",
                 gmapsUrl: "https://maps.app.goo.gl/YLEH9Z5SStiW6Jn38",
@@ -330,7 +349,9 @@
                 organizer: { name: "Local Community", verified: false },
                 availability: "available",
                 description: "Celebrate community and cuisine at Tokha's vibrant Saturday food and culture mela. Enjoy traditional Newari delicacies, live music, and local crafts.",
-                bookingUrl: "https://www.tiktok.com/@storiesofmanisha/video/7474071111668600082"
+                bookingUrl: "https://www.tiktok.com/@storiesofmanisha/video/7474071111668600082",
+                actionText: "Watch Video",
+                actionIcon: "fa-arrow-right"
             },
             {
                 id: 7,
@@ -346,12 +367,14 @@
                 organizer: { name: "Kaiser Library", verified: true },
                 availability: "available",
                 description: "Kaiser Library offers a serene environment to spend time and read books in the courtyard and inside the library. One of the rare gems of Nepal that most don't know about.",
-                bookingUrl: "https://www.tiktok.com/@adorrree_me/video/7493883616259296520"
+                bookingUrl: "https://www.tiktok.com/@adorrree_me/video/7493883616259296520",
+                actionText: "Watch Video",
+                actionIcon: "fa-arrow-right"
             },
             {
                 id: 1,
                 title: "Shark Tank Nepal - Season 1",
-                date: "2025-07-08",
+                date: "2025-07-16",
                 time: "9:00 PM",
                 venue: "Himalayan TV HD",
                 gmapsUrl: "https://maps.app.goo.gl/9m2L7G8pY6X3A7Z79",
@@ -363,10 +386,13 @@
                 availability: "available",
                 description: "Watch entrepreneurs pitch their ideas to celebrity investors on national television. This season promises bigger deals, tougher negotiations, and groundbreaking innovations.",
                 bookingUrl: "sharktank.html",
-                actionText: "Track Companies", // Updated action text
-                actionIcon: "fa-arrow-right" // Optional: Change icon if needed
+                actionText: "Track Companies", 
+                actionIcon: "fa-arrow-right"
             },
+            
+          
         ];
+
         let currentFilter = 'all';
         let savedEvents = new Set();
         
@@ -449,6 +475,9 @@
             const actionIcon = event.actionIcon || 'fa-ticket-alt';
             const actionText = event.actionText || 'Get Tickets';
             
+            // NEW: Generate the invite section HTML if data exists
+            const inviteSectionHtml = (event.invite && event.invite.enabled) ? createInviteSectionHTML(event.invite) : '';
+
             eventDetailView.innerHTML = `
                 <button class="back-to-events-btn" onclick="window.location.hash=''"><i class="fas fa-arrow-left"></i></button>
                 <div class="detail-card">
@@ -473,6 +502,10 @@
                             <h3>About the Event</h3>
                             <div class="detail-description"><p>${event.description.replace(/<br>/g, '</p><p>').replace(/\\n/g, '</p><p>')}</p></div>
                         </div>
+                        
+                        <!-- Inject Invite Section Here -->
+                        ${inviteSectionHtml}
+
                     </div>
                     <div class="detail-action-bar">
                          <button class="action-btn primary" onclick="bookTicket(event, ${event.id})">
@@ -483,6 +516,44 @@
             `;
         }
         
+        // NEW: Function to create the HTML for the invite section
+        function createInviteSectionHTML(inviteData) {
+            const organizerHtml = `
+                <li class="guest-item">
+                    <img src="${inviteData.organizer.avatarUrl}" alt="${inviteData.organizer.name}" class="guest-avatar">
+                    <div>
+                        <div class="guest-name">${inviteData.organizer.name}</div>
+                        <div class="guest-status organizer">Organizer</div>
+                    </div>
+                </li>
+            `;
+            
+            const guestsHtml = inviteData.guests.map(guest => `
+                <li class="guest-item">
+                    <img src="${guest.avatarUrl}" alt="${guest.name}" class="guest-avatar">
+                    <div>
+                        <div class="guest-name">${guest.name}</div>
+                        <div class="guest-status ${guest.status.toLowerCase()}">${guest.status}</div>
+                    </div>
+                </li>
+            `).join('');
+
+            return `
+                <section class="invite-section">
+                    <div class="invite-header">
+                        <h3>Who's Going</h3>
+                        <button class="invite-btn" onclick="showNotification('Invite feature coming soon!', 'info')">
+                            <i class="fas fa-user-plus"></i> Invite
+                        </button>
+                    </div>
+                    <ul class="guest-list">
+                        ${organizerHtml}
+                        ${guestsHtml}
+                    </ul>
+                </section>
+            `;
+        }
+
         function setupEventListeners() {
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -591,7 +662,7 @@
         const getWeekendDates = () => { const today = new Date(); const sat = new Date(today); sat.setDate(today.getDate() + (6 - today.getDay() + 7) % 7); return [sat.toISOString().split('T')[0]]; };
         const showLoadingState = () => { eventsContainer.innerHTML = Array(3).fill('<div class="skeleton-card"><div class="skeleton-image skeleton"></div></div>').join(''); };
         const hideLoadingState = () => { eventsContainer.innerHTML = ''; };
-        function showNotification(message, type = 'info') { const el = document.createElement('div'); el.style.cssText = `position:fixed;bottom:20px;left:50%;transform:translateX(-50%);padding:12px 20px;border-radius:8px;z-index:10000;font-weight:500;transition:all .3s ease;opacity:0;background:${type==='error'?'#dc3545':'#28a745'};color:white;box-shadow: var(--shadow-md);`; el.textContent = message; document.body.appendChild(el); setTimeout(() => {el.style.opacity = 1; el.style.bottom = '30px';}, 10); setTimeout(() => { el.style.opacity = 0; el.style.bottom = '20px'; setTimeout(() => el.remove(), 300); }, 3000); }
+        window.showNotification = (message, type = 'info') => { const el = document.createElement('div'); el.style.cssText = `position:fixed;bottom:20px;left:50%;transform:translateX(-50%);padding:12px 20px;border-radius:8px;z-index:10000;font-weight:500;transition:all .3s ease;opacity:0;background:${type==='error'?'#dc3545':'#28a745'};color:white;box-shadow: var(--shadow-md);`; el.textContent = message; document.body.appendChild(el); setTimeout(() => {el.style.opacity = 1; el.style.bottom = '30px';}, 10); setTimeout(() => { el.style.opacity = 0; el.style.bottom = '20px'; setTimeout(() => el.remove(), 300); }, 3000); }
 
         init();
     });
