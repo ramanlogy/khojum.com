@@ -10,15 +10,24 @@
 
   gtag('config', 'G-7LWHSBNXT5');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discover trendy Events easily | Upcoming Events in Kathmandu | Khojum.com</title>
-    <meta name="description" content="Nepal's top event discovery platform. Browse upcoming concerts, cultural festivals, art exhibitions, and entertainment in Kathmandu and beyond. Plan your perfect outing with Khojum.">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?fami~ly=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
-    <style>
+<title>Recent Events in Kathmandu | Explore What You Missed | Khojum</title>
+  <meta name="description" content="Discover past events in Kathmandu and beyond, including concerts, cultural festivals, art shows, and more. See what you missed with Khojum’s archive.">
+  <meta name="keywords" content="past events Kathmandu, recent events Nepal, event archive Kathmandu, expired events Khojum, concerts, festivals, art shows">
+  <meta name="robots" content="index, follow">
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+  <!-- ✅ Font Optimization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap">
+  </noscript>
+
+  <!-- ✅ Optional: Critical Inline CSS (replace or add your own) -->
+  <style>
         :root {
             --nepal-red: #dc143c;
             --nepal-blue: #003893;
@@ -535,6 +544,24 @@
     </div>
     
     <main class="container">
+     <a href="index.html" class="back-link" style="
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  background-color:black ;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+">
+  &#8592; Back to Home
+</a>
+
         <div class="events-grid" id="events-container">
             <!-- Events will be dynamically populated here -->
         </div>
@@ -609,18 +636,54 @@
         const businesses = [
 
         {
-        id: 2, // New ID for the Jameson Patan Fest 2025 event
-        title: "Jameson Patan Fest 2025",
-        description: "Jameson Patan Fest 2025 is set to be one of the biggest events in Nepal this year! If you're searching for upcoming events in Nepal, concerts near me, or festivals in Kathmandu, this is where you need to be! On April 5, 2025, from 2:00 PM onwards, Chyasal Stadium will transform into a high-energy celebration of music, culture, and entertainment, featuring some of Nepal's most electrifying performers!\n\nOur first headline act is here—John & The Locals! 🔥 Known for their unmatched energy and electrifying live performances, they're ready to take Jameson Patan Fest to the next level! But this is just the beginning—more powerhouse artists are set to be revealed soon! Stay tuned as we build up to an epic music festival that will keep you on your feet all night long!",
-        date: "April 5, 2025", // Date of the event
-        time: "2:00 PM Onwards", // Time of the event
-        location: "Chyasal Stadium, Lalitpur, Nepal", // Venue
-        price: "Rs. 900 to Rs. 1500", // Price can be updated later
-        image: "assets/jameson.png", // Add the appropriate image path
-        category: "Music", // Tags for filtering
-        url: "https://events.khalti.com/events/ET25HCWK4QJV", // Example URL for more information
-        popularity: 10 // Adjust popularity as needed
-         }, 
+                id: 2,
+                title: "John and The Locals Concert",
+                date: "2025-07-12",
+                time: "9:00 PM Onwards",
+                venue: "XO Club, Thamel",
+                gmapsUrl: "https://maps.app.goo.gl/GEMJ3pNuCVT9Uo5c8",
+                price: "Rs. 1500",
+                image: "assets/jhonconcert.png",
+                category: "music",
+                tags: ["Live Music", "Rock", "Nightlife"],
+                organizer: { name: "XO Club", verified: false },
+                availability: "limited",
+                description: "Experience an electrifying night of rock music with John and The Locals live in Thamel. Get ready for high-energy performances and unforgettable anthems.",
+                bookingUrl: "https://events.khalti.com/events/ET259U4Z5ADC"
+            },
+            {
+                id: 3,
+                title: "Interdependence: Art Exhibition",
+                date: "2025-07-12",
+                time: "11:00 AM - 5:00 PM",
+                venue: "Nepal Art Council",
+                gmapsUrl: "https://maps.app.goo.gl/zKzsceB5Uq7nBbqd7",
+                price: "Free",
+                image: "assets/artexhibiton.png",
+                category: "art",
+                tags: ["Exhibition", "Fine Arts", "Culture"],
+                organizer: { name: "Nepal Art Council", verified: true },
+                availability: "available",
+                description: "An exploration of human connection through contemporary Nepali art and cultural expression. Featuring works from over 20 renowned and emerging artists.",
+                bookingUrl: "https://vt.tiktok.com/ZSB2P4tYS/"
+            },
+            {
+                id: 6,
+                title: "Benambari Theater Show",
+                date: "2025-07-05",
+                time: "12:00 PM and 4:00 PM",
+                venue: "Mandala Theater, Thapagaun",
+                gmapsUrl: "https://maps.app.goo.gl/Y5Zjc7YpGbCU5Vau9",
+                price: "Rs. 350",
+                image: "assets/benambari.png",
+                category: "art",
+                tags: ["Theater", "Performance", "Cultural"],
+                organizer: { name: "Ace Theater club", verified: true },
+                availability: "available",
+                description: "Experience the captivating Benambari Theater Show at Mandala Theater. A must-see performance that showcases the rich cultural heritage of Nepal.",
+                bookingUrl: "https://www.instagram.com/ace_theater_club?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            },
+      
              {
         id: 2, // New ID for the Jameson Patan Fest 2025 event
         title: "Jameson Patan Fest 2025",
