@@ -278,6 +278,78 @@
         // --- DATA ---
         // Note: I've added a new 'invite' object to the "Artha Run Club" event
         const eventsData = [
+        {
+                id: 1, // New ID for the event
+                title: "Under Wraps ft. Laure",
+                date: "Saturday, 19 July",
+                time: "8:00 PM Onwards",
+                venue: "Omnia Club, Thamel, Kathmandu",
+                gmapsUrl: "https://maps.app.goo.gl/mFeVNGhTX16yoDSA7", // No direct gmapsUrl for this event
+                price: "Rs.999", // Set price if known
+                image: "assets/laure.png", // Add an image path if available
+                category: "concert",
+                tags: ["Hip-Hop", "Live Music", "Nepal"],
+                organizer: { 
+                    name: "Omnia Club", 
+                    verified: true,
+                    instagram: "https://www.instagram.com/laure"
+                },
+                availability: "available",
+                attendeeCount: 0, // Initial count, can be updated later
+                duration: "3 hours", // Estimated duration
+                description: "Brace yourselves, Kathmandu! The stage is about to explode as Under Wraps ft. Laure hits Omnia Club, Thamel. Get ready to vibe with Nepal’s rap icon Laure, known for his fire-spitting bars and crowd-hyping energy. This isn’t just another gig—it’s a full-blown hip-hop experience packed with adrenaline, beats that shake the floor, and a crowd that won’t stop moving. So grab your crew, gear up for the madness, and step into the heart of the underground. This is where legends light up the night.",
+                bookingUrl: "https://events.khalti.com/events/ET254GJPR8PS", // Replace with actual booking URL
+                actionText: "Get Tickets",
+                actionIcon: "fa-music", // Use an appropriate icon
+            },
+            {
+                id: 2, // New ID for the event
+                title: "Tech X: Elevate 2025",
+                date: "July 16–19, 2025",
+                time: "9:00am- 5:00pm",
+                venue: "Block A & Block E, Softwarica College of IT & E-commerce, Dillibazar, Kathmandu",
+                gmapsUrl: "https://maps.app.goo.gl/AXbtyyLQf3rPE91JA",
+                price: "Free", // Assuming the event is free; adjust if necessary
+                image: "assets/softwarica.png", // Add an image path if available
+                category: "conference",
+                tags: ["Technology", "Education", "Innovation"],
+                organizer: { 
+                    name: "Softwarica College", 
+                    verified: true,
+                    instagram: "https://www.instagram.com/softwarica"
+                },
+                availability: "available",
+                attendeeCount: 0, // Initial count, can be updated later
+                duration: "4 days", // Duration of the event
+                description: "Tech X: Elevate 2025 is an annual flagship event of Softwarica College, in collaboration with Coventry University happening from July 16–19. Tech X is back for the third year with new and exciting attractions.<br><br>What’s going to Happen?<br>- Student Project Showcase – 15+ cutting-edge innovations<br>- Job Fair – Meet 25+ top tech companies<br>- VC Pitching – Startups shooting their shot<br>- VR Assessments – Knowing their true potentials as which course will better suit them<br>- Entrepreneurship Masterclass – Learn from the best<br>- Inspire Talks – Stories that move minds<br>- Iron Clash – Robot battles that go HARD<br><br>Happening at Block A & Block E, Softwarica College of IT & E-commerce, Dillibazar, Kathmandu.",
+                bookingUrl: "https://www.instagram.com/p/DMFu-tCxrNn/", // Replace with actual booking URL
+                actionText: "Learn more",
+                actionIcon: "fa-laptop", // Use an appropriate icon
+            },
+            {
+                id: 3, // New ID for the event
+                title: "Rock and Roll with KUMA SAGAR & THE KHWOPA",
+                date: "Wednesday, 23rd July",
+                time: "Gates Open at 7 PM",
+                venue: "Purple Haze Bar",
+                gmapsUrl: "https://www.google.com/maps/place/Purple+Haze+Rock+Bar/@27.7148122,85.3002477,15z/data=!3m1!4b1!4m6!3m5!1s0x39eb18fce452e207:0x70be89a8c5e4fce3!8m2!3d27.7147936!4d85.310526!16s%2Fg%2F12jmkf3hd?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D", // No direct gmapsUrl for this event
+                price: "Pre Sale: 1000/- | Door Sale: 1500/-",
+                image: "assets/kumasagar.png", // Add an image path if available
+                category: "concert",
+                tags: ["Rock", "Live Music", "Nepal"],
+                organizer: { 
+                    name: "Purple Haze", 
+                    verified: true,
+                    instagram: "@kumasagar_"
+                },
+                availability: "available",
+                attendeeCount: 0, // Initial count, can be updated later
+                duration: "3 hours", // Estimated duration
+                description: "Join us for an electrifying night of Rock and Roll with KUMA SAGAR & THE KHWOPA!<br><br>Opening Act: THE SQUARE [ @the_square_band_nepal ]<br>Date: Wednesday, 23rd July<br>Gates Open: 7 PM<br><br>Pre Sale Tickets Available Online at: @kgarira<br>On Cash: Purple Haze Bar Counter<br>Pre Sale: NPR 1000/-<br>Door Sale: NPR 1500/-",
+                bookingUrl: "https://kgarira.com/buy-tickets/purple-haze-rock-roll-with-kuma-sagar-the-khwopa/", // Replace with actual booking URL
+                actionText: "Get Tickets",
+                actionIcon: "fa-music", // Use an appropriate icon
+            },
             {
                 id: 4,
                 title: "Artha Run Club",
@@ -318,61 +390,7 @@
                 }
             },
             {
-                id: 8,
-                title: "Rug Museum",
-                date: "Everyday",
-                time: "10 AM - 6 PM",
-                venue: "Jan Kath, near Boudha",
-                gmapsUrl: "https://maps.app.goo.gl/7DGgzws3tod8j3AW8",
-                price: "Free",
-                image: "assets/rugmuseum.png",
-                category: "Art",
-                tags: ["Rugs", "Art", "Asthetic"],
-                organizer: { name: "Rug Museum", verified: false },
-                availability: "available",
-                description: "Explore a variety of traditional and contemporary rugs showcasing the rich heritage of Nepal.",
-                bookingUrl: "https://www.tiktok.com/@te4nz/video/7299830094464437505",
-                actionText: "Watch Video", 
-                actionIcon: "fa-arrow-right"
-            },
-            {
                 id: 5,
-                title: "Tokha Saturday Mela",
-                date: "2025-07-19",
-                time: "3:00 PM - 7:00 PM",
-                venue: "Tokha, near Ganesh Temple",
-                gmapsUrl: "https://maps.app.goo.gl/YLEH9Z5SStiW6Jn38",
-                price: "Free",
-                image: "assets/tokhamela.png",
-                category: "food",
-                tags: ["Cultural", "Food Festival", "Newari Cuisine"],
-                organizer: { name: "Local Community", verified: false },
-                availability: "available",
-                description: "Celebrate community and cuisine at Tokha's vibrant Saturday food and culture mela. Enjoy traditional Newari delicacies, live music, and local crafts.",
-                bookingUrl: "https://www.tiktok.com/@storiesofmanisha/video/7474071111668600082",
-                actionText: "Watch Video",
-                actionIcon: "fa-arrow-right"
-            },
-            {
-                id: 7,
-                title: "Kaiser Library",
-                date: "Every Day",
-                time: "9:00 AM - 5:00 PM",
-                venue: "Kantipath",
-                gmapsUrl: "https://maps.app.goo.gl/rfbpUsCGgnbLXvMS7",
-                price: "Free",
-                image: "assets/kaiserlibrary.png",
-                category: "art",
-                tags: ["Reading", "Quiet", "Productive"],
-                organizer: { name: "Kaiser Library", verified: true },
-                availability: "available",
-                description: "Kaiser Library offers a serene environment to spend time and read books in the courtyard and inside the library. One of the rare gems of Nepal that most don't know about.",
-                bookingUrl: "https://www.tiktok.com/@adorrree_me/video/7493883616259296520",
-                actionText: "Watch Video",
-                actionIcon: "fa-arrow-right"
-            },
-            {
-                id: 1,
                 title: "Shark Tank Nepal - Season 1",
                 date: "2025-07-16",
                 time: "9:00 PM",
@@ -389,7 +407,88 @@
                 actionText: "Track Companies", 
                 actionIcon: "fa-arrow-right"
             },
+            {
+                id: 6,
+                title: "Rug Museum",
+                date: "Everyday",
+                time: "10 AM - 6 PM",
+                venue: "Jan Kath, near Boudha",
+                gmapsUrl: "https://maps.app.goo.gl/7DGgzws3tod8j3AW8",
+                price: "Free",
+                image: "assets/rugmuseum.png",
+                category: "Art",
+                tags: ["Rugs", "Art", "Asthetic"],
+                organizer: { name: "Rug Museum", verified: false },
+                availability: "available",
+                description: "Explore a variety of traditional and contemporary rugs showcasing the rich heritage of Nepal.",
+                bookingUrl: "https://www.tiktok.com/@te4nz/video/7299830094464437505",
+                actionText: "Watch Video", 
+                actionIcon: "fa-arrow-right"
+            },
+             
+            {
+                id: 7, // New ID for the event
+                title: "Patan Pottery",
+                date: "Everyday",
+                time: "10:00 AM - 7:00 PM",
+                venue: "Mangal Bazar, Patan",
+                gmapsUrl: "https://maps.app.goo.gl/928GyhrsRRgEuytD8",
+                price: "500",
+                image: "assets/patan_pottery.png", // Add an image path if available
+                category: "Art",
+                tags: ["Pottery", "Art", "Family"],
+                organizer: { 
+                    name: "Patan Pottery Studio", 
+                    verified: true,
+                    instagram: "https://www.instagram.com/patanpottery" // Replace with actual Instagram link if available
+                },
+                availability: "available",
+                attendeeCount: 0, // Initial count, can be updated later
+                duration: "1 hours", // Duration of the event
+                description: "Experience the best pottery experience at Patan Pottery! Enjoy a new experience with your family where you can learn and paint. You can choose to make and paint your pottery, leave it, and come back to pick it up the next day. Enjoy a cup of coffee while you create! All ages are welcome.",
+                bookingUrl: "https://www.tiktok.com/@datewithbebe/video/7450685638715690258?q=patan%20pottery&t=1752516080487", // Replace with actual booking URL
+                actionText: "Learn more about the place",
+                actionIcon: "fa-paint-brush", // Use an appropriate icon
+            },
+            {
+                id: 8,
+                title: "Kaiser Library",
+                date: "Every Day",
+                time: "9:00 AM - 5:00 PM",
+                venue: "Kantipath",
+                gmapsUrl: "https://maps.app.goo.gl/rfbpUsCGgnbLXvMS7",
+                price: "Free",
+                image: "assets/kaiserlibrary.png",
+                category: "art",
+                tags: ["Reading", "Quiet", "Productive"],
+                organizer: { name: "Kaiser Library", verified: true },
+                availability: "available",
+                description: "Kaiser Library offers a serene environment to spend time and read books in the courtyard and inside the library. One of the rare gems of Nepal that most don't know about.",
+                bookingUrl: "https://www.tiktok.com/@adorrree_me/video/7493883616259296520",
+                actionText: "Watch Video",
+                actionIcon: "fa-arrow-right"
+            },
+ 
+            {
+                id: 9,
+                title: "Tokha Saturday Mela",
+                date: "2025-07-19",
+                time: "3:00 PM - 7:00 PM",
+                venue: "Tokha, near Ganesh Temple",
+                gmapsUrl: "https://maps.app.goo.gl/YLEH9Z5SStiW6Jn38",
+                price: "Free",
+                image: "assets/tokhamela.png",
+                category: "food",
+                tags: ["Cultural", "Food Festival", "Newari Cuisine"],
+                organizer: { name: "Local Community", verified: false },
+                availability: "available",
+                description: "Celebrate community and cuisine at Tokha's vibrant Saturday food and culture mela. Enjoy traditional Newari delicacies, live music, and local crafts.",
+                bookingUrl: "https://www.tiktok.com/@storiesofmanisha/video/7474071111668600082",
+                actionText: "Watch Video",
+                actionIcon: "fa-arrow-right"
+            },
             
+           
           
         ];
 
