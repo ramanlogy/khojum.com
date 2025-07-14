@@ -73,6 +73,22 @@
         .no-results h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
         .no-results p { color: var(--text-secondary); }
 
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: var(--nepal-red);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+        }
+        .back-button:hover {
+            background-color: darkred; /* Change color on hover */
+        }
+
         @media (max-width: 600px) {
             .leaderboard-card { grid-template-columns: 1fr; text-align: center; }
             .card-logo { margin: 0 auto; }
@@ -83,12 +99,16 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🏆 Shark Tank Nepal <span>Leaderboard</span></h1>
-            <p>An overview of all the pitches and deals from this season.</p>
-        </div>
 
+    <div class="header">
+        <h1>🏆 Shark Tank Nepal <span>Leaderboard</span></h1>
+        <p>An overview of all the pitches and deals from this season.</p>
+    </div>
+
+    <a href="index.html" class="back-button">← Back to Events</a>
+
+    <div class="container">
+        
         <div class="filters">
             <div class="filter-group">
                 <label for="search">Search Company</label>
