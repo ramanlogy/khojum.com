@@ -82,8 +82,8 @@
         /* HEADER */
         header.main-header { background-color: rgba(255, 255, 255, 0.9); height: var(--header-height); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; backdrop-filter: blur(10px); }
         .header-content { display: flex; justify-content: center; align-items: center; width: 100%; }
-        .logo { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
-        .logo span { color: var(--brand-red); }
+        .logo { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: orangered; text-decoration: none; }
+        .logo span { color: rgb(231, 3, 3); }
 
         /* HERO SECTION */
         .hero-section { text-align: center; padding: 30px 0; }
@@ -104,7 +104,7 @@
         .event-card { background-color: var(--bg-card); border-radius: 0; overflow: hidden; display: flex; flex-direction: column; position: relative; border: 1px solid var(--border-color); }
         
         .event-card-header { display: flex; align-items: center; padding: 12px 15px; }
-        .organizer-logo { width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); margin-right: 12px; font-size: 20px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--brand-red); }
+        .organizer-logo { width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); margin-right: 12px; font-size: 20px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: orangered; }
         .organizer-info { font-weight: 600; }
         .verified-badge { color: var(--brand-blue); margin-left: 5px; }
 
@@ -277,79 +277,38 @@
         
         // --- DATA ---
         // Note: I've added a new 'invite' object to the "Artha Run Club" event
-        const eventsData = [
-        {
-                id: 1, // New ID for the event
-                title: "Under Wraps ft. Laure",
-                date: "Saturday, 19 July",
-                time: "8:00 PM Onwards",
-                venue: "Omnia Club, Thamel, Kathmandu",
-                gmapsUrl: "https://maps.app.goo.gl/mFeVNGhTX16yoDSA7", // No direct gmapsUrl for this event
-                price: "Rs.999", // Set price if known
-                image: "assets/laure.png", // Add an image path if available
-                category: "concert",
-                tags: ["Hip-Hop", "Live Music", "Nepal"],
-                organizer: { 
-                    name: "Omnia Club", 
-                    verified: true,
-                    instagram: "https://www.instagram.com/laure"
-                },
-                availability: "available",
-                attendeeCount: 0, // Initial count, can be updated later
-                duration: "3 hours", // Estimated duration
-                description: "Brace yourselves, Kathmandu! The stage is about to explode as Under Wraps ft. Laure hits Omnia Club, Thamel. Get ready to vibe with Nepal’s rap icon Laure, known for his fire-spitting bars and crowd-hyping energy. This isn’t just another gig—it’s a full-blown hip-hop experience packed with adrenaline, beats that shake the floor, and a crowd that won’t stop moving. So grab your crew, gear up for the madness, and step into the heart of the underground. This is where legends light up the night.",
-                bookingUrl: "https://events.khalti.com/events/ET254GJPR8PS", // Replace with actual booking URL
-                actionText: "Get Tickets",
-                actionIcon: "fa-music", // Use an appropriate icon
-            },
-            {
-                id: 2, // New ID for the event
-                title: "Tech X: Elevate 2025",
-                date: "July 16–19, 2025",
-                time: "9:00am- 5:00pm",
-                venue: "Block A & Block E, Softwarica College of IT & E-commerce, Dillibazar, Kathmandu",
-                gmapsUrl: "https://maps.app.goo.gl/AXbtyyLQf3rPE91JA",
-                price: "Free", // Assuming the event is free; adjust if necessary
-                image: "assets/softwarica.png", // Add an image path if available
-                category: "conference",
-                tags: ["Technology", "Education", "Innovation"],
-                organizer: { 
-                    name: "Softwarica College", 
-                    verified: true,
-                    instagram: "https://www.instagram.com/softwarica"
-                },
-                availability: "available",
-                attendeeCount: 0, // Initial count, can be updated later
-                duration: "4 days", // Duration of the event
-                description: "Tech X: Elevate 2025 is an annual flagship event of Softwarica College, in collaboration with Coventry University happening from July 16–19. Tech X is back for the third year with new and exciting attractions.<br><br>What’s going to Happen?<br>- Student Project Showcase – 15+ cutting-edge innovations<br>- Job Fair – Meet 25+ top tech companies<br>- VC Pitching – Startups shooting their shot<br>- VR Assessments – Knowing their true potentials as which course will better suit them<br>- Entrepreneurship Masterclass – Learn from the best<br>- Inspire Talks – Stories that move minds<br>- Iron Clash – Robot battles that go HARD<br><br>Happening at Block A & Block E, Softwarica College of IT & E-commerce, Dillibazar, Kathmandu.",
-                bookingUrl: "https://www.instagram.com/p/DMFu-tCxrNn/", // Replace with actual booking URL
-                actionText: "Learn more",
-                actionIcon: "fa-laptop", // Use an appropriate icon
-            },
-            {
-                id: 3, // New ID for the event
-                title: "Rock and Roll with KUMA SAGAR & THE KHWOPA",
-                date: "Wednesday, 23rd July",
-                time: "Gates Open at 7 PM",
-                venue: "Purple Haze Bar",
-                gmapsUrl: "https://www.google.com/maps/place/Purple+Haze+Rock+Bar/@27.7148122,85.3002477,15z/data=!3m1!4b1!4m6!3m5!1s0x39eb18fce452e207:0x70be89a8c5e4fce3!8m2!3d27.7147936!4d85.310526!16s%2Fg%2F12jmkf3hd?entry=ttu&g_ep=EgoyMDI1MDcwOS4wIKXMDSoASAFQAw%3D%3D", // No direct gmapsUrl for this event
-                price: "Pre Sale: 1000/- | Door Sale: 1500/-",
-                image: "assets/kumasagar.png", // Add an image path if available
-                category: "concert",
-                tags: ["Rock", "Live Music", "Nepal"],
-                organizer: { 
-                    name: "Purple Haze", 
-                    verified: true,
-                    instagram: "@kumasagar_"
-                },
-                availability: "available",
-                attendeeCount: 0, // Initial count, can be updated later
-                duration: "3 hours", // Estimated duration
-                description: "Join us for an electrifying night of Rock and Roll with KUMA SAGAR & THE KHWOPA!<br><br>Opening Act: THE SQUARE [ @the_square_band_nepal ]<br>Date: Wednesday, 23rd July<br>Gates Open: 7 PM<br><br>Pre Sale Tickets Available Online at: @kgarira<br>On Cash: Purple Haze Bar Counter<br>Pre Sale: NPR 1000/-<br>Door Sale: NPR 1500/-",
-                bookingUrl: "https://kgarira.com/buy-tickets/purple-haze-rock-roll-with-kuma-sagar-the-khwopa/", // Replace with actual booking URL
-                actionText: "Get Tickets",
-                actionIcon: "fa-music", // Use an appropriate icon
-            },
+        const eventsData = 
+        
+        [
+  {
+    "id": 2,
+    "title": "Life As A Movie – Take 1",
+    "date": "Friday, 29 August",
+    "time": "6:00 pm onwards",
+    "venue": "Eden Amphitheatre, Sanepa",
+    "gmapsUrl": "",
+    "price": "Rs1,000",
+    "image": "assets/vek.png",
+    "category": "live show",
+    "tags": ["Music", "Performance", "Kathmandu"],
+    "organizer": {
+      "name": "ClassX Presentation",
+      "verified": true,
+      "instagram": ""
+    },
+    "availability": "available",
+    "attendeeCount": 0,
+    "duration": "1 day",
+    "description": "Maya, मेरो Ekchoti, सुनिदेउन कुरा Feri... 😉Get ready to feel every word & beat by VEK 🌟 is performing LIVE at the exclusive and intimate show: 🎬 “Life As A Movie – TAKE 1” Happening at 📍EDEN, Sanepa | 🗓️29 August, 2025 | 🕘 6 PM Onwards.",
+    "bookingUrl": "https://events.khalti.com/events/ET258ZY2DGGY",
+    "actionText": "Get Tickets",
+    "actionIcon": "fa-music"
+  },
+ 
+ 
+  
+        
+       
             {
                 id: 4,
                 title: "Artha Run Club",
