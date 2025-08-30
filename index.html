@@ -79,52 +79,495 @@
         body { font-family: var(--font-primary); line-height: 1.6; color: var(--text-primary); background-color: var(--bg-main); padding-top: var(--header-height); }
         .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 15px; }
 
-        /* HEADER */
-        header.main-header { background-color: rgba(255, 255, 255, 0.9); height: var(--header-height); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; backdrop-filter: blur(10px); }
-        .header-content { display: flex; justify-content: center; align-items: center; width: 100%; }
-        .logo { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: orangered; text-decoration: none; }
+        /* HEADER - Enhanced Navigation & Utilities */
+        header.main-header { 
+            background-color: rgba(255, 255, 255, 0.95); 
+            height: var(--header-height); 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            border-bottom: 1px solid var(--border-color); 
+            display: flex; 
+            align-items: center; 
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            width: 100%; 
+            padding: 0 20px;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        .logo { 
+            font-family: var(--font-display); 
+            font-size: 1.8rem; 
+            font-weight: 600; 
+            color: orangered; 
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
         .logo span { color: rgb(231, 3, 3); }
 
-        /* HERO SECTION */
-        .hero-section { text-align: center; padding: 30px 0; }
-        .hero-section h1 { font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 12px; }
-        .hero-section p { font-size: 1.1rem; color: var(--text-secondary); max-width: 550px; margin: 0 auto; }
-
-        /* FILTERS */
-        .filter-section { padding: 15px 0; margin-bottom: 25px; background-color: var(--bg-main); }
-        .filter-bar { display: flex; gap: 10px; align-items: center; justify-content: flex-start; overflow-x: auto; padding: 5px 15px; scrollbar-width: none; -ms-overflow-style: none; margin: 0 -15px;}
-        .filter-bar::-webkit-scrollbar { display: none; }
-        .filter-button { background-color: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); padding: 8px 18px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 0.9rem; white-space: nowrap; flex-shrink: 0; }
-        .filter-button:hover { border-color: var(--brand-red); color: var(--brand-red); }
-        .filter-button.active { border-color: var(--brand-red); color: white; background-color: var(--brand-red); }
-
-        /* EVENTS GRID & CARDS */
-        .events-section { margin-bottom: 40px; }
-        .events-grid { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 600px; margin: 0 auto; }
-        .event-card { background-color: var(--bg-card); border-radius: 0; overflow: hidden; display: flex; flex-direction: column; position: relative; border: 1px solid var(--border-color); }
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            max-width: 300px;
+            width: 100%;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.8);
+            transition: var(--transition);
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--brand-red);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+        }
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
         
-        .event-card-header { display: flex; align-items: center; padding: 12px 15px; }
-        .organizer-logo { width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); margin-right: 12px; font-size: 20px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: orangered; }
-        .organizer-info { font-weight: 600; }
-        .verified-badge { color: var(--brand-blue); margin-left: 5px; }
+        /* Header Actions */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header-btn {
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            color: var(--text-secondary);
+        }
+        .header-btn:hover {
+            background: rgba(200, 16, 46, 0.1);
+            color: var(--brand-red);
+        }
+        .header-btn i {
+            font-size: 1.2rem;
+        }
+        .notification-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: var(--brand-red);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .user-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        /* HERO SECTION - Using F-Pattern & Visual Hierarchy */
+        .hero-section { 
+            text-align: center; 
+            padding: 40px 0 30px; 
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            margin-bottom: 20px;
+        }
+        .hero-section h1 { 
+            font-family: var(--font-primary); 
+            font-size: 2.4rem; 
+            font-weight: 600; 
+            margin-bottom: 16px; 
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+        .hero-section p { 
+            font-size: 1.1rem; 
+            color: var(--text-secondary); 
+            max-width: 500px; 
+            margin: 0 auto; 
+            line-height: 1.6;
+        }
+        
+        /* Quick Action Button - Using Fitts's Law */
+        .quick-action-btn {
+            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .quick-action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(200, 16, 46, 0.4);
+        }
+        .quick-action-btn:active {
+            transform: translateY(0);
+        }
+
+        /* EXPLORATION NAVIGATION - Using Hick's Law & Progressive Disclosure */
+        .explore-section { 
+            padding: 20px 0; 
+            margin-bottom: 25px; 
+            background: var(--bg-card);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Loading Animation */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Success Animation */
+        .success-check {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #28a745;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: checkmark 0.5s ease-in-out;
+        }
+        
+        @keyframes checkmark {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .explore-header { 
+            text-align: center; 
+            margin-bottom: 20px; 
+            padding: 0 20px;
+        }
+        .explore-title { 
+            font-size: 1.2rem; 
+            font-weight: 600; 
+            color: var(--text-primary); 
+            margin-bottom: 8px; 
+        }
+        .explore-subtitle { 
+            font-size: 0.9rem; 
+            color: var(--text-secondary); 
+            line-height: 1.4;
+        }
+        
+        /* Using Miller's Law (7±2 items) and Gestalt Principles */
+        .explore-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+            gap: 12px; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            padding: 0 20px;
+        }
+        .explore-card { 
+            background: var(--bg-card); 
+            border: 2px solid var(--border-color); 
+            border-radius: 16px; 
+            padding: 15px 12px; 
+            text-align: center; 
+            cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            /* Using Von Restorff Effect for active state */
+        }
+        .explore-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        .explore-card:hover { 
+            border-color: var(--brand-red); 
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(200, 16, 46, 0.15);
+        }
+        .explore-card.active { 
+            border-color: var(--brand-red); 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(200, 16, 46, 0.2);
+        }
+        .explore-card:active {
+            transform: translateY(-2px) scale(0.98);
+            transition: transform 0.1s ease;
+        }
+        .explore-card.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        .explore-card.loading .explore-icon {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .explore-card.active::before {
+            opacity: 1;
+        }
+        .explore-card > * {
+            position: relative;
+            z-index: 2;
+        }
+        .explore-card.active .explore-icon { color: white; }
+        .explore-card.active .explore-label { color: white; }
+        .explore-icon { 
+            font-size: 1.6rem; 
+            color: var(--brand-red); 
+            margin-bottom: 8px; 
+            transition: var(--transition);
+            display: block;
+        }
+        .explore-label { 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            color: var(--text-primary); 
+            transition: var(--transition);
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+        .explore-count { 
+            font-size: 0.7rem; 
+            color: var(--text-light); 
+            font-weight: 500;
+        }
+        .explore-card.active .explore-count { color: rgba(255,255,255,0.9); }
+
+        /* EVENTS GRID & CARDS - Using Card Sorting & Visual Scanning Patterns */
+        .events-section { 
+            margin-bottom: 40px; 
+            padding: 0 10px;
+        }
+        .events-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 20px; 
+            max-width: 650px; 
+            margin: 0 auto; 
+        }
+        .event-card { 
+            background-color: var(--bg-card); 
+            border-radius: 20px; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            position: relative; 
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            /* Using Law of Proximity for better grouping */
+        }
+        .event-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            border-color: var(--brand-red);
+        }
+        
+        /* Using Social Proof & Trust Signals */
+        .event-card-header { 
+            display: flex; 
+            align-items: center; 
+            padding: 16px 20px; 
+            border-bottom: 1px solid var(--border-color);
+        }
+        .organizer-logo { 
+            width: 45px; 
+            height: 45px; 
+            border-radius: 50%; 
+            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%); 
+            margin-right: 15px; 
+            font-size: 22px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: bold; 
+            color: white;
+            box-shadow: 0 2px 8px rgba(200, 16, 46, 0.2);
+        }
+        .organizer-info { 
+            font-weight: 600; 
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+        .verified-badge { 
+            color: var(--brand-blue); 
+            margin-left: 8px; 
+            font-size: 1.1rem;
+        }
 
         .event-image-container { position: relative; width: 100%; padding-top: 75%; /* 4:3 Aspect Ratio */ cursor: pointer; background-color: #eee; }
         .event-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
         
-        .event-actions { padding: 12px 15px; display: flex; gap: 20px; font-size: 1.5rem; }
-        .action-icon { cursor: pointer; transition: color 0.2s, transform 0.2s; }
-        .action-icon:hover { color: var(--text-light); }
-        .action-icon:active { transform: scale(0.9); }
-        .action-icon.saved { color: var(--brand-red); }
+        /* Using Affordance & Feedback Principles */
+        .event-actions { 
+            padding: 16px 20px; 
+            display: flex; 
+            gap: 25px; 
+            font-size: 1.6rem; 
+            border-top: 1px solid var(--border-color);
+            background: rgba(248, 249, 250, 0.5);
+        }
+        .action-icon { 
+            cursor: pointer; 
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            padding: 8px;
+            border-radius: 50%;
+            color: var(--text-secondary);
+        }
+        .action-icon:hover { 
+            color: var(--brand-red); 
+            background: rgba(200, 16, 46, 0.1);
+            transform: scale(1.1);
+        }
+        .action-icon:active { 
+            transform: scale(0.95); 
+        }
+        .action-icon.saved { 
+            color: var(--brand-red); 
+            background: rgba(200, 16, 46, 0.1);
+        }
+        .action-icon.loading {
+            animation: spin 1s linear infinite;
+        }
+        .action-icon.success {
+            color: var(--success-color);
+            animation: bounce 0.6s ease;
+        }
         
-        .event-content { padding: 0 15px 20px; }
-        .event-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; }
-        .event-meta-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 10px; }
-        .event-meta-item i { color: var(--brand-red); width: 16px; text-align: center; }
-        .event-meta-item .highlight { color: var(--text-primary); font-weight: 500; }
-        .event-tags { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
-        .event-tag { background-color: var(--bg-main); color: var(--text-secondary); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
-        .details-link { display: inline-block; margin-top: 10px; color: var(--text-light); font-weight: 500; text-decoration: none; }
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+            40%, 43% { transform: translate3d(0,-8px,0); }
+            70% { transform: translate3d(0,-4px,0); }
+            90% { transform: translate3d(0,-2px,0); }
+        }
+        
+        /* Using Information Architecture & Cognitive Load Theory */
+        .event-content { 
+            padding: 20px; 
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .event-title { 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+        .event-meta-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 0.9rem; 
+            color: var(--text-secondary); 
+            margin-bottom: 12px;
+            padding: 8px 0;
+        }
+        .event-meta-item i { 
+            color: var(--brand-red); 
+            width: 18px; 
+            text-align: center; 
+            font-size: 1rem;
+        }
+        .event-meta-item .highlight { 
+            color: var(--text-primary); 
+            font-weight: 600; 
+        }
+        .event-tags { 
+            margin-top: 20px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 8px; 
+        }
+        .event-tag { 
+            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%); 
+            color: white; 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            font-size: 0.75rem; 
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(200, 16, 46, 0.2);
+        }
+        .details-link { 
+            display: inline-block; 
+            margin-top: 15px; 
+            color: var(--brand-red); 
+            font-weight: 600; 
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .details-link:hover {
+            color: var(--brand-red-dark);
+            text-decoration: underline;
+        }
 
         /* SKELETON & EMPTY STATE */
         .skeleton-card { background-color: var(--bg-card); border: 1px solid var(--border-color); height: 600px; }
@@ -204,6 +647,45 @@
             transform: translateX(5px); /* Arrow movement on hover */
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .explore-grid {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 10px;
+                padding: 0 15px;
+            }
+            .explore-card {
+                padding: 12px 8px;
+            }
+            .explore-icon {
+                font-size: 1.4rem;
+                margin-bottom: 6px;
+            }
+            .explore-label {
+                font-size: 0.75rem;
+                margin-bottom: 3px;
+            }
+            .explore-count {
+                font-size: 0.65rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .explore-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+            }
+            .explore-card {
+                padding: 10px 6px;
+            }
+            .explore-icon {
+                font-size: 1.2rem;
+            }
+            .explore-label {
+                font-size: 0.7rem;
+            }
+        }
+
         @media (min-width: 768px) {
             .event-card { border-radius: var(--border-radius); }
         }
@@ -220,24 +702,67 @@
         <!-- Main Grid View (shown by default) -->
         <div id="main-grid-view">
             <section class="hero-section">
-                <h1>What are you doing this week?</h1>
-                <p>Discover the best events happening in Nepal. Your next great experience is just a click away.</p>
+                <h1>Explore where your friends are going</h1>
+                <p>One place where you can find what's happening around.</p>
+                
+                <!-- Quick Action Button - Using Fitts's Law for easy access -->
+                <div style="margin-top: 25px;">
+                    <button class="quick-action-btn" onclick="document.querySelector('[data-filter=\'trending\']').click()">
+                        <i class="fas fa-fire"></i>
+                        <span>See What's Trending</span>
+                    </button>
+                </div>
             </section>
             
-            <div class="filter-section">
-                <div class="filter-bar">
-                    <button class="filter-button active" data-filter="all">All Events</button>
-                    <button class="filter-button" data-filter="music">🎵 Music</button>
-                    <button class="filter-button" data-filter="art">🎨 Art</button>
-                    <button class="filter-button" data-filter="business">💼 Business</button>
-                    <button class="filter-button" data-filter="food">🍽️ Food</button>
-                    <button class="filter-button" data-filter="health">💪 Health</button>
-                    <button class="filter-button" data-filter="weekend">This Saturday</button>
-                    <button class="filter-button" data-filter="free">Free Events</button>
+            <div class="explore-section">
+                <div class="explore-header">
+                    <h2 class="explore-title">What would you like to explore?</h2>
+                    <p class="explore-subtitle">Discover amazing places, food, and experiences</p>
+                </div>
+                <div class="explore-grid">
+                    <div class="explore-card active" data-filter="all">
+                        <i class="fas fa-compass explore-icon"></i>
+                        <div class="explore-label">All Places</div>
+                        <div class="explore-count">8 locations</div>
+                    </div>
+                    <div class="explore-card" data-filter="trending">
+                        <i class="fas fa-fire explore-icon"></i>
+                        <div class="explore-label">Trending</div>
+                        <div class="explore-count">3 hot spots</div>
+                    </div>
+                    <div class="explore-card" data-filter="music">
+                        <i class="fas fa-landmark explore-icon"></i>
+                        <div class="explore-label">Places</div>
+                        <div class="explore-count">3 attractions</div>
+                    </div>
+                    <div class="explore-card" data-filter="art">
+                        <i class="fas fa-utensils explore-icon"></i>
+                        <div class="explore-label">Restaurants</div>
+                        <div class="explore-count">1 food spot</div>
+                    </div>
+                    <div class="explore-card" data-filter="weekend">
+                        <i class="fas fa-bed explore-icon"></i>
+                        <div class="explore-label">Hotels</div>
+                        <div class="explore-count">1 accommodation</div>
+                    </div>
+                    <div class="explore-card" data-filter="free">
+                        <i class="fas fa-calendar-alt explore-icon"></i>
+                        <div class="explore-label">Events</div>
+                        <div class="explore-count">3 activities</div>
+                    </div>
+                    <div class="explore-card" data-filter="recommended">
+                        <i class="fas fa-star explore-icon"></i>
+                        <div class="explore-label">Recommended</div>
+                        <div class="explore-count">4 picks</div>
+                    </div>
                 </div>
             </div>
 
             <section class="events-section">
+                <div class="events-header" id="events-header" style="text-align: center; margin-bottom: 25px;">
+                    <h3 class="events-title" style="font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Discover Amazing Places</h3>
+                    <p class="events-subtitle" style="font-size: 0.95rem; color: var(--text-secondary);">Handpicked locations for your next adventure</p>
+                </div>
                 <div class="events-grid" id="events-container">
                     <!-- Event cards are rendered here by JS -->
                 </div>
@@ -260,7 +785,7 @@
         <div class="container">
             <p><strong>Go.Do.Feel.Repeat</strong> <a href="mailto:ceo@khojum.com?subject=Feedback" style="color: var(--text-primary); font-weight: 500;"></a></p>
             <div class="footer-links">
-                <a href="https://www.instagram.com/khojum.comm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Follow on Instagram">
+                <a href="https://www.instagram.com/khojumdotcom?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Follow on Instagram">
                     <i class="fab fa-instagram"></i> 
                 </a>
             </div>
@@ -307,7 +832,7 @@
  
  
   
-        
+      
        
             {
                 id: 4,
@@ -447,7 +972,7 @@
                 actionIcon: "fa-arrow-right"
             },
             
-           
+          
           
         ];
 
@@ -458,7 +983,7 @@
         const eventDetailView = document.getElementById('event-detail-view');
         const eventsContainer = document.getElementById('events-container');
         const emptyState = document.getElementById('empty-state');
-        const filterButtons = document.querySelectorAll('.filter-button');
+        const exploreCards = document.querySelectorAll('.explore-card');
 
         function init() {
             setupEventListeners();
@@ -613,32 +1138,114 @@
         }
 
         function setupEventListeners() {
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    currentFilter = button.dataset.filter;
+            exploreCards.forEach(card => {
+                card.addEventListener('click', async (e) => {
+                    // Add loading state
+                    card.classList.add('loading');
+                    
+                    // Remove active from all cards
+                    exploreCards.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active to clicked card
+                    card.classList.add('active');
+                    
+                    // Update filter
+                    currentFilter = card.dataset.filter;
+                    
+                    // Simulate loading time for better UX
+                    await new Promise(resolve => setTimeout(resolve, 300));
+                    
+                    // Remove loading state
+                    card.classList.remove('loading');
+                    
+                    // Apply filters with visual feedback
                     applyFilters();
+                    
+                    // Add success feedback
+                    card.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        card.style.transform = '';
+                    }, 200);
                 });
             });
         }
 
         function applyFilters() {
             showLoadingState();
+            updateSectionHeader();
             setTimeout(() => {
                 let filteredEvents = eventsData;
                 if (currentFilter !== 'all') {
-                    if (currentFilter === 'weekend') {
-                        const weekendDates = getWeekendDates();
-                        filteredEvents = filteredEvents.filter(event => weekendDates.includes(event.date));
+                    if (currentFilter === 'music') {
+                        // Filter for Places (museums, libraries, attractions)
+                        filteredEvents = filteredEvents.filter(event => 
+                            event.category.toLowerCase() === 'art' || 
+                            event.venue.toLowerCase().includes('museum') ||
+                            event.venue.toLowerCase().includes('library') ||
+                            event.tags.some(tag => tag.toLowerCase().includes('art'))
+                        );
+                    } else if (currentFilter === 'art') {
+                        // Filter for Restaurants (food-related events)
+                        filteredEvents = filteredEvents.filter(event => 
+                            event.category.toLowerCase() === 'food' || 
+                            event.tags.some(tag => tag.toLowerCase().includes('food')) ||
+                            event.tags.some(tag => tag.toLowerCase().includes('cuisine'))
+                        );
+                    } else if (currentFilter === 'weekend') {
+                        // Filter for Hotels (accommodation-related)
+                        filteredEvents = filteredEvents.filter(event => 
+                            event.venue.toLowerCase().includes('hotel') ||
+                            event.venue.toLowerCase().includes('resort') ||
+                            event.venue.toLowerCase().includes('club')
+                        );
                     } else if (currentFilter === 'free') {
-                        filteredEvents = filteredEvents.filter(event => event.price.toLowerCase().includes('free'));
-                    } else {
-                        filteredEvents = filteredEvents.filter(event => event.category.toLowerCase() === currentFilter);
+                        // Filter for Events (live shows, performances)
+                        filteredEvents = filteredEvents.filter(event => 
+                            event.category.toLowerCase() === 'live show' || 
+                            event.category.toLowerCase() === 'business' ||
+                            event.category.toLowerCase() === 'health' ||
+                            event.tags.some(tag => tag.toLowerCase().includes('music')) ||
+                            event.tags.some(tag => tag.toLowerCase().includes('performance'))
+                        );
+                    } else if (currentFilter === 'trending') {
+                        // Filter for Trending events (high attendee count or popular)
+                        filteredEvents = filteredEvents.filter(event => 
+                            event.attendeeCount > 50 || 
+                            event.organizer.verified === true ||
+                            event.category.toLowerCase() === 'live show'
+                        );
+                    } else if (currentFilter === 'recommended') {
+                        // Filter for Recommended events (curated selection)
+                        filteredEvents = filteredEvents.filter(event => 
+                            event.id === 2 || // Life As A Movie
+                            event.id === 4 || // Artha Run Club
+                            event.id === 5 || // Shark Tank Nepal
+                            event.id === 7    // Patan Pottery
+                        );
                     }
                 }
                 renderEvents(filteredEvents);
             }, 200);
+        }
+
+        function updateSectionHeader() {
+            const header = document.getElementById('events-header');
+            const title = header.querySelector('.events-title');
+            const subtitle = header.querySelector('.events-subtitle');
+            
+            const headers = {
+                'all': { title: 'Discover Amazing Places', subtitle: 'Handpicked locations for your next adventure' },
+                'trending': { title: '🔥 Trending Now', subtitle: 'Most popular places everyone\'s talking about' },
+                'music': { title: '🏛️ Cultural Places', subtitle: 'Museums, libraries, and cultural attractions' },
+                'art': { title: '🍽️ Food & Dining', subtitle: 'Restaurants and food experiences' },
+                'weekend': { title: '🏨 Accommodations', subtitle: 'Hotels, resorts, and places to stay' },
+                'free': { title: '🎉 Events & Activities', subtitle: 'Live shows, performances, and activities' },
+                'recommended': { title: '⭐ Our Recommendations', subtitle: 'Curated picks just for you' }
+            };
+            
+            const currentHeader = headers[currentFilter] || headers['all'];
+            title.textContent = currentHeader.title;
+            subtitle.textContent = currentHeader.subtitle;
         }
 
         function renderEvents(events) {
@@ -682,30 +1289,120 @@
         }
 
         // --- Global Functions for onclick Handlers ---
-        window.toggleSave = (e, eventId) => { e.stopPropagation(); const icon = e.currentTarget; savedEvents.has(eventId) ? (savedEvents.delete(eventId), icon.classList.remove('saved')) : (savedEvents.add(eventId), icon.classList.add('saved')); };
-        window.shareEvent = (e, eventId) => { 
+        window.toggleSave = async (e, eventId) => { 
             e.stopPropagation(); 
+            const icon = e.currentTarget;
+            
+            // Add loading state
+            icon.classList.add('loading');
+            
+            // Simulate API call
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // Remove loading state
+            icon.classList.remove('loading');
+            
+            if (savedEvents.has(eventId)) {
+                savedEvents.delete(eventId);
+                icon.classList.remove('saved');
+                showNotification('Removed from saved items', 'info');
+            } else {
+                savedEvents.add(eventId);
+                icon.classList.add('saved');
+                icon.classList.add('success');
+                showNotification('Added to saved items!', 'success');
+                
+                // Remove success animation after delay
+                setTimeout(() => {
+                    icon.classList.remove('success');
+                }, 600);
+            }
+        };
+        window.shareEvent = async (e, eventId) => { 
+            e.stopPropagation(); 
+            const icon = e.currentTarget;
+            
+            // Add loading state
+            icon.classList.add('loading');
+            
             const event = eventsData.find(ev => ev.id === eventId);
             const url = `${window.location.origin}${window.location.pathname}#event-${eventId}`;
+            
+            try {
             if (navigator.share) {
-                navigator.share({
+                    await navigator.share({
                     title: event.title,
                     text: `Check out this event on Khojum: ${event.title}`,
                     url: url,
-                }).catch((error) => console.log('Error sharing', error));
+                    });
+                    showNotification('Shared successfully!', 'success');
             } else {
-                navigator.clipboard.writeText(url).then(() => showNotification('Event link copied!'));
+                    await navigator.clipboard.writeText(url);
+                    showNotification('Event link copied to clipboard!', 'success');
+                }
+            } catch (error) {
+                console.log('Error sharing', error);
+                showNotification('Failed to share. Please try again.', 'error');
+            } finally {
+                // Remove loading state
+                icon.classList.remove('loading');
+                
+                // Add success animation
+                icon.classList.add('success');
+                setTimeout(() => {
+                    icon.classList.remove('success');
+                }, 600);
             }
         };
-        window.viewDetails = (e, eventId) => { 
+        window.viewDetails = async (e, eventId) => { 
             e.preventDefault();
+            
+            // Add loading state to the card
+            const card = e.currentTarget.closest('.event-card');
+            if (card) {
+                card.style.opacity = '0.7';
+                card.style.transform = 'scale(0.98)';
+            }
+            
+            // Simulate loading
+            await new Promise(resolve => setTimeout(resolve, 200));
+            
+            // Navigate to detail page
             window.location.hash = `#event-${eventId}`; 
+            
+            // Reset card state
+            if (card) {
+                card.style.opacity = '';
+                card.style.transform = '';
+            }
         };
-        window.bookTicket = (e, eventId) => { 
+        window.bookTicket = async (e, eventId) => { 
             e.stopPropagation(); 
+            const button = e.currentTarget;
+            
+            // Add loading state
+            const originalText = button.innerHTML;
+            button.innerHTML = '<div class="loading-spinner"></div>';
+            button.disabled = true;
+            
             const event = eventsData.find(ev => ev.id === eventId); 
-            if (event && event.bookingUrl) window.open(event.bookingUrl, '_blank');
-            else { showNotification('Booking information not available.', 'info'); }
+            
+            try {
+                if (event && event.bookingUrl) {
+                    // Simulate loading
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                    window.open(event.bookingUrl, '_blank');
+                    showNotification('Opening booking page...', 'success');
+                } else { 
+                    showNotification('Booking information not available.', 'info'); 
+                }
+            } catch (error) {
+                showNotification('Failed to open booking page. Please try again.', 'error');
+            } finally {
+                // Reset button state
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }
         };
 
         // --- Helper Functions ---
@@ -720,7 +1417,51 @@
         const getWeekendDates = () => { const today = new Date(); const sat = new Date(today); sat.setDate(today.getDate() + (6 - today.getDay() + 7) % 7); return [sat.toISOString().split('T')[0]]; };
         const showLoadingState = () => { eventsContainer.innerHTML = Array(3).fill('<div class="skeleton-card"><div class="skeleton-image skeleton"></div></div>').join(''); };
         const hideLoadingState = () => { eventsContainer.innerHTML = ''; };
-        window.showNotification = (message, type = 'info') => { const el = document.createElement('div'); el.style.cssText = `position:fixed;bottom:20px;left:50%;transform:translateX(-50%);padding:12px 20px;border-radius:8px;z-index:10000;font-weight:500;transition:all .3s ease;opacity:0;background:${type==='error'?'#dc3545':'#28a745'};color:white;box-shadow: var(--shadow-md);`; el.textContent = message; document.body.appendChild(el); setTimeout(() => {el.style.opacity = 1; el.style.bottom = '30px';}, 10); setTimeout(() => { el.style.opacity = 0; el.style.bottom = '20px'; setTimeout(() => el.remove(), 300); }, 3000); }
+        window.showNotification = (message, type = 'info') => { 
+            const el = document.createElement('div'); 
+            const bgColor = type === 'error' ? '#dc3545' : type === 'success' ? '#28a745' : '#17a2b8';
+            const icon = type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️';
+            
+            el.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 15px 25px;
+                border-radius: 12px;
+                z-index: 10000;
+                font-weight: 600;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                opacity: 0;
+                background: ${bgColor};
+                color: white;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 0.95rem;
+                max-width: 300px;
+                text-align: center;
+            `; 
+            
+            el.innerHTML = `<span>${icon}</span><span>${message}</span>`;
+            document.body.appendChild(el); 
+            
+            // Animate in
+            setTimeout(() => {
+                el.style.opacity = 1; 
+                el.style.bottom = '30px';
+                el.style.transform = 'translateX(-50%) scale(1.05)';
+            }, 10); 
+            
+            // Animate out
+            setTimeout(() => { 
+                el.style.opacity = 0; 
+                el.style.bottom = '20px';
+                el.style.transform = 'translateX(-50%) scale(0.95)';
+                setTimeout(() => el.remove(), 400); 
+            }, 3000); 
+        }
 
         init();
     });
