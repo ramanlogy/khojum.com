@@ -49,647 +49,646 @@
 
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --brand-red: #c8102e;
-            --brand-red-dark: #a70d26;
-            --brand-blue: #003893;
-            --text-primary: #1a1a1a;
-            --text-secondary: #555;
-            --text-light: #888;
-            --bg-main: #f4f4f4;
-            --bg-card: #ffffff;
-            --border-color: #dbdbdb;
-            --success-color: #28a745;
-            --warning-color: #ffc107;
-            --danger-color: #dc3545;
-            --font-primary: 'Inter', sans-serif;
-            --font-display: 'Lora', serif;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-            --header-height: 60px;
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-
-        /* GENERAL STYLES */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-primary); line-height: 1.6; color: var(--text-primary); background-color: var(--bg-main); padding-top: var(--header-height); }
-        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 15px; }
-
-        /* HEADER - Enhanced Navigation & Utilities */
-        header.main-header { 
-            background-color: rgba(255, 255, 255, 0.95); 
-            height: var(--header-height); 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            z-index: 1000; 
-            border-bottom: 1px solid var(--border-color); 
-            display: flex; 
-            align-items: center; 
-            backdrop-filter: blur(15px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .header-content { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            width: 100%; 
-            padding: 0 20px;
-        }
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        .logo { 
-            font-family: var(--font-display); 
-            font-size: 1.8rem; 
-            font-weight: 600; 
-            color: orangered; 
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        .logo:hover {
-            transform: scale(1.05);
-        }
-        .logo span { color: rgb(231, 3, 3); }
-
-        /* Search Bar */
-        .search-container {
-            position: relative;
-            max-width: 300px;
-            width: 100%;
-        }
-        .search-input {
-            width: 100%;
-            padding: 10px 40px 10px 15px;
-            border: 2px solid var(--border-color);
-            border-radius: 25px;
-            font-size: 0.9rem;
-            background: rgba(255,255,255,0.8);
-            transition: var(--transition);
-        }
-        .search-input:focus {
-            outline: none;
-            border-color: var(--brand-red);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
-        }
-        .search-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        /* Header Actions */
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .header-btn {
-            background: none;
-            border: none;
-            padding: 8px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            color: var(--text-secondary);
-        }
-        .header-btn:hover {
-            background: rgba(200, 16, 46, 0.1);
-            color: var(--brand-red);
-        }
-        .header-btn i {
-            font-size: 1.2rem;
-        }
-        .notification-badge {
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            background: var(--brand-red);
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-        .user-avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .user-avatar:hover {
-            transform: scale(1.1);
-        }
-
-        /* HERO SECTION - Using F-Pattern & Visual Hierarchy */
-        .hero-section { 
-            text-align: center; 
-            padding: 40px 0 30px; 
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            margin-bottom: 20px;
-        }
-        .hero-section h1 { 
-            font-family: var(--font-primary); 
-            font-size: 2.4rem; 
-            font-weight: 600; 
-            margin-bottom: 16px; 
-            color: var(--text-primary);
-            line-height: 1.2;
-        }
-        .hero-section p { 
-            font-size: 1.1rem; 
-            color: var(--text-secondary); 
-            max-width: 500px; 
-            margin: 0 auto; 
-            line-height: 1.6;
-        }
-        
-        /* Quick Action Button - Using Fitts's Law */
-        .quick-action-btn {
-            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
-            display: inline-flex;
-            align-items: center;
+    <link rel="stylesheet" href="styles.css">
+    <script src="es.js"></script>
+    <style>:root {
+        --brand-red: #c8102e;
+        --brand-red-dark: #a70d26;
+        --brand-blue: #003893;
+        --text-primary: #1a1a1a;
+        --text-secondary: #555;
+        --text-light: #888;
+        --bg-main: #f4f4f4;
+        --bg-card: #ffffff;
+        --border-color: #dbdbdb;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --danger-color: #dc3545;
+        --font-primary: 'Inter', sans-serif;
+        --font-display: 'Lora', serif;
+        --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+        --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+        --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+        --header-height: 60px;
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+    }
+    
+    /* GENERAL STYLES */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-primary); line-height: 1.6; color: var(--text-primary); background-color: var(--bg-main); padding-top: var(--header-height); }
+    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 15px; }
+    
+    /* HEADER - Enhanced Navigation & Utilities */
+    header.main-header { 
+        background-color: rgba(255, 255, 255, 0.95); 
+        height: var(--header-height); 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        z-index: 1000; 
+        border-bottom: 1px solid var(--border-color); 
+        display: flex; 
+        align-items: center; 
+        backdrop-filter: blur(15px);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .header-content { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        width: 100%; 
+        padding: 0 20px;
+    }
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    .logo { 
+        font-family: var(--font-display); 
+        font-size: 1.8rem; 
+        font-weight: 600; 
+        color: orangered; 
+        text-decoration: none;
+        transition: var(--transition);
+    }
+    .logo:hover {
+        transform: scale(1.05);
+    }
+    .logo span { color: rgb(231, 3, 3); }
+    
+    /* Search Bar */
+    .search-container {
+        position: relative;
+        max-width: 300px;
+        width: 100%;
+    }
+    .search-input {
+        width: 100%;
+        padding: 10px 40px 10px 15px;
+        border: 2px solid var(--border-color);
+        border-radius: 25px;
+        font-size: 0.9rem;
+        background: rgba(255,255,255,0.8);
+        transition: var(--transition);
+    }
+    .search-input:focus {
+        outline: none;
+        border-color: var(--brand-red);
+        background: white;
+        box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+    }
+    .search-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+    
+    /* Header Actions */
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .header-btn {
+        background: none;
+        border: none;
+        padding: 8px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+        color: var(--text-secondary);
+    }
+    .header-btn:hover {
+        background: rgba(200, 16, 46, 0.1);
+        color: var(--brand-red);
+    }
+    .header-btn i {
+        font-size: 1.2rem;
+    }
+    .notification-badge {
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        background: var(--brand-red);
+        color: white;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+    }
+    .user-avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    .user-avatar:hover {
+        transform: scale(1.1);
+    }
+    
+    /* HERO SECTION - Using F-Pattern & Visual Hierarchy */
+    .hero-section { 
+        text-align: center; 
+        padding: 40px 0 30px; 
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        margin-bottom: 20px;
+    }
+    .hero-section h1 { 
+        font-family: var(--font-primary); 
+        font-size: 2.4rem; 
+        font-weight: 600; 
+        margin-bottom: 16px; 
+        color: var(--text-primary);
+        line-height: 1.2;
+    }
+    .hero-section p { 
+        font-size: 1.1rem; 
+        color: var(--text-secondary); 
+        max-width: 500px; 
+        margin: 0 auto; 
+        line-height: 1.6;
+    }
+    
+    /* Quick Action Button - Using Fitts's Law */
+    .quick-action-btn {
+        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
+        color: white;
+        border: none;
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .quick-action-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(200, 16, 46, 0.4);
+    }
+    .quick-action-btn:active {
+        transform: translateY(0);
+    }
+    
+    /* EXPLORATION NAVIGATION - Using Hick's Law & Progressive Disclosure */
+    .explore-section { 
+        padding: 20px 0; 
+        margin-bottom: 25px; 
+        background: var(--bg-card);
+        border-radius: 16px;
+        box-shadow: var(--shadow-sm);
+    }
+    
+    /* Loading Animation */
+    .loading-spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255,255,255,.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    
+    /* Success Animation */
+    .success-check {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #28a745;
+        border-radius: 50%;
+        border-top-color: transparent;
+        animation: checkmark 0.5s ease-in-out;
+    }
+    
+    @keyframes checkmark {
+        0% { transform: scale(0); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+    .explore-header { 
+        text-align: center; 
+        margin-bottom: 20px; 
+        padding: 0 20px;
+    }
+    .explore-title { 
+        font-size: 1.2rem; 
+        font-weight: 600; 
+        color: var(--text-primary); 
+        margin-bottom: 8px; 
+    }
+    .explore-subtitle { 
+        font-size: 0.9rem; 
+        color: var(--text-secondary); 
+        line-height: 1.4;
+    }
+    
+    /* Using Miller's Law (7±2 items) and Gestalt Principles */
+    .explore-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+        gap: 12px; 
+        max-width: 600px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+    .explore-card { 
+        background: var(--bg-card); 
+        border: 2px solid var(--border-color); 
+        border-radius: 16px; 
+        padding: 15px 12px; 
+        text-align: center; 
+        cursor: pointer; 
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        /* Using Von Restorff Effect for active state */
+    }
+    .explore-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+    .explore-card:hover { 
+        border-color: var(--brand-red); 
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(200, 16, 46, 0.15);
+    }
+    .explore-card.active { 
+        border-color: var(--brand-red); 
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(200, 16, 46, 0.2);
+    }
+    .explore-card:active {
+        transform: translateY(-2px) scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    .explore-card.loading {
+        pointer-events: none;
+        opacity: 0.7;
+    }
+    .explore-card.loading .explore-icon {
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+    .explore-card.active::before {
+        opacity: 1;
+    }
+    .explore-card > * {
+        position: relative;
+        z-index: 2;
+    }
+    .explore-card.active .explore-icon { color: white; }
+    .explore-card.active .explore-label { color: white; }
+    .explore-icon { 
+        font-size: 1.6rem; 
+        color: var(--brand-red); 
+        margin-bottom: 8px; 
+        transition: var(--transition);
+        display: block;
+    }
+    .explore-label { 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+        color: var(--text-primary); 
+        transition: var(--transition);
+        margin-bottom: 4px;
+        line-height: 1.2;
+    }
+    .explore-count { 
+        font-size: 0.7rem; 
+        color: var(--text-light); 
+        font-weight: 500;
+    }
+    .explore-card.active .explore-count { color: rgba(255,255,255,0.9); }
+    
+    /* EVENTS GRID & CARDS - Using Card Sorting & Visual Scanning Patterns */
+    .events-section { 
+        margin-bottom: 40px; 
+        padding: 0 10px;
+    }
+    .events-grid { 
+        display: grid; 
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+        max-width: 650px; 
+        margin: 0 auto; 
+    }
+    .event-card { 
+        background-color: var(--bg-card); 
+        border-radius: 20px; 
+        overflow: hidden; 
+        display: flex; 
+        flex-direction: column; 
+        position: relative; 
+        border: 1px solid var(--border-color);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        /* Using Law of Proximity for better grouping */
+    }
+    .event-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        border-color: var(--brand-red);
+    }
+    
+    /* Using Social Proof & Trust Signals */
+    .event-card-header { 
+        display: flex; 
+        align-items: center; 
+        padding: 16px 20px; 
+        border-bottom: 1px solid var(--border-color);
+    }
+    .organizer-logo { 
+        width: 45px; 
+        height: 45px; 
+        border-radius: 50%; 
+        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%); 
+        margin-right: 15px; 
+        font-size: 22px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        font-weight: bold; 
+        color: white;
+        box-shadow: 0 2px 8px rgba(200, 16, 46, 0.2);
+    }
+    .organizer-info { 
+        font-weight: 600; 
+        font-size: 0.95rem;
+        color: var(--text-primary);
+    }
+    .verified-badge { 
+        color: var(--brand-blue); 
+        margin-left: 8px; 
+        font-size: 1.1rem;
+    }
+    
+    .event-image-container { position: relative; width: 100%; padding-top: 75%; /* 4:3 Aspect Ratio */ cursor: pointer; background-color: #eee; }
+    .event-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
+    
+    /* Using Affordance & Feedback Principles */
+    .event-actions { 
+        padding: 16px 20px; 
+        display: flex; 
+        gap: 25px; 
+        font-size: 1.6rem; 
+        border-top: 1px solid var(--border-color);
+        background: rgba(248, 249, 250, 0.5);
+    }
+    .action-icon { 
+        cursor: pointer; 
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+        padding: 8px;
+        border-radius: 50%;
+        color: var(--text-secondary);
+    }
+    .action-icon:hover { 
+        color: var(--brand-red); 
+        background: rgba(200, 16, 46, 0.1);
+        transform: scale(1.1);
+    }
+    .action-icon:active { 
+        transform: scale(0.95); 
+    }
+    .action-icon.saved { 
+        color: var(--brand-red); 
+        background: rgba(200, 16, 46, 0.1);
+    }
+    .action-icon.loading {
+        animation: spin 1s linear infinite;
+    }
+    .action-icon.success {
+        color: var(--success-color);
+        animation: bounce 0.6s ease;
+    }
+    
+    @keyframes bounce {
+        0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+        40%, 43% { transform: translate3d(0,-8px,0); }
+        70% { transform: translate3d(0,-4px,0); }
+        90% { transform: translate3d(0,-2px,0); }
+    }
+    
+    /* Using Information Architecture & Cognitive Load Theory */
+    .event-content { 
+        padding: 20px; 
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .event-title { 
+        font-size: 1.2rem; 
+        font-weight: 700; 
+        margin-bottom: 15px; 
+        color: var(--text-primary);
+        line-height: 1.3;
+    }
+    .event-meta-item { 
+        display: flex; 
+        align-items: center; 
+        gap: 12px; 
+        font-size: 0.9rem; 
+        color: var(--text-secondary); 
+        margin-bottom: 12px;
+        padding: 8px 0;
+    }
+    .event-meta-item i { 
+        color: var(--brand-red); 
+        width: 18px; 
+        text-align: center; 
+        font-size: 1rem;
+    }
+    .event-meta-item .highlight { 
+        color: var(--text-primary); 
+        font-weight: 600; 
+    }
+    .event-tags { 
+        margin-top: 20px; 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 8px; 
+    }
+    .event-tag { 
+        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%); 
+        color: white; 
+        padding: 6px 14px; 
+        border-radius: 20px; 
+        font-size: 0.75rem; 
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(200, 16, 46, 0.2);
+    }
+    .details-link { 
+        display: inline-block; 
+        margin-top: 15px; 
+        color: var(--brand-red); 
+        font-weight: 600; 
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: var(--transition);
+    }
+    .details-link:hover {
+        color: var(--brand-red-dark);
+        text-decoration: underline;
+    }
+    
+    /* SKELETON & EMPTY STATE */
+    .skeleton-card { background-color: var(--bg-card); border: 1px solid var(--border-color); height: 600px; }
+    .skeleton-image { height: 450px; } .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
+    @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); } .empty-state i { font-size: 4rem; color: var(--border-color); margin-bottom: 20px; }
+    
+    /* EVENT DETAIL VIEW */
+    #event-detail-view { padding: 20px 0; }
+    .detail-card { background: var(--bg-card); box-shadow: none; overflow: hidden; }
+    .detail-header { position: relative; height: 450px; background-color: #eee;}
+    .detail-image { width: 100%; height: 100%; object-fit: cover; }
+    .detail-header-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 20%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; }
+    .detail-title { font-size: 2.2rem; font-weight: 700; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); margin-bottom: 10px; }
+    .detail-venue { font-size: 1.1rem; color: #eee; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
+    a.detail-venue-link { text-decoration: none; }
+    .detail-body { padding: 25px; }
+    .detail-main-content h3 { font-size: 1.3rem; margin-top: 15px; margin-bottom: 15px; border-bottom: 2px solid var(--brand-red); padding-bottom: 10px; }
+    .detail-description p { margin-bottom: 1.2em; color: var(--text-secondary); line-height: 1.8; }
+    .detail-meta-list { list-style: none; }
+    .detail-meta-list li { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; font-size: 1rem; }
+    .detail-meta-list i { color: var(--brand-red); font-size: 1.1rem; margin-top: 4px; width: 20px; }
+    .detail-action-bar { padding: 15px 25px; border-top: 1px solid var(--border-color); }
+    .action-btn.primary { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; font-size: 1.1rem; background-color: var(--brand-red); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+    .back-to-events-btn { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; background: transparent; border: none; font-size: 1.5rem; color: var(--text-primary); cursor: pointer; padding: 10px; }
+    
+    /* NEW: INVITE SECTION STYLES */
+    .invite-section { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-color); }
+    .invite-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+    .invite-btn { background-color: transparent; border: 2px solid var(--brand-red); color: var(--brand-red); padding: 8px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 0.9rem; }
+    .invite-btn:hover { background-color: var(--brand-red); color: white; }
+    .invite-btn i { margin-right: 8px; }
+    .guest-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; }
+    .guest-item { display: flex; align-items: center; gap: 15px; }
+    .guest-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-color); }
+    .guest-name { font-weight: 600; color: var(--text-primary); }
+    .guest-status { font-size: 0.85rem; }
+    .guest-status.going { color: var(--success-color); }
+    .guest-status.invited { color: var(--text-light); }
+    .guest-status.organizer { color: var(--brand-blue); font-weight: 500; }
+    
+    /* FOOTER */
+    footer { text-align: center; padding: 40px 20px; background: var(--bg-main); color: var(--text-secondary); margin-top: 40px; border-top: 1px solid var(--border-color); }
+    .footer-links { margin-top: 15px; }
+    .footer-links a { margin: 0 12px; color: var(--text-secondary); font-size: 1.4rem; transition: var(--transition); } .footer-links a:hover { color: var(--brand-red); }
+    .copyright { margin-top: 15px; opacity: 0.8; font-size: 0.9rem;}
+    
+    .link-container {
+        display: flex;
+        justify-content: center;
+        margin: 40px 0; /* Increased margin for better spacing */
+    }
+    .link {
+        text-decoration: none;
+        color: #333; /* Darker color for a premium look */
+        font-size: 1.2rem;
+        margin: 0 20px;
+        position: relative;
+        padding: 10px 15px; /* Padding for a button-like feel */
+        border: 2px solid transparent; /* Border for hover effect */
+        border-radius: 5px; /* Rounded corners */
+        transition: all 0.3s ease; /* Smooth transition */
+    }
+    .link::after {
+        content: '→'; /* Slanted arrow */
+        position: absolute;
+        right: -25px; /* Position the arrow */
+        font-size: 1.2rem;
+        transition: transform 0.3s;
+    }
+    .link:hover {
+        color: #fff; /* Change text color on hover */
+        background-color: var(--brand-red); /* Background color on hover */
+        border-color: var(--brand-red); /* Border color on hover */
+    }
+    .link:hover::after {
+        transform: translateX(5px); /* Arrow movement on hover */
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .explore-grid {
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             gap: 10px;
+            padding: 0 15px;
         }
-        .quick-action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(200, 16, 46, 0.4);
+        .explore-card {
+            padding: 12px 8px;
         }
-        .quick-action-btn:active {
-            transform: translateY(0);
+        .explore-icon {
+            font-size: 1.4rem;
+            margin-bottom: 6px;
         }
-
-        /* EXPLORATION NAVIGATION - Using Hick's Law & Progressive Disclosure */
-        .explore-section { 
-            padding: 20px 0; 
-            margin-bottom: 25px; 
-            background: var(--bg-card);
-            border-radius: 16px;
-            box-shadow: var(--shadow-sm);
+        .explore-label {
+            font-size: 0.75rem;
+            margin-bottom: 3px;
         }
-        
-        /* Loading Animation */
-        .loading-spinner {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
+        .explore-count {
+            font-size: 0.65rem;
         }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+    }
+    
+    @media (max-width: 480px) {
+        .explore-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
         }
-        
-        /* Success Animation */
-        .success-check {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #28a745;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: checkmark 0.5s ease-in-out;
+        .explore-card {
+            padding: 10px 6px;
         }
-        
-        @keyframes checkmark {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        .explore-header { 
-            text-align: center; 
-            margin-bottom: 20px; 
-            padding: 0 20px;
-        }
-        .explore-title { 
-            font-size: 1.2rem; 
-            font-weight: 600; 
-            color: var(--text-primary); 
-            margin-bottom: 8px; 
-        }
-        .explore-subtitle { 
-            font-size: 0.9rem; 
-            color: var(--text-secondary); 
-            line-height: 1.4;
-        }
-        
-        /* Using Miller's Law (7±2 items) and Gestalt Principles */
-        .explore-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-            gap: 12px; 
-            max-width: 600px; 
-            margin: 0 auto; 
-            padding: 0 20px;
-        }
-        .explore-card { 
-            background: var(--bg-card); 
-            border: 2px solid var(--border-color); 
-            border-radius: 16px; 
-            padding: 15px 12px; 
-            text-align: center; 
-            cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            /* Using Von Restorff Effect for active state */
-        }
-        .explore-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-        .explore-card:hover { 
-            border-color: var(--brand-red); 
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(200, 16, 46, 0.15);
-        }
-        .explore-card.active { 
-            border-color: var(--brand-red); 
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(200, 16, 46, 0.2);
-        }
-        .explore-card:active {
-            transform: translateY(-2px) scale(0.98);
-            transition: transform 0.1s ease;
-        }
-        .explore-card.loading {
-            pointer-events: none;
-            opacity: 0.7;
-        }
-        .explore-card.loading .explore-icon {
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .explore-card.active::before {
-            opacity: 1;
-        }
-        .explore-card > * {
-            position: relative;
-            z-index: 2;
-        }
-        .explore-card.active .explore-icon { color: white; }
-        .explore-card.active .explore-label { color: white; }
-        .explore-icon { 
-            font-size: 1.6rem; 
-            color: var(--brand-red); 
-            margin-bottom: 8px; 
-            transition: var(--transition);
-            display: block;
-        }
-        .explore-label { 
-            font-weight: 600; 
-            font-size: 0.85rem; 
-            color: var(--text-primary); 
-            transition: var(--transition);
-            margin-bottom: 4px;
-            line-height: 1.2;
-        }
-        .explore-count { 
-            font-size: 0.7rem; 
-            color: var(--text-light); 
-            font-weight: 500;
-        }
-        .explore-card.active .explore-count { color: rgba(255,255,255,0.9); }
-
-        /* EVENTS GRID & CARDS - Using Card Sorting & Visual Scanning Patterns */
-        .events-section { 
-            margin-bottom: 40px; 
-            padding: 0 10px;
-        }
-        .events-grid { 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 20px; 
-            max-width: 650px; 
-            margin: 0 auto; 
-        }
-        .event-card { 
-            background-color: var(--bg-card); 
-            border-radius: 20px; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            position: relative; 
-            border: 1px solid var(--border-color);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            /* Using Law of Proximity for better grouping */
-        }
-        .event-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-            border-color: var(--brand-red);
-        }
-        
-        /* Using Social Proof & Trust Signals */
-        .event-card-header { 
-            display: flex; 
-            align-items: center; 
-            padding: 16px 20px; 
-            border-bottom: 1px solid var(--border-color);
-        }
-        .organizer-logo { 
-            width: 45px; 
-            height: 45px; 
-            border-radius: 50%; 
-            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%); 
-            margin-right: 15px; 
-            font-size: 22px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-weight: bold; 
-            color: white;
-            box-shadow: 0 2px 8px rgba(200, 16, 46, 0.2);
-        }
-        .organizer-info { 
-            font-weight: 600; 
-            font-size: 0.95rem;
-            color: var(--text-primary);
-        }
-        .verified-badge { 
-            color: var(--brand-blue); 
-            margin-left: 8px; 
-            font-size: 1.1rem;
-        }
-
-        .event-image-container { position: relative; width: 100%; padding-top: 75%; /* 4:3 Aspect Ratio */ cursor: pointer; background-color: #eee; }
-        .event-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
-        
-        /* Using Affordance & Feedback Principles */
-        .event-actions { 
-            padding: 16px 20px; 
-            display: flex; 
-            gap: 25px; 
-            font-size: 1.6rem; 
-            border-top: 1px solid var(--border-color);
-            background: rgba(248, 249, 250, 0.5);
-        }
-        .action-icon { 
-            cursor: pointer; 
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
-            padding: 8px;
-            border-radius: 50%;
-            color: var(--text-secondary);
-        }
-        .action-icon:hover { 
-            color: var(--brand-red); 
-            background: rgba(200, 16, 46, 0.1);
-            transform: scale(1.1);
-        }
-        .action-icon:active { 
-            transform: scale(0.95); 
-        }
-        .action-icon.saved { 
-            color: var(--brand-red); 
-            background: rgba(200, 16, 46, 0.1);
-        }
-        .action-icon.loading {
-            animation: spin 1s linear infinite;
-        }
-        .action-icon.success {
-            color: var(--success-color);
-            animation: bounce 0.6s ease;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
-            40%, 43% { transform: translate3d(0,-8px,0); }
-            70% { transform: translate3d(0,-4px,0); }
-            90% { transform: translate3d(0,-2px,0); }
-        }
-        
-        /* Using Information Architecture & Cognitive Load Theory */
-        .event-content { 
-            padding: 20px; 
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .event-title { 
-            font-size: 1.2rem; 
-            font-weight: 700; 
-            margin-bottom: 15px; 
-            color: var(--text-primary);
-            line-height: 1.3;
-        }
-        .event-meta-item { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            font-size: 0.9rem; 
-            color: var(--text-secondary); 
-            margin-bottom: 12px;
-            padding: 8px 0;
-        }
-        .event-meta-item i { 
-            color: var(--brand-red); 
-            width: 18px; 
-            text-align: center; 
-            font-size: 1rem;
-        }
-        .event-meta-item .highlight { 
-            color: var(--text-primary); 
-            font-weight: 600; 
-        }
-        .event-tags { 
-            margin-top: 20px; 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 8px; 
-        }
-        .event-tag { 
-            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%); 
-            color: white; 
-            padding: 6px 14px; 
-            border-radius: 20px; 
-            font-size: 0.75rem; 
-            font-weight: 600;
-            box-shadow: 0 2px 4px rgba(200, 16, 46, 0.2);
-        }
-        .details-link { 
-            display: inline-block; 
-            margin-top: 15px; 
-            color: var(--brand-red); 
-            font-weight: 600; 
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-        .details-link:hover {
-            color: var(--brand-red-dark);
-            text-decoration: underline;
-        }
-
-        /* SKELETON & EMPTY STATE */
-        .skeleton-card { background-color: var(--bg-card); border: 1px solid var(--border-color); height: 600px; }
-        .skeleton-image { height: 450px; } .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
-        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); } .empty-state i { font-size: 4rem; color: var(--border-color); margin-bottom: 20px; }
-
-        /* EVENT DETAIL VIEW */
-        #event-detail-view { padding: 20px 0; }
-        .detail-card { background: var(--bg-card); box-shadow: none; overflow: hidden; }
-        .detail-header { position: relative; height: 450px; background-color: #eee;}
-        .detail-image { width: 100%; height: 100%; object-fit: cover; }
-        .detail-header-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 20%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; }
-        .detail-title { font-size: 2.2rem; font-weight: 700; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); margin-bottom: 10px; }
-        .detail-venue { font-size: 1.1rem; color: #eee; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
-        a.detail-venue-link { text-decoration: none; }
-        .detail-body { padding: 25px; }
-        .detail-main-content h3 { font-size: 1.3rem; margin-top: 15px; margin-bottom: 15px; border-bottom: 2px solid var(--brand-red); padding-bottom: 10px; }
-        .detail-description p { margin-bottom: 1.2em; color: var(--text-secondary); line-height: 1.8; }
-        .detail-meta-list { list-style: none; }
-        .detail-meta-list li { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; font-size: 1rem; }
-        .detail-meta-list i { color: var(--brand-red); font-size: 1.1rem; margin-top: 4px; width: 20px; }
-        .detail-action-bar { padding: 15px 25px; border-top: 1px solid var(--border-color); }
-        .action-btn.primary { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; font-size: 1.1rem; background-color: var(--brand-red); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
-        .back-to-events-btn { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; background: transparent; border: none; font-size: 1.5rem; color: var(--text-primary); cursor: pointer; padding: 10px; }
-
-        /* NEW: INVITE SECTION STYLES */
-        .invite-section { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-color); }
-        .invite-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-        .invite-btn { background-color: transparent; border: 2px solid var(--brand-red); color: var(--brand-red); padding: 8px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 0.9rem; }
-        .invite-btn:hover { background-color: var(--brand-red); color: white; }
-        .invite-btn i { margin-right: 8px; }
-        .guest-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; }
-        .guest-item { display: flex; align-items: center; gap: 15px; }
-        .guest-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-color); }
-        .guest-name { font-weight: 600; color: var(--text-primary); }
-        .guest-status { font-size: 0.85rem; }
-        .guest-status.going { color: var(--success-color); }
-        .guest-status.invited { color: var(--text-light); }
-        .guest-status.organizer { color: var(--brand-blue); font-weight: 500; }
-
-        /* FOOTER */
-        footer { text-align: center; padding: 40px 20px; background: var(--bg-main); color: var(--text-secondary); margin-top: 40px; border-top: 1px solid var(--border-color); }
-        .footer-links { margin-top: 15px; }
-        .footer-links a { margin: 0 12px; color: var(--text-secondary); font-size: 1.4rem; transition: var(--transition); } .footer-links a:hover { color: var(--brand-red); }
-        .copyright { margin-top: 15px; opacity: 0.8; font-size: 0.9rem;}
-
-        .link-container {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0; /* Increased margin for better spacing */
-        }
-        .link {
-            text-decoration: none;
-            color: #333; /* Darker color for a premium look */
+        .explore-icon {
             font-size: 1.2rem;
-            margin: 0 20px;
-            position: relative;
-            padding: 10px 15px; /* Padding for a button-like feel */
-            border: 2px solid transparent; /* Border for hover effect */
-            border-radius: 5px; /* Rounded corners */
-            transition: all 0.3s ease; /* Smooth transition */
         }
-        .link::after {
-            content: '→'; /* Slanted arrow */
-            position: absolute;
-            right: -25px; /* Position the arrow */
-            font-size: 1.2rem;
-            transition: transform 0.3s;
+        .explore-label {
+            font-size: 0.7rem;
         }
-        .link:hover {
-            color: #fff; /* Change text color on hover */
-            background-color: var(--brand-red); /* Background color on hover */
-            border-color: var(--brand-red); /* Border color on hover */
-        }
-        .link:hover::after {
-            transform: translateX(5px); /* Arrow movement on hover */
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .explore-grid {
-                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-                gap: 10px;
-                padding: 0 15px;
-            }
-            .explore-card {
-                padding: 12px 8px;
-            }
-            .explore-icon {
-                font-size: 1.4rem;
-                margin-bottom: 6px;
-            }
-            .explore-label {
-                font-size: 0.75rem;
-                margin-bottom: 3px;
-            }
-            .explore-count {
-                font-size: 0.65rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .explore-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
-            }
-            .explore-card {
-                padding: 10px 6px;
-            }
-            .explore-icon {
-                font-size: 1.2rem;
-            }
-            .explore-label {
-                font-size: 0.7rem;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .event-card { border-radius: var(--border-radius); }
-        }
-    </style>
+    }
+    
+    @media (min-width: 768px) {
+        .event-card { border-radius: var(--border-radius); }
+    }</style>
 </head>
 <body>
     <header class="main-header">
@@ -707,9 +706,9 @@
                 
                 <!-- Quick Action Button - Using Fitts's Law for easy access -->
                 <div style="margin-top: 25px;">
-                    <button class="quick-action-btn" onclick="document.querySelector('[data-filter=\'trending\']').click()">
+                    <button class="quick-action-btn" onclick="document.querySelector('[data-filter=\'things\']').click()">
                         <i class="fas fa-fire"></i>
-                        <span>See What's Trending</span>
+                        <span>Start Exploring</span>
                     </button>
                 </div>
             </section>
@@ -717,44 +716,30 @@
             <div class="explore-section">
                 <div class="explore-header">
                     <h2 class="explore-title">What would you like to explore?</h2>
-                    <p class="explore-subtitle">Discover amazing places, food, and experiences</p>
+                    <p class="explore-subtitle">Discover amazing things to do with people you can 
+                        trust.
+                    </p>
                 </div>
                 <div class="explore-grid">
                     <div class="explore-card active" data-filter="all">
                         <i class="fas fa-compass explore-icon"></i>
-                        <div class="explore-label">All Places</div>
-                        <div class="explore-count">8 locations</div>
+                        <div class="explore-label">For You</div>
                     </div>
-                    <div class="explore-card" data-filter="trending">
-                        <i class="fas fa-fire explore-icon"></i>
-                        <div class="explore-label">Trending</div>
-                        <div class="explore-count">3 hot spots</div>
+                    
+                    <div class="explore-card" data-filter="people">
+                        <i class="fas fa-users explore-icon"></i>
+                        <div class="explore-label">My People</div>
+                        <div class="explore-count">e.g. Russians</div>
                     </div>
-                    <div class="explore-card" data-filter="music">
-                        <i class="fas fa-landmark explore-icon"></i>
-                        <div class="explore-label">Places</div>
-                        <div class="explore-count">3 attractions</div>
+                    
+                    <div class="explore-card" data-filter="things">
+                        <i class="fas fa-running explore-icon"></i>
+                        <div class="explore-label">Things To Do</div>
+                        <div class="explore-count">Activities nearby</div>
                     </div>
-                    <div class="explore-card" data-filter="art">
-                        <i class="fas fa-utensils explore-icon"></i>
-                        <div class="explore-label">Restaurants</div>
-                        <div class="explore-count">1 food spot</div>
-                    </div>
-                    <div class="explore-card" data-filter="weekend">
-                        <i class="fas fa-bed explore-icon"></i>
-                        <div class="explore-label">Hotels</div>
-                        <div class="explore-count">1 accommodation</div>
-                    </div>
-                    <div class="explore-card" data-filter="free">
-                        <i class="fas fa-calendar-alt explore-icon"></i>
-                        <div class="explore-label">Events</div>
-                        <div class="explore-count">3 activities</div>
-                    </div>
-                    <div class="explore-card" data-filter="recommended">
-                        <i class="fas fa-star explore-icon"></i>
-                        <div class="explore-label">Recommended</div>
-                        <div class="explore-count">4 picks</div>
-                    </div>
+                    
+                   
+                   
                 </div>
             </div>
 
@@ -790,192 +775,67 @@
                 </a>
             </div>
             <div class="link-container">
-                <a href="sharktank.html" class="link">Shark Tank Nepal</a>
-                <a href="expired.html" class="link">Expired Events</a>
+<!--                <a href="sharktank.html" class="link">Shark Tank Nepal</a> -->
+<!--                <a href="expired.html" class="link">Expired Events</a> -->
             </div>
             <p class="copyright">Khojum Inc. © 2025</p>
         </div>
     </footer>
     
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+   document.addEventListener('DOMContentLoaded', function() {
         
         // --- DATA ---
         // Note: I've added a new 'invite' object to the "Artha Run Club" event
         const eventsData = 
         
         [
-  {
-    "id": 2,
-    "title": "Life As A Movie – Take 1",
-    "date": "Friday, 29 August",
-    "time": "6:00 pm onwards",
-    "venue": "Eden Amphitheatre, Sanepa",
-    "gmapsUrl": "",
-    "price": "Rs1,000",
-    "image": "assets/vek.png",
-    "category": "live show",
-    "tags": ["Music", "Performance", "Kathmandu"],
-    "organizer": {
-      "name": "ClassX Presentation",
-      "verified": true,
-      "instagram": ""
-    },
-    "availability": "available",
-    "attendeeCount": 0,
-    "duration": "1 day",
-    "description": "Maya, मेरो Ekchoti, सुनिदेउन कुरा Feri... 😉Get ready to feel every word & beat by VEK 🌟 is performing LIVE at the exclusive and intimate show: 🎬 “Life As A Movie – TAKE 1” Happening at 📍EDEN, Sanepa | 🗓️29 August, 2025 | 🕘 6 PM Onwards.",
-    "bookingUrl": "https://events.khalti.com/events/ET258ZY2DGGY",
-    "actionText": "Get Tickets",
-    "actionIcon": "fa-music"
-  },
- 
- 
-  
+    
+    
+    
       
-       
             {
                 id: 4,
-                title: "Artha Run Club",
+                title: "Saturday Meetup",
                 date: "Every Saturday",
-                time: "6:00 AM",
-                venue: "International Club, Lalitpur",
+                time: "9:00 AM",
+                venue: "Mira's Coffee",
                 gmapsUrl: "https://maps.app.goo.gl/Mt5qZZBGyhVjXKUYA",
                 price: "Free",
-                image: "assets/runclub.png",
-                category: "health",
-                tags: ["Running", "Fitness", "Community"],
+                image: "assets/meetup.png",
+                category: "social",
+                tags: ["Russians", "Hangout", "Coffee"],
                 organizer: { 
-                    name: "Artha Group", 
+                    name: "Bourbon Vanilla 🇳🇵", 
                     verified: true,
-                    instagram: "https://www.instagram.com/arthagroup"
+                    Tiktok: "https://www.tiktok.com/@bourbonvanilla7"
                 },
                 availability: "available",
-                attendeeCount: 85,
+                attendeeCount: 6,
                 duration: "1.5 hours",
-                description: "All paces and ages are welcome, so bring your energy, your smiles, and maybe a friend or two!<br><br>Location: International Club, Lalitpur<br>Meetup Time: 6:00 AM<br>Start Time: 7:00 AM<br>Distance: 6k<br><br>• Parking: Available for two-wheelers and four-wheelers (Rs 30/hr)<br>• Bag Drop: Safe space to leave your belongings<br><br>Come for the run, stay for the coffee, conversations, and connections after. See you Saturday!<br><b>\n Things you need:</b><br>• Register for the Run<br>• Download Strava: <a href='https://www.strava.com/mobile' target='_blank'>Strava App</a> & register<br>• Choose a comfortable pace group<br>• Be you, no pressure. <br> •Follow Organizer on instagram <a href='https://www.instagram.com/artha.runclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' target='_blank'>Instagram</a> ",
-                bookingUrl: "https://lu.ma/jb7oav4k",
-                actionText: "Register Now",
-                actionIcon: "fa-running",
-                // NEW: Invite-only data
+                description: "A casual meetup for Russians to connect, chat, and have fun!<br><br>Location: Mira's Coffee, Kaldhara<br>Meetup Time: 9:00 AM<br>Come with your smiles and energy—bring a friend if you like!<br><br>Stay for coffee, conversations, and new friendships.<br><b>Things to do before coming:</b><br>• Register for the meetup<br>• Follow the organizer on Tiktok <a href='https://www.tiktok.com/@bourbonvanilla7' target='_blank'>Link to my Profile</a>",
+                bookingUrl: "https://wa.me/9779861828821",
+                actionText: "Join Meetup",
+                actionIcon: "fa-users",
                 invite: {
                     enabled: true,
                     organizer: {
-                        name: "Aman Adhikari",
-                        avatarUrl: "https://randomuser.me/api/portraits/men/1.jpg"
+                        name: "Bourbon Vanilla 🇳🇵",
+                        avatarUrl: "https://randomuser.me/api/portraits/men/65.jpg"
                     },
                     guests: [
-                        { name: "Sanjaya Subedi", avatarUrl: "https://randomuser.me/api/portraits/men/2.jpg", status: "Going" },
-                        { name: "Pukar Jha", avatarUrl: "https://randomuser.me/api/portraits/women/3.jpg", status: "Going" },
-                        { name: "Rohit Paudel", avatarUrl: "https://randomuser.me/api/portraits/men/4.jpg", status: "Invited" },
-                        { name: "Rabina Joshi", avatarUrl: "https://randomuser.me/api/portraits/women/5.jpg", status: "Going" },
-                        { name: "Kushal Bhurtel", avatarUrl: "https://randomuser.me/api/portraits/men/6.jpg", status: "Invited" },
+                        { name: "Anastasia Smirnova", avatarUrl: "https://randomuser.me/api/portraits/women/68.jpg", status: "Going" },
+                        { name: "Dmitry Volkov", avatarUrl: "https://randomuser.me/api/portraits/men/69.jpg", status: "Going" },
+                        { name: "Elena Ivanova", avatarUrl: "https://randomuser.me/api/portraits/women/70.jpg", status: "Invited" },
+                        { name: "Sergey Kuznetsov", avatarUrl: "https://randomuser.me/api/portraits/men/71.jpg", status: "Going" },
+                        { name: "Marina Popova", avatarUrl: "https://randomuser.me/api/portraits/women/72.jpg", status: "Invited" }
                     ]
                 }
-            },
-            {
-                id: 5,
-                title: "Shark Tank Nepal - Season 1",
-                date: "2025-07-16",
-                time: "9:00 PM",
-                venue: "Himalayan TV HD",
-                gmapsUrl: "https://maps.app.goo.gl/9m2L7G8pY6X3A7Z79",
-                price: "Free",
-                image: "assets/sharktank.png",
-                category: "business",
-                tags: ["TV Show", "Startups", "Investment"],
-                organizer: { name: "Himalayan TV", verified: true },
-                availability: "available",
-                description: "Watch entrepreneurs pitch their ideas to celebrity investors on national television. This season promises bigger deals, tougher negotiations, and groundbreaking innovations.",
-                bookingUrl: "sharktank.html",
-                actionText: "Track Companies", 
-                actionIcon: "fa-arrow-right"
-            },
-            {
-                id: 6,
-                title: "Rug Museum",
-                date: "Everyday",
-                time: "10 AM - 6 PM",
-                venue: "Jan Kath, near Boudha",
-                gmapsUrl: "https://maps.app.goo.gl/7DGgzws3tod8j3AW8",
-                price: "Free",
-                image: "assets/rugmuseum.png",
-                category: "Art",
-                tags: ["Rugs", "Art", "Asthetic"],
-                organizer: { name: "Rug Museum", verified: false },
-                availability: "available",
-                description: "Explore a variety of traditional and contemporary rugs showcasing the rich heritage of Nepal.",
-                bookingUrl: "https://www.tiktok.com/@te4nz/video/7299830094464437505",
-                actionText: "Watch Video", 
-                actionIcon: "fa-arrow-right"
-            },
-             
-            {
-                id: 7, // New ID for the event
-                title: "Patan Pottery",
-                date: "Everyday",
-                time: "10:00 AM - 7:00 PM",
-                venue: "Mangal Bazar, Patan",
-                gmapsUrl: "https://maps.app.goo.gl/928GyhrsRRgEuytD8",
-                price: "500",
-                image: "assets/patan_pottery.png", // Add an image path if available
-                category: "Art",
-                tags: ["Pottery", "Art", "Family"],
-                organizer: { 
-                    name: "Patan Pottery Studio", 
-                    verified: true,
-                    instagram: "https://www.instagram.com/patanpottery" // Replace with actual Instagram link if available
-                },
-                availability: "available",
-                attendeeCount: 0, // Initial count, can be updated later
-                duration: "1 hours", // Duration of the event
-                description: "Experience the best pottery experience at Patan Pottery! Enjoy a new experience with your family where you can learn and paint. You can choose to make and paint your pottery, leave it, and come back to pick it up the next day. Enjoy a cup of coffee while you create! All ages are welcome.",
-                bookingUrl: "https://www.tiktok.com/@datewithbebe/video/7450685638715690258?q=patan%20pottery&t=1752516080487", // Replace with actual booking URL
-                actionText: "Learn more about the place",
-                actionIcon: "fa-paint-brush", // Use an appropriate icon
-            },
-            {
-                id: 8,
-                title: "Kaiser Library",
-                date: "Every Day",
-                time: "9:00 AM - 5:00 PM",
-                venue: "Kantipath",
-                gmapsUrl: "https://maps.app.goo.gl/rfbpUsCGgnbLXvMS7",
-                price: "Free",
-                image: "assets/kaiserlibrary.png",
-                category: "art",
-                tags: ["Reading", "Quiet", "Productive"],
-                organizer: { name: "Kaiser Library", verified: true },
-                availability: "available",
-                description: "Kaiser Library offers a serene environment to spend time and read books in the courtyard and inside the library. One of the rare gems of Nepal that most don't know about.",
-                bookingUrl: "https://www.tiktok.com/@adorrree_me/video/7493883616259296520",
-                actionText: "Watch Video",
-                actionIcon: "fa-arrow-right"
-            },
- 
-            {
-                id: 9,
-                title: "Tokha Saturday Mela",
-                date: "2025-07-19",
-                time: "3:00 PM - 7:00 PM",
-                venue: "Tokha, near Ganesh Temple",
-                gmapsUrl: "https://maps.app.goo.gl/YLEH9Z5SStiW6Jn38",
-                price: "Free",
-                image: "assets/tokhamela.png",
-                category: "food",
-                tags: ["Cultural", "Food Festival", "Newari Cuisine"],
-                organizer: { name: "Local Community", verified: false },
-                availability: "available",
-                description: "Celebrate community and cuisine at Tokha's vibrant Saturday food and culture mela. Enjoy traditional Newari delicacies, live music, and local crafts.",
-                bookingUrl: "https://www.tiktok.com/@storiesofmanisha/video/7474071111668600082",
-                actionText: "Watch Video",
-                actionIcon: "fa-arrow-right"
-            },
+            }
             
           
-          
         ];
-
+    
         let currentFilter = 'all';
         let savedEvents = new Set();
         
@@ -984,13 +844,13 @@
         const eventsContainer = document.getElementById('events-container');
         const emptyState = document.getElementById('empty-state');
         const exploreCards = document.querySelectorAll('.explore-card');
-
+    
         function init() {
             setupEventListeners();
             handleRouting();
             window.addEventListener('hashchange', handleRouting);
         }
-
+    
         function handleRouting() {
             const hash = window.location.hash;
             if (hash.startsWith('#event-')) {
@@ -1006,18 +866,18 @@
             document.querySelector('meta[name="title"]').setAttribute("content", title);
             document.querySelector('meta[property="og:title"]').setAttribute("content", title);
             document.querySelector('meta[name="twitter:title"]').setAttribute("content", title);
-
+    
             document.querySelector('meta[name="description"]').setAttribute("content", description);
             document.querySelector('meta[property="og:description"]').setAttribute("content", description);
             document.querySelector('meta[name="twitter:description"]').setAttribute("content", description);
-
+    
             document.querySelector('meta[property="og:image"]').setAttribute("content", imageUrl);
             document.querySelector('meta[name="twitter:image"]').setAttribute("content", imageUrl);
             
             document.querySelector('meta[property="og:url"]').setAttribute("content", url);
             document.querySelector('link[rel="canonical"]').setAttribute("href", url);
         }
-
+    
         function showGridView() {
             mainGridView.style.display = 'block';
             eventDetailView.style.display = 'none';
@@ -1032,13 +892,13 @@
             );
             applyFilters();
         }
-
+    
         function showDetailPage(eventId) {
             const event = eventsData.find(e => e.id === eventId);
             mainGridView.style.display = 'none';
             eventDetailView.style.display = 'block';
             window.scrollTo(0, 0);
-
+    
             if (!event) {
                 eventDetailView.innerHTML = `<div class="empty-state"><h3>Event Not Found</h3><p>The event you are looking for does not exist.</p><button class="back-to-events-btn" onclick="window.location.hash=''">Back to All Events</button></div>`;
                 return;
@@ -1046,21 +906,21 @@
             
             const eventUrl = `${window.location.origin}${window.location.pathname}#event-${event.id}`;
             const imageUrl = `${window.location.origin}/${event.image}`;
-
+    
             updateMetaTags(
                 `${event.title} | Khojum.com`,
                 event.description.substring(0, 160) + '...',
                 imageUrl,
                 eventUrl
             );
-
+    
             const formattedDate = formatEventDate(event.date, { weekday: 'long', month: 'long', day: 'numeric' });
             const actionIcon = event.actionIcon || 'fa-ticket-alt';
             const actionText = event.actionText || 'Get Tickets';
             
             // NEW: Generate the invite section HTML if data exists
             const inviteSectionHtml = (event.invite && event.invite.enabled) ? createInviteSectionHTML(event.invite) : '';
-
+    
             eventDetailView.innerHTML = `
                 <button class="back-to-events-btn" onclick="window.location.hash=''"><i class="fas fa-arrow-left"></i></button>
                 <div class="detail-card">
@@ -1080,7 +940,7 @@
                             <li><i class="fas fa-ticket-alt"></i><div><strong>Price:</strong><br>${event.price}</div></li>
                             <li><i class="fas fa-building"></i><div><strong>Organizer:</strong><br>${event.organizer.name} ${event.organizer.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}</div></li>
                         </ul>
-
+    
                         <div class="detail-main-content">
                             <h3>About the Event</h3>
                             <div class="detail-description"><p>${event.description.replace(/<br>/g, '</p><p>').replace(/\\n/g, '</p><p>')}</p></div>
@@ -1088,7 +948,7 @@
                         
                         <!-- Inject Invite Section Here -->
                         ${inviteSectionHtml}
-
+    
                     </div>
                     <div class="detail-action-bar">
                          <button class="action-btn primary" onclick="bookTicket(event, ${event.id})">
@@ -1120,7 +980,7 @@
                     </div>
                 </li>
             `).join('');
-
+    
             return `
                 <section class="invite-section">
                     <div class="invite-header">
@@ -1136,7 +996,7 @@
                 </section>
             `;
         }
-
+    
         function setupEventListeners() {
             exploreCards.forEach(card => {
                 card.addEventListener('click', async (e) => {
@@ -1169,7 +1029,7 @@
                 });
             });
         }
-
+    
         function applyFilters() {
             showLoadingState();
             updateSectionHeader();
@@ -1227,37 +1087,59 @@
                 renderEvents(filteredEvents);
             }, 200);
         }
-
+    
         function updateSectionHeader() {
             const header = document.getElementById('events-header');
             const title = header.querySelector('.events-title');
             const subtitle = header.querySelector('.events-subtitle');
             
             const headers = {
-                'all': { title: 'Discover Amazing Places', subtitle: 'Handpicked locations for your next adventure' },
-                'trending': { title: '🔥 Trending Now', subtitle: 'Most popular places everyone\'s talking about' },
-                'music': { title: '🏛️ Cultural Places', subtitle: 'Museums, libraries, and cultural attractions' },
-                'art': { title: '🍽️ Food & Dining', subtitle: 'Restaurants and food experiences' },
-                'weekend': { title: '🏨 Accommodations', subtitle: 'Hotels, resorts, and places to stay' },
-                'free': { title: '🎉 Events & Activities', subtitle: 'Live shows, performances, and activities' },
-                'recommended': { title: '⭐ Our Recommendations', subtitle: 'Curated picks just for you' }
+                'all': { 
+                    title: 'Discover Amazing Things in Nepal', 
+                    subtitle: 'Search what you need to make your travel memorable' 
+                },
+                'people': { 
+                    title: '🌍 My People', 
+                    subtitle: 'Find people from your country and connect with them' 
+                },
+                'places': { 
+                    title: '📍 Places to Explore', 
+                    subtitle: 'Attractions, landmarks, and hidden gems' 
+                },
+                'things': { 
+                    title: '🎯 Things To Do', 
+                    subtitle: 'Exciting activities and experiences near you' 
+                },
+                'guide': { 
+                    title: '🗺️ Travel Guide', 
+                    subtitle: 'Tips, routes, and helpful local info' 
+                },
+                'events': { 
+                    title: '🎉 Events & Activities', 
+                    subtitle: 'Live shows, festivals, and meetups' 
+                },
+                'recommended': { 
+                    title: '⭐ Recommended for You', 
+                    subtitle: 'Curated picks and highlights to enjoy' 
+                }
             };
+            
             
             const currentHeader = headers[currentFilter] || headers['all'];
             title.textContent = currentHeader.title;
             subtitle.textContent = currentHeader.subtitle;
         }
-
+    
         function renderEvents(events) {
             hideLoadingState();
             emptyState.style.display = events.length === 0 ? 'block' : 'none';
             eventsContainer.innerHTML = events.map(event => createEventCard(event)).join('');
         }
-
+    
         function createEventCard(event) {
             const formattedDate = formatEventDate(event.date, { weekday: 'short', month: 'short', day: 'numeric' });
             const organizerInitial = event.organizer.name.charAt(0).toUpperCase();
-
+    
             return `
                 <div class="event-card">
                     <div class="event-card-header">
@@ -1287,7 +1169,7 @@
                 </div>
             `;
         }
-
+    
         // --- Global Functions for onclick Handlers ---
         window.toggleSave = async (e, eventId) => { 
             e.stopPropagation(); 
@@ -1404,7 +1286,7 @@
                 button.disabled = false;
             }
         };
-
+    
         // --- Helper Functions ---
         function formatEventDate(dateString, formatOptions) {
             if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
@@ -1462,7 +1344,7 @@
                 setTimeout(() => el.remove(), 400); 
             }, 3000); 
         }
-
+    
         init();
     });
     </script>
