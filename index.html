@@ -1,1390 +1,1005 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LWHSBNXT5"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7LWHSBNXT5');
-    </script>
-    <!-- Primary Meta Tags -->
-    <title>Discover Events in Nepal | Khojum.com</title>
-    <meta name="title" content="Discover Events in Nepal | Khojum.com">
-    <meta name="description" content="Nepal's top event discovery platform. Find concerts, festivals, art exhibitions, and workshops in Kathmandu and beyond. Your guide to what's happening.">
-
-    <!-- Keywords -->
-    <meta name="keywords" content="events in kathmandu, nepal events, concerts, festivals, art exhibitions, workshops, entertainment, today's events, upcoming events, khojum">
-
-    <!-- SEO & Indexing -->
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="https://khojum.com">
-
-    <!-- Mobile Optimization -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ffffff">
-
-    <!-- Favicons -->
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-
-    <!-- Open Graph & Twitter Cards (dynamically updated) -->
-    <meta property="og:title" content="Discover Events in Nepal | Khojum.com">
-    <meta property="og:description" content="Nepal's top event discovery platform for concerts, festivals, and more.">
-    <meta property="og:image" content="https://khojum.com/assets/logo/og-image.png">
-    <meta property="og:url" content="https://khojum.com">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Discover Events in Nepal | Khojum.com">
-    <meta name="twitter:description" content="Nepal's top event discovery platform for concerts, festivals, and more.">
-    <meta name="twitter:image" content="https://khojum.com/assets/logo/og-image.png">
-
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome for Icons -->
+    <title>Find Your People in Nepal | Khojum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="es.js"></script>
-    <style>:root {
-        --brand-red: #c8102e;
-        --brand-red-dark: #a70d26;
-        --brand-blue: #003893;
-        --text-primary: #1a1a1a;
-        --text-secondary: #555;
-        --text-light: #888;
-        --bg-main: #f4f4f4;
-        --bg-card: #ffffff;
-        --border-color: #dbdbdb;
-        --success-color: #28a745;
-        --warning-color: #ffc107;
-        --danger-color: #dc3545;
-        --font-primary: 'Inter', sans-serif;
-        --font-display: 'Lora', serif;
-        --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
-        --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-        --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-        --header-height: 60px;
-        --border-radius: 12px;
-        --transition: all 0.3s ease;
-    }
-    
-    /* GENERAL STYLES */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font-primary); line-height: 1.6; color: var(--text-primary); background-color: var(--bg-main); padding-top: var(--header-height); }
-    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 15px; }
-    
-    /* HEADER - Enhanced Navigation & Utilities */
-    header.main-header { 
-        background-color: rgba(255, 255, 255, 0.95); 
-        height: var(--header-height); 
-        position: fixed; 
-        top: 0; 
-        left: 0; 
-        width: 100%; 
-        z-index: 1000; 
-        border-bottom: 1px solid var(--border-color); 
-        display: flex; 
-        align-items: center; 
-        backdrop-filter: blur(15px);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .header-content { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        width: 100%; 
-        padding: 0 20px;
-    }
-    .header-left {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-    }
-    .logo { 
-        font-family: var(--font-display); 
-        font-size: 1.8rem; 
-        font-weight: 600; 
-        color: orangered; 
-        text-decoration: none;
-        transition: var(--transition);
-    }
-    .logo:hover {
-        transform: scale(1.05);
-    }
-    .logo span { color: rgb(231, 3, 3); }
-    
-    /* Search Bar */
-    .search-container {
-        position: relative;
-        max-width: 300px;
-        width: 100%;
-    }
-    .search-input {
-        width: 100%;
-        padding: 10px 40px 10px 15px;
-        border: 2px solid var(--border-color);
-        border-radius: 25px;
-        font-size: 0.9rem;
-        background: rgba(255,255,255,0.8);
-        transition: var(--transition);
-    }
-    .search-input:focus {
-        outline: none;
-        border-color: var(--brand-red);
-        background: white;
-        box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
-    }
-    .search-icon {
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--text-light);
-        font-size: 0.9rem;
-    }
-    
-    /* Header Actions */
-    .header-actions {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
-    .header-btn {
-        background: none;
-        border: none;
-        padding: 8px;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: var(--transition);
-        position: relative;
-        color: var(--text-secondary);
-    }
-    .header-btn:hover {
-        background: rgba(200, 16, 46, 0.1);
-        color: var(--brand-red);
-    }
-    .header-btn i {
-        font-size: 1.2rem;
-    }
-    .notification-badge {
-        position: absolute;
-        top: -2px;
-        right: -2px;
-        background: var(--brand-red);
-        color: white;
-        border-radius: 50%;
-        width: 18px;
-        height: 18px;
-        font-size: 0.7rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-    }
-    .user-avatar {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 600;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: var(--transition);
-    }
-    .user-avatar:hover {
-        transform: scale(1.1);
-    }
-    
-    /* HERO SECTION - Using F-Pattern & Visual Hierarchy */
-    .hero-section { 
-        text-align: center; 
-        padding: 40px 0 30px; 
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        margin-bottom: 20px;
-    }
-    .hero-section h1 { 
-        font-family: var(--font-primary); 
-        font-size: 2.4rem; 
-        font-weight: 600; 
-        margin-bottom: 16px; 
-        color: var(--text-primary);
-        line-height: 1.2;
-    }
-    .hero-section p { 
-        font-size: 1.1rem; 
-        color: var(--text-secondary); 
-        max-width: 500px; 
-        margin: 0 auto; 
-        line-height: 1.6;
-    }
-    
-    /* Quick Action Button - Using Fitts's Law */
-    .quick-action-btn {
-        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
-        color: white;
-        border: none;
-        padding: 14px 28px;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .quick-action-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(200, 16, 46, 0.4);
-    }
-    .quick-action-btn:active {
-        transform: translateY(0);
-    }
-    
-    /* EXPLORATION NAVIGATION - Using Hick's Law & Progressive Disclosure */
-    .explore-section { 
-        padding: 20px 0; 
-        margin-bottom: 25px; 
-        background: var(--bg-card);
-        border-radius: 16px;
-        box-shadow: var(--shadow-sm);
-    }
-    
-    /* Loading Animation */
-    .loading-spinner {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border: 3px solid rgba(255,255,255,.3);
-        border-radius: 50%;
-        border-top-color: #fff;
-        animation: spin 1s ease-in-out infinite;
-    }
-    
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-    
-    /* Success Animation */
-    .success-check {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border: 3px solid #28a745;
-        border-radius: 50%;
-        border-top-color: transparent;
-        animation: checkmark 0.5s ease-in-out;
-    }
-    
-    @keyframes checkmark {
-        0% { transform: scale(0); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
-    .explore-header { 
-        text-align: center; 
-        margin-bottom: 20px; 
-        padding: 0 20px;
-    }
-    .explore-title { 
-        font-size: 1.2rem; 
-        font-weight: 600; 
-        color: var(--text-primary); 
-        margin-bottom: 8px; 
-    }
-    .explore-subtitle { 
-        font-size: 0.9rem; 
-        color: var(--text-secondary); 
-        line-height: 1.4;
-    }
-    
-    /* Using Miller's Law (7±2 items) and Gestalt Principles */
-    .explore-grid { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-        gap: 12px; 
-        max-width: 600px; 
-        margin: 0 auto; 
-        padding: 0 20px;
-    }
-    .explore-card { 
-        background: var(--bg-card); 
-        border: 2px solid var(--border-color); 
-        border-radius: 16px; 
-        padding: 15px 12px; 
-        text-align: center; 
-        cursor: pointer; 
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        /* Using Von Restorff Effect for active state */
-    }
-    .explore-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: 1;
-    }
-    .explore-card:hover { 
-        border-color: var(--brand-red); 
-        transform: translateY(-4px) scale(1.02);
-        box-shadow: 0 8px 25px rgba(200, 16, 46, 0.15);
-    }
-    .explore-card.active { 
-        border-color: var(--brand-red); 
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(200, 16, 46, 0.2);
-    }
-    .explore-card:active {
-        transform: translateY(-2px) scale(0.98);
-        transition: transform 0.1s ease;
-    }
-    .explore-card.loading {
-        pointer-events: none;
-        opacity: 0.7;
-    }
-    .explore-card.loading .explore-icon {
-        animation: pulse 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
-    }
-    .explore-card.active::before {
-        opacity: 1;
-    }
-    .explore-card > * {
-        position: relative;
-        z-index: 2;
-    }
-    .explore-card.active .explore-icon { color: white; }
-    .explore-card.active .explore-label { color: white; }
-    .explore-icon { 
-        font-size: 1.6rem; 
-        color: var(--brand-red); 
-        margin-bottom: 8px; 
-        transition: var(--transition);
-        display: block;
-    }
-    .explore-label { 
-        font-weight: 600; 
-        font-size: 0.85rem; 
-        color: var(--text-primary); 
-        transition: var(--transition);
-        margin-bottom: 4px;
-        line-height: 1.2;
-    }
-    .explore-count { 
-        font-size: 0.7rem; 
-        color: var(--text-light); 
-        font-weight: 500;
-    }
-    .explore-card.active .explore-count { color: rgba(255,255,255,0.9); }
-    
-    /* EVENTS GRID & CARDS - Using Card Sorting & Visual Scanning Patterns */
-    .events-section { 
-        margin-bottom: 40px; 
-        padding: 0 10px;
-    }
-    .events-grid { 
-        display: grid; 
-        grid-template-columns: 1fr; 
-        gap: 20px; 
-        max-width: 650px; 
-        margin: 0 auto; 
-    }
-    .event-card { 
-        background-color: var(--bg-card); 
-        border-radius: 20px; 
-        overflow: hidden; 
-        display: flex; 
-        flex-direction: column; 
-        position: relative; 
-        border: 1px solid var(--border-color);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        /* Using Law of Proximity for better grouping */
-    }
-    .event-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-        border-color: var(--brand-red);
-    }
-    
-    /* Using Social Proof & Trust Signals */
-    .event-card-header { 
-        display: flex; 
-        align-items: center; 
-        padding: 16px 20px; 
-        border-bottom: 1px solid var(--border-color);
-    }
-    .organizer-logo { 
-        width: 45px; 
-        height: 45px; 
-        border-radius: 50%; 
-        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%); 
-        margin-right: 15px; 
-        font-size: 22px; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        font-weight: bold; 
-        color: white;
-        box-shadow: 0 2px 8px rgba(200, 16, 46, 0.2);
-    }
-    .organizer-info { 
-        font-weight: 600; 
-        font-size: 0.95rem;
-        color: var(--text-primary);
-    }
-    .verified-badge { 
-        color: var(--brand-blue); 
-        margin-left: 8px; 
-        font-size: 1.1rem;
-    }
-    
-    .event-image-container { position: relative; width: 100%; padding-top: 75%; /* 4:3 Aspect Ratio */ cursor: pointer; background-color: #eee; }
-    .event-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
-    
-    /* Using Affordance & Feedback Principles */
-    .event-actions { 
-        padding: 16px 20px; 
-        display: flex; 
-        gap: 25px; 
-        font-size: 1.6rem; 
-        border-top: 1px solid var(--border-color);
-        background: rgba(248, 249, 250, 0.5);
-    }
-    .action-icon { 
-        cursor: pointer; 
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
-        padding: 8px;
-        border-radius: 50%;
-        color: var(--text-secondary);
-    }
-    .action-icon:hover { 
-        color: var(--brand-red); 
-        background: rgba(200, 16, 46, 0.1);
-        transform: scale(1.1);
-    }
-    .action-icon:active { 
-        transform: scale(0.95); 
-    }
-    .action-icon.saved { 
-        color: var(--brand-red); 
-        background: rgba(200, 16, 46, 0.1);
-    }
-    .action-icon.loading {
-        animation: spin 1s linear infinite;
-    }
-    .action-icon.success {
-        color: var(--success-color);
-        animation: bounce 0.6s ease;
-    }
-    
-    @keyframes bounce {
-        0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
-        40%, 43% { transform: translate3d(0,-8px,0); }
-        70% { transform: translate3d(0,-4px,0); }
-        90% { transform: translate3d(0,-2px,0); }
-    }
-    
-    /* Using Information Architecture & Cognitive Load Theory */
-    .event-content { 
-        padding: 20px; 
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-    }
-    .event-title { 
-        font-size: 1.2rem; 
-        font-weight: 700; 
-        margin-bottom: 15px; 
-        color: var(--text-primary);
-        line-height: 1.3;
-    }
-    .event-meta-item { 
-        display: flex; 
-        align-items: center; 
-        gap: 12px; 
-        font-size: 0.9rem; 
-        color: var(--text-secondary); 
-        margin-bottom: 12px;
-        padding: 8px 0;
-    }
-    .event-meta-item i { 
-        color: var(--brand-red); 
-        width: 18px; 
-        text-align: center; 
-        font-size: 1rem;
-    }
-    .event-meta-item .highlight { 
-        color: var(--text-primary); 
-        font-weight: 600; 
-    }
-    .event-tags { 
-        margin-top: 20px; 
-        display: flex; 
-        flex-wrap: wrap; 
-        gap: 8px; 
-    }
-    .event-tag { 
-        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%); 
-        color: white; 
-        padding: 6px 14px; 
-        border-radius: 20px; 
-        font-size: 0.75rem; 
-        font-weight: 600;
-        box-shadow: 0 2px 4px rgba(200, 16, 46, 0.2);
-    }
-    .details-link { 
-        display: inline-block; 
-        margin-top: 15px; 
-        color: var(--brand-red); 
-        font-weight: 600; 
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: var(--transition);
-    }
-    .details-link:hover {
-        color: var(--brand-red-dark);
-        text-decoration: underline;
-    }
-    
-    /* SKELETON & EMPTY STATE */
-    .skeleton-card { background-color: var(--bg-card); border: 1px solid var(--border-color); height: 600px; }
-    .skeleton-image { height: 450px; } .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
-    @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-    .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); } .empty-state i { font-size: 4rem; color: var(--border-color); margin-bottom: 20px; }
-    
-    /* EVENT DETAIL VIEW */
-    #event-detail-view { padding: 20px 0; }
-    .detail-card { background: var(--bg-card); box-shadow: none; overflow: hidden; }
-    .detail-header { position: relative; height: 450px; background-color: #eee;}
-    .detail-image { width: 100%; height: 100%; object-fit: cover; }
-    .detail-header-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 20%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; }
-    .detail-title { font-size: 2.2rem; font-weight: 700; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); margin-bottom: 10px; }
-    .detail-venue { font-size: 1.1rem; color: #eee; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
-    a.detail-venue-link { text-decoration: none; }
-    .detail-body { padding: 25px; }
-    .detail-main-content h3 { font-size: 1.3rem; margin-top: 15px; margin-bottom: 15px; border-bottom: 2px solid var(--brand-red); padding-bottom: 10px; }
-    .detail-description p { margin-bottom: 1.2em; color: var(--text-secondary); line-height: 1.8; }
-    .detail-meta-list { list-style: none; }
-    .detail-meta-list li { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; font-size: 1rem; }
-    .detail-meta-list i { color: var(--brand-red); font-size: 1.1rem; margin-top: 4px; width: 20px; }
-    .detail-action-bar { padding: 15px 25px; border-top: 1px solid var(--border-color); }
-    .action-btn.primary { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; font-size: 1.1rem; background-color: var(--brand-red); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
-    .back-to-events-btn { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; background: transparent; border: none; font-size: 1.5rem; color: var(--text-primary); cursor: pointer; padding: 10px; }
-    
-    /* NEW: INVITE SECTION STYLES */
-    .invite-section { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-color); }
-    .invite-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-    .invite-btn { background-color: transparent; border: 2px solid var(--brand-red); color: var(--brand-red); padding: 8px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 0.9rem; }
-    .invite-btn:hover { background-color: var(--brand-red); color: white; }
-    .invite-btn i { margin-right: 8px; }
-    .guest-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; }
-    .guest-item { display: flex; align-items: center; gap: 15px; }
-    .guest-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-color); }
-    .guest-name { font-weight: 600; color: var(--text-primary); }
-    .guest-status { font-size: 0.85rem; }
-    .guest-status.going { color: var(--success-color); }
-    .guest-status.invited { color: var(--text-light); }
-    .guest-status.organizer { color: var(--brand-blue); font-weight: 500; }
-    
-    /* FOOTER */
-    footer { text-align: center; padding: 40px 20px; background: var(--bg-main); color: var(--text-secondary); margin-top: 40px; border-top: 1px solid var(--border-color); }
-    .footer-links { margin-top: 15px; }
-    .footer-links a { margin: 0 12px; color: var(--text-secondary); font-size: 1.4rem; transition: var(--transition); } .footer-links a:hover { color: var(--brand-red); }
-    .copyright { margin-top: 15px; opacity: 0.8; font-size: 0.9rem;}
-    
-    .link-container {
-        display: flex;
-        justify-content: center;
-        margin: 40px 0; /* Increased margin for better spacing */
-    }
-    .link {
-        text-decoration: none;
-        color: #333; /* Darker color for a premium look */
-        font-size: 1.2rem;
-        margin: 0 20px;
-        position: relative;
-        padding: 10px 15px; /* Padding for a button-like feel */
-        border: 2px solid transparent; /* Border for hover effect */
-        border-radius: 5px; /* Rounded corners */
-        transition: all 0.3s ease; /* Smooth transition */
-    }
-    .link::after {
-        content: '→'; /* Slanted arrow */
-        position: absolute;
-        right: -25px; /* Position the arrow */
-        font-size: 1.2rem;
-        transition: transform 0.3s;
-    }
-    .link:hover {
-        color: #fff; /* Change text color on hover */
-        background-color: var(--brand-red); /* Background color on hover */
-        border-color: var(--brand-red); /* Border color on hover */
-    }
-    .link:hover::after {
-        transform: translateX(5px); /* Arrow movement on hover */
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .explore-grid {
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 10px;
-            padding: 0 15px;
+    <style>
+        :root {
+            --primary: #FF4444;
+            --primary-dark: #E53E3E;
+            --success: #38A169;
+            --warning: #F6AD55;
+            --dark: #2D3748;
+            --gray-50: #F7FAFC;
+            --gray-100: #EDF2F7;
+            --gray-200: #E2E8F0;
+            --gray-400: #A0AEC0;
+            --gray-500: #718096;
+            --gray-600: #4A5568;
+            --white: #FFFFFF;
+            --gradient: linear-gradient(135deg, #FF6B6B 0%, #FF4444 100%);
         }
-        .explore-card {
-            padding: 12px 8px;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .explore-icon {
-            font-size: 1.4rem;
-            margin-bottom: 6px;
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--gray-50);
         }
-        .explore-label {
-            font-size: 0.75rem;
-            margin-bottom: 3px;
+
+        .container {
+            max-width: 414px;
+            margin: 0 auto;
+            background: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
-        .explore-count {
-            font-size: 0.65rem;
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
         }
-    }
-    
-    @media (max-width: 480px) {
-        .explore-grid {
-            grid-template-columns: repeat(4, 1fr);
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--gray-500);
+            font-size: 12px;
+        }
+
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: none;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
+        }
+
+        /* Instant Hook Section */
+        .hook-section {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hook-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100px); }
+        }
+
+        .live-count {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 8px;
         }
-        .explore-card {
-            padding: 10px 6px;
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
-        .explore-icon {
-            font-size: 1.2rem;
+
+        .hook-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 16px;
         }
-        .explore-label {
-            font-size: 0.7rem;
+
+        .country-flags {
+            display: flex;
+            justify-content: center;
+            gap: -4px;
+            margin-bottom: 16px;
         }
-    }
-    
-    @media (min-width: 768px) {
-        .event-card { border-radius: var(--border-radius); }
-    }</style>
+
+        .flag-bubble {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            margin-left: -4px;
+            border: 2px solid white;
+            animation: bob 3s infinite ease-in-out;
+        }
+
+        .flag-bubble:nth-child(2) { animation-delay: -0.5s; }
+        .flag-bubble:nth-child(3) { animation-delay: -1s; }
+        .flag-bubble:nth-child(4) { animation-delay: -1.5s; }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+        }
+
+        .quick-join {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .quick-join:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Main Content */
+        .main {
+            padding: 24px 20px 100px;
+        }
+
+        /* Happening Now Section */
+        .happening-now {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: between;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            flex: 1;
+        }
+
+        .view-all {
+            font-size: 12px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 16px 12px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Live Activities */
+        .live-activities {
+            margin-bottom: 24px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            background: var(--white);
+            border-radius: 12px;
+            border-left: 3px solid var(--success);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .activity-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .activity-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .country-badge {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            font-size: 12px;
+        }
+
+        .activity-info {
+            flex: 1;
+        }
+
+        .activity-text {
+            font-size: 14px;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+
+        .activity-time {
+            font-size: 11px;
+            color: var(--gray-500);
+        }
+
+        .join-quick {
+            background: var(--success);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Events Grid */
+        .events-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .event-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+        }
+
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .event-image {
+            height: 120px;
+            background: var(--gradient);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .urgency-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--warning);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .event-content {
+            padding: 16px;
+        }
+
+        .event-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .organizer-mini {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .event-meta {
+            font-size: 11px;
+            color: var(--gray-500);
+        }
+
+        .event-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .event-details {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+
+        .event-detail {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .attendee-preview {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .attendee-stack {
+            display: flex;
+            margin-right: 8px;
+        }
+
+        .attendee-mini {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -6px;
+            background: var(--gradient);
+            font-size: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .attendee-mini:first-child {
+            margin-left: 0;
+        }
+
+        .attendee-text {
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+
+        .event-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .join-button {
+            flex: 1;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .join-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .bookmark-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gray-300);
+            background: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--gray-400);
+            transition: all 0.2s ease;
+        }
+
+        .bookmark-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .bookmark-btn.active {
+            color: var(--primary);
+            background: rgba(255, 68, 68, 0.1);
+            border-color: var(--primary);
+        }
+
+        /* Floating Create Button */
+        .floating-create {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 68, 68, 0.4);
+            transition: all 0.3s ease;
+            z-index: 50;
+        }
+
+        .floating-create:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(255, 68, 68, 0.5);
+        }
+
+        /* Country Quick Picker */
+        .country-picker {
+            display: flex;
+            gap: 8px;
+            padding: 16px 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .country-picker::-webkit-scrollbar {
+            display: none;
+        }
+
+        .country-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            border-radius: 20px;
+            font-size: 12px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .country-chip:hover, .country-chip.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .country-chip .count {
+            background: rgba(0,0,0,0.1);
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+        }
+
+        .country-chip.active .count {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            opacity: 0;
+            animation: slideDown 0.3s ease forwards;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* Loading states */
+        .loading {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 375px) {
+            .main { padding: 20px 16px 80px; }
+            .hook-section { padding: 16px; }
+            .live-count { font-size: 24px; }
+        }
+    </style>
 </head>
 <body>
-    <header class="main-header">
-        <div class="container header-content">
-            <a href="/" class="logo"><span>खो</span>जुम</a>
-        </div>
-    </header>
-
-    <main class="container">
-        <!-- Main Grid View (shown by default) -->
-        <div id="main-grid-view">
-            <section class="hero-section">
-                <h1>Explore where your friends are going</h1>
-                <p>One place where you can find what's happening around.</p>
-                
-                <!-- Quick Action Button - Using Fitts's Law for easy access -->
-                <div style="margin-top: 25px;">
-                    <button class="quick-action-btn" onclick="document.querySelector('[data-filter=\'things\']').click()">
-                        <i class="fas fa-fire"></i>
-                        <span>Start Exploring</span>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">Khojum</div>
+                <div class="header-actions">
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kathmandu</span>
+                    </div>
+                    <button class="cta-button" onclick="showCreateModal()">
+                        Let me in
                     </button>
                 </div>
-            </section>
-            
-            <div class="explore-section">
-                <div class="explore-header">
-                    <h2 class="explore-title">What would you like to explore?</h2>
-                    <p class="explore-subtitle">Discover amazing things to do with people you can 
-                        trust.
-                    </p>
+            </div>
+        </header>
+
+        <!-- Instant Hook Section -->
+        <section class="hook-section">
+            <div class="live-count" id="live-count">
+                <div class="pulse-dot"></div>
+                <span id="live-number">47</span>
+            </div>
+            <div class="hook-subtitle">people from your country are meeting up right now</div>
+            <div class="country-flags">
+                <div class="flag-bubble">🇷🇺</div>
+                <div class="flag-bubble">🇮🇳</div>
+                <div class="flag-bubble">🇮🇱</div>
+                <div class="flag-bubble">🇺🇸</div>
+            </div>
+            <button class="quick-join" onclick="scrollToCountries()">
+                Find my people →
+            </button>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Quick Stats -->
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Happening Today</div>
                 </div>
-                <div class="explore-grid">
-                    <div class="explore-card active" data-filter="all">
-                        <i class="fas fa-compass explore-icon"></i>
-                        <div class="explore-label">For You</div>
-                    </div>
-                    
-                    <div class="explore-card" data-filter="people">
-                        <i class="fas fa-users explore-icon"></i>
-                        <div class="explore-label">My People</div>
-                        <div class="explore-count">e.g. Russians</div>
-                    </div>
-                    
-                    <div class="explore-card" data-filter="things">
-                        <i class="fas fa-running explore-icon"></i>
-                        <div class="explore-label">Things To Do</div>
-                        <div class="explore-count">Activities nearby</div>
-                    </div>
-                    
-                   
-                   
+                <div class="stat-card">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Countries</div>
                 </div>
             </div>
 
-            <section class="events-section">
-                <div class="events-header" id="events-header" style="text-align: center; margin-bottom: 25px;">
-                    <h3 class="events-title" style="font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;">Discover Amazing Places</h3>
-                    <p class="events-subtitle" style="font-size: 0.95rem; color: var(--text-secondary);">Handpicked locations for your next adventure</p>
+            <!-- Country Quick Picker -->
+            <div class="country-picker" id="country-picker">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Live Activities -->
+            <section class="live-activities">
+                <div class="section-header">
+                    <h2 class="section-title">⚡ Happening Now</h2>
+                </div>
+                <div id="live-activities-container">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Events -->
+            <section class="happening-now">
+                <div class="section-header">
+                    <h2 class="section-title" id="events-title">Today's Meetups</h2>
+                    <a href="#" class="view-all">View All</a>
                 </div>
                 <div class="events-grid" id="events-container">
-                    <!-- Event cards are rendered here by JS -->
-                </div>
-                
-                <div class="empty-state" id="empty-state" style="display: none;">
-                    <i class="fas fa-calendar-times"></i>
-                    <h3>No events found</h3>
-                    <p>Try adjusting your filters or search terms</p>
+                    <!-- Events populated by JS -->
                 </div>
             </section>
-        </div>
+        </main>
 
-        <!-- Event Detail View (hidden by default) -->
-        <div id="event-detail-view" style="display: none;">
-            <!-- Content for single event is rendered here by JS -->
-        </div>
-    </main>
+        <!-- Floating Create Button -->
+        <button class="floating-create" onclick="showCreateModal()">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
 
-    <footer>
-        <div class="container">
-            <p><strong>Go.Do.Feel.Repeat</strong> <a href="mailto:ceo@khojum.com?subject=Feedback" style="color: var(--text-primary); font-weight: 500;"></a></p>
-            <div class="footer-links">
-                <a href="https://www.instagram.com/khojumdotcom?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Follow on Instagram">
-                    <i class="fab fa-instagram"></i> 
-                </a>
-            </div>
-            <div class="link-container">
-<!--                <a href="sharktank.html" class="link">Shark Tank Nepal</a> -->
-<!--                <a href="expired.html" class="link">Expired Events</a> -->
-            </div>
-            <p class="copyright">Khojum Inc. © 2025</p>
-        </div>
-    </footer>
-    
     <script>
-   document.addEventListener('DOMContentLoaded', function() {
-        
-        // --- DATA ---
-        // Note: I've added a new 'invite' object to the "Artha Run Club" event
-        const eventsData = 
-        
-        [
-    
-    
-    
-      
-            {
-                id: 4,
-                title: "Saturday Meetup",
-                date: "Every Saturday",
-                time: "9:00 AM",
-                venue: "Mira's Coffee",
-                gmapsUrl: "https://maps.app.goo.gl/Mt5qZZBGyhVjXKUYA",
-                price: "Free",
-                image: "assets/meetup.png",
-                category: "social",
-                tags: ["Russians", "Hangout", "Coffee"],
-                organizer: { 
-                    name: "Bourbon Vanilla 🇳🇵", 
-                    verified: true,
-                    Tiktok: "https://www.tiktok.com/@bourbonvanilla7"
-                },
-                availability: "available",
-                attendeeCount: 6,
-                duration: "1.5 hours",
-                description: "A casual meetup for Russians to connect, chat, and have fun!<br><br>Location: Mira's Coffee, Kaldhara<br>Meetup Time: 9:00 AM<br>Come with your smiles and energy—bring a friend if you like!<br><br>Stay for coffee, conversations, and new friendships.<br><b>Things to do before coming:</b><br>• Register for the meetup<br>• Follow the organizer on Tiktok <a href='https://www.tiktok.com/@bourbonvanilla7' target='_blank'>Link to my Profile</a>",
-                bookingUrl: "https://wa.me/9779861828821",
-                actionText: "Join Meetup",
-                actionIcon: "fa-users",
-                invite: {
-                    enabled: true,
-                    organizer: {
-                        name: "Bourbon Vanilla 🇳🇵",
-                        avatarUrl: "https://randomuser.me/api/portraits/men/65.jpg"
-                    },
-                    guests: [
-                        { name: "Anastasia Smirnova", avatarUrl: "https://randomuser.me/api/portraits/women/68.jpg", status: "Going" },
-                        { name: "Dmitry Volkov", avatarUrl: "https://randomuser.me/api/portraits/men/69.jpg", status: "Going" },
-                        { name: "Elena Ivanova", avatarUrl: "https://randomuser.me/api/portraits/women/70.jpg", status: "Invited" },
-                        { name: "Sergey Kuznetsov", avatarUrl: "https://randomuser.me/api/portraits/men/71.jpg", status: "Going" },
-                        { name: "Marina Popova", avatarUrl: "https://randomuser.me/api/portraits/women/72.jpg", status: "Invited" }
-                    ]
-                }
-            },
-             {
-            id: 2,
-            title: "Heritage Tour",
-            date: "September 4",
-            time: "9:00 AM",
-            venue: "Mira's Coffee",
-            gmapsUrl: "https://maps.app.goo.gl/Mt5qZZBGyhVjXKUYA",
-            price: "Free",
-            image: "assets/sophia.png",
-            category: "culture",
-            tags: ["Israel", "Heritage", "Tour"],
-            organizer: { 
-                name: "Sophia", 
-                verified: true,
-                Tiktok: "https://www.tiktok.com/@bourbonvanilla7"
-            },
-            availability: "available",
-            attendeeCount: 3,
-            duration: "1.5 hours",
-            description: "Join us for a cultural heritage tour where we explore stories, traditions, and connections.<br><br><b>Location:</b> Mira's Coffee, Kaldhara<br><b>Meetup Time:</b> 9:00 AM<br>Expect a guided discussion, new friendships, and shared cultural experiences.<br><br><b>Before coming:</b><br>• Register for the tour<br>• Follow the organizer on TikTok <a href='https://www.tiktok.com/@bourbonvanilla7' target='_blank'>Link to my Profile</a>",
-            bookingUrl: "https://wa.me/9779861828821",
-            actionText: "Join Tour",
-            actionIcon: "fa-landmark",
-            invite: {
-                enabled: true,
-                organizer: {
-                    name: "Sophia",
-                    avatarUrl: "https://randomuser.me/api/portraits/women/65.jpg"
-                },
-                guests: [
-                    { name: "Yael Cohen", avatarUrl: "https://randomuser.me/api/portraits/women/68.jpg", status: "Going" },
-                    { name: "Daniel Levi", avatarUrl: "https://randomuser.me/api/portraits/men/69.jpg", status: "Going" },
-                    { name: "Emily Johnson", avatarUrl: "https://randomuser.me/api/portraits/women/70.jpg", status: "Invited" },
-                    { name: "Noam Katz", avatarUrl: "https://randomuser.me/api/portraits/men/71.jpg", status: "Going" },
-                    { name: "Sarah Miller", avatarUrl: "https://randomuser.me/api/portraits/women/72.jpg", status: "Invited" }
-                ]
-            }
-        },
-            
-          
+        const countries = [
+            { code: 'RU', name: 'Russia', flag: '🇷🇺', count: 18, active: 7 },
+            { code: 'IL', name: 'Israel', flag: '🇮🇱', count: 12, active: 4 },
+            { code: 'IN', name: 'India', flag: '🇮🇳', count: 24, active: 9 },
+            { code: 'US', name: 'USA', flag: '🇺🇸', count: 15, active: 6 },
+            { code: 'GB', name: 'UK', flag: '🇬🇧', count: 8, active: 3 },
+            { code: 'AU', name: 'Australia', flag: '🇦🇺', count: 6, active: 2 },
+            { code: 'DE', name: 'Germany', flag: '🇩🇪', count: 10, active: 4 },
+            { code: 'FR', name: 'France', flag: '🇫🇷', count: 7, active: 2 }
         ];
-    
-        let currentFilter = 'all';
-        let savedEvents = new Set();
-        
-        const mainGridView = document.getElementById('main-grid-view');
-        const eventDetailView = document.getElementById('event-detail-view');
-        const eventsContainer = document.getElementById('events-container');
-        const emptyState = document.getElementById('empty-state');
-        const exploreCards = document.querySelectorAll('.explore-card');
-    
+
+        const liveActivities = [
+            {
+                user: "Anna K.",
+                country: "RU",
+                activity: "Started a coffee meetup",
+                time: "2m ago",
+                action: "Join now"
+            },
+            {
+                user: "Raj P.",
+                country: "IN", 
+                activity: "Looking for dinner group",
+                time: "5m ago",
+                action: "Join"
+            },
+            {
+                user: "David S.",
+                country: "IL",
+                activity: "Temple tour in 30min",
+                time: "8m ago",
+                action: "Join"
+            }
+        ];
+
+        const events = [
+            {
+                id: 1,
+                title: "Saturday Morning Coffee & Stories",
+                time: "Starting soon",
+                location: "Mira's Coffee, Kaldhara",
+                organizer: {
+                    name: "Anna",
+                    avatar: "A",
+                    country: "RU",
+                    verified: true
+                },
+                attendees: 6,
+                maxAttendees: 8,
+                countryCode: "RU",
+                urgency: "2 spots left",
+                icon: "☕"
+            },
+            {
+                id: 2,
+                title: "Heritage Walking Discovery",
+                time: "1h",
+                location: "Durbar Square",
+                organizer: {
+                    name: "Yael",
+                    avatar: "Y",
+                    country: "IL",
+                    verified: true
+                },
+                attendees: 4,
+                maxAttendees: 6,
+                countryCode: "IL",
+                urgency: "Starting soon",
+                icon: "🏛️"
+            },
+            {
+                id: 3,
+                title: "Rooftop Dinner & City Views",
+                time: "3h",
+                location: "Thamel Heights",
+                organizer: {
+                    name: "Priya",
+                    avatar: "P",
+                    country: "IN",
+                    verified: true
+                },
+                attendees: 8,
+                maxAttendees: 12,
+                countryCode: "IN",
+                urgency: "Hot",
+                icon: "🌃"
+            }
+        ];
+
+        let selectedCountry = null;
+
         function init() {
-            setupEventListeners();
-            handleRouting();
-            window.addEventListener('hashchange', handleRouting);
-        }
-    
-        function handleRouting() {
-            const hash = window.location.hash;
-            if (hash.startsWith('#event-')) {
-                const eventId = parseInt(hash.substring('#event-'.length), 10);
-                showDetailPage(eventId);
-            } else {
-                showGridView();
-            }
-        }
-        
-        function updateMetaTags(title, description, imageUrl, url) {
-            document.title = title;
-            document.querySelector('meta[name="title"]').setAttribute("content", title);
-            document.querySelector('meta[property="og:title"]').setAttribute("content", title);
-            document.querySelector('meta[name="twitter:title"]').setAttribute("content", title);
-    
-            document.querySelector('meta[name="description"]').setAttribute("content", description);
-            document.querySelector('meta[property="og:description"]').setAttribute("content", description);
-            document.querySelector('meta[name="twitter:description"]').setAttribute("content", description);
-    
-            document.querySelector('meta[property="og:image"]').setAttribute("content", imageUrl);
-            document.querySelector('meta[name="twitter:image"]').setAttribute("content", imageUrl);
+            renderCountryPicker();
+            renderLiveActivities();
+            renderEvents();
+            updateLiveCounter();
             
-            document.querySelector('meta[property="og:url"]').setAttribute("content", url);
-            document.querySelector('link[rel="canonical"]').setAttribute("href", url);
+            // Auto-update live counter
+            setInterval(updateLiveCounter, 3000);
         }
-    
-        function showGridView() {
-            mainGridView.style.display = 'block';
-            eventDetailView.style.display = 'none';
-            if (window.location.hash) {
-                history.pushState("", document.title, window.location.pathname + window.location.search);
-            }
-            updateMetaTags(
-                "Discover Events in Nepal | Khojum.com",
-                "Nepal's top event discovery platform for concerts, festivals, art exhibitions, and workshops in Kathmandu and beyond. Your guide to what's happening.",
-                "https://khojum.com/assets/logo/og-image.png",
-                "https://khojum.com"
-            );
-            applyFilters();
+
+        function updateLiveCounter() {
+            const counter = document.getElementById('live-number');
+            const currentCount = parseInt(counter.textContent);
+            const newCount = currentCount + Math.floor(Math.random() * 3) - 1;
+            counter.textContent = Math.max(newCount, 30);
         }
-    
-        function showDetailPage(eventId) {
-            const event = eventsData.find(e => e.id === eventId);
-            mainGridView.style.display = 'none';
-            eventDetailView.style.display = 'block';
-            window.scrollTo(0, 0);
-    
-            if (!event) {
-                eventDetailView.innerHTML = `<div class="empty-state"><h3>Event Not Found</h3><p>The event you are looking for does not exist.</p><button class="back-to-events-btn" onclick="window.location.hash=''">Back to All Events</button></div>`;
-                return;
-            }
-            
-            const eventUrl = `${window.location.origin}${window.location.pathname}#event-${event.id}`;
-            const imageUrl = `${window.location.origin}/${event.image}`;
-    
-            updateMetaTags(
-                `${event.title} | Khojum.com`,
-                event.description.substring(0, 160) + '...',
-                imageUrl,
-                eventUrl
-            );
-    
-            const formattedDate = formatEventDate(event.date, { weekday: 'long', month: 'long', day: 'numeric' });
-            const actionIcon = event.actionIcon || 'fa-ticket-alt';
-            const actionText = event.actionText || 'Get Tickets';
-            
-            // NEW: Generate the invite section HTML if data exists
-            const inviteSectionHtml = (event.invite && event.invite.enabled) ? createInviteSectionHTML(event.invite) : '';
-    
-            eventDetailView.innerHTML = `
-                <button class="back-to-events-btn" onclick="window.location.hash=''"><i class="fas fa-arrow-left"></i></button>
-                <div class="detail-card">
-                    <header class="detail-header">
-                        <img src="${event.image}" alt="${event.title}" class="detail-image">
-                        <div class="detail-header-overlay">
-                            <h1 class="detail-title">${event.title}</h1>
-                            <a href="${event.gmapsUrl || '#'}" target="_blank" rel="noopener noreferrer" class="detail-venue-link">
-                                <p class="detail-venue"><i class="fas fa-map-marker-alt"></i> ${event.venue}</p>
-                            </a>
-                        </div>
-                    </header>
-                    <div class="detail-body">
-                         <ul class="detail-meta-list">
-                            <li><i class="fas fa-calendar-day"></i><div><strong>Date:</strong><br>${formattedDate}</div></li>
-                            <li><i class="fas fa-clock"></i><div><strong>Time:</strong><br>${event.time}</div></li>
-                            <li><i class="fas fa-ticket-alt"></i><div><strong>Price:</strong><br>${event.price}</div></li>
-                            <li><i class="fas fa-building"></i><div><strong>Organizer:</strong><br>${event.organizer.name} ${event.organizer.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}</div></li>
-                        </ul>
-    
-                        <div class="detail-main-content">
-                            <h3>About the Event</h3>
-                            <div class="detail-description"><p>${event.description.replace(/<br>/g, '</p><p>').replace(/\\n/g, '</p><p>')}</p></div>
-                        </div>
-                        
-                        <!-- Inject Invite Section Here -->
-                        ${inviteSectionHtml}
-    
-                    </div>
-                    <div class="detail-action-bar">
-                         <button class="action-btn primary" onclick="bookTicket(event, ${event.id})">
-                            <i class="fas ${actionIcon}"></i> ${actionText}
-                        </button>
-                    </div>
+
+        function renderCountryPicker() {
+            const picker = document.getElementById('country-picker');
+            picker.innerHTML = countries.map(country => `
+                <div class="country-chip ${selectedCountry === country.code ? 'active' : ''}" 
+                     onclick="selectCountry('${country.code}')">
+                    <span>${country.flag}</span>
+                    <span>${country.name}</span>
+                    <span class="count">${country.active}</span>
                 </div>
-            `;
-        }
-        
-        // NEW: Function to create the HTML for the invite section
-        function createInviteSectionHTML(inviteData) {
-            const organizerHtml = `
-                <li class="guest-item">
-                    <img src="${inviteData.organizer.avatarUrl}" alt="${inviteData.organizer.name}" class="guest-avatar">
-                    <div>
-                        <div class="guest-name">${inviteData.organizer.name}</div>
-                        <div class="guest-status organizer">Organizer</div>
-                    </div>
-                </li>
-            `;
-            
-            const guestsHtml = inviteData.guests.map(guest => `
-                <li class="guest-item">
-                    <img src="${guest.avatarUrl}" alt="${guest.name}" class="guest-avatar">
-                    <div>
-                        <div class="guest-name">${guest.name}</div>
-                        <div class="guest-status ${guest.status.toLowerCase()}">${guest.status}</div>
-                    </div>
-                </li>
             `).join('');
-    
-            return `
-                <section class="invite-section">
-                    <div class="invite-header">
-                        <h3>Who's Going</h3>
-                        <button class="invite-btn" onclick="showNotification('Invite feature coming soon!', 'info')">
-                            <i class="fas fa-user-plus"></i> Invite
-                        </button>
+        }
+
+        function renderLiveActivities() {
+            const container = document.getElementById('live-activities-container');
+            container.innerHTML = liveActivities.map(activity => `
+                <div class="activity-item" onclick="joinActivity('${activity.user}')">
+                    <div class="activity-avatar">
+                        ${activity.user[0]}
+                        <div class="country-badge">${countries.find(c => c.code === activity.country).flag}</div>
                     </div>
-                    <ul class="guest-list">
-                        ${organizerHtml}
-                        ${guestsHtml}
-                    </ul>
-                </section>
-            `;
+                    <div class="activity-info">
+                        <div class="activity-text">${activity.user} ${activity.activity}</div>
+                        <div class="activity-time">${activity.time}</div>
+                    </div>
+                    <button class="join-quick">${activity.action}</button>
+                </div>
+            `).join('');
         }
-    
-        function setupEventListeners() {
-            exploreCards.forEach(card => {
-                card.addEventListener('click', async (e) => {
-                    // Add loading state
-                    card.classList.add('loading');
-                    
-                    // Remove active from all cards
-                    exploreCards.forEach(c => c.classList.remove('active'));
-                    
-                    // Add active to clicked card
-                    card.classList.add('active');
-                    
-                    // Update filter
-                    currentFilter = card.dataset.filter;
-                    
-                    // Simulate loading time for better UX
-                    await new Promise(resolve => setTimeout(resolve, 300));
-                    
-                    // Remove loading state
-                    card.classList.remove('loading');
-                    
-                    // Apply filters with visual feedback
-                    applyFilters();
-                    
-                    // Add success feedback
-                    card.style.transform = 'scale(1.05)';
-                    setTimeout(() => {
-                        card.style.transform = '';
-                    }, 200);
-                });
-            });
-        }
-    
-        function applyFilters() {
-            showLoadingState();
-            updateSectionHeader();
-            setTimeout(() => {
-                let filteredEvents = eventsData;
-                if (currentFilter !== 'all') {
-                    if (currentFilter === 'music') {
-                        // Filter for Places (museums, libraries, attractions)
-                        filteredEvents = filteredEvents.filter(event => 
-                            event.category.toLowerCase() === 'art' || 
-                            event.venue.toLowerCase().includes('museum') ||
-                            event.venue.toLowerCase().includes('library') ||
-                            event.tags.some(tag => tag.toLowerCase().includes('art'))
-                        );
-                    } else if (currentFilter === 'art') {
-                        // Filter for Restaurants (food-related events)
-                        filteredEvents = filteredEvents.filter(event => 
-                            event.category.toLowerCase() === 'food' || 
-                            event.tags.some(tag => tag.toLowerCase().includes('food')) ||
-                            event.tags.some(tag => tag.toLowerCase().includes('cuisine'))
-                        );
-                    } else if (currentFilter === 'weekend') {
-                        // Filter for Hotels (accommodation-related)
-                        filteredEvents = filteredEvents.filter(event => 
-                            event.venue.toLowerCase().includes('hotel') ||
-                            event.venue.toLowerCase().includes('resort') ||
-                            event.venue.toLowerCase().includes('club')
-                        );
-                    } else if (currentFilter === 'free') {
-                        // Filter for Events (live shows, performances)
-                        filteredEvents = filteredEvents.filter(event => 
-                            event.category.toLowerCase() === 'live show' || 
-                            event.category.toLowerCase() === 'business' ||
-                            event.category.toLowerCase() === 'health' ||
-                            event.tags.some(tag => tag.toLowerCase().includes('music')) ||
-                            event.tags.some(tag => tag.toLowerCase().includes('performance'))
-                        );
-                    } else if (currentFilter === 'trending') {
-                        // Filter for Trending events (high attendee count or popular)
-                        filteredEvents = filteredEvents.filter(event => 
-                            event.attendeeCount > 50 || 
-                            event.organizer.verified === true ||
-                            event.category.toLowerCase() === 'live show'
-                        );
-                    } else if (currentFilter === 'recommended') {
-                        // Filter for Recommended events (curated selection)
-                        filteredEvents = filteredEvents.filter(event => 
-                            event.id === 2 || // Life As A Movie
-                            event.id === 4 || // Artha Run Club
-                            event.id === 5 || // Shark Tank Nepal
-                            event.id === 7    // Patan Pottery
-                        );
-                    }
-                }
-                renderEvents(filteredEvents);
-            }, 200);
-        }
-    
-        function updateSectionHeader() {
-            const header = document.getElementById('events-header');
-            const title = header.querySelector('.events-title');
-            const subtitle = header.querySelector('.events-subtitle');
+
+        function renderEvents() {
+            const container = document.getElementById('events-container');
+            const eventsToShow = selectedCountry ? 
+                events.filter(event => event.countryCode === selectedCountry) : events;
             
-            const headers = {
-                'all': { 
-                    title: 'Discover Amazing Things in Nepal', 
-                    subtitle: 'Search what you need to make your travel memorable' 
-                },
-                'people': { 
-                    title: '🌍 My People', 
-                    subtitle: 'Find people from your country and connect with them' 
-                },
-                'places': { 
-                    title: '📍 Places to Explore', 
-                    subtitle: 'Attractions, landmarks, and hidden gems' 
-                },
-                'things': { 
-                    title: '🎯 Things To Do', 
-                    subtitle: 'Exciting activities and experiences near you' 
-                },
-                'guide': { 
-                    title: '🗺️ Travel Guide', 
-                    subtitle: 'Tips, routes, and helpful local info' 
-                },
-                'events': { 
-                    title: '🎉 Events & Activities', 
-                    subtitle: 'Live shows, festivals, and meetups' 
-                },
-                'recommended': { 
-                    title: '⭐ Recommended for You', 
-                    subtitle: 'Curated picks and highlights to enjoy' 
-                }
-            };
-            
-            
-            const currentHeader = headers[currentFilter] || headers['all'];
-            title.textContent = currentHeader.title;
-            subtitle.textContent = currentHeader.subtitle;
-        }
-    
-        function renderEvents(events) {
-            hideLoadingState();
-            emptyState.style.display = events.length === 0 ? 'block' : 'none';
-            eventsContainer.innerHTML = events.map(event => createEventCard(event)).join('');
-        }
-    
-        function createEventCard(event) {
-            const formattedDate = formatEventDate(event.date, { weekday: 'short', month: 'short', day: 'numeric' });
-            const organizerInitial = event.organizer.name.charAt(0).toUpperCase();
-    
-            return `
+            container.innerHTML = eventsToShow.map(event => `
                 <div class="event-card">
-                    <div class="event-card-header">
-                        <div class="organizer-logo">${organizerInitial}</div>
-                        <div class="organizer-info">
-                            ${event.organizer.name}
-                            ${event.organizer.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}
-                        </div>
-                    </div>
-                    <div class="event-image-container" onclick="viewDetails(event, ${event.id})">
-                        <div class="event-image" style="background-image: url('${event.image}')"></div>
-                    </div>
-                    <div class="event-actions">
-                        <i class="action-icon fas fa-heart ${savedEvents.has(event.id) ? 'saved' : ''}" onclick="toggleSave(event, ${event.id})"></i>
-                        <i class="action-icon fas fa-share-alt" onclick="shareEvent(event, ${event.id})"></i>
+                    <div class="event-image">
+                        ${event.icon}
+                        <div class="urgency-badge">${event.urgency}</div>
                     </div>
                     <div class="event-content">
+                        <div class="event-header">
+                            <div class="organizer-mini">
+                                ${event.organizer.avatar}
+                            </div>
+                            <div class="event-meta">
+                                ${event.organizer.name} • ${event.time}
+                                ${event.organizer.verified ? '<i class="fas fa-check-circle" style="color: var(--success);"></i>' : ''}
+                            </div>
+                        </div>
                         <h3 class="event-title">${event.title}</h3>
-                        <div class="event-meta-item">
-                            <i class="fas fa-calendar-alt"></i><span class="highlight">${formattedDate}</span> at ${event.time}
+                        <div class="event-details">
+                            <div class="event-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${event.location}</span>
+                            </div>
                         </div>
-                        <div class="event-meta-item">
-                            <i class="fas fa-map-marker-alt"></i><span class="highlight">${event.venue}</span>
+                        <div class="attendee-preview">
+                            <div class="attendee-stack">
+                                ${Array.from({length: Math.min(3, event.attendees)}, (_, i) => `
+                                    <div class="attendee-mini">${String.fromCharCode(65 + i)}</div>
+                                `).join('')}
+                            </div>
+                            <span class="attendee-text">${event.attendees}/${event.maxAttendees} going</span>
                         </div>
-                        <a href="#event-${event.id}" class="details-link" onclick="viewDetails(event, ${event.id})">View details...</a>
+                        <div class="event-actions">
+                            <button class="join-button" onclick="joinEvent(${event.id})">
+                                Join Group
+                            </button>
+                            <button class="bookmark-btn" onclick="toggleBookmark(${event.id})">
+                                <i class="far fa-bookmark"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            `;
+            `).join('');
         }
-    
-        // --- Global Functions for onclick Handlers ---
-        window.toggleSave = async (e, eventId) => { 
-            e.stopPropagation(); 
-            const icon = e.currentTarget;
+
+        function selectCountry(countryCode) {
+            selectedCountry = selectedCountry === countryCode ? null : countryCode;
             
-            // Add loading state
-            icon.classList.add('loading');
+            // Update UI
+            renderCountryPicker();
+            renderEvents();
             
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 500));
-            
-            // Remove loading state
-            icon.classList.remove('loading');
-            
-            if (savedEvents.has(eventId)) {
-                savedEvents.delete(eventId);
-                icon.classList.remove('saved');
-                showNotification('Removed from saved items', 'info');
+            // Update title
+            const title = document.getElementById('events-title');
+            if (selectedCountry) {
+                const country = countries.find(c => c.code === selectedCountry);
+                title.textContent = `${country.flag} ${country.name} Community`;
             } else {
-                savedEvents.add(eventId);
-                icon.classList.add('saved');
-                icon.classList.add('success');
-                showNotification('Added to saved items!', 'success');
-                
-                // Remove success animation after delay
-                setTimeout(() => {
-                    icon.classList.remove('success');
-                }, 600);
+                title.textContent = "Today's Meetups";
             }
-        };
-        window.shareEvent = async (e, eventId) => { 
-            e.stopPropagation(); 
-            const icon = e.currentTarget;
-            
-            // Add loading state
-            icon.classList.add('loading');
-            
-            const event = eventsData.find(ev => ev.id === eventId);
-            const url = `${window.location.origin}${window.location.pathname}#event-${eventId}`;
-            
-            try {
-            if (navigator.share) {
-                    await navigator.share({
-                    title: event.title,
-                    text: `Check out this event on Khojum: ${event.title}`,
-                    url: url,
-                    });
-                    showNotification('Shared successfully!', 'success');
-            } else {
-                    await navigator.clipboard.writeText(url);
-                    showNotification('Event link copied to clipboard!', 'success');
-                }
-            } catch (error) {
-                console.log('Error sharing', error);
-                showNotification('Failed to share. Please try again.', 'error');
-            } finally {
-                // Remove loading state
-                icon.classList.remove('loading');
-                
-                // Add success animation
-                icon.classList.add('success');
-                setTimeout(() => {
-                    icon.classList.remove('success');
-                }, 600);
-            }
-        };
-        window.viewDetails = async (e, eventId) => { 
-            e.preventDefault();
-            
-            // Add loading state to the card
-            const card = e.currentTarget.closest('.event-card');
-            if (card) {
-                card.style.opacity = '0.7';
-                card.style.transform = 'scale(0.98)';
-            }
-            
-            // Simulate loading
-            await new Promise(resolve => setTimeout(resolve, 200));
-            
-            // Navigate to detail page
-            window.location.hash = `#event-${eventId}`; 
-            
-            // Reset card state
-            if (card) {
-                card.style.opacity = '';
-                card.style.transform = '';
-            }
-        };
-        window.bookTicket = async (e, eventId) => { 
-            e.stopPropagation(); 
-            const button = e.currentTarget;
-            
-            // Add loading state
+        }
+
+        function joinEvent(eventId) {
+            const button = event.target;
             const originalText = button.innerHTML;
-            button.innerHTML = '<div class="loading-spinner"></div>';
+            
+            // Show loading
+            button.innerHTML = '<div class="loading"></div> Joining...';
             button.disabled = true;
             
-            const event = eventsData.find(ev => ev.id === eventId); 
-            
-            try {
-                if (event && event.bookingUrl) {
-                    // Simulate loading
-                    await new Promise(resolve => setTimeout(resolve, 800));
-                    window.open(event.bookingUrl, '_blank');
-                    showNotification('Opening booking page...', 'success');
-                } else { 
-                    showNotification('Booking information not available.', 'info'); 
-                }
-            } catch (error) {
-                showNotification('Failed to open booking page. Please try again.', 'error');
-            } finally {
-                // Reset button state
-                button.innerHTML = originalText;
-                button.disabled = false;
-            }
-        };
-    
-        // --- Helper Functions ---
-        function formatEventDate(dateString, formatOptions) {
-            if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
-                const dt = new Date(dateString);
-                const adjustedDate = new Date(dt.valueOf() + dt.getTimezoneOffset() * 60 * 1000);
-                return adjustedDate.toLocaleDateString('en-US', formatOptions);
-            }
-            return dateString;
+         // Simulate API call
+         setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> Joined!';
+                button.style.background = 'var(--success)';
+                
+                // Show notification
+                showNotification('Successfully joined the meetup!');
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = 'var(--primary)';
+                    button.disabled = false;
+                }, 2000);
+            }, 1000);
         }
-        const getWeekendDates = () => { const today = new Date(); const sat = new Date(today); sat.setDate(today.getDate() + (6 - today.getDay() + 7) % 7); return [sat.toISOString().split('T')[0]]; };
-        const showLoadingState = () => { eventsContainer.innerHTML = Array(3).fill('<div class="skeleton-card"><div class="skeleton-image skeleton"></div></div>').join(''); };
-        const hideLoadingState = () => { eventsContainer.innerHTML = ''; };
-        window.showNotification = (message, type = 'info') => { 
-            const el = document.createElement('div'); 
-            const bgColor = type === 'error' ? '#dc3545' : type === 'success' ? '#28a745' : '#17a2b8';
-            const icon = type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️';
+
+        function joinActivity(userName) {
+            showNotification(`Connected with ${userName}!`);
+        }
+
+        function toggleBookmark(eventId) {
+            const button = event.target.closest('.bookmark-btn');
+            const icon = button.querySelector('i');
             
-            el.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                padding: 15px 25px;
-                border-radius: 12px;
-                z-index: 10000;
-                font-weight: 600;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                opacity: 0;
-                background: ${bgColor};
-                color: white;
-                box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                font-size: 0.95rem;
-                max-width: 300px;
-                text-align: center;
-            `; 
+            if (button.classList.contains('active')) {
+                button.classList.remove('active');
+                icon.className = 'far fa-bookmark';
+                showNotification('Removed from bookmarks');
+            } else {
+                button.classList.add('active');
+                icon.className = 'fas fa-bookmark';
+                showNotification('Added to bookmarks');
+            }
+        }
+
+        function showCreateModal() {
+            showNotification('Create feature coming soon!');
+        }
+
+        function scrollToCountries() {
+            document.getElementById('country-picker').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        function showNotification(message) {
+            // Remove existing notification
+            const existing = document.querySelector('.notification');
+            if (existing) {
+                existing.remove();
+            }
             
-            el.innerHTML = `<span>${icon}</span><span>${message}</span>`;
-            document.body.appendChild(el); 
+            // Create new notification
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
             
-            // Animate in
+            // Remove after 3 seconds
             setTimeout(() => {
-                el.style.opacity = 1; 
-                el.style.bottom = '30px';
-                el.style.transform = 'translateX(-50%) scale(1.05)';
-            }, 10); 
-            
-            // Animate out
-            setTimeout(() => { 
-                el.style.opacity = 0; 
-                el.style.bottom = '20px';
-                el.style.transform = 'translateX(-50%) scale(0.95)';
-                setTimeout(() => el.remove(), 400); 
-            }, 3000); 
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 3000);
         }
-    
-        init();
-    });
+
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
-</html>
+</html> 
