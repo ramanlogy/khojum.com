@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Your People in Nepal | Khojum</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>TrailMate - Connect with Fellow Hikers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #FF4444;
-            --primary-dark: #E53E3E;
-            --success: #38A169;
-            --warning: #F6AD55;
-            --dark: #2D3748;
-            --gray-50: #F7FAFC;
-            --gray-100: #EDF2F7;
-            --gray-200: #E2E8F0;
-            --gray-400: #A0AEC0;
-            --gray-500: #718096;
-            --gray-600: #4A5568;
-            --white: #FFFFFF;
-            --gradient: linear-gradient(135deg, #FF6B6B 0%, #FF4444 100%);
+            --primary-color: #2d5a3d;
+            --primary-light: #4a7c5a;
+            --secondary-color: #8fbc8f;
+            --accent-color: #ff6b35;
+            --text-primary: #1a1a1a;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
         }
 
         * {
@@ -32,603 +43,569 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background: var(--gray-50);
+            color: var(--text-primary);
+            background-color: var(--bg-secondary);
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
-            max-width: 414px;
+            max-width: 414px; /* Default for mobile-first approach */
             margin: 0 auto;
-            background: var(--white);
+            padding: 0 var(--spacing-md);
+            background-color: var(--bg-primary);
             min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md); /* Added shadow for a "app" feel */
         }
 
         /* Header */
         .header {
-            background: var(--white);
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--gray-200);
             position: sticky;
             top: 0;
-            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .header-content {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
             font-size: 20px;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--primary-color);
+            text-decoration: none;
         }
 
-        .header-actions {
+        .profile-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+        .profile-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
         }
 
-        .location {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            color: var(--gray-500);
-            font-size: 12px;
+
+        /* Hero Section */
+        .hero {
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            margin: 0 -16px var(--spacing-lg) -16px; /* Offset to full width */
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            overflow: hidden; /* Ensures gradient doesn't bleed */
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xl);
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
-            background: var(--gradient);
+            background: var(--primary-color);
             color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
             border: none;
-            font-size: 12px;
+            padding: 14px 28px;
+            border-radius: var(--radius-lg);
             font-weight: 600;
+            font-size: 16px;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            box-shadow: var(--shadow-md);
         }
 
         .cta-button:hover {
+            background: var(--primary-light);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
+            box-shadow: var(--shadow-lg);
         }
 
-        /* Instant Hook Section */
-        .hook-section {
-            background: var(--gradient);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hook-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateX(-100px); }
-            100% { transform: translateX(100px); }
-        }
-
-        .live-count {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 4px;
+        /* Navigation Tabs */
+        .nav-tabs {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-xs);
+            margin-bottom: var(--spacing-lg);
+            gap: var(--spacing-xs);
+            box-shadow: var(--shadow-sm);
         }
 
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .hook-subtitle {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 16px;
-        }
-
-        .country-flags {
-            display: flex;
-            justify-content: center;
-            gap: -4px;
-            margin-bottom: 16px;
-        }
-
-        .flag-bubble {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            margin-left: -4px;
-            border: 2px solid white;
-            animation: bob 3s infinite ease-in-out;
-        }
-
-        .flag-bubble:nth-child(2) { animation-delay: -0.5s; }
-        .flag-bubble:nth-child(3) { animation-delay: -1s; }
-        .flag-bubble:nth-child(4) { animation-delay: -1.5s; }
-
-        @keyframes bob {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.1); }
-        }
-
-        .quick-join {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
-            font-size: 12px;
+        .nav-tab {
+            flex: 1;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            color: var(--text-secondary);
             cursor: pointer;
             transition: all 0.2s ease;
+            font-size: 14px;
+            text-align: center;
         }
 
-        .quick-join:hover {
-            background: rgba(255,255,255,0.3);
+        .nav-tab.active {
+            background: var(--bg-primary);
+            color: var(--primary-color);
+            box-shadow: var(--shadow-sm);
+            font-weight: 600;
+        }
+        .nav-tab:hover:not(.active) {
+            background: var(--border-color);
         }
 
-        /* Main Content */
-        .main {
-            padding: 24px 20px 100px;
+        /* Content Sections */
+        .content-section {
+            display: none;
         }
 
-        /* Happening Now Section */
-        .happening-now {
-            margin-bottom: 24px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: between;
-            margin-bottom: 16px;
+        .content-section.active {
+            display: block;
         }
 
         .section-title {
             font-size: 18px;
             font-weight: 600;
-            color: var(--dark);
-            flex: 1;
-        }
-
-        .view-all {
-            font-size: 12px;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* Quick Stats */
-        .quick-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card {
-            background: var(--white);
-            padding: 16px 12px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid var(--gray-200);
-            transition: all 0.2s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .stat-number {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 11px;
-            color: var(--gray-500);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Live Activities */
-        .live-activities {
-            margin-bottom: 24px;
-        }
-
-        .activity-item {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            margin-bottom: 8px;
-            background: var(--white);
-            border-radius: 12px;
-            border-left: 3px solid var(--success);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            gap: var(--spacing-sm);
+        }
+
+        /* Hiker Cards */
+        .hiker-grid, .trail-grid {
+            display: grid;
+            gap: var(--spacing-md);
+            grid-template-columns: 1fr; /* Default to single column */
+        }
+
+        .hiker-card, .trail-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--border-color);
             transition: all 0.2s ease;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            position: relative; /* Essential for absolute positioning of the action button */
         }
 
-        .activity-item:hover {
-            transform: translateX(4px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .hiker-card:hover, .trail-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
         }
 
-        .activity-avatar {
-            width: 36px;
-            height: 36px;
+        .hiker-card-content { /* New wrapper for clickable area */
+            display: block; /* Make it block level to occupy full space */
+            color: inherit; /* Inherit text color */
+            text-decoration: none; /* Remove underline for links */
+        }
+
+        .hiker-card .top-right-action {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            z-index: 10; /* Ensure it's above other content */
+        }
+
+        .hiker-card .top-right-action .action-menu-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
             border-radius: 50%;
-            background: var(--gradient);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        .hiker-card .top-right-action .action-menu-btn:hover {
+            background: var(--border-color);
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+
+        .hiker-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hiker-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: 600;
-            font-size: 14px;
-            position: relative;
+            font-size: 18px;
+            flex-shrink: 0; /* Prevent avatar from shrinking */
         }
 
-        .country-badge {
-            position: absolute;
-            bottom: -2px;
-            right: -2px;
-            font-size: 12px;
-        }
-
-        .activity-info {
+        .hiker-info {
             flex: 1;
         }
 
-        .activity-text {
-            font-size: 14px;
-            color: var(--dark);
+        .hiker-name {
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 2px;
+            font-size: 16px; /* Slightly larger name */
         }
 
-        .activity-time {
-            font-size: 11px;
-            color: var(--gray-500);
+        .hiker-location {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
         }
 
-        .join-quick {
-            background: var(--success);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 11px;
-            border: none;
-            cursor: pointer;
+        .hiker-stats {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            font-size: 13px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--text-secondary);
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .hiker-interests {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .interests-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .interest-tag {
+            padding: 4px 12px;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
             font-weight: 500;
         }
 
-        /* Events Grid */
-        .events-grid {
-            display: grid;
-            gap: 16px;
+        .hiker-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
         }
 
-        .event-card {
-            background: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 1px solid var(--gray-200);
+        .action-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 13px;
+            display: flex; /* For loading animation */
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            /* z-index: 10; Removed, as the top-right-action now handles it */
+            position: relative;
         }
 
-        .event-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        .action-btn.primary {
+            background: var(--primary-color);
+            color: white;
         }
 
-        .event-image {
-            height: 120px;
-            background: var(--gradient);
+        .action-btn.secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+
+        .action-btn:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+        .action-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Trail Cards */
+        .trail-card {
+            padding: 0; /* Override default padding for image */
+            overflow: hidden; /* Keep image within bounds */
+        }
+        .trail-card .trail-content {
+            padding: var(--spacing-lg); /* Add padding back to content */
+        }
+
+
+        .trail-image {
+            height: 160px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-light));
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 24px;
+            overflow: hidden; /* Ensure image fits */
+            border-bottom: 1px solid var(--border-color);
         }
-
-        .urgency-badge {
+        .trail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             position: absolute;
-            top: 8px;
-            right: 8px;
-            background: var(--warning);
-            color: white;
+            top: 0;
+            left: 0;
+            opacity: 0.8; /* Make image slightly transparent for icon */
+            transition: transform 0.3s ease;
+        }
+        .trail-card:hover .trail-image img {
+            transform: scale(1.05); /* Slight zoom on hover for image */
+        }
+        .trail-image .fa-mountain {
+            position: relative; /* Keep icon on top of image */
+            z-index: 1;
+            font-size: 48px; /* Larger icon */
+        }
+
+
+        .difficulty-badge {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
             padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        .event-content {
-            padding: 16px;
-        }
-
-        .event-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .organizer-mini {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 10px;
-            font-weight: 600;
-        }
-
-        .event-meta {
+            border-radius: var(--radius-sm);
             font-size: 11px;
-            color: var(--gray-500);
+            font-weight: 600;
+            text-transform: uppercase;
+            box-shadow: var(--shadow-sm);
+            z-index: 5; /* Ensure badge is on top */
         }
 
-        .event-title {
+        .difficulty-easy {
+            background: #10b981; /* Green */
+            color: white;
+        }
+
+        .difficulty-moderate {
+            background: #f59e0b; /* Orange */
+            color: white;
+        }
+
+        .difficulty-hard {
+            background: #ef4444; /* Red */
+            color: white;
+        }
+
+        .trail-name {
             font-size: 16px;
             font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 8px;
-            line-height: 1.3;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
         }
 
-        .event-details {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 12px;
-            font-size: 12px;
-            color: var(--gray-500);
-        }
-
-        .event-detail {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .attendee-preview {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .attendee-stack {
-            display: flex;
-            margin-right: 8px;
-        }
-
-        .attendee-mini {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid white;
-            margin-left: -6px;
-            background: var(--gradient);
-            font-size: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-        }
-
-        .attendee-mini:first-child {
-            margin-left: 0;
-        }
-
-        .attendee-text {
-            font-size: 12px;
-            color: var(--gray-500);
-        }
-
-        .event-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .join-button {
-            flex: 1;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 600;
+        .trail-location {
             font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .join-button:hover {
-            background: var(--primary-dark);
-        }
-
-        .bookmark-btn {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--gray-300);
-            background: var(--white);
-            border-radius: 8px;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--gray-400);
-            transition: all 0.2s ease;
+            gap: var(--spacing-xs);
         }
 
-        .bookmark-btn:hover {
-            color: var(--primary);
-            border-color: var(--primary);
+        .trail-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
         }
 
-        .bookmark-btn.active {
-            color: var(--primary);
-            background: rgba(255, 68, 68, 0.1);
-            border-color: var(--primary);
+        .trail-stat {
+            text-align: center;
         }
 
-        /* Floating Create Button */
-        .floating-create {
+        .trail-stat-value {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .trail-stat-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .trail-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-lg);
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            color: var(--border-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .empty-state h3 {
+            font-size: 16px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--gradient);
-            color: white;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(255, 68, 68, 0.4);
-            transition: all 0.3s ease;
-            z-index: 50;
-        }
-
-        .floating-create:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(255, 68, 68, 0.5);
-        }
-
-        /* Country Quick Picker */
-        .country-picker {
-            display: flex;
-            gap: 8px;
-            padding: 16px 0;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .country-picker::-webkit-scrollbar {
-            display: none;
-        }
-
-        .country-chip {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 12px;
-            background: var(--white);
-            border: 1px solid var(--gray-300);
-            border-radius: 20px;
-            font-size: 12px;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .country-chip:hover, .country-chip.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .country-chip .count {
-            background: rgba(0,0,0,0.1);
-            padding: 2px 6px;
-            border-radius: 10px;
-            font-size: 10px;
-        }
-
-        .country-chip.active .count {
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* Notification */
-        .notification {
-            position: fixed;
-            top: 80px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--success);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 500;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            opacity: 0;
-            animation: slideDown 0.3s ease forwards;
+            width: 100%; /* Full width on smaller screens */
+            max-width: 414px; /* Limit on larger screens */
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-color);
+            padding: var(--spacing-sm) var(--spacing-md);
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            z-index: 100;
         }
 
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: var(--spacing-sm);
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 11px;
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            flex: 1; /* Distribute items evenly */
         }
 
-        /* Loading states */
-        .loading {
+        .nav-item.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .nav-item:hover {
+            color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+        .nav-item.active:hover {
+            transform: translateY(0); /* No translation on active item hover */
+        }
+
+        /* Loading Animation */
+        .loading-dot {
             display: inline-block;
-            width: 12px;
-            height: 12px;
-            border: 2px solid rgba(255,255,255,0.3);
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            border-top-color: white;
-            animation: spin 0.8s ease-in-out infinite;
+            background: white; /* Changed color for visibility on primary button */
+            animation: loading 1.4s infinite ease-in-out both;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes loading {
+            0%, 80%, 100% { transform: scale(0); opacity: 0; }
+            40% { transform: scale(1); opacity: 1; }
         }
 
-        /* Mobile optimizations */
-        @media (max-width: 375px) {
-            .main { padding: 20px 16px 80px; }
-            .hook-section { padding: 16px; }
-            .live-count { font-size: 24px; }
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            .container {
+                max-width: 768px; /* Wider container for tablets */
+                padding: 0 var(--spacing-lg);
+            }
+            .hiker-grid,
+            .trail-grid {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
+            }
+            .bottom-nav {
+                max-width: 768px; /* Match container width */
+            }
         }
     </style>
 </head>
@@ -637,369 +614,360 @@
         <!-- Header -->
         <header class="header">
             <div class="header-content">
-                <div class="logo">Khojum</div>
-                <div class="header-actions">
-                    <div class="location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Kathmandu</span>
-                    </div>
-                    <button class="cta-button" onclick="showCreateModal()">
-                        Let me in
-                    </button>
-                </div>
+                <a href="#" class="logo">TrailMate</a>
+                <button class="profile-btn" id="profileBtn">
+                    <i class="fas fa-user"></i>
+                </button>
             </div>
         </header>
 
-        <!-- Instant Hook Section -->
-        <section class="hook-section">
-            <div class="live-count" id="live-count">
-                <div class="pulse-dot"></div>
-                <span id="live-number">47</span>
-            </div>
-            <div class="hook-subtitle">people from your country are meeting up right now</div>
-            <div class="country-flags">
-                <div class="flag-bubble">🇷🇺</div>
-                <div class="flag-bubble">🇮🇳</div>
-                <div class="flag-bubble">🇮🇱</div>
-                <div class="flag-bubble">🇺🇸</div>
-            </div>
-            <button class="quick-join" onclick="scrollToCountries()">
-                Find my people →
-            </button>
-        </section>
+        <main>
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1 class="hero-title">Find Your Hiking Buddy</h1>
+                <p class="hero-subtitle">Connect with like-minded hikers and discover amazing trails together</p>
+                <button class="cta-button" onclick="switchTab('hikers', event)">
+                    <i class="fas fa-users"></i>
+                    Start Exploring
+                </button>
+            </section>
 
-        <!-- Main Content -->
-        <main class="main">
-            <!-- Quick Stats -->
-            <div class="quick-stats">
-                <div class="stat-card">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Happening Today</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">156</div>
-                    <div class="stat-label">Active Users</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">Countries</div>
-                </div>
-            </div>
+            <!-- Navigation Tabs -->
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-tab="hikers">Hikers</button>
+                <button class="nav-tab" data-tab="trails">Trails</button>
+            </nav>
 
-            <!-- Country Quick Picker -->
-            <div class="country-picker" id="country-picker">
-                <!-- Populated by JS -->
-            </div>
-
-            <!-- Live Activities -->
-            <section class="live-activities">
-                <div class="section-header">
-                    <h2 class="section-title">⚡ Happening Now</h2>
-                </div>
-                <div id="live-activities-container">
-                    <!-- Populated by JS -->
+            <!-- Hikers Section -->
+            <section class="content-section active" id="hikers-section">
+                <h2 class="section-title">
+                    <i class="fas fa-users"></i>
+                    Fellow Hikers Near You
+                </h2>
+                <div class="hiker-grid" id="hikers-container">
+                    <!-- Hiker cards will be populated here -->
                 </div>
             </section>
 
-            <!-- Events -->
-            <section class="happening-now">
-                <div class="section-header">
-                    <h2 class="section-title" id="events-title">Today's Meetups</h2>
-                    <a href="#" class="view-all">View All</a>
-                </div>
-                <div class="events-grid" id="events-container">
-                    <!-- Events populated by JS -->
+            <!-- Trails Section -->
+            <section class="content-section" id="trails-section">
+                <h2 class="section-title">
+                    <i class="fas fa-mountain"></i>
+                    Popular Hiking Trails
+                </h2>
+                <div class="trail-grid" id="trails-container">
+                    <!-- Trail cards will be populated here -->
                 </div>
             </section>
         </main>
 
-        <!-- Floating Create Button -->
-        <button class="floating-create" onclick="showCreateModal()">
-            <i class="fas fa-plus"></i>
-        </button>
+        <!-- Bottom padding for fixed nav -->
+        <div style="height: 80px;"></div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active" data-nav="explore">
+                <i class="fas fa-compass"></i>
+                <span>Explore</span>
+            </a>
+            <a href="#" class="nav-item" data-nav="saved">
+                <i class="fas fa-heart"></i>
+                <span>Saved</span>
+            </a>
+            <a href="#" class="nav-item" data-nav="chats">
+                <i class="fas fa-comments"></i>
+                <span>Chats</span>
+            </a>
+            <a href="#" class="nav-item" data-nav="profile">
+                <i class="fas fa-user-circle"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
     </div>
 
     <script>
-        const countries = [
-            { code: 'RU', name: 'Russia', flag: '🇷🇺', count: 18, active: 7 },
-            { code: 'IL', name: 'Israel', flag: '🇮🇱', count: 12, active: 4 },
-            { code: 'IN', name: 'India', flag: '🇮🇳', count: 24, active: 9 },
-            { code: 'US', name: 'USA', flag: '🇺🇸', count: 15, active: 6 },
-            { code: 'GB', name: 'UK', flag: '🇬🇧', count: 8, active: 3 },
-            { code: 'AU', name: 'Australia', flag: '🇦🇺', count: 6, active: 2 },
-            { code: 'DE', name: 'Germany', flag: '🇩🇪', count: 10, active: 4 },
-            { code: 'FR', name: 'France', flag: '🇫🇷', count: 7, active: 2 }
-        ];
-
-        const liveActivities = [
-            {
-                user: "Anna K.",
-                country: "RU",
-                activity: "Started a coffee meetup",
-                time: "2m ago",
-                action: "Join now"
-            },
-            {
-                user: "Raj P.",
-                country: "IN", 
-                activity: "Looking for dinner group",
-                time: "5m ago",
-                action: "Join"
-            },
-            {
-                user: "David S.",
-                country: "IL",
-                activity: "Temple tour in 30min",
-                time: "8m ago",
-                action: "Join"
-            }
-        ];
-
-        const events = [
+        // Sample data
+        const hikersData = [
             {
                 id: 1,
-                title: "Saturday Morning Coffee & Stories",
-                time: "Starting soon",
-                location: "Mira's Coffee, Kaldhara",
-                organizer: {
-                    name: "Anna",
-                    avatar: "A",
-                    country: "RU",
-                    verified: true
-                },
-                attendees: 6,
-                maxAttendees: 8,
-                countryCode: "RU",
-                urgency: "2 spots left",
-                icon: "☕"
+                name: "Sarah Chen",
+                location: "Kathmandu Valley",
+                avatar: "S",
+                completedHikes: 23,
+                experience: "2 years",
+                interests: ["Day Hikes", "Photography", "Nature"],
+                lastSeen: "2 hours ago",
+                image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' /* Example image */
             },
             {
                 id: 2,
-                title: "Heritage Walking Discovery",
-                time: "1h",
-                location: "Durbar Square",
-                organizer: {
-                    name: "Yael",
-                    avatar: "Y",
-                    country: "IL",
-                    verified: true
-                },
-                attendees: 4,
-                maxAttendees: 6,
-                countryCode: "IL",
-                urgency: "Starting soon",
-                icon: "🏛️"
+                name: "Alex Rodriguez",
+                location: "Pokhara",
+                avatar: "A",
+                completedHikes: 15,
+                experience: "1 year",
+                interests: ["Multi-day", "Camping", "Wildlife"],
+                lastSeen: "1 day ago",
+                image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80'
             },
             {
                 id: 3,
-                title: "Rooftop Dinner & City Views",
-                time: "3h",
-                location: "Thamel Heights",
-                organizer: {
-                    name: "Priya",
-                    avatar: "P",
-                    country: "IN",
-                    verified: true
-                },
-                attendees: 8,
-                maxAttendees: 12,
-                countryCode: "IN",
-                urgency: "Hot",
-                icon: "🌃"
+                name: "Maya Tamang",
+                location: "Lalitpur",
+                avatar: "M",
+                completedHikes: 31,
+                experience: "3 years",
+                interests: ["Solo Hiking", "Meditation", "Sunrise"],
+                lastSeen: "3 hours ago",
+                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29329?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+            },
+            {
+                id: 4,
+                name: "David Lee",
+                location: "Kathmandu",
+                avatar: "D",
+                completedHikes: 18,
+                experience: "1.5 years",
+                interests: ["Photography", "Bird Watching", "Trail Running"],
+                lastSeen: "5 hours ago",
+                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDBMHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
             }
         ];
 
-        let selectedCountry = null;
-
-        function init() {
-            renderCountryPicker();
-            renderLiveActivities();
-            renderEvents();
-            updateLiveCounter();
-            
-            // Auto-update live counter
-            setInterval(updateLiveCounter, 3000);
-        }
-
-        function updateLiveCounter() {
-            const counter = document.getElementById('live-number');
-            const currentCount = parseInt(counter.textContent);
-            const newCount = currentCount + Math.floor(Math.random() * 3) - 1;
-            counter.textContent = Math.max(newCount, 30);
-        }
-
-        function renderCountryPicker() {
-            const picker = document.getElementById('country-picker');
-            picker.innerHTML = countries.map(country => `
-                <div class="country-chip ${selectedCountry === country.code ? 'active' : ''}" 
-                     onclick="selectCountry('${country.code}')">
-                    <span>${country.flag}</span>
-                    <span>${country.name}</span>
-                    <span class="count">${country.active}</span>
-                </div>
-            `).join('');
-        }
-
-        function renderLiveActivities() {
-            const container = document.getElementById('live-activities-container');
-            container.innerHTML = liveActivities.map(activity => `
-                <div class="activity-item" onclick="joinActivity('${activity.user}')">
-                    <div class="activity-avatar">
-                        ${activity.user[0]}
-                        <div class="country-badge">${countries.find(c => c.code === activity.country).flag}</div>
-                    </div>
-                    <div class="activity-info">
-                        <div class="activity-text">${activity.user} ${activity.activity}</div>
-                        <div class="activity-time">${activity.time}</div>
-                    </div>
-                    <button class="join-quick">${activity.action}</button>
-                </div>
-            `).join('');
-        }
-
-        function renderEvents() {
-            const container = document.getElementById('events-container');
-            const eventsToShow = selectedCountry ? 
-                events.filter(event => event.countryCode === selectedCountry) : events;
-            
-            container.innerHTML = eventsToShow.map(event => `
-                <div class="event-card">
-                    <div class="event-image">
-                        ${event.icon}
-                        <div class="urgency-badge">${event.urgency}</div>
-                    </div>
-                    <div class="event-content">
-                        <div class="event-header">
-                            <div class="organizer-mini">
-                                ${event.organizer.avatar}
-                            </div>
-                            <div class="event-meta">
-                                ${event.organizer.name} • ${event.time}
-                                ${event.organizer.verified ? '<i class="fas fa-check-circle" style="color: var(--success);"></i>' : ''}
-                            </div>
-                        </div>
-                        <h3 class="event-title">${event.title}</h3>
-                        <div class="event-details">
-                            <div class="event-detail">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>${event.location}</span>
-                            </div>
-                        </div>
-                        <div class="attendee-preview">
-                            <div class="attendee-stack">
-                                ${Array.from({length: Math.min(3, event.attendees)}, (_, i) => `
-                                    <div class="attendee-mini">${String.fromCharCode(65 + i)}</div>
-                                `).join('')}
-                            </div>
-                            <span class="attendee-text">${event.attendees}/${event.maxAttendees} going</span>
-                        </div>
-                        <div class="event-actions">
-                            <button class="join-button" onclick="joinEvent(${event.id})">
-                                Join Group
-                            </button>
-                            <button class="bookmark-btn" onclick="toggleBookmark(${event.id})">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function selectCountry(countryCode) {
-            selectedCountry = selectedCountry === countryCode ? null : countryCode;
-            
-            // Update UI
-            renderCountryPicker();
-            renderEvents();
-            
-            // Update title
-            const title = document.getElementById('events-title');
-            if (selectedCountry) {
-                const country = countries.find(c => c.code === selectedCountry);
-                title.textContent = `${country.flag} ${country.name} Community`;
-            } else {
-                title.textContent = "Today's Meetups";
+        const trailsData = [
+            {
+                id: 1,
+                name: "Nagarkot Sunrise Trek",
+                location: "Bhaktapur District",
+                difficulty: "easy",
+                distance: "5.2 km",
+                duration: "3-4 hrs",
+                elevation: "2,175m",
+                description: "Perfect for beginners, offers stunning sunrise views over the Himalayas.",
+                imageUrl: 'https://images.unsplash.com/photo-1506501139174-099322fe5219?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+            },
+            {
+                id: 2,
+                name: "Shivapuri Peak",
+                location: "Shivapuri National Park",
+                difficulty: "moderate",
+                distance: "12 km",
+                duration: "6-7 hrs",
+                elevation: "2,732m",
+                description: "Challenging day hike through dense forests to the second highest hill around Kathmandu.",
+                imageUrl: 'https://images.unsplash.com/photo-1548231086-f13110207a97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+            },
+            {
+                id: 3,
+                name: "Annapurna Base Camp",
+                location: "Annapurna Region",
+                difficulty: "hard",
+                distance: "110 km",
+                duration: "12-15 days",
+                elevation: "4,130m",
+                description: "Multi-day trek through diverse landscapes to the base of Annapurna massif.",
+                imageUrl: 'https://images.unsplash.com/photo-1582239401832-ef2f1e29e843?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+            },
+            {
+                id: 4,
+                name: "Poon Hill Trek",
+                location: "Annapurna Region",
+                difficulty: "moderate",
+                distance: "50 km",
+                duration: "4-5 days",
+                elevation: "3,210m",
+                description: "A shorter trek offering spectacular panoramic views of the Annapurna and Dhaulagiri ranges.",
+                imageUrl: 'https://images.unsplash.com/photo-1614052044813-f8a0a911a3b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
             }
-        }
+        ];
 
-        function joinEvent(eventId) {
-            const button = event.target;
-            const originalText = button.innerHTML;
-            
-            // Show loading
-            button.innerHTML = '<div class="loading"></div> Joining...';
-            button.disabled = true;
-            
-         // Simulate API call
-         setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-check"></i> Joined!';
-                button.style.background = 'var(--success)';
-                
-                // Show notification
-                showNotification('Successfully joined the meetup!');
-                
-                // Reset after 2 seconds
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.style.background = 'var(--primary)';
-                    button.disabled = false;
-                }, 2000);
-            }, 1000);
-        }
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            setupEventListeners();
+            renderHikers();
+            renderTrails();
+        });
 
-        function joinActivity(userName) {
-            showNotification(`Connected with ${userName}!`);
-        }
+        function setupEventListeners() {
+            // Tab switching
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', (event) => {
+                    const tabName = tab.getAttribute('data-tab');
+                    switchTab(tabName, event);
+                });
+            });
 
-        function toggleBookmark(eventId) {
-            const button = event.target.closest('.bookmark-btn');
-            const icon = button.querySelector('i');
-            
-            if (button.classList.contains('active')) {
-                button.classList.remove('active');
-                icon.className = 'far fa-bookmark';
-                showNotification('Removed from bookmarks');
-            } else {
-                button.classList.add('active');
-                icon.className = 'fas fa-bookmark';
-                showNotification('Added to bookmarks');
-            }
-        }
+            // Bottom navigation
+            document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    document.querySelectorAll('.bottom-nav .nav-item').forEach(nav => nav.classList.remove('active'));
+                    item.classList.add('active');
+                    // In a real app, you would navigate to different pages/sections here
+                    console.log(`Navigating to ${item.getAttribute('data-nav')}!`);
+                    // Example: if this was a SPA, you might load content or change routes
+                });
+            });
 
-        function showCreateModal() {
-            showNotification('Create feature coming soon!');
-        }
+            // Profile button click
+            document.getElementById('profileBtn').addEventListener('click', () => {
+                alert('Opening user profile!');
+            });
 
-        function scrollToCountries() {
-            document.getElementById('country-picker').scrollIntoView({ 
-                behavior: 'smooth' 
+            // Delegate click listeners for dynamically created hiker cards and their buttons
+            document.getElementById('hikers-container').addEventListener('click', function(event) {
+                const target = event.target;
+
+                // Handle top-right action button click
+                if (target.closest('.action-menu-btn')) {
+                    const hikerId = target.closest('.hiker-card').getAttribute('data-hiker-id');
+                    alert(`Options for Hiker ID: ${hikerId}`);
+                    event.stopPropagation(); // Prevent the card click from firing
+                }
+                // Handle "Connect" button click
+                else if (target.closest('.connect-btn')) {
+                    const hikerId = target.closest('.hiker-card').getAttribute('data-hiker-id');
+                    alert(`Connecting with Hiker ID: ${hikerId}`);
+                    // You might want to disable the button or change its text here
+                    event.stopPropagation(); // Prevent the card click from firing
+                }
+                // Handle "View Profile" button click
+                else if ( target.closest('.view-profile-btn')) {
+                    const hikerId = target.closest('.hiker-card').getAttribute('data-hiker-id');
+                    alert(`Viewing profile for Hiker ID: ${hikerId}`);
+                    // In a real app, this would navigate to the hiker's detailed profile page
+                    event.stopPropagation(); // Prevent the card click from firing
+                }
+                // Handle general hiker card click (if not an action button)
+                else if (target.closest('.hiker-card')) {
+                    const hikerId = target.closest('.hiker-card').getAttribute('data-hiker-id');
+                    alert(`Hiker Card clicked for ID: ${hikerId}`);
+                    // This could also navigate to the profile, or show a quick preview
+                }
+            });
+             // Delegate click listeners for dynamically created trail cards
+            document.getElementById('trails-container').addEventListener('click', function(event) {
+                const target = event.target;
+                if (target.closest('.trail-card')) {
+                    const trailId = target.closest('.trail-card').getAttribute('data-trail-id');
+                    alert(`Trail Card clicked for ID: ${trailId}`);
+                    // In a real app, this would navigate to the trail's detailed page
+                }
             });
         }
 
-        function showNotification(message) {
-            // Remove existing notification
-            const existing = document.querySelector('.notification');
-            if (existing) {
-                existing.remove();
+        function switchTab(tabName, event) {
+            // Update tab buttons
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Ensure the clicked tab gets active class, or the target if called from CTA
+            const targetTab = event ? event.currentTarget : document.querySelector(`.nav-tab[data-tab="${tabName}"]`);
+            if (targetTab) {
+                targetTab.classList.add('active');
             }
-            
-            // Create new notification
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.remove();
-                }
-            }, 3000);
+
+            // Update content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const sectionToShow = document.getElementById(`${tabName}-section`);
+            if (sectionToShow) {
+                sectionToShow.classList.add('active');
+            }
         }
 
-        // Initialize app when DOM is loaded
-        document.addEventListener('DOMContentLoaded', init);
+        function renderHikers() {
+            const container = document.getElementById('hikers-container');
+            if (!container) return; // Safeguard if container doesn't exist
+
+            container.innerHTML = hikersData.map(hiker => `
+                <div class="hiker-card" data-hiker-id="${hiker.id}" tabindex="0">
+                    <div class="top-right-action">
+                        <button class="action-menu-btn" aria-label="More options for ${hiker.name}">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <div class="hiker-card-content">
+                        <div class="hiker-header">
+                            <div class="hiker-avatar">${hiker.avatar}</div>
+                            <div class="hiker-info">
+                                <div class="hiker-name">${hiker.name}</div>
+                                <div class="hiker-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    ${hiker.location}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hiker-stats">
+                            <div class="stat">
+                                <i class="fas fa-mountain"></i>
+                                <span class="stat-value">${hiker.completedHikes}</span> hikes
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span class="stat-value">${hiker.experience}</span> exp
+                            </div>
+                        </div>
+
+                        <div class="hiker-interests">
+                            <div class="interests-label">Interests</div>
+                            <div class="interest-tags">
+                                ${hiker.interests.map(interest => `
+                                    <span class="interest-tag">${interest}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hiker-actions">
+                        <button class="action-btn primary connect-btn" data-hiker-id="${hiker.id}">
+                            Connect
+                        </button>
+                        <button class="action-btn secondary view-profile-btn" data-hiker-id="${hiker.id}">
+                            View Profile
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderTrails() {
+            const container = document.getElementById('trails-container');
+            if (!container) return;
+
+            container.innerHTML = trailsData.map(trail => `
+                <div class="trail-card" data-trail-id="${trail.id}" tabindex="0">
+                    <div class="trail-image">
+                        ${trail.imageUrl ? `<img src="${trail.imageUrl}" alt="${trail.name}">` : ''}
+                        <i class="fas fa-mountain"></i>
+                        <span class="difficulty-badge difficulty-${trail.difficulty}">${trail.difficulty}</span>
+                    </div>
+                    <div class="trail-content">
+                        <div class="trail-name">${trail.name}</div>
+                        <div class="trail-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${trail.location}
+                        </div>
+                        <div class="trail-stats">
+                            <div class="trail-stat">
+                                <div class="trail-stat-value">${trail.distance}</div>
+                                <div class="trail-stat-label">Distance</div>
+                            </div>
+                            <div class="trail-stat">
+                                <div class="trail-stat-value">${trail.duration}</div>
+                                <div class="trail-stat-label">Duration</div>
+                            </div>
+                            <div class="trail-stat">
+                                <div class="trail-stat-value">${trail.elevation}</div>
+                                <div class="trail-stat-label">Elevation</div>
+                            </div>
+                        </div>
+                        <p class="trail-description">${trail.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
     </script>
 </body>
-</html> 
+</html>
