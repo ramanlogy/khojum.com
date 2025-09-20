@@ -51,12 +51,12 @@
         }
 
         .container {
-            max-width: 414px; /* Default for mobile-first approach */
+            max-width: 414px;
             margin: 0 auto;
             padding: 0 var(--spacing-md);
             background-color: var(--bg-primary);
             min-height: 100vh;
-            box-shadow: var(--shadow-md); /* Added shadow for a "app" feel */
+            box-shadow: var(--shadow-md);
         }
 
         /* Header */
@@ -83,6 +83,34 @@
             text-decoration: none;
         }
 
+        .header-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+
+        .create-post-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .create-post-btn:hover {
+            background: #e55a2b;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
         .profile-btn {
             width: 36px;
             height: 36px;
@@ -98,20 +126,20 @@
             box-shadow: var(--shadow-sm);
             transition: all 0.2s ease;
         }
+
         .profile-btn:hover {
             background: var(--primary-light);
             transform: translateY(-1px);
         }
-
 
         /* Hero Section */
         .hero {
             padding: var(--spacing-xl) 0;
             text-align: center;
             background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-            margin: 0 -16px var(--spacing-lg) -16px; /* Offset to full width */
+            margin: 0 -16px var(--spacing-lg) -16px;
             border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-            overflow: hidden; /* Ensures gradient doesn't bleed */
+            overflow: hidden;
         }
 
         .hero-title {
@@ -184,6 +212,7 @@
             box-shadow: var(--shadow-sm);
             font-weight: 600;
         }
+
         .nav-tab:hover:not(.active) {
             background: var(--border-color);
         }
@@ -207,75 +236,149 @@
             gap: var(--spacing-sm);
         }
 
-        /* Hiker Cards */
-        .hiker-grid, .trail-grid {
+        /* Trek Cards */
+        .trek-grid {
             display: grid;
-            gap: var(--spacing-md);
-            grid-template-columns: 1fr; /* Default to single column */
+            gap: var(--spacing-lg);
+            grid-template-columns: 1fr;
         }
 
-        .hiker-card, .trail-card {
+        .trek-card {
             background: var(--bg-primary);
             border-radius: var(--radius-lg);
-            padding: var(--spacing-lg);
             border: 1px solid var(--border-color);
             transition: all 0.2s ease;
             cursor: pointer;
             box-shadow: var(--shadow-sm);
-            position: relative; /* Essential for absolute positioning of the action button */
+            overflow: hidden;
         }
 
-        .hiker-card:hover, .trail-card:hover {
+        .trek-card:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             border-color: var(--primary-color);
         }
 
-        .hiker-card-content { /* New wrapper for clickable area */
-            display: block; /* Make it block level to occupy full space */
-            color: inherit; /* Inherit text color */
-            text-decoration: none; /* Remove underline for links */
-        }
-
-        .hiker-card .top-right-action {
-            position: absolute;
-            top: var(--spacing-md);
-            right: var(--spacing-md);
-            z-index: 10; /* Ensure it's above other content */
-        }
-
-        .hiker-card .top-right-action .action-menu-btn {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
+        .trek-header {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-light));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s ease;
+            overflow: hidden;
+        }
+
+        .trek-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .trek-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: var(--spacing-lg);
+            z-index: 2;
+        }
+
+        .trek-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .trek-location {
+            font-size: 13px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
             box-shadow: var(--shadow-sm);
+            z-index: 3;
         }
-        .hiker-card .top-right-action .action-menu-btn:hover {
-            background: var(--border-color);
+
+        .difficulty-easy { background: #10b981; color: white; }
+        .difficulty-moderate { background: #f59e0b; color: white; }
+        .difficulty-hard { background: #ef4444; color: white; }
+
+        .participants-badge {
+            position: absolute;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.9);
             color: var(--primary-color);
-            transform: scale(1.05);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            z-index: 3;
         }
 
+        .trek-content {
+            padding: var(--spacing-lg);
+        }
 
-        .hiker-header {
+        .trek-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .detail-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .organizer-info {
             display: flex;
             align-items: center;
             gap: var(--spacing-md);
-            margin-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
         }
 
-        .hiker-avatar {
-            width: 48px;
-            height: 48px;
+        .organizer-avatar {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             display: flex;
@@ -283,95 +386,51 @@
             justify-content: center;
             color: white;
             font-weight: 600;
-            font-size: 18px;
-            flex-shrink: 0; /* Prevent avatar from shrinking */
+            flex-shrink: 0;
         }
 
-        .hiker-info {
+        .organizer-details {
             flex: 1;
         }
 
-        .hiker-name {
+        .organizer-name {
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 2px;
-            font-size: 16px; /* Slightly larger name */
         }
 
-        .hiker-location {
-            font-size: 13px;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-        }
-
-        .hiker-stats {
-            display: flex;
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-md);
-            font-size: 13px;
-        }
-
-        .stat {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            color: var(--text-secondary);
-        }
-
-        .stat-value {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .hiker-interests {
-            margin-bottom: var(--spacing-md);
-        }
-
-        .interests-label {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .interest-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-sm);
-        }
-
-        .interest-tag {
-            padding: 4px 12px;
-            background: var(--bg-tertiary);
-            color: var(--text-secondary);
-            border-radius: var(--radius-sm);
+        .organizer-stats {
             font-size: 12px;
-            font-weight: 500;
+            color: var(--text-secondary);
+            display: flex;
+            gap: var(--spacing-md);
         }
 
-        .hiker-actions {
+        .trek-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .trek-actions {
             display: flex;
             gap: var(--spacing-sm);
-            margin-top: var(--spacing-md);
         }
 
         .action-btn {
             flex: 1;
-            padding: 10px;
+            padding: 12px;
             border: none;
-            border-radius: var(--radius-sm);
-            font-weight: 500;
+            border-radius: var(--radius-md);
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 13px;
-            display: flex; /* For loading animation */
+            font-size: 14px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
-            /* z-index: 10; Removed, as the top-right-action now handles it */
-            position: relative;
+            gap: var(--spacing-xs);
         }
 
         .action-btn.primary {
@@ -384,148 +443,110 @@
             color: var(--text-secondary);
         }
 
-        .action-btn:hover:not(:disabled) {
+        .action-btn:hover {
             transform: translateY(-1px);
             box-shadow: var(--shadow-sm);
         }
-        .action-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        /* Trail Cards */
-        .trail-card {
-            padding: 0; /* Override default padding for image */
-            overflow: hidden; /* Keep image within bounds */
-        }
-        .trail-card .trail-content {
-            padding: var(--spacing-lg); /* Add padding back to content */
+        .modal.active {
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
         }
 
+        .modal-content {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
 
-        .trail-image {
-            height: 160px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-light));
-            position: relative;
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--bg-primary);
+            z-index: 10;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 24px;
-            overflow: hidden; /* Ensure image fits */
-            border-bottom: 1px solid var(--border-color);
-        }
-        .trail-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0.8; /* Make image slightly transparent for icon */
-            transition: transform 0.3s ease;
-        }
-        .trail-card:hover .trail-image img {
-            transform: scale(1.05); /* Slight zoom on hover for image */
-        }
-        .trail-image .fa-mountain {
-            position: relative; /* Keep icon on top of image */
-            z-index: 1;
-            font-size: 48px; /* Larger icon */
+            transition: all 0.2s ease;
         }
 
-
-        .difficulty-badge {
-            position: absolute;
-            top: var(--spacing-sm);
-            right: var(--spacing-sm);
-            padding: 4px 8px;
-            border-radius: var(--radius-sm);
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            box-shadow: var(--shadow-sm);
-            z-index: 5; /* Ensure badge is on top */
-        }
-
-        .difficulty-easy {
-            background: #10b981; /* Green */
-            color: white;
-        }
-
-        .difficulty-moderate {
-            background: #f59e0b; /* Orange */
-            color: white;
-        }
-
-        .difficulty-hard {
-            background: #ef4444; /* Red */
-            color: white;
-        }
-
-        .trail-name {
-            font-size: 16px;
-            font-weight: 600;
+        .close-btn:hover {
+            background: var(--bg-tertiary);
             color: var(--text-primary);
-            margin-bottom: var(--spacing-sm);
         }
 
-        .trail-location {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-md);
+        .modal-body {
+            padding: var(--spacing-lg);
+        }
+
+        .itinerary-day {
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+        }
+
+        .day-header {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
             display: flex;
             align-items: center;
-            gap: var(--spacing-xs);
+            gap: var(--spacing-sm);
         }
 
-        .trail-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .trail-stat {
-            text-align: center;
-        }
-
-        .trail-stat-value {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 14px;
-        }
-
-        .trail-stat-label {
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            margin-top: 2px;
-        }
-
-        .trail-description {
+        .day-details {
             font-size: 13px;
             color: var(--text-secondary);
             line-height: 1.5;
-            margin-bottom: var(--spacing-md);
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: var(--spacing-xl) var(--spacing-lg);
-            color: var(--text-secondary);
-        }
-
-        .empty-state i {
-            font-size: 48px;
-            color: var(--border-color);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .empty-state h3 {
-            font-size: 16px;
-            margin-bottom: var(--spacing-sm);
         }
 
         /* Bottom Navigation */
@@ -534,8 +555,8 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100%; /* Full width on smaller screens */
-            max-width: 414px; /* Limit on larger screens */
+            width: 100%;
+            max-width: 414px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-top: 1px solid var(--border-color);
@@ -557,37 +578,21 @@
             font-size: 11px;
             cursor: pointer;
             transition: color 0.2s ease, transform 0.2s ease;
-            flex: 1; /* Distribute items evenly */
+            flex: 1;
         }
 
         .nav-item.active {
             color: var(--primary-color);
             font-weight: 600;
         }
+
         .nav-item:hover {
             color: var(--primary-light);
             transform: translateY(-2px);
         }
+
         .nav-item.active:hover {
-            transform: translateY(0); /* No translation on active item hover */
-        }
-
-        /* Loading Animation */
-        .loading-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: white; /* Changed color for visibility on primary button */
-            animation: loading 1.4s infinite ease-in-out both;
-        }
-
-        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
-        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
-
-        @keyframes loading {
-            0%, 80%, 100% { transform: scale(0); opacity: 0; }
-            40% { transform: scale(1); opacity: 1; }
+            transform: translateY(0);
         }
 
         /* Responsive Design */
@@ -596,15 +601,14 @@
                 font-size: 16px;
             }
             .container {
-                max-width: 768px; /* Wider container for tablets */
+                max-width: 768px;
                 padding: 0 var(--spacing-lg);
             }
-            .hiker-grid,
-            .trail-grid {
-                grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
+            .trek-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             .bottom-nav {
-                max-width: 768px; /* Match container width */
+                max-width: 768px;
             }
         }
     </style>
@@ -614,52 +618,78 @@
         <!-- Header -->
         <header class="header">
             <div class="header-content">
-                <a href="#" class="logo">TrailMate</a>
-                <button class="profile-btn" id="profileBtn">
-                    <i class="fas fa-user"></i>
-                </button>
+                <a href="/" class="logo">
+                    <span class="custom-k">|<</span>hoJUM
+                  </a>
+                  
+                <div class="header-actions">
+                    <button class="create-post-btn" onclick="openCreatePostForm()">
+                        <i class="fas fa-plus"></i>
+                        Post Your Trek
+                    </button>
+                   
+                    </button>
+                </div>
             </div>
         </header>
 
         <main>
             <!-- Hero Section -->
             <section class="hero">
-                <h1 class="hero-title">Find Your Hiking Buddy</h1>
-                <p class="hero-subtitle">Connect with like-minded hikers and discover amazing trails together</p>
-                <button class="cta-button" onclick="switchTab('hikers', event)">
-                    <i class="fas fa-users"></i>
-                    Start Exploring
+                <h1 class="hero-title">Find Your Trek Companions</h1>
+                <p class="hero-subtitle">Join organized treks and connect with fellow adventurers in Nepal</p>
+                <button class="cta-button" onclick="switchTab('treks', event)">
+                    <i class="fas fa-mountain"></i>
+                    Explore Treks
                 </button>
             </section>
 
             <!-- Navigation Tabs -->
             <nav class="nav-tabs">
-                <button class="nav-tab active" data-tab="hikers">Hikers</button>
-                <button class="nav-tab" data-tab="trails">Trails</button>
+                <button class="nav-tab active" data-tab="treks">Available Treks</button>
+                <button class="nav-tab" data-tab="my-treks">Read Stories</button>
             </nav>
 
-            <!-- Hikers Section -->
-            <section class="content-section active" id="hikers-section">
+            <!-- Treks Section -->
+            <section class="content-section active" id="treks-section">
                 <h2 class="section-title">
-                    <i class="fas fa-users"></i>
-                    Fellow Hikers Near You
+                    <i class="fas fa-mountain"></i>
+                    Upcoming Trek Expeditions
                 </h2>
-                <div class="hiker-grid" id="hikers-container">
-                    <!-- Hiker cards will be populated here -->
+                <div class="trek-grid" id="treks-container">
+                    <!-- Trek cards will be populated here -->
                 </div>
             </section>
 
-            <!-- Trails Section -->
-            <section class="content-section" id="trails-section">
+            <!-- My Treks Section -->
+            <section class="content-section" id="my-treks-section">
                 <h2 class="section-title">
-                    <i class="fas fa-mountain"></i>
-                    Popular Hiking Trails
+                    <i class="fas fa-backpack"></i>
+                    My Trek Plans
                 </h2>
-                <div class="trail-grid" id="trails-container">
-                    <!-- Trail cards will be populated here -->
+                <div class="trek-grid">
+                    <div style="text-align: center; padding: 40px 20px; color: var(--text-secondary);">
+                        <i class="fas fa-hiking" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+                        <p>You haven't joined any treks yet. Explore available treks to get started!</p>
+                    </div>
                 </div>
             </section>
         </main>
+
+        <!-- Trek Details Modal -->
+        <div class="modal" id="trekModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle">Trek Itinerary</h3>
+                    <button class="close-btn" onclick="closeTrekModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Itinerary content will be populated here -->
+                </div>
+            </div>
+        </div>
 
         <!-- Bottom padding for fixed nav -->
         <div style="height: 80px;"></div>
@@ -686,288 +716,393 @@
     </div>
 
     <script>
-        // Sample data
-        const hikersData = [
+        // Enhanced trek data with detailed information
+        const treksData = [
             {
                 id: 1,
-                name: "Sarah Chen",
-                location: "Kathmandu Valley",
-                avatar: "S",
-                completedHikes: 23,
-                experience: "2 years",
-                interests: ["Day Hikes", "Photography", "Nature"],
-                lastSeen: "2 hours ago",
-                image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80' /* Example image */
-            },
-            {
-                id: 2,
-                name: "Alex Rodriguez",
-                location: "Pokhara",
-                avatar: "A",
-                completedHikes: 15,
-                experience: "1 year",
-                interests: ["Multi-day", "Camping", "Wildlife"],
-                lastSeen: "1 day ago",
-                image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80'
-            },
-            {
-                id: 3,
-                name: "Maya Tamang",
-                location: "Lalitpur",
-                avatar: "M",
-                completedHikes: 31,
-                experience: "3 years",
-                interests: ["Solo Hiking", "Meditation", "Sunrise"],
-                lastSeen: "3 hours ago",
-                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29329?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-            },
-            {
-                id: 4,
-                name: "David Lee",
-                location: "Kathmandu",
-                avatar: "D",
-                completedHikes: 18,
-                experience: "1.5 years",
-                interests: ["Photography", "Bird Watching", "Trail Running"],
-                lastSeen: "5 hours ago",
-                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDBMHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-            }
-        ];
-
-        const trailsData = [
-            {
-                id: 1,
-                name: "Nagarkot Sunrise Trek",
-                location: "Bhaktapur District",
-                difficulty: "easy",
-                distance: "5.2 km",
-                duration: "3-4 hrs",
-                elevation: "2,175m",
-                description: "Perfect for beginners, offers stunning sunrise views over the Himalayas.",
-                imageUrl: 'https://images.unsplash.com/photo-1506501139174-099322fe5219?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-            },
-            {
-                id: 2,
-                name: "Shivapuri Peak",
-                location: "Shivapuri National Park",
-                difficulty: "moderate",
-                distance: "12 km",
-                duration: "6-7 hrs",
-                elevation: "2,732m",
-                description: "Challenging day hike through dense forests to the second highest hill around Kathmandu.",
-                imageUrl: 'https://images.unsplash.com/photo-1548231086-f13110207a97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-            },
-            {
-                id: 3,
-                name: "Annapurna Base Camp",
+                name: "Annapurna Base Camp Trek",
                 location: "Annapurna Region",
+                difficulty: "moderate",
+                duration: "12 days",
+                startLocation: "Pokhara",
+                startDate: "2024-10-15",
+                participants: 8,
+                maxParticipants: 12,
+                price: "$1,200",
+                organizer: {
+                    name: "Pemba Sherpa",
+                    age: 32,
+                    gender: "Male",
+                    experience: "8 years",
+                    completedTreks: 45
+                },
+                description: "Experience the stunning Annapurna massif with this classic trek to base camp. Perfect blend of culture and mountain views.",
+                imageUrl: 'https://images.unsplash.com/photo-1582239401832-ef2f1e29e843?ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
+                itinerary: [
+                    { day: 1, title: "Arrival in Pokhara", description: "Arrive in Pokhara, meet your guide and fellow trekkers. Rest and prepare for the trek." },
+                    { day: 2, title: "Pokhara to Nayapul to Tikhedhunga", description: "Drive to Nayapul (1,070m) and trek to Tikhedhunga (1,540m). 4-5 hours trekking." },
+                    { day: 3, title: "Tikhedhunga to Ghorepani", description: "Trek through rhododendron forests to Ghorepani (2,874m). 5-6 hours." },
+                    { day: 4, title: "Poon Hill sunrise and trek to Tadapani", description: "Early morning hike to Poon Hill (3,210m) for sunrise, then trek to Tadapani (2,630m)." },
+                    { day: 5, title: "Tadapani to Chhomrong", description: "Trek through beautiful forests to Chhomrong village (2,170m). 5-6 hours." },
+                    { day: 6, title: "Chhomrong to Dovan", description: "Descend into Modi Khola valley and trek to Dovan (2,600m). 5-6 hours." },
+                    { day: 7, title: "Dovan to Deurali", description: "Continue up the valley to Deurali (3,230m). 4-5 hours trekking." },
+                    { day: 8, title: "Deurali to Annapurna Base Camp", description: "Final push to ABC (4,130m)! Stunning 360° mountain views. 2-3 hours." },
+                    { day: 9, title: "ABC to Bamboo", description: "Descend through Machhapuchhre Base Camp to Bamboo (2,310m). 6-7 hours." },
+                    { day: 10, title: "Bamboo to Jhinu Danda", description: "Trek to Jhinu Danda (1,780m) and enjoy natural hot springs. 5-6 hours." },
+                    { day: 11, title: "Jhinu Danda to Nayapul", description: "Final day trekking to Nayapul, then drive back to Pokhara. 4-5 hours." },
+                    { day: 12, title: "Departure", description: "Free day in Pokhara or departure to Kathmandu." }
+                ]
+            },
+            {
+                id: 2,
+                name: "Everest Base Camp Trek",
+                location: "Khumbu Region",
                 difficulty: "hard",
-                distance: "110 km",
-                duration: "12-15 days",
-                elevation: "4,130m",
-                description: "Multi-day trek through diverse landscapes to the base of Annapurna massif.",
-                imageUrl: 'https://images.unsplash.com/photo-1582239401832-ef2f1e29e843?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+                duration: "16 days",
+                startLocation: "Lukla",
+                startDate: "2024-10-20",
+                participants: 6,
+                maxParticipants: 10,
+                price: "$2,500",
+                organizer: {
+                    name: "Ang Dorje Sherpa",
+                    age: 28,
+                    gender: "Male",
+                    experience: "6 years",
+                    completedTreks: 32
+                },
+                description: "The ultimate Himalayan adventure to the base camp of the world's highest peak. Witness Sherpa culture and stunning mountain vistas.",
+                imageUrl: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
+                itinerary: [
+                    { day: 1, title: "Fly to Lukla, trek to Phakding", description: "Scenic flight to Lukla (2,800m), meet team, trek to Phakding (2,652m). 3-4 hours." },
+                    { day: 2, title: "Phakding to Namche Bazaar", description: "Cross suspension bridges, enter Sagarmatha National Park, trek to Namche (3,440m). 5-6 hours." },
+                    { day: 3, title: "Acclimatization day in Namche", description: "Rest day for acclimatization. Optional hike to Everest View Hotel or Khumjung village." },
+                    { day: 4, title: "Namche to Tengboche", description: "Trek through forests to Tengboche Monastery (3,867m). 5-6 hours with stunning mountain views." },
+                    { day: 5, title: "Tengboche to Dingboche", description: "Continue to Dingboche village (4,410m) with views of Lhotse and Ama Dablam. 5-6 hours." },
+                    { day: 6, title: "Acclimatization in Dingboche", description: "Rest day with optional hike to Nagarjun Hill (5,083m) for better acclimatization." },
+                    { day: 7, title: "Dingboche to Lobuche", description: "Trek past memorials to Lobuche (4,940m). Views of Khumbu Glacier. 5-6 hours." },
+                    { day: 8, title: "Lobuche to EBC and back to Gorak Shep", description: "Early trek to Everest Base Camp (5,364m), return to Gorak Shep (5,164m). 7-8 hours." },
+                    { day: 9, title: "Kala Patthar and descend to Pheriche", description: "Early morning hike to Kala Patthar (5,545m) for Everest sunrise, descend to Pheriche. 6-7 hours." },
+                    { day: 10, title: "Pheriche to Namche", description: "Long descent back to Namche Bazaar. 6-7 hours through familiar terrain." },
+                    { day: 11, title: "Namche to Lukla", description: "Final day of trekking back to Lukla. 6-7 hours downhill." },
+                    { day: 12, title: "Fly back to Kathmandu", description: "Morning flight to Kathmandu, rest and celebrate completion!" }
+                ]
+            },
+            {
+                id: 3,
+                name: "Mardi Himal Trek",
+                location: "Annapurna Region",
+                difficulty: "easy",
+                duration: "7 days",
+                startLocation: "Pokhara",
+                startDate: "2024-10-10",
+                participants: 5,
+                maxParticipants: 8,
+                price: "$650",
+                organizer: {
+                    name: "Maya Gurung",
+                    age: 26,
+                    gender: "Female",
+                    experience: "4 years",
+                    completedTreks: 28
+                },
+                description: "A hidden gem trek offering spectacular mountain views with fewer crowds. Perfect for those seeking tranquility in the Himalayas.",
+                imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
+                itinerary: [
+                    { day: 1, title: "Pokhara to Kande, trek to Deurali", description: "Drive to Kande (1,770m) and trek to Deurali (2,100m). 2-3 hours easy walk." },
+                    { day: 2, title: "Deurali to Forest Camp", description: "Trek through beautiful rhododendron forest to Forest Camp (2,520m). 4-5 hours." },
+                    { day: 3, title: "Forest Camp to High Camp", description: "Continue ascending to High Camp (3,580m) with amazing mountain views. 3-4 hours." },
+                    { day: 4, title: "High Camp to Mardi Base Camp and back", description: "Early morning trek to Mardi Base Camp (4,500m) and return to High Camp. 6-7 hours." },
+                    { day: 5, title: "High Camp to Siding village", description: "Descend through different route to Siding village (1,750m). 5-6 hours." },
+                    { day: 6, title: "Siding to Pokhara", description: "Trek to Lumre and drive back to Pokhara. 2-3 hours trek + 1 hour drive." },
+                    { day: 7, title: "Departure", description: "Free day in Pokhara or departure to Kathmandu." }
+                ]
             },
             {
                 id: 4,
-                name: "Poon Hill Trek",
-                location: "Annapurna Region",
+                name: "Langtang Valley Trek",
+                location: "Langtang Region",
                 difficulty: "moderate",
-                distance: "50 km",
-                duration: "4-5 days",
-                elevation: "3,210m",
-                description: "A shorter trek offering spectacular panoramic views of the Annapurna and Dhaulagiri ranges.",
-                imageUrl: 'https://images.unsplash.com/photo-1614052044813-f8a0a911a3b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+                duration: "10 days",
+                startLocation: "Syabrubesi",
+                startDate: "2024-10-25",
+                participants: 4,
+                maxParticipants: 10,
+                price: "$950",
+                organizer: {
+                    name: "Tenzin Tamang",
+                    age: 35,
+                    gender: "Male",
+                    experience: "10 years",
+                    completedTreks: 52
+                },
+                description: "Explore the beautiful Langtang Valley, known as the 'Valley of Glaciers'. Rich in Tamang culture and stunning alpine scenery.",
+                imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
+                itinerary: [
+                    { day: 1, title: "Drive to Syabrubesi", description: "Drive from Kathmandu to Syabrubesi (1,550m). 7-8 hours scenic drive." },
+                    { day: 2, title: "Syabrubesi to Lama Hotel", description: "Trek through forests along Langtang river to Lama Hotel (2,380m). 5-6 hours." },
+                    { day: 3, title: "Lama Hotel to Langtang village", description: "Continue to Langtang village (3,430m) with stunning mountain views. 5-6 hours." },
+                    { day: 4, title: "Langtang village to Kyanjin Gompa", description: "Trek to Kyanjin Gompa (3,870m), visit ancient monastery. 3-4 hours." },
+                    { day: 5, title: "Acclimatization day", description: "Rest day with optional hikes to Kyanjin Ri (4,773m) or Tserko Ri (4,984m)." },
+                    { day: 6, title: "Kyanjin Gompa to Lama Hotel", description: "Descend back to Lama Hotel. 6-7 hours downhill." },
+                    { day: 7, title: "Lama Hotel to Thulo Syabru", description: "Trek to Thulo Syabru village (2,230m). 5-6 hours through forests." },
+                    { day: 8, title: "Thulo Syabru to Sing Gompa", description: "Trek to Sing Gompa (3,330m) with yak cheese factory visit. 4-5 hours." },
+                    { day: 9, title: "Sing Gompa to Gosaikunda and back", description: "Day trip to sacred Gosaikunda lakes (4,380m) and return. 8-9 hours." },
+                    { day: 10, title: "Return to Kathmandu", description: "Drive back to Kathmandu via Dhunche. 6-7 hours drive." }
+                ]
             }
         ];
 
         // Initialize the app
         document.addEventListener('DOMContentLoaded', function() {
+            renderTreks();
             setupEventListeners();
-            renderHikers();
-            renderTrails();
         });
 
+        // Render trek cards
+        function renderTreks() {
+            const container = document.getElementById('treks-container');
+            container.innerHTML = '';
+            
+            treksData.forEach(trek => {
+                const trekCard = createTrekCard(trek);
+                container.appendChild(trekCard);
+            });
+        }
+
+        // Create trek card element
+        function createTrekCard(trek) {
+            const card = document.createElement('div');
+            card.className = 'trek-card';
+            card.innerHTML = `
+                <div class="trek-header">
+                    <img src="${trek.imageUrl}" alt="${trek.name}" onerror="this.style.display='none'">
+                    <div class="difficulty-badge difficulty-${trek.difficulty}">${trek.difficulty}</div>
+                    <div class="participants-badge">
+                        <i class="fas fa-users"></i>
+                        ${trek.participants}/${trek.maxParticipants}
+                    </div>
+                    <div class="trek-overlay">
+                        <div class="trek-title">${trek.name}</div>
+                        <div class="trek-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${trek.location}
+                        </div>
+                    </div>
+                </div>
+                <div class="trek-content">
+                    <div class="trek-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Duration</span>
+                            <span class="detail-value">${trek.duration}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Starting Point</span>
+                            <span class="detail-value">${trek.startLocation}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Start Date</span>
+                            <span class="detail-value">${new Date(trek.startDate).toLocaleDateString()}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Price</span>
+                            <span class="detail-value">${trek.price}</span>
+                        </div>
+                    </div>
+                    <div class="organizer-info">
+                        <div class="organizer-avatar">
+                            ${trek.organizer.name.charAt(0)}
+                        </div>
+                        <div class="organizer-details">
+                            <div class="organizer-name">${trek.organizer.name}</div>
+                            <div class="organizer-stats">
+                                <span>${trek.organizer.experience} experience</span>
+                                <span>${trek.organizer.completedTreks} treks completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trek-description">
+                        ${trek.description}
+                    </div>
+                    <div class="trek-actions">
+                        <button class="action-btn primary" onclick="joinTrek(${trek.id})">
+                            <i class="fas fa-user-plus"></i>
+                            Join Trek
+                        </button>
+                        <button class="action-btn secondary" onclick="viewItinerary(${trek.id})">
+                            <i class="fas fa-list"></i>
+                            View Itinerary
+                        </button>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Setup event listeners
         function setupEventListeners() {
             // Tab switching
             document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.addEventListener('click', (event) => {
-                    const tabName = tab.getAttribute('data-tab');
-                    switchTab(tabName, event);
+                tab.addEventListener('click', (e) => {
+                    switchTab(tab.dataset.tab, e);
                 });
             });
 
             // Bottom navigation
-            document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
+            document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevent default link behavior
-                    document.querySelectorAll('.bottom-nav .nav-item').forEach(nav => nav.classList.remove('active'));
-                    item.classList.add('active');
-                    // In a real app, you would navigate to different pages/sections here
-                    console.log(`Navigating to ${item.getAttribute('data-nav')}!`);
-                    // Example: if this was a SPA, you might load content or change routes
+                    e.preventDefault();
+                    setActiveNavItem(item);
                 });
             });
 
-            // Profile button click
+            // Modal close on background click
+            document.getElementById('trekModal').addEventListener('click', (e) => {
+                if (e.target === e.currentTarget) {
+                    closeTrekModal();
+                }
+            });
+
+            // Profile button
             document.getElementById('profileBtn').addEventListener('click', () => {
-                alert('Opening user profile!');
-            });
-
-            // Delegate click listeners for dynamically created hiker cards and their buttons
-            document.getElementById('hikers-container').addEventListener('click', function(event) {
-                const target = event.target;
-
-                // Handle top-right action button click
-                if (target.closest('.action-menu-btn')) {
-                    const hikerId = target.closest('.hiker-card').getAttribute('data-hiker-id');
-                    alert(`Options for Hiker ID: ${hikerId}`);
-                    event.stopPropagation(); // Prevent the card click from firing
-                }
-                // Handle "Connect" button click
-                else if (target.closest('.connect-btn')) {
-                    const hikerId = target.closest('.hiker-card').getAttribute('data-hiker-id');
-                    alert(`Connecting with Hiker ID: ${hikerId}`);
-                    // You might want to disable the button or change its text here
-                    event.stopPropagation(); // Prevent the card click from firing
-                }
-                // Handle "View Profile" button click
-                else if ( target.closest('.view-profile-btn')) {
-                    const hikerId = target.closest('.hiker-card').getAttribute('data-hiker-id');
-                    alert(`Viewing profile for Hiker ID: ${hikerId}`);
-                    // In a real app, this would navigate to the hiker's detailed profile page
-                    event.stopPropagation(); // Prevent the card click from firing
-                }
-                // Handle general hiker card click (if not an action button)
-                else if (target.closest('.hiker-card')) {
-                    const hikerId = target.closest('.hiker-card').getAttribute('data-hiker-id');
-                    alert(`Hiker Card clicked for ID: ${hikerId}`);
-                    // This could also navigate to the profile, or show a quick preview
-                }
-            });
-             // Delegate click listeners for dynamically created trail cards
-            document.getElementById('trails-container').addEventListener('click', function(event) {
-                const target = event.target;
-                if (target.closest('.trail-card')) {
-                    const trailId = target.closest('.trail-card').getAttribute('data-trail-id');
-                    alert(`Trail Card clicked for ID: ${trailId}`);
-                    // In a real app, this would navigate to the trail's detailed page
-                }
+                alert('Profile functionality coming soon!');
             });
         }
 
+        // Switch between tabs
         function switchTab(tabName, event) {
+            if (event) event.preventDefault();
+            
             // Update tab buttons
             document.querySelectorAll('.nav-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
-            // Ensure the clicked tab gets active class, or the target if called from CTA
-            const targetTab = event ? event.currentTarget : document.querySelector(`.nav-tab[data-tab="${tabName}"]`);
-            if (targetTab) {
-                targetTab.classList.add('active');
-            }
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
 
             // Update content sections
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active');
             });
-            const sectionToShow = document.getElementById(`${tabName}-section`);
-            if (sectionToShow) {
-                sectionToShow.classList.add('active');
+            document.getElementById(`${tabName}-section`).classList.add('active');
+        }
+
+        // Set active navigation item
+        function setActiveNavItem(activeItem) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            activeItem.classList.add('active');
+            
+            // Handle navigation based on data-nav attribute
+            const navType = activeItem.dataset.nav;
+            switch(navType) {
+                case 'explore':
+                    // Already on main page
+                    break;
+                case 'saved':
+                    alert('Saved treks feature coming soon!');
+                    break;
+                case 'chats':
+                    alert('Chat feature coming soon!');
+                    break;
+                case 'profile':
+                    alert('Profile page coming soon!');
+                    break;
             }
         }
 
-        function renderHikers() {
-            const container = document.getElementById('hikers-container');
-            if (!container) return; // Safeguard if container doesn't exist
-
-            container.innerHTML = hikersData.map(hiker => `
-                <div class="hiker-card" data-hiker-id="${hiker.id}" tabindex="0">
-                    <div class="top-right-action">
-                        <button class="action-menu-btn" aria-label="More options for ${hiker.name}">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                    </div>
-                    <div class="hiker-card-content">
-                        <div class="hiker-header">
-                            <div class="hiker-avatar">${hiker.avatar}</div>
-                            <div class="hiker-info">
-                                <div class="hiker-name">${hiker.name}</div>
-                                <div class="hiker-location">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    ${hiker.location}
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="hiker-stats">
-                            <div class="stat">
-                                <i class="fas fa-mountain"></i>
-                                <span class="stat-value">${hiker.completedHikes}</span> hikes
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-clock"></i>
-                                <span class="stat-value">${hiker.experience}</span> exp
-                            </div>
-                        </div>
-
-                        <div class="hiker-interests">
-                            <div class="interests-label">Interests</div>
-                            <div class="interest-tags">
-                                ${hiker.interests.map(interest => `
-                                    <span class="interest-tag">${interest}</span>
-                                `).join('')}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hiker-actions">
-                        <button class="action-btn primary connect-btn" data-hiker-id="${hiker.id}">
-                            Connect
-                        </button>
-                        <button class="action-btn secondary view-profile-btn" data-hiker-id="${hiker.id}">
-                            View Profile
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+        // Join trek functionality
+        function joinTrek(trekId) {
+            const trek = treksData.find(t => t.id === trekId);
+            if (trek) {
+                if (trek.participants < trek.maxParticipants) {
+                    if (confirm(`Are you sure you want to join "${trek.name}"?`)) {
+                        trek.participants += 1;
+                        renderTreks(); // Re-render to update participant count
+                        alert(`Successfully joined "${trek.name}"! You will receive further details via email.`);
+                    }
+                } else {
+                    alert('Sorry, this trek is fully booked!');
+                }
+            }
         }
 
-        function renderTrails() {
-            const container = document.getElementById('trails-container');
-            if (!container) return;
-
-            container.innerHTML = trailsData.map(trail => `
-                <div class="trail-card" data-trail-id="${trail.id}" tabindex="0">
-                    <div class="trail-image">
-                        ${trail.imageUrl ? `<img src="${trail.imageUrl}" alt="${trail.name}">` : ''}
-                        <i class="fas fa-mountain"></i>
-                        <span class="difficulty-badge difficulty-${trail.difficulty}">${trail.difficulty}</span>
-                    </div>
-                    <div class="trail-content">
-                        <div class="trail-name">${trail.name}</div>
-                        <div class="trail-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            ${trail.location}
+        // View itinerary in modal
+        function viewItinerary(trekId) {
+            const trek = treksData.find(t => t.id === trekId);
+            if (trek) {
+                document.getElementById('modalTitle').textContent = `${trek.name} - Itinerary`;
+                
+                const modalBody = document.getElementById('modalBody');
+                modalBody.innerHTML = trek.itinerary.map(day => `
+                    <div class="itinerary-day">
+                        <div class="day-header">
+                            <i class="fas fa-calendar-day"></i>
+                            Day ${day.day}: ${day.title}
                         </div>
-                        <div class="trail-stats">
-                            <div class="trail-stat">
-                                <div class="trail-stat-value">${trail.distance}</div>
-                                <div class="trail-stat-label">Distance</div>
-                            </div>
-                            <div class="trail-stat">
-                                <div class="trail-stat-value">${trail.duration}</div>
-                                <div class="trail-stat-label">Duration</div>
-                            </div>
-                            <div class="trail-stat">
-                                <div class="trail-stat-value">${trail.elevation}</div>
-                                <div class="trail-stat-label">Elevation</div>
-                            </div>
-                        </div>
-                        <p class="trail-description">${trail.description}</p>
+                        <div class="day-details">${day.description}</div>
                     </div>
-                </div>
-            `).join('');
+                `).join('');
+                
+                openTrekModal();
+            }
         }
+
+        // Open trek modal
+        function openTrekModal() {
+            const modal = document.getElementById('trekModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close trek modal
+        function closeTrekModal() {
+            const modal = document.getElementById('trekModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Create post form (placeholder)
+        function openCreatePostForm() {
+            alert('Create Post feature coming soon! You will be able to organize your own treks here.');
+        }
+
+        // Utility function to format dates
+        function formatDate(dateString) {
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for CTA button
+            document.querySelector('.cta-button').addEventListener('click', function(e) {
+                if (this.getAttribute('onclick').includes('switchTab')) {
+                    setTimeout(() => {
+                        document.querySelector('#treks-section').scrollIntoView({ 
+                            behavior: 'smooth' 
+                        });
+                    }, 100);
+                }
+            });
+
+            // Add hover effects to trek cards
+            document.addEventListener('mouseover', function(e) {
+                if (e.target.closest('.trek-card')) {
+                    e.target.closest('.trek-card').style.transform = 'translateY(-4px)';
+                }
+            });
+
+            document.addEventListener('mouseout', function(e) {
+                if (e.target.closest('.trek-card')) {
+                    e.target.closest('.trek-card').style.transform = 'translateY(0)';
+                }
+            });
+        });
     </script>
 </body>
 </html>
