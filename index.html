@@ -1,1108 +1,702 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LWHSBNXT5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7LWHSBNXT5');
+    </script>
+    <!-- Primary Meta Tags -->
+    <title>Discover Events in Nepal | Khojum.com</title>
+    <meta name="title" content="Discover Events in Nepal | Khojum.com">
+    <meta name="description" content="Nepal's top event discovery platform. Find concerts, festivals, art exhibitions, and workshops in Kathmandu and beyond. Your guide to what's happening.">
+
+    <!-- Keywords -->
+    <meta name="keywords" content="events in kathmandu, nepal events, concerts, festivals, art exhibitions, workshops, entertainment, today's events, upcoming events, khojum">
+
+    <!-- SEO & Indexing -->
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://khojum.com">
+
+    <!-- Mobile Optimization -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrailMate - Connect with Fellow Hikers</title>
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+
+    <!-- Open Graph & Twitter Cards (dynamically updated) -->
+    <meta property="og:title" content="Discover Events in Nepal | Khojum.com">
+    <meta property="og:description" content="Nepal's top event discovery platform for concerts, festivals, and more.">
+    <meta property="og:image" content="https://khojum.com/assets/logo/og-image.png">
+    <meta property="og:url" content="https://khojum.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Discover Events in Nepal | Khojum.com">
+    <meta name="twitter:description" content="Nepal's top event discovery platform for concerts, festivals, and more.">
+    <meta name="twitter:image" content="https://khojum.com/assets/logo/og-image.png">
+
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --primary-color: #2d5a3d;
-            --primary-light: #4a7c5a;
-            --secondary-color: #8fbc8f;
-            --accent-color: #ff6b35;
+            --brand-red: #c8102e;
+            --brand-red-dark: #a70d26;
+            --brand-blue: #003893;
             --text-primary: #1a1a1a;
-            --text-secondary: #6b7280;
-            --text-light: #9ca3af;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-tertiary: #f1f5f9;
-            --border-color: #e2e8f0;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --spacing-xs: 4px;
-            --spacing-sm: 8px;
-            --spacing-md: 16px;
-            --spacing-lg: 24px;
-            --spacing-xl: 32px;
+            --text-secondary: #555;
+            --text-light: #888;
+            --bg-main: #f4f4f4;
+            --bg-card: #ffffff;
+            --border-color: #dbdbdb;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --font-primary: 'Inter', sans-serif;
+            --font-display: 'Lora', serif;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --header-height: 60px;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* GENERAL STYLES */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-primary); line-height: 1.6; color: var(--text-primary); background-color: var(--bg-main); padding-top: var(--header-height); }
+        .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 15px; }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg-secondary);
-            font-size: 14px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+        /* HEADER */
+        header.main-header { background-color: rgba(255, 255, 255, 0.9); height: var(--header-height); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; backdrop-filter: blur(10px); }
+        .header-content { display: flex; justify-content: center; align-items: center; width: 100%; }
+        .logo { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+        .logo span { color: var(--brand-red); }
 
-        .container {
-            max-width: 414px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-            background-color: var(--bg-primary);
-            min-height: 100vh;
-            box-shadow: var(--shadow-md);
-        }
+        /* HERO SECTION */
+        .hero-section { text-align: center; padding: 30px 0; }
+        .hero-section h1 { font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 12px; }
+        .hero-section p { font-size: 1.1rem; color: var(--text-secondary); max-width: 550px; margin: 0 auto; }
 
-        /* Header */
-        .header {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            padding: var(--spacing-md) 0;
-            border-bottom: 1px solid var(--border-color);
-        }
+        /* FILTERS */
+        .filter-section { padding: 15px 0; margin-bottom: 25px; background-color: var(--bg-main); }
+        .filter-bar { display: flex; gap: 10px; align-items: center; justify-content: flex-start; overflow-x: auto; padding: 5px 15px; scrollbar-width: none; -ms-overflow-style: none; margin: 0 -15px;}
+        .filter-bar::-webkit-scrollbar { display: none; }
+        .filter-button { background-color: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-primary); padding: 8px 18px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 0.9rem; white-space: nowrap; flex-shrink: 0; }
+        .filter-button:hover { border-color: var(--brand-red); color: var(--brand-red); }
+        .filter-button.active { border-color: var(--brand-red); color: white; background-color: var(--brand-red); }
 
-        .header-content {
+        /* EVENTS GRID & CARDS */
+        .events-section { margin-bottom: 40px; }
+        .events-grid { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 600px; margin: 0 auto; }
+        .event-card { background-color: var(--bg-card); border-radius: 0; overflow: hidden; display: flex; flex-direction: column; position: relative; border: 1px solid var(--border-color); }
+        
+        .event-card-header { display: flex; align-items: center; padding: 12px 15px; }
+        .organizer-logo { width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); margin-right: 12px; font-size: 20px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--brand-red); }
+        .organizer-info { font-weight: 600; }
+        .verified-badge { color: var(--brand-blue); margin-left: 5px; }
+
+        .event-image-container { position: relative; width: 100%; padding-top: 75%; /* 4:3 Aspect Ratio */ cursor: pointer; background-color: #eee; }
+        .event-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
+        
+        .event-actions { padding: 12px 15px; display: flex; gap: 20px; font-size: 1.5rem; }
+        .action-icon { cursor: pointer; transition: color 0.2s, transform 0.2s; }
+        .action-icon:hover { color: var(--text-light); }
+        .action-icon:active { transform: scale(0.9); }
+        .action-icon.saved { color: var(--brand-red); }
+        
+        .event-content { padding: 0 15px 20px; }
+        .event-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; }
+        .event-meta-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 10px; }
+        .event-meta-item i { color: var(--brand-red); width: 16px; text-align: center; }
+        .event-meta-item .highlight { color: var(--text-primary); font-weight: 500; }
+        .event-tags { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
+        .event-tag { background-color: var(--bg-main); color: var(--text-secondary); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
+        .details-link { display: inline-block; margin-top: 10px; color: var(--text-light); font-weight: 500; text-decoration: none; }
+
+        /* SKELETON & EMPTY STATE */
+        .skeleton-card { background-color: var(--bg-card); border: 1px solid var(--border-color); height: 600px; }
+        .skeleton-image { height: 450px; } .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
+        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); } .empty-state i { font-size: 4rem; color: var(--border-color); margin-bottom: 20px; }
+
+        /* EVENT DETAIL VIEW */
+        #event-detail-view { padding: 20px 0; }
+        .detail-card { background: var(--bg-card); box-shadow: none; overflow: hidden; }
+        .detail-header { position: relative; height: 450px; background-color: #eee;}
+        .detail-image { width: 100%; height: 100%; object-fit: cover; }
+        .detail-header-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 20%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; }
+        .detail-title { font-size: 2.2rem; font-weight: 700; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); margin-bottom: 10px; }
+        .detail-venue { font-size: 1.1rem; color: #eee; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
+        a.detail-venue-link { text-decoration: none; }
+        .detail-body { padding: 25px; }
+        .detail-main-content h3 { font-size: 1.3rem; margin-top: 15px; margin-bottom: 15px; border-bottom: 2px solid var(--brand-red); padding-bottom: 10px; }
+        .detail-description p { margin-bottom: 1.2em; color: var(--text-secondary); line-height: 1.8; }
+        .detail-meta-list { list-style: none; }
+        .detail-meta-list li { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; font-size: 1rem; }
+        .detail-meta-list i { color: var(--brand-red); font-size: 1.1rem; margin-top: 4px; width: 20px; }
+        .detail-action-bar { padding: 15px 25px; border-top: 1px solid var(--border-color); }
+        .action-btn.primary { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; font-size: 1.1rem; background-color: var(--brand-red); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        .back-to-events-btn { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; background: transparent; border: none; font-size: 1.5rem; color: var(--text-primary); cursor: pointer; padding: 10px; }
+
+        /* NEW: INVITE SECTION STYLES */
+        .invite-section { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-color); }
+        .invite-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .invite-btn { background-color: transparent; border: 2px solid var(--brand-red); color: var(--brand-red); padding: 8px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 0.9rem; }
+        .invite-btn:hover { background-color: var(--brand-red); color: white; }
+        .invite-btn i { margin-right: 8px; }
+        .guest-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; list-style: none; }
+        .guest-item { display: flex; align-items: center; gap: 15px; }
+        .guest-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-color); }
+        .guest-name { font-weight: 600; color: var(--text-primary); }
+        .guest-status { font-size: 0.85rem; }
+        .guest-status.going { color: var(--success-color); }
+        .guest-status.invited { color: var(--text-light); }
+        .guest-status.organizer { color: var(--brand-blue); font-weight: 500; }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 40px 20px; background: var(--bg-main); color: var(--text-secondary); margin-top: 40px; border-top: 1px solid var(--border-color); }
+        .footer-links { margin-top: 15px; }
+        .footer-links a { margin: 0 12px; color: var(--text-secondary); font-size: 1.4rem; transition: var(--transition); } .footer-links a:hover { color: var(--brand-red); }
+        .copyright { margin-top: 15px; opacity: 0.8; font-size: 0.9rem;}
+
+        .link-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: var(--spacing-sm);
-            align-items: center;
-        }
-
-        .create-post-btn {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .create-post-btn:hover {
-            background: #e55a2b;
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .profile-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.2s ease;
+            margin: 40px 0; /* Increased margin for better spacing */
         }
-
-        .profile-btn:hover {
-            background: var(--primary-light);
-            transform: translateY(-1px);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: var(--spacing-xl) 0;
-            text-align: center;
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-            margin: 0 -16px var(--spacing-lg) -16px;
-            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-            overflow: hidden;
-        }
-
-        .hero-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: var(--spacing-sm);
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 16px;
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-xl);
-            max-width: 280px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: var(--radius-lg);
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            box-shadow: var(--shadow-md);
-        }
-
-        .cta-button:hover {
-            background: var(--primary-light);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            background: var(--bg-tertiary);
-            border-radius: var(--radius-md);
-            padding: var(--spacing-xs);
-            margin-bottom: var(--spacing-lg);
-            gap: var(--spacing-xs);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .nav-tab {
-            flex: 1;
-            padding: 12px;
-            background: transparent;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-weight: 500;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        .nav-tab.active {
-            background: var(--bg-primary);
-            color: var(--primary-color);
-            box-shadow: var(--shadow-sm);
-            font-weight: 600;
-        }
-
-        .nav-tab:hover:not(.active) {
-            background: var(--border-color);
-        }
-
-        /* Content Sections */
-        .content-section {
-            display: none;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: var(--spacing-md);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        /* Trek Cards */
-        .trek-grid {
-            display: grid;
-            gap: var(--spacing-lg);
-            grid-template-columns: 1fr;
-        }
-
-        .trek-card {
-            background: var(--bg-primary);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-color);
-            transition: all 0.2s ease;
-            cursor: pointer;
-            box-shadow: var(--shadow-sm);
-            overflow: hidden;
-        }
-
-        .trek-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
-        }
-
-        .trek-header {
+        .link {
+            text-decoration: none;
+            color: #333; /* Darker color for a premium look */
+            font-size: 1.2rem;
+            margin: 0 20px;
             position: relative;
-            height: 200px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            padding: 10px 15px; /* Padding for a button-like feel */
+            border: 2px solid transparent; /* Border for hover effect */
+            border-radius: 5px; /* Rounded corners */
+            transition: all 0.3s ease; /* Smooth transition */
         }
-
-        .trek-header img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .link::after {
+            content: '→'; /* Slanted arrow */
             position: absolute;
-            top: 0;
-            left: 0;
+            right: -25px; /* Position the arrow */
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        .link:hover {
+            color: #fff; /* Change text color on hover */
+            background-color: var(--brand-red); /* Background color on hover */
+            border-color: var(--brand-red); /* Border color on hover */
+        }
+        .link:hover::after {
+            transform: translateX(5px); /* Arrow movement on hover */
         }
 
-        .trek-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            color: white;
-            padding: var(--spacing-lg);
-            z-index: 2;
-        }
-
-        .trek-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .trek-location {
-            font-size: 13px;
-            opacity: 0.9;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-        }
-
-        .difficulty-badge {
-            position: absolute;
-            top: var(--spacing-md);
-            right: var(--spacing-md);
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            box-shadow: var(--shadow-sm);
-            z-index: 3;
-        }
-
-        .difficulty-easy { background: #10b981; color: white; }
-        .difficulty-moderate { background: #f59e0b; color: white; }
-        .difficulty-hard { background: #ef4444; color: white; }
-
-        .participants-badge {
-            position: absolute;
-            top: var(--spacing-md);
-            left: var(--spacing-md);
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--primary-color);
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 12px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            z-index: 3;
-        }
-
-        .trek-content {
-            padding: var(--spacing-lg);
-        }
-
-        .trek-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .detail-item {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xs);
-        }
-
-        .detail-label {
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        .detail-value {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 14px;
-        }
-
-        .organizer-info {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-lg);
-            padding: var(--spacing-md);
-            background: var(--bg-secondary);
-            border-radius: var(--radius-md);
-        }
-
-        .organizer-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-
-        .organizer-details {
-            flex: 1;
-        }
-
-        .organizer-name {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 2px;
-        }
-
-        .organizer-stats {
-            font-size: 12px;
-            color: var(--text-secondary);
-            display: flex;
-            gap: var(--spacing-md);
-        }
-
-        .trek-description {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .trek-actions {
-            display: flex;
-            gap: var(--spacing-sm);
-        }
-
-        .action-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--spacing-xs);
-        }
-
-        .action-btn.primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .action-btn.secondary {
-            background: var(--bg-tertiary);
-            color: var(--text-secondary);
-        }
-
-        .action-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            opacity: 1;
-            align-items: center;
-            justify-content: center;
-            padding: var(--spacing-lg);
-        }
-
-        .modal-content {
-            background: var(--bg-primary);
-            border-radius: var(--radius-lg);
-            width: 100%;
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-header {
-            padding: var(--spacing-lg);
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            background: var(--bg-primary);
-            z-index: 10;
-        }
-
-        .modal-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 20px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-
-        .close-btn:hover {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-        }
-
-        .modal-body {
-            padding: var(--spacing-lg);
-        }
-
-        .itinerary-day {
-            margin-bottom: var(--spacing-lg);
-            padding: var(--spacing-md);
-            background: var(--bg-secondary);
-            border-radius: var(--radius-md);
-        }
-
-        .day-header {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: var(--spacing-sm);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .day-details {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* Bottom Navigation */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 414px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid var(--border-color);
-            padding: var(--spacing-sm) var(--spacing-md);
-            display: flex;
-            justify-content: space-around;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            z-index: 100;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            padding: var(--spacing-sm);
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 11px;
-            cursor: pointer;
-            transition: color 0.2s ease, transform 0.2s ease;
-            flex: 1;
-        }
-
-        .nav-item.active {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .nav-item:hover {
-            color: var(--primary-light);
-            transform: translateY(-2px);
-        }
-
-        .nav-item.active:hover {
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
         @media (min-width: 768px) {
-            body {
-                font-size: 16px;
-            }
-            .container {
-                max-width: 768px;
-                padding: 0 var(--spacing-lg);
-            }
-            .trek-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .bottom-nav {
-                max-width: 768px;
-            }
+            .event-card { border-radius: var(--border-radius); }
+        }
+
+        .event-venue a {
+            color: #007BFF; /* Default link color */
+            text-decoration: none; /* Remove underline */
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center items vertically */
+        }
+
+        .event-venue a:hover {
+            color: #0056b3; /* Change color on hover */
+        }
+
+        .event-venue i {
+            margin-right: 5px; /* Space between icon and text */
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <a href="/" class="logo">
-                    <span class="custom-k">|<</span>hoJUM
-                  </a>
-                  
-                <div class="header-actions">
-                    <button class="create-post-btn" onclick="openCreatePostForm()">
-                        <i class="fas fa-plus"></i>
-                        Post Your Trek
-                    </button>
-                   
-                    </button>
+    <header class="main-header">
+        <div class="container header-content">
+            <a href="/" class="logo"><span>खो</span>जुम</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Main Grid View (shown by default) -->
+        <div id="main-grid-view">
+            <section class="hero-section">
+                <h1>Kaa janey Kaa jane vanda vandai</h1>
+                <p>Discover the best events happening in Nepal. There's so much happening around..</p>
+            </section>
+            
+            <div class="filter-section">
+                <div class="filter-bar">
+                    <button class="filter-button active" data-filter="all">All Events</button>
+                    <button class="filter-button" data-filter="music">🎵 Music</button>
+                    <button class="filter-button" data-filter="art">🎨 Art</button>
+                    <button class="filter-button" data-filter="business">💼 Business</button>
+                    <button class="filter-button" data-filter="food">🍽️ Food</button>
+                    <button class="filter-button" data-filter="health">💪 Health</button>
+                    <button class="filter-button" data-filter="weekend">This Saturday</button>
+                    <button class="filter-button" data-filter="free">Free Events</button>
                 </div>
             </div>
-        </header>
 
-        <main>
-            <!-- Hero Section -->
-            <section class="hero">
-                <h1 class="hero-title">Find Your Trek Companions</h1>
-                <p class="hero-subtitle">Join organized treks and connect with fellow adventurers in Nepal</p>
-                <button class="cta-button" onclick="switchTab('treks', event)">
-                    <i class="fas fa-mountain"></i>
-                    Explore Treks
-                </button>
-            </section>
-
-            <!-- Navigation Tabs -->
-            <nav class="nav-tabs">
-                <button class="nav-tab active" data-tab="treks">Available Treks</button>
-                <button class="nav-tab" data-tab="my-treks">Read Stories</button>
-            </nav>
-
-            <!-- Treks Section -->
-            <section class="content-section active" id="treks-section">
-                <h2 class="section-title">
-                    <i class="fas fa-mountain"></i>
-                    Upcoming Trek Expeditions
-                </h2>
-                <div class="trek-grid" id="treks-container">
-                    <!-- Trek cards will be populated here -->
+            <section class="events-section">
+                <div class="events-grid" id="events-container">
+                    <!-- Event cards are rendered here by JS -->
+                </div>
+                
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <i class="fas fa-calendar-times"></i>
+                    <h3>No events found</h3>
+                    <p>Try adjusting your filters or search terms</p>
                 </div>
             </section>
-
-            <!-- My Treks Section -->
-            <section class="content-section" id="my-treks-section">
-                <h2 class="section-title">
-                    <i class="fas fa-backpack"></i>
-                    My Trek Plans
-                </h2>
-                <div class="trek-grid">
-                    <div style="text-align: center; padding: 40px 20px; color: var(--text-secondary);">
-                        <i class="fas fa-hiking" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
-                        <p>You haven't joined any treks yet. Explore available treks to get started!</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Trek Details Modal -->
-        <div class="modal" id="trekModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="modalTitle">Trek Itinerary</h3>
-                    <button class="close-btn" onclick="closeTrekModal()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="modal-body" id="modalBody">
-                    <!-- Itinerary content will be populated here -->
-                </div>
-            </div>
         </div>
 
-        <!-- Bottom padding for fixed nav -->
-        <div style="height: 80px;"></div>
+        <!-- Event Detail View (hidden by default) -->
+        <div id="event-detail-view" style="display: none;">
+            <!-- Content for single event is rendered here by JS -->
+        </div>
+    </main>
 
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav">
-            <a href="#" class="nav-item active" data-nav="explore">
-                <i class="fas fa-compass"></i>
-                <span>Explore</span>
-            </a>
-            <a href="#" class="nav-item" data-nav="saved">
-                <i class="fas fa-heart"></i>
-                <span>Saved</span>
-            </a>
-            <a href="#" class="nav-item" data-nav="chats">
-                <i class="fas fa-comments"></i>
-                <span>Chats</span>
-            </a>
-            <a href="#" class="nav-item" data-nav="profile">
-                <i class="fas fa-user-circle"></i>
-                <span>Profile</span>
-            </a>
-        </nav>
-    </div>
-
+    <footer>
+        <div class="container">
+            <p><strong>Go.Do.Feel.Repeat</strong> <a href="mailto:ceo@khojum.com?subject=Feedback" style="color: var(--text-primary); font-weight: 500;"></a></p>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/khojum.comm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Follow on Instagram">
+                    <i class="fab fa-instagram"></i> 
+                </a>
+            </div>
+            <div class="link-container">
+                <a href="sharktank.html" class="link">Shark Tank Nepal</a>
+                <a href="expired.html" class="link">Expired Events</a>
+            </div>
+            <p class="copyright">Khojum Inc. © 2025</p>
+        </div>
+    </footer>
+    
     <script>
-        // Enhanced trek data with detailed information
-        const treksData = [
-            {
-                id: 1,
-                name: "Annapurna Base Camp Trek",
-                location: "Annapurna Region",
-                difficulty: "moderate",
-                duration: "12 days",
-                startLocation: "Pokhara",
-                startDate: "2024-10-15",
-                participants: 8,
-                maxParticipants: 12,
-                price: "$1,200",
-                organizer: {
-                    name: "Pemba Sherpa",
-                    age: 32,
-                    gender: "Male",
-                    experience: "8 years",
-                    completedTreks: 45
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // --- DATA ---
+        // Note: I've added a new 'invite' object to the "Artha Run Club" event
+        const eventsData = [
+        
+              {  id: 4,
+                title: "Artha Run Club",
+                date: "Every Saturday",
+                time: "6:00 AM",
+                venue: "International Club, Lalitpur",
+                gmapsUrl: "https://maps.app.goo.gl/Mt5qZZBGyhVjXKUYA",
+                price: "Free",
+                image: "assets/runclub.png",
+                category: "health",
+                tags: ["Running", "Fitness", "Community"],
+                organizer: { 
+                    name: "Artha Group", 
+                    verified: true,
+                    instagram: "https://www.instagram.com/arthagroup"
                 },
-                description: "Experience the stunning Annapurna massif with this classic trek to base camp. Perfect blend of culture and mountain views.",
-                imageUrl: 'https://images.unsplash.com/photo-1582239401832-ef2f1e29e843?ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
-                itinerary: [
-                    { day: 1, title: "Arrival in Pokhara", description: "Arrive in Pokhara, meet your guide and fellow trekkers. Rest and prepare for the trek." },
-                    { day: 2, title: "Pokhara to Nayapul to Tikhedhunga", description: "Drive to Nayapul (1,070m) and trek to Tikhedhunga (1,540m). 4-5 hours trekking." },
-                    { day: 3, title: "Tikhedhunga to Ghorepani", description: "Trek through rhododendron forests to Ghorepani (2,874m). 5-6 hours." },
-                    { day: 4, title: "Poon Hill sunrise and trek to Tadapani", description: "Early morning hike to Poon Hill (3,210m) for sunrise, then trek to Tadapani (2,630m)." },
-                    { day: 5, title: "Tadapani to Chhomrong", description: "Trek through beautiful forests to Chhomrong village (2,170m). 5-6 hours." },
-                    { day: 6, title: "Chhomrong to Dovan", description: "Descend into Modi Khola valley and trek to Dovan (2,600m). 5-6 hours." },
-                    { day: 7, title: "Dovan to Deurali", description: "Continue up the valley to Deurali (3,230m). 4-5 hours trekking." },
-                    { day: 8, title: "Deurali to Annapurna Base Camp", description: "Final push to ABC (4,130m)! Stunning 360° mountain views. 2-3 hours." },
-                    { day: 9, title: "ABC to Bamboo", description: "Descend through Machhapuchhre Base Camp to Bamboo (2,310m). 6-7 hours." },
-                    { day: 10, title: "Bamboo to Jhinu Danda", description: "Trek to Jhinu Danda (1,780m) and enjoy natural hot springs. 5-6 hours." },
-                    { day: 11, title: "Jhinu Danda to Nayapul", description: "Final day trekking to Nayapul, then drive back to Pokhara. 4-5 hours." },
-                    { day: 12, title: "Departure", description: "Free day in Pokhara or departure to Kathmandu." }
-                ]
+                availability: "available",
+                attendeeCount: 85,
+                duration: "1.5 hours",
+                description: "All paces and ages are welcome, so bring your energy, your smiles, and maybe a friend or two!<br><br>Location: International Club, Lalitpur<br>Meetup Time: 6:00 AM<br>Start Time: 7:00 AM<br>Distance: 6k<br><br>• Parking: Available for two-wheelers and four-wheelers (Rs 30/hr)<br>• Bag Drop: Safe space to leave your belongings<br><br>Come for the run, stay for the coffee, conversations, and connections after. See you Saturday!<br><b>\n Things you need:</b><br>• Register for the Run<br>• Download Strava: <a href='https://www.strava.com/mobile' target='_blank'>Strava App</a> & register<br>• Choose a comfortable pace group<br>• Be you, no pressure. <br> •Follow Organizer on instagram <a href='https://www.instagram.com/artha.runclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' target='_blank'>Instagram</a> ",
+                bookingUrl: "https://lu.ma/jb7oav4k",
+                actionText: "Register Now",
+                actionIcon: "fa-running",
+                // NEW: Invite-only data
+                invite: {
+                    enabled: true,
+                    organizer: {
+                        name: "Aman Adhikari",
+                        avatarUrl: "https://randomuser.me/api/portraits/men/1.jpg"
+                    },
+                    guests: [
+                        { name: "Sanjaya Subedi", avatarUrl: "https://randomuser.me/api/portraits/men/2.jpg", status: "Going" },
+                        { name: "Pukar Jha", avatarUrl: "https://randomuser.me/api/portraits/women/3.jpg", status: "Going" },
+                        { name: "Rohit Paudel", avatarUrl: "https://randomuser.me/api/portraits/men/4.jpg", status: "Invited" },
+                        { name: "Rabina Joshi", avatarUrl: "https://randomuser.me/api/portraits/women/5.jpg", status: "Going" },
+                        { name: "Kushal Bhurtel", avatarUrl: "https://randomuser.me/api/portraits/men/6.jpg", status: "Invited" },
+                    ]
+                }
+            },
+           
+            {
+                id: 6,
+                title: "Rug Museum",
+                date: "Everyday",
+                time: "10 AM - 6 PM",
+                venue: "Jan Kath, near Boudha",
+                gmapsUrl: "https://maps.app.goo.gl/7DGgzws3tod8j3AW8",
+                price: "Free",
+                image: "assets/rugmuseum.png",
+                category: "Art",
+                tags: ["Rugs", "Art", "Asthetic"],
+                organizer: { name: "Rug Museum", verified: false },
+                availability: "available",
+                description: "Explore a variety of traditional and contemporary rugs showcasing the rich heritage of Nepal.",
+                bookingUrl: "https://www.tiktok.com/@te4nz/video/7299830094464437505",
+                actionText: "Watch Video", 
+                actionIcon: "fa-arrow-right"
+            },
+             
+            {
+                id: 7, // New ID for the event
+                title: "Patan Pottery",
+                date: "Everyday",
+                time: "10:00 AM - 7:00 PM",
+                venue: "Mangal Bazar, Patan",
+                gmapsUrl: "https://maps.app.goo.gl/928GyhrsRRgEuytD8",
+                price: "500",
+                image: "assets/patan_pottery.png", // Add an image path if available
+                category: "Art",
+                tags: ["Pottery", "Art", "Family"],
+                organizer: { 
+                    name: "Patan Pottery Studio", 
+                    verified: true,
+                    instagram: "https://www.instagram.com/patanpottery" // Replace with actual Instagram link if available
+                },
+                availability: "available",
+                attendeeCount: 0, // Initial count, can be updated later
+                duration: "1 hours", // Duration of the event
+                description: "Experience the best pottery experience at Patan Pottery! Enjoy a new experience with your family where you can learn and paint. You can choose to make and paint your pottery, leave it, and come back to pick it up the next day. Enjoy a cup of coffee while you create! All ages are welcome.",
+                bookingUrl: "https://www.tiktok.com/@datewithbebe/video/7450685638715690258?q=patan%20pottery&t=1752516080487", // Replace with actual booking URL
+                actionText: "Learn more about the place",
+                actionIcon: "fa-paint-brush", // Use an appropriate icon
             },
             {
-                id: 2,
-                name: "Everest Base Camp Trek",
-                location: "Khumbu Region",
-                difficulty: "hard",
-                duration: "16 days",
-                startLocation: "Lukla",
-                startDate: "2024-10-20",
-                participants: 6,
-                maxParticipants: 10,
-                price: "$2,500",
-                organizer: {
-                    name: "Ang Dorje Sherpa",
-                    age: 28,
-                    gender: "Male",
-                    experience: "6 years",
-                    completedTreks: 32
-                },
-                description: "The ultimate Himalayan adventure to the base camp of the world's highest peak. Witness Sherpa culture and stunning mountain vistas.",
-                imageUrl: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
-                itinerary: [
-                    { day: 1, title: "Fly to Lukla, trek to Phakding", description: "Scenic flight to Lukla (2,800m), meet team, trek to Phakding (2,652m). 3-4 hours." },
-                    { day: 2, title: "Phakding to Namche Bazaar", description: "Cross suspension bridges, enter Sagarmatha National Park, trek to Namche (3,440m). 5-6 hours." },
-                    { day: 3, title: "Acclimatization day in Namche", description: "Rest day for acclimatization. Optional hike to Everest View Hotel or Khumjung village." },
-                    { day: 4, title: "Namche to Tengboche", description: "Trek through forests to Tengboche Monastery (3,867m). 5-6 hours with stunning mountain views." },
-                    { day: 5, title: "Tengboche to Dingboche", description: "Continue to Dingboche village (4,410m) with views of Lhotse and Ama Dablam. 5-6 hours." },
-                    { day: 6, title: "Acclimatization in Dingboche", description: "Rest day with optional hike to Nagarjun Hill (5,083m) for better acclimatization." },
-                    { day: 7, title: "Dingboche to Lobuche", description: "Trek past memorials to Lobuche (4,940m). Views of Khumbu Glacier. 5-6 hours." },
-                    { day: 8, title: "Lobuche to EBC and back to Gorak Shep", description: "Early trek to Everest Base Camp (5,364m), return to Gorak Shep (5,164m). 7-8 hours." },
-                    { day: 9, title: "Kala Patthar and descend to Pheriche", description: "Early morning hike to Kala Patthar (5,545m) for Everest sunrise, descend to Pheriche. 6-7 hours." },
-                    { day: 10, title: "Pheriche to Namche", description: "Long descent back to Namche Bazaar. 6-7 hours through familiar terrain." },
-                    { day: 11, title: "Namche to Lukla", description: "Final day of trekking back to Lukla. 6-7 hours downhill." },
-                    { day: 12, title: "Fly back to Kathmandu", description: "Morning flight to Kathmandu, rest and celebrate completion!" }
-                ]
+                id: 8,
+                title: "Kaiser Library",
+                date: "Every Day",
+                time: "9:00 AM - 5:00 PM",
+                venue: "Kantipath",
+                gmapsUrl: "https://maps.app.goo.gl/rfbpUsCGgnbLXvMS7",
+                price: "Free",
+                image: "assets/kaiserlibrary.png",
+                category: "art",
+                tags: ["Reading", "Quiet", "Productive"],
+                organizer: { name: "Kaiser Library", verified: true },
+                availability: "available",
+                description: "Kaiser Library offers a serene environment to spend time and read books in the courtyard and inside the library. One of the rare gems of Nepal that most don't know about.",
+                bookingUrl: "https://www.tiktok.com/@adorrree_me/video/7493883616259296520",
+                actionText: "Watch Video",
+                actionIcon: "fa-arrow-right"
             },
+ 
             {
-                id: 3,
-                name: "Mardi Himal Trek",
-                location: "Annapurna Region",
-                difficulty: "easy",
-                duration: "7 days",
-                startLocation: "Pokhara",
-                startDate: "2024-10-10",
-                participants: 5,
-                maxParticipants: 8,
-                price: "$650",
-                organizer: {
-                    name: "Maya Gurung",
-                    age: 26,
-                    gender: "Female",
-                    experience: "4 years",
-                    completedTreks: 28
-                },
-                description: "A hidden gem trek offering spectacular mountain views with fewer crowds. Perfect for those seeking tranquility in the Himalayas.",
-                imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
-                itinerary: [
-                    { day: 1, title: "Pokhara to Kande, trek to Deurali", description: "Drive to Kande (1,770m) and trek to Deurali (2,100m). 2-3 hours easy walk." },
-                    { day: 2, title: "Deurali to Forest Camp", description: "Trek through beautiful rhododendron forest to Forest Camp (2,520m). 4-5 hours." },
-                    { day: 3, title: "Forest Camp to High Camp", description: "Continue ascending to High Camp (3,580m) with amazing mountain views. 3-4 hours." },
-                    { day: 4, title: "High Camp to Mardi Base Camp and back", description: "Early morning trek to Mardi Base Camp (4,500m) and return to High Camp. 6-7 hours." },
-                    { day: 5, title: "High Camp to Siding village", description: "Descend through different route to Siding village (1,750m). 5-6 hours." },
-                    { day: 6, title: "Siding to Pokhara", description: "Trek to Lumre and drive back to Pokhara. 2-3 hours trek + 1 hour drive." },
-                    { day: 7, title: "Departure", description: "Free day in Pokhara or departure to Kathmandu." }
-                ]
+                id: 9,
+                title: "Tokha Saturday Mela",
+                date: "2025-07-19",
+                time: "3:00 PM - 7:00 PM",
+                venue: "Tokha, near Ganesh Temple",
+                gmapsUrl: "https://maps.app.goo.gl/YLEH9Z5SStiW6Jn38",
+                price: "Free",
+                image: "assets/tokhamela.png",
+                category: "food",
+                tags: ["Cultural", "Food Festival", "Newari Cuisine"],
+                organizer: { name: "Local Community", verified: false },
+                availability: "available",
+                description: "Celebrate community and cuisine at Tokha's vibrant Saturday food and culture mela. Enjoy traditional Newari delicacies, live music, and local crafts.",
+                bookingUrl: "https://www.tiktok.com/@storiesofmanisha/video/7474071111668600082",
+                actionText: "Watch Video",
+                actionIcon: "fa-arrow-right"
             },
-            {
-                id: 4,
-                name: "Langtang Valley Trek",
-                location: "Langtang Region",
-                difficulty: "moderate",
-                duration: "10 days",
-                startLocation: "Syabrubesi",
-                startDate: "2024-10-25",
-                participants: 4,
-                maxParticipants: 10,
-                price: "$950",
-                organizer: {
-                    name: "Tenzin Tamang",
-                    age: 35,
-                    gender: "Male",
-                    experience: "10 years",
-                    completedTreks: 52
-                },
-                description: "Explore the beautiful Langtang Valley, known as the 'Valley of Glaciers'. Rich in Tamang culture and stunning alpine scenery.",
-                imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
-                itinerary: [
-                    { day: 1, title: "Drive to Syabrubesi", description: "Drive from Kathmandu to Syabrubesi (1,550m). 7-8 hours scenic drive." },
-                    { day: 2, title: "Syabrubesi to Lama Hotel", description: "Trek through forests along Langtang river to Lama Hotel (2,380m). 5-6 hours." },
-                    { day: 3, title: "Lama Hotel to Langtang village", description: "Continue to Langtang village (3,430m) with stunning mountain views. 5-6 hours." },
-                    { day: 4, title: "Langtang village to Kyanjin Gompa", description: "Trek to Kyanjin Gompa (3,870m), visit ancient monastery. 3-4 hours." },
-                    { day: 5, title: "Acclimatization day", description: "Rest day with optional hikes to Kyanjin Ri (4,773m) or Tserko Ri (4,984m)." },
-                    { day: 6, title: "Kyanjin Gompa to Lama Hotel", description: "Descend back to Lama Hotel. 6-7 hours downhill." },
-                    { day: 7, title: "Lama Hotel to Thulo Syabru", description: "Trek to Thulo Syabru village (2,230m). 5-6 hours through forests." },
-                    { day: 8, title: "Thulo Syabru to Sing Gompa", description: "Trek to Sing Gompa (3,330m) with yak cheese factory visit. 4-5 hours." },
-                    { day: 9, title: "Sing Gompa to Gosaikunda and back", description: "Day trip to sacred Gosaikunda lakes (4,380m) and return. 8-9 hours." },
-                    { day: 10, title: "Return to Kathmandu", description: "Drive back to Kathmandu via Dhunche. 6-7 hours drive." }
-                ]
-            }
+            
+           
+          
         ];
 
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', function() {
-            renderTreks();
-            setupEventListeners();
-        });
+        let currentFilter = 'all';
+        let savedEvents = new Set();
+        
+        const mainGridView = document.getElementById('main-grid-view');
+        const eventDetailView = document.getElementById('event-detail-view');
+        const eventsContainer = document.getElementById('events-container');
+        const emptyState = document.getElementById('empty-state');
+        const filterButtons = document.querySelectorAll('.filter-button');
 
-        // Render trek cards
-        function renderTreks() {
-            const container = document.getElementById('treks-container');
-            container.innerHTML = '';
-            
-            treksData.forEach(trek => {
-                const trekCard = createTrekCard(trek);
-                container.appendChild(trekCard);
-            });
+        function init() {
+            setupEventListeners();
+            handleRouting();
+            window.addEventListener('hashchange', handleRouting);
         }
 
-        // Create trek card element
-        function createTrekCard(trek) {
-            const card = document.createElement('div');
-            card.className = 'trek-card';
-            card.innerHTML = `
-                <div class="trek-header">
-                    <img src="${trek.imageUrl}" alt="${trek.name}" onerror="this.style.display='none'">
-                    <div class="difficulty-badge difficulty-${trek.difficulty}">${trek.difficulty}</div>
-                    <div class="participants-badge">
-                        <i class="fas fa-users"></i>
-                        ${trek.participants}/${trek.maxParticipants}
+        function handleRouting() {
+            const hash = window.location.hash;
+            if (hash.startsWith('#event-')) {
+                const eventId = parseInt(hash.substring('#event-'.length), 10);
+                showDetailPage(eventId);
+            } else {
+                showGridView();
+            }
+        }
+        
+        function updateMetaTags(title, description, imageUrl, url) {
+            document.title = title;
+            document.querySelector('meta[name="title"]').setAttribute("content", title);
+            document.querySelector('meta[property="og:title"]').setAttribute("content", title);
+            document.querySelector('meta[name="twitter:title"]').setAttribute("content", title);
+
+            document.querySelector('meta[name="description"]').setAttribute("content", description);
+            document.querySelector('meta[property="og:description"]').setAttribute("content", description);
+            document.querySelector('meta[name="twitter:description"]').setAttribute("content", description);
+
+            document.querySelector('meta[property="og:image"]').setAttribute("content", imageUrl);
+            document.querySelector('meta[name="twitter:image"]').setAttribute("content", imageUrl);
+            
+            document.querySelector('meta[property="og:url"]').setAttribute("content", url);
+            document.querySelector('link[rel="canonical"]').setAttribute("href", url);
+        }
+
+        function showGridView() {
+            mainGridView.style.display = 'block';
+            eventDetailView.style.display = 'none';
+            if (window.location.hash) {
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            }
+            updateMetaTags(
+                "Discover Events in Nepal | Khojum.com",
+                "Nepal's top event discovery platform for concerts, festivals, art exhibitions, and workshops in Kathmandu and beyond. Your guide to what's happening.",
+                "https://khojum.com/assets/logo/og-image.png",
+                "https://khojum.com"
+            );
+            applyFilters();
+        }
+        // In your existing bookTicket function
+window.bookTicket = (e, eventId) => {
+    const event = eventsData.find(ev => ev.id === eventId);
+    const ticketUrl = `tickets.html?event=${eventId}&title=${encodeURIComponent(event.title)}&price=${event.price}`;
+    window.open(ticketUrl, '_blank');
+};
+
+        function showDetailPage(eventId) {
+            const event = eventsData.find(e => e.id === eventId);
+            mainGridView.style.display = 'none';
+            eventDetailView.style.display = 'block';
+            window.scrollTo(0, 0);
+
+            if (!event) {
+                eventDetailView.innerHTML = `<div class="empty-state"><h3>Event Not Found</h3><p>The event you are looking for does not exist.</p><button class="back-to-events-btn" onclick="window.location.hash=''">Back to All Events</button></div>`;
+                return;
+            }
+            
+            const eventUrl = `${window.location.origin}${window.location.pathname}#event-${event.id}`;
+            const imageUrl = `${window.location.origin}/${event.image}`;
+
+            updateMetaTags(
+                `${event.title} | Khojum.com`,
+                event.description.substring(0, 160) + '...',
+                imageUrl,
+                eventUrl
+            );
+
+            const formattedDate = formatEventDate(event.date, { weekday: 'long', month: 'long', day: 'numeric' });
+            const actionIcon = event.actionIcon || 'fa-ticket-alt';
+            const actionText = event.actionText || 'Get Tickets';
+            
+            // NEW: Generate the invite section HTML if data exists
+            const inviteSectionHtml = (event.invite && event.invite.enabled) ? createInviteSectionHTML(event.invite) : '';
+
+            eventDetailView.innerHTML = `
+                <button class="back-to-events-btn" onclick="window.location.hash=''"><i class="fas fa-arrow-left"></i></button>
+                <div class="detail-card">
+                    <header class="detail-header">
+                        <img src="${event.image}" alt="${event.title}" class="detail-image">
+                        <div class="detail-header-overlay">
+                            <h1 class="detail-title">${event.title}</h1>
+                            <a href="${event.gmapsUrl || '#'}" target="_blank" rel="noopener noreferrer" class="detail-venue-link">
+                                <p class="detail-venue"><i class="fas fa-map-marker-alt"></i> ${event.venue}</p>
+                            </a>
+                        </div>
+                    </header>
+                    <div class="detail-body">
+                         <ul class="detail-meta-list">
+                            <li><i class="fas fa-calendar-day"></i><div><strong>Date:</strong><br>${formattedDate}</div></li>
+                            <li><i class="fas fa-clock"></i><div><strong>Time:</strong><br>${event.time}</div></li>
+                            <li><i class="fas fa-ticket-alt"></i><div><strong>Price:</strong><br>${event.price}</div></li>
+                            <li><i class="fas fa-building"></i><div><strong>Organizer:</strong><br>${event.organizer.name} ${event.organizer.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}</div></li>
+                        </ul>
+
+                        <div class="detail-main-content">
+                            <h3>About the Event</h3>
+                            <div class="detail-description"><p>${event.description.replace(/<br>/g, '</p><p>').replace(/\\n/g, '</p><p>')}</p></div>
+                        </div>
+                        
+                        <!-- Inject Invite Section Here -->
+                        ${inviteSectionHtml}
+
                     </div>
-                    <div class="trek-overlay">
-                        <div class="trek-title">${trek.name}</div>
-                        <div class="trek-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            ${trek.location}
-                        </div>
-                    </div>
-                </div>
-                <div class="trek-content">
-                    <div class="trek-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Duration</span>
-                            <span class="detail-value">${trek.duration}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Starting Point</span>
-                            <span class="detail-value">${trek.startLocation}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Start Date</span>
-                            <span class="detail-value">${new Date(trek.startDate).toLocaleDateString()}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Price</span>
-                            <span class="detail-value">${trek.price}</span>
-                        </div>
-                    </div>
-                    <div class="organizer-info">
-                        <div class="organizer-avatar">
-                            ${trek.organizer.name.charAt(0)}
-                        </div>
-                        <div class="organizer-details">
-                            <div class="organizer-name">${trek.organizer.name}</div>
-                            <div class="organizer-stats">
-                                <span>${trek.organizer.experience} experience</span>
-                                <span>${trek.organizer.completedTreks} treks completed</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="trek-description">
-                        ${trek.description}
-                    </div>
-                    <div class="trek-actions">
-                        <button class="action-btn primary" onclick="joinTrek(${trek.id})">
-                            <i class="fas fa-user-plus"></i>
-                            Join Trek
-                        </button>
-                        <button class="action-btn secondary" onclick="viewItinerary(${trek.id})">
-                            <i class="fas fa-list"></i>
-                            View Itinerary
+                    <div class="detail-action-bar">
+                         <button class="action-btn primary" onclick="bookTicket(event, ${event.id})">
+                            <i class="fas ${actionIcon}"></i> ${actionText}
                         </button>
                     </div>
                 </div>
             `;
-            return card;
         }
-
-        // Setup event listeners
-        function setupEventListeners() {
-            // Tab switching
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.addEventListener('click', (e) => {
-                    switchTab(tab.dataset.tab, e);
-                });
-            });
-
-            // Bottom navigation
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    setActiveNavItem(item);
-                });
-            });
-
-            // Modal close on background click
-            document.getElementById('trekModal').addEventListener('click', (e) => {
-                if (e.target === e.currentTarget) {
-                    closeTrekModal();
-                }
-            });
-
-            // Profile button
-            document.getElementById('profileBtn').addEventListener('click', () => {
-                alert('Profile functionality coming soon!');
-            });
-        }
-
-        // Switch between tabs
-        function switchTab(tabName, event) {
-            if (event) event.preventDefault();
-            
-            // Update tab buttons
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-
-            // Update content sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(`${tabName}-section`).classList.add('active');
-        }
-
-        // Set active navigation item
-        function setActiveNavItem(activeItem) {
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            activeItem.classList.add('active');
-            
-            // Handle navigation based on data-nav attribute
-            const navType = activeItem.dataset.nav;
-            switch(navType) {
-                case 'explore':
-                    // Already on main page
-                    break;
-                case 'saved':
-                    alert('Saved treks feature coming soon!');
-                    break;
-                case 'chats':
-                    alert('Chat feature coming soon!');
-                    break;
-                case 'profile':
-                    alert('Profile page coming soon!');
-                    break;
-            }
-        }
-
-        // Join trek functionality
-        function joinTrek(trekId) {
-            const trek = treksData.find(t => t.id === trekId);
-            if (trek) {
-                if (trek.participants < trek.maxParticipants) {
-                    if (confirm(`Are you sure you want to join "${trek.name}"?`)) {
-                        trek.participants += 1;
-                        renderTreks(); // Re-render to update participant count
-                        alert(`Successfully joined "${trek.name}"! You will receive further details via email.`);
-                    }
-                } else {
-                    alert('Sorry, this trek is fully booked!');
-                }
-            }
-        }
-
-        // View itinerary in modal
-        function viewItinerary(trekId) {
-            const trek = treksData.find(t => t.id === trekId);
-            if (trek) {
-                document.getElementById('modalTitle').textContent = `${trek.name} - Itinerary`;
-                
-                const modalBody = document.getElementById('modalBody');
-                modalBody.innerHTML = trek.itinerary.map(day => `
-                    <div class="itinerary-day">
-                        <div class="day-header">
-                            <i class="fas fa-calendar-day"></i>
-                            Day ${day.day}: ${day.title}
-                        </div>
-                        <div class="day-details">${day.description}</div>
+        
+        // NEW: Function to create the HTML for the invite section
+        function createInviteSectionHTML(inviteData) {
+            const organizerHtml = `
+                <li class="guest-item">
+                    <img src="${inviteData.organizer.avatarUrl}" alt="${inviteData.organizer.name}" class="guest-avatar">
+                    <div>
+                        <div class="guest-name">${inviteData.organizer.name}</div>
+                        <div class="guest-status organizer">Organizer</div>
                     </div>
-                `).join('');
-                
-                openTrekModal();
+                </li>
+            `;
+            
+            const guestsHtml = inviteData.guests.map(guest => `
+                <li class="guest-item">
+                    <img src="${guest.avatarUrl}" alt="${guest.name}" class="guest-avatar">
+                    <div>
+                        <div class="guest-name">${guest.name}</div>
+                        <div class="guest-status ${guest.status.toLowerCase()}">${guest.status}</div>
+                    </div>
+                </li>
+            `).join('');
+
+            return `
+                <section class="invite-section">
+                    <div class="invite-header">
+                        <h3>Who's Going</h3>
+                        <button class="invite-btn" onclick="showNotification('Invite feature coming soon!', 'info')">
+                            <i class="fas fa-user-plus"></i> Invite
+                        </button>
+                    </div>
+                    <ul class="guest-list">
+                        ${organizerHtml}
+                        ${guestsHtml}
+                    </ul>
+                </section>
+            `;
+        }
+
+        function setupEventListeners() {
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    currentFilter = button.dataset.filter;
+                    applyFilters();
+                });
+            });
+        }
+
+        function applyFilters() {
+            showLoadingState();
+            setTimeout(() => {
+                let filteredEvents = eventsData;
+                if (currentFilter !== 'all') {
+                    if (currentFilter === 'weekend') {
+                        const weekendDates = getWeekendDates();
+                        filteredEvents = filteredEvents.filter(event => weekendDates.includes(event.date));
+                    } else if (currentFilter === 'free') {
+                        filteredEvents = filteredEvents.filter(event => event.price.toLowerCase().includes('free'));
+                    } else {
+                        filteredEvents = filteredEvents.filter(event => event.category.toLowerCase() === currentFilter);
+                    }
+                }
+                renderEvents(filteredEvents);
+            }, 200);
+        }
+
+        function renderEvents(events) {
+            hideLoadingState();
+            emptyState.style.display = events.length === 0 ? 'block' : 'none';
+            eventsContainer.innerHTML = events.map(event => createEventCard(event)).join('');
+        }
+
+        function createEventCard(event) {
+            const formattedDate = formatEventDate(event.date, { weekday: 'short', month: 'short', day: 'numeric' });
+            const organizerInitial = event.organizer.name.charAt(0).toUpperCase();
+
+            return `
+                <div class="event-card">
+                    <div class="event-card-header">
+                        <div class="organizer-logo">${organizerInitial}</div>
+                        <div class="organizer-info">
+                            ${event.organizer.name}
+                            ${event.organizer.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}
+                        </div>
+                    </div>
+                    <div class="event-image-container" onclick="viewDetails(event, ${event.id})">
+                        <div class="event-image" style="background-image: url('${event.image}')"></div>
+                    </div>
+                    <div class="event-actions">
+                        <i class="action-icon fas fa-heart ${savedEvents.has(event.id) ? 'saved' : ''}" onclick="toggleSave(event, ${event.id})"></i>
+                        <i class="action-icon fas fa-share-alt" onclick="shareEvent(event, ${event.id})"></i>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">${event.title}</h3>
+                        <div class="event-meta-item">
+                            <i class="fas fa-calendar-alt"></i><span class="highlight">${formattedDate}</span> at ${event.time}
+                        </div>
+                        <div class="event-meta-item">
+                            <i class="fas fa-map-marker-alt"></i><span class="highlight">${event.venue}</span>
+                        </div>
+                        <a href="#event-${event.id}" class="details-link" onclick="viewDetails(event, ${event.id})">View details...</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- Global Functions for onclick Handlers ---
+        window.toggleSave = (e, eventId) => { e.stopPropagation(); const icon = e.currentTarget; savedEvents.has(eventId) ? (savedEvents.delete(eventId), icon.classList.remove('saved')) : (savedEvents.add(eventId), icon.classList.add('saved')); };
+        window.shareEvent = (e, eventId) => { 
+            e.stopPropagation(); 
+            const event = eventsData.find(ev => ev.id === eventId);
+            const url = `${window.location.origin}${window.location.pathname}#event-${eventId}`;
+            if (navigator.share) {
+                navigator.share({
+                    title: event.title,
+                    text: `Check out this event on Khojum: ${event.title}`,
+                    url: url,
+                }).catch((error) => console.log('Error sharing', error));
+            } else {
+                navigator.clipboard.writeText(url).then(() => showNotification('Event link copied!'));
             }
+        };
+        window.viewDetails = (e, eventId) => { 
+            e.preventDefault();
+            window.location.hash = `#event-${eventId}`; 
+        };
+        window.bookTicket = (e, eventId) => { 
+            e.stopPropagation(); 
+            const event = eventsData.find(ev => ev.id === eventId); 
+            if (event && event.bookingUrl) window.open(event.bookingUrl, '_blank');
+            else { showNotification('Booking information not available.', 'info'); }
+        };
+
+        // --- Helper Functions ---
+        function formatEventDate(dateString, formatOptions) {
+            if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+                const dt = new Date(dateString);
+                const adjustedDate = new Date(dt.valueOf() + dt.getTimezoneOffset() * 60 * 1000);
+                return adjustedDate.toLocaleDateString('en-US', formatOptions);
+            }
+            return dateString;
         }
+        const getWeekendDates = () => { const today = new Date(); const sat = new Date(today); sat.setDate(today.getDate() + (6 - today.getDay() + 7) % 7); return [sat.toISOString().split('T')[0]]; };
+        const showLoadingState = () => { eventsContainer.innerHTML = Array(3).fill('<div class="skeleton-card"><div class="skeleton-image skeleton"></div></div>').join(''); };
+        const hideLoadingState = () => { eventsContainer.innerHTML = ''; };
+        window.showNotification = (message, type = 'info') => { const el = document.createElement('div'); el.style.cssText = `position:fixed;bottom:20px;left:50%;transform:translateX(-50%);padding:12px 20px;border-radius:8px;z-index:10000;font-weight:500;transition:all .3s ease;opacity:0;background:${type==='error'?'#dc3545':'#28a745'};color:white;box-shadow: var(--shadow-md);`; el.textContent = message; document.body.appendChild(el); setTimeout(() => {el.style.opacity = 1; el.style.bottom = '30px';}, 10); setTimeout(() => { el.style.opacity = 0; el.style.bottom = '20px'; setTimeout(() => el.remove(), 300); }, 3000); }
 
-        // Open trek modal
-        function openTrekModal() {
-            const modal = document.getElementById('trekModal');
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Close trek modal
-        function closeTrekModal() {
-            const modal = document.getElementById('trekModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Create post form (placeholder)
-        function openCreatePostForm() {
-            alert('Create Post feature coming soon! You will be able to organize your own treks here.');
-        }
-
-        // Utility function to format dates
-        function formatDate(dateString) {
-            const options = { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            };
-            return new Date(dateString).toLocaleDateString('en-US', options);
-        }
-
-        // Add some interactive animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scroll for CTA button
-            document.querySelector('.cta-button').addEventListener('click', function(e) {
-                if (this.getAttribute('onclick').includes('switchTab')) {
-                    setTimeout(() => {
-                        document.querySelector('#treks-section').scrollIntoView({ 
-                            behavior: 'smooth' 
-                        });
-                    }, 100);
-                }
-            });
-
-            // Add hover effects to trek cards
-            document.addEventListener('mouseover', function(e) {
-                if (e.target.closest('.trek-card')) {
-                    e.target.closest('.trek-card').style.transform = 'translateY(-4px)';
-                }
-            });
-
-            document.addEventListener('mouseout', function(e) {
-                if (e.target.closest('.trek-card')) {
-                    e.target.closest('.trek-card').style.transform = 'translateY(0)';
-                }
-            });
-        });
+        init();
+    });
     </script>
 </body>
 </html>
