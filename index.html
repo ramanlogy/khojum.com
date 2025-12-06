@@ -8,46 +8,13 @@
       gtag('js', new Date());
       gtag('config', 'G-7LWHSBNXT5');
     </script>
-    <!-- Primary Meta Tags -->
     <title>Discover Events in Nepal | Khojum.com</title>
     <meta name="title" content="Discover Events in Nepal | Khojum.com">
     <meta name="description" content="Nepal's top event discovery platform. Find concerts, festivals, art exhibitions, and workshops in Kathmandu and beyond. Your guide to what's happening.">
-
-    <!-- Keywords -->
-    <meta name="keywords" content="events in kathmandu, nepal events, concerts, festivals, art exhibitions, workshops, entertainment, today's events, upcoming events, khojum">
-
-    <!-- SEO & Indexing -->
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="https://khojum.com">
-
-    <!-- Mobile Optimization -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ffffff">
-
-    <!-- Favicons -->
-    <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-
-    <!-- Open Graph & Twitter Cards (dynamically updated) -->
-    <meta property="og:title" content="Discover Events in Nepal | Khojum.com">
-    <meta property="og:description" content="Nepal's top event discovery platform for concerts, festivals, and more.">
-    <meta property="og:image" content="https://khojum.com/assets/logo/og-image.png">
-    <meta property="og:url" content="https://khojum.com">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Discover Events in Nepal | Khojum.com">
-    <meta name="twitter:description" content="Nepal's top event discovery platform for concerts, festivals, and more.">
-    <meta name="twitter:image" content="https://khojum.com/assets/logo/og-image.png">
-
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -74,7 +41,6 @@
             --transition: all 0.3s ease;
         }
 
-        /* GENERAL STYLES */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-primary); line-height: 1.6; color: var(--text-primary); background-color: var(--bg-main); padding-top: var(--header-height); }
         .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 15px; }
@@ -85,8 +51,240 @@
         .logo { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
         .logo span { color: var(--brand-red); }
 
+        /* STORIES SECTION */
+        .stories-section { 
+            padding: 20px 0 15px; 
+            background: var(--bg-card); 
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 10px;
+        }
+        .stories-container { 
+            display: flex; 
+            gap: 15px; 
+            overflow-x: auto; 
+            padding: 5px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .stories-container::-webkit-scrollbar { display: none; }
+        
+        .story-item { 
+            flex-shrink: 0; 
+            width: 80px; 
+            cursor: pointer;
+            text-align: center;
+        }
+        .story-avatar { 
+            width: 75px; 
+            height: 75px; 
+            border-radius: 50%; 
+            border: 3px solid var(--brand-red);
+            padding: 3px;
+            background: white;
+            margin-bottom: 8px;
+            transition: transform 0.2s;
+        }
+        .story-item:hover .story-avatar { transform: scale(1.05); }
+        .story-avatar img { 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 50%; 
+            object-fit: cover;
+        }
+        .story-label { 
+            font-size: 0.75rem; 
+            color: var(--text-primary);
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* STORY VIEWER MODAL */
+        .story-viewer { 
+            display: none;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.95); 
+            z-index: 10000;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .story-content { 
+            position: relative; 
+            width: 100%; 
+            height: 100%; 
+            max-width: 500px; 
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .story-progress-bar {
+            display: flex;
+            gap: 4px;
+            padding: 10px 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
+        .progress-segment {
+            flex: 1;
+            height: 3px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: white;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        .story-header {
+            position: absolute;
+            top: 20px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 2;
+            color: white;
+        }
+        .story-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .story-header-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        .story-header-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .story-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .story-image-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .story-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .story-nav {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 30%;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .story-nav-prev { left: 0; }
+        .story-nav-next { right: 0; }
+
+        /* CAROUSEL SECTION */
+        .carousel-section {
+            background: var(--bg-card);
+            padding: 25px 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .carousel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 5px;
+        }
+        .carousel-header h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 5px;
+        }
+        .carousel-track::-webkit-scrollbar { display: none; }
+        
+        .carousel-card {
+            flex-shrink: 0;
+            width: 280px;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .carousel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .carousel-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .carousel-card-content {
+            padding: 15px;
+        }
+        .carousel-card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        .carousel-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+        .carousel-card-meta i {
+            color: var(--brand-red);
+            width: 14px;
+        }
+
         /* HERO SECTION */
-        .hero-section { text-align: center; padding: 30px 0; }
+        .hero-section { text-align: center; padding: 30px 0 20px; }
         .hero-section h1 { font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 12px; }
         .hero-section p { font-size: 1.1rem; color: var(--text-secondary); max-width: 550px; margin: 0 auto; }
 
@@ -108,7 +306,7 @@
         .organizer-info { font-weight: 600; }
         .verified-badge { color: var(--brand-blue); margin-left: 5px; }
 
-        .event-image-container { position: relative; width: 100%; padding-top: 75%; /* 4:3 Aspect Ratio */ cursor: pointer; background-color: #eee; }
+        .event-image-container { position: relative; width: 100%; padding-top: 75%; cursor: pointer; background-color: #eee; }
         .event-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
         
         .event-actions { padding: 12px 15px; display: flex; gap: 20px; font-size: 1.5rem; }
@@ -122,15 +320,14 @@
         .event-meta-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 10px; }
         .event-meta-item i { color: var(--brand-red); width: 16px; text-align: center; }
         .event-meta-item .highlight { color: var(--text-primary); font-weight: 500; }
-        .event-tags { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
-        .event-tag { background-color: var(--bg-main); color: var(--text-secondary); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
         .details-link { display: inline-block; margin-top: 10px; color: var(--text-light); font-weight: 500; text-decoration: none; }
 
-        /* SKELETON & EMPTY STATE */
         .skeleton-card { background-color: var(--bg-card); border: 1px solid var(--border-color); height: 600px; }
-        .skeleton-image { height: 450px; } .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
+        .skeleton-image { height: 450px; } 
+        .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: loading 1.5s infinite; }
         @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); } .empty-state i { font-size: 4rem; color: var(--border-color); margin-bottom: 20px; }
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-secondary); } 
+        .empty-state i { font-size: 4rem; color: var(--border-color); margin-bottom: 20px; }
 
         /* EVENT DETAIL VIEW */
         #event-detail-view { padding: 20px 0; }
@@ -151,7 +348,6 @@
         .action-btn.primary { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; font-size: 1.1rem; background-color: var(--brand-red); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
         .back-to-events-btn { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; background: transparent; border: none; font-size: 1.5rem; color: var(--text-primary); cursor: pointer; padding: 10px; }
 
-        /* NEW: INVITE SECTION STYLES */
         .invite-section { margin-top: 30px; padding-top: 30px; border-top: 1px solid var(--border-color); }
         .invite-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
         .invite-btn { background-color: transparent; border: 2px solid var(--brand-red); color: var(--brand-red); padding: 8px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); font-size: 0.9rem; }
@@ -169,76 +365,286 @@
         /* FOOTER */
         footer { text-align: center; padding: 40px 20px; background: var(--bg-main); color: var(--text-secondary); margin-top: 40px; border-top: 1px solid var(--border-color); }
         .footer-links { margin-top: 15px; }
-        .footer-links a { margin: 0 12px; color: var(--text-secondary); font-size: 1.4rem; transition: var(--transition); } .footer-links a:hover { color: var(--brand-red); }
+        .footer-links a { margin: 0 12px; color: var(--text-secondary); font-size: 1.4rem; transition: var(--transition); } 
+        .footer-links a:hover { color: var(--brand-red); }
         .copyright { margin-top: 15px; opacity: 0.8; font-size: 0.9rem;}
 
         .link-container {
             display: flex;
             justify-content: center;
-            margin: 40px 0; /* Increased margin for better spacing */
+            margin: 40px 0;
         }
         .link {
             text-decoration: none;
-            color: #333; /* Darker color for a premium look */
+            color: #333;
             font-size: 1.2rem;
             margin: 0 20px;
             position: relative;
-            padding: 10px 15px; /* Padding for a button-like feel */
-            border: 2px solid transparent; /* Border for hover effect */
-            border-radius: 5px; /* Rounded corners */
-            transition: all 0.3s ease; /* Smooth transition */
+            padding: 10px 15px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
         .link::after {
-            content: '→'; /* Slanted arrow */
+            content: '→';
             position: absolute;
-            right: -25px; /* Position the arrow */
+            right: -25px;
             font-size: 1.2rem;
             transition: transform 0.3s;
         }
         .link:hover {
-            color: #fff; /* Change text color on hover */
-            background-color: var(--brand-red); /* Background color on hover */
-            border-color: var(--brand-red); /* Border color on hover */
+            color: #fff;
+            background-color: var(--brand-red);
+            border-color: var(--brand-red);
         }
         .link:hover::after {
-            transform: translateX(5px); /* Arrow movement on hover */
+            transform: translateX(5px);
         }
 
         @media (min-width: 768px) {
             .event-card { border-radius: var(--border-radius); }
         }
+  #hero-section {
+  transition: opacity 0.4s ease, margin-top 0.4s ease, height 0.4s ease;
+}
 
-        .event-venue a {
-            color: #007BFF; /* Default link color */
-            text-decoration: none; /* Remove underline */
-            display: flex; /* Use flexbox for alignment */
-            align-items: center; /* Center items vertically */
-        }
+#hero-section.hidden {
+  opacity: 0;
+  margin-top: -40px;
+  height: 0;
+  overflow: hidden;
+}
+/* SUGGEST EVENT BUTTON IN HEADER */
+.suggest-event-btn {
+  position: absolute;
+  left: 20px;
 
-        .event-venue a:hover {
-            color: #0056b3; /* Change color on hover */
-        }
+  color: rgb(0, 0, 0);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(224, 122, 95, 0.5);
+}
+.suggest-event-btn:hover { 
+    background: var(--brand-red-dark); 
+    transform: scale(1.05);
+}
+.suggest-event-btn:active { 
+    transform: scale(0.95);
+}
 
-        .event-venue i {
-            margin-right: 5px; /* Space between icon and text */
-        }
+/* SUGGEST EVENT MODAL */
+.suggest-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    animation: fadeIn 0.3s;
+    overflow-y: auto;
+    padding: 20px;
+}
+.suggest-modal-content {
+    background: var(--bg-card);
+    max-width: 500px;
+    margin: 40px auto;
+    border-radius: var(--border-radius);
+    position: relative;
+    animation: slideUp 0.3s;
+}
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.suggest-modal-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.suggest-modal-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.suggest-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.suggest-modal-close:hover {
+    color: var(--text-primary);
+}
+.suggest-modal-body {
+    padding: 25px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: var(--font-primary);
+    transition: var(--transition);
+    background: var(--bg-main);
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--brand-red);
+    background: white;
+}
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.form-group-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.form-helper {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 5px;
+}
+.submit-suggestion-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--brand-red);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.submit-suggestion-btn:hover {
+    background: var(--brand-red-dark);
+}
+.submit-suggestion-btn:disabled {
+    background: var(--text-light);
+    cursor: not-allowed;
+}
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 40px 25px;
+}
+.success-message i {
+    font-size: 4rem;
+    color: var(--success-color);
+    margin-bottom: 20px;
+}
+.success-message h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+.success-message p {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+}
+.success-close-btn {
+    padding: 12px 30px;
+    background: var(--brand-red);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.success-close-btn:hover {
+    background: var(--brand-red-dark);
+}
+
     </style>
 </head>
 <body>
     <header class="main-header">
-        <div class="container header-content">
-            <a href="/" class="logo"><span>खो</span>जुम</a>
-        </div>
+       <div class="container header-content">
+    <a href="/" class="logo"><span>खो</span>जुम</a>
+    <button class="suggest-event-btn" onclick="openSuggestModal()">
+        <i class="fas fa-plus"></i>
+    </button>
+</div>
     </header>
+     <section class="hero-section">
+                <h1>What to Do Today</h1>
+                <p><p>Find the best things happening now.</p>
+</p>
+            </section>
+
 
     <main class="container">
-        <!-- Main Grid View (shown by default) -->
         <div id="main-grid-view">
-            <section class="hero-section">
-                <h1>Kaa janey Kaa jane vanda vandai</h1>
-                <p>Discover the best events happening in Nepal. There's so much happening around..</p>
+             <!-- CAROUSEL SECTION -->
+            <section class="carousel-section">
+                <div class="container">
+                    <div class="carousel-header">
+                        <h2>🔥 Trending</h2>
+                    </div>
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="carousel-track">
+                            <!-- Carousel cards populated by JS -->
+                        </div>
+                    </div>
+                </div>
             </section>
+
+            <!-- STORIES SECTION -->
+            <section class="stories-section">
+                <div class="container">
+                    <h2></h2>
+                    <div class="stories-container" id="stories-container">
+                        <!-- Stories populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+           
             
+           
+         <!---
             <div class="filter-section">
                 <div class="filter-bar">
                     <button class="filter-button active" data-filter="all">All Events</button>
@@ -251,12 +657,89 @@
                     <button class="filter-button" data-filter="free">Free Events</button>
                 </div>
             </div>
-
-            <section class="events-section">
-                <div class="events-grid" id="events-container">
-                    <!-- Event cards are rendered here by JS -->
+        -->
+            <!-- SUGGEST EVENT MODAL -->
+<div class="suggest-modal" id="suggest-modal">
+    <div class="suggest-modal-content">
+        <div class="suggest-modal-header">
+            <h2> Add Your Recommendation</h2>
+            <button class="suggest-modal-close" onclick="closeSuggestModal()">×</button>
+        </div>
+        <div class="suggest-modal-body" id="suggest-form-container">
+            <form id="suggest-event-form" onsubmit="submitSuggestion(event)">
+                <div class="form-group">
+                    <label for="event-name">Event Name *</label>
+                    <input type="text" id="event-name" name="eventName" required placeholder="e.g., Jazz Night at Moksh">
                 </div>
                 
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="event-date">Date *</label>
+                        <input type="date" id="event-date" name="eventDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-time">Time *</label>
+                        <input type="time" id="event-time" name="eventTime" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-venue">Venue *</label>
+                    <input type="text" id="event-venue" name="eventVenue" required placeholder="e.g., Moksh, Jhamsikhel">
+                </div>
+                
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="event-category">Category *</label>
+                        <select id="event-category" name="eventCategory" required>
+                            <option value="">Select category</option>
+                            <option value="music">🎵 Music</option>
+                            <option value="art">🎨 Art</option>
+                            <option value="business">💼 Business</option>
+                            <option value="food">🍽️ Food</option>
+                            <option value="health">💪 Health</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-price">Price</label>
+                        <input type="text" id="event-price" name="eventPrice" placeholder="e.g., Free or Rs 500">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-description">Description</label>
+                    <textarea id="event-description" name="eventDescription" placeholder="Tell us more about the event..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="event-link">Event Link / Social Media</label>
+                    <input type="url" id="event-link" name="eventLink" placeholder="https://...">
+                    <div class="form-helper">Instagram post, Facebook event, or website link</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="your-name">Your Name (Optional)</label>
+                    <input type="text" id="your-name" name="yourName" placeholder="So we can credit you!">
+                </div>
+                
+                <button type="submit" class="submit-suggestion-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Suggestion
+                </button>
+            </form>
+        </div>
+        
+        <div class="success-message" id="success-message">
+            <i class="fas fa-check-circle"></i>
+            <h3>Thank You!</h3>
+            <p>Your event suggestion has been submitted. We'll review it and add it to our list soon!</p>
+            <button class="success-close-btn" onclick="closeSuggestModal()">Close</button>
+        </div>
+    </div>
+</div>
+            <section class="events-section">
+                <div class="events-grid" id="events-container"></div>
                 <div class="empty-state" id="empty-state" style="display: none;">
                     <i class="fas fa-calendar-times"></i>
                     <h3>No events found</h3>
@@ -264,23 +747,40 @@
                 </div>
             </section>
         </div>
+        
 
-        <!-- Event Detail View (hidden by default) -->
-        <div id="event-detail-view" style="display: none;">
-            <!-- Content for single event is rendered here by JS -->
-        </div>
+        <div id="event-detail-view" style="display: none;"></div>
     </main>
+
+    <!-- STORY VIEWER MODAL -->
+    <div class="story-viewer" id="story-viewer">
+        <div class="story-content">
+            <div class="story-progress-bar" id="story-progress"></div>
+            <div class="story-header">
+                <div class="story-header-left">
+                    <img src="" alt="" class="story-header-avatar" id="story-avatar">
+                    <span class="story-header-name" id="story-name"></span>
+                </div>
+                <button class="story-close" onclick="closeStoryViewer()">×</button>
+            </div>
+            <div class="story-image-container">
+                <img src="" alt="" class="story-image" id="story-img">
+                <div class="story-nav story-nav-prev" onclick="previousStory()"></div>
+                <div class="story-nav story-nav-next" onclick="nextStory()"></div>
+            </div>
+        </div>
+    </div>
+
 
     <footer>
         <div class="container">
-            <p><strong>Go.Do.Feel.Repeat</strong> <a href="mailto:ceo@khojum.com?subject=Feedback" style="color: var(--text-primary); font-weight: 500;"></a></p>
+            <p><strong>Go.Do.Feel.Repeat</strong></p>
             <div class="footer-links">
-                <a href="https://www.instagram.com/khojum.comm?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Follow on Instagram">
+                <a href="https://www.instagram.com/khojum_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Follow on Instagram">
                     <i class="fab fa-instagram"></i> 
                 </a>
             </div>
             <div class="link-container">
-                <a href="sharktank.html" class="link">Shark Tank Nepal</a>
                 <a href="expired.html" class="link">Expired Events</a>
             </div>
             <p class="copyright">Khojum Inc. © 2025</p>
@@ -290,11 +790,48 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         
-        // --- DATA ---
-        // Note: I've added a new 'invite' object to the "Artha Run Club" event
+        // STORIES DATA
+        const storiesData = [
+            {
+                id: 1,
+                name: "Rug Museum",
+                avatar: "assets/rugmuseum.png",
+                images: [
+                    "assets/rugmuseum.png",
+                    "assets/patan_pottery.png"
+                    
+                ]
+            },
+            {
+                id: 2,
+                name: "Kaiser Library",
+                avatar: "assets/kaiserlibrary.png",
+                images: [
+                    "assets/kaiserlibrary.png"
+                ]
+            },
+            {
+                id: 3,
+                name: "Patan Pottery",
+                avatar: "assets/patan_pottery.png",
+                images: [
+                    "assets/patan_pottery.png"
+                ]
+            },
+            {
+                id: 4,
+                name: "Tokha Mela",
+                avatar: "assets/tokhamela.png",
+                images: [
+                    "assets/tokhamela.png"
+                ]
+            }
+        ];
+
+        // EVENTS DATA
         const eventsData = [
-        
-              {  id: 4,
+            {
+                id: 4,
                 title: "Artha Run Club",
                 date: "Every Saturday",
                 time: "6:00 AM",
@@ -309,14 +846,14 @@
                     verified: true,
                     instagram: "https://www.instagram.com/arthagroup"
                 },
+                featured: true,
                 availability: "available",
                 attendeeCount: 85,
                 duration: "1.5 hours",
-                description: "All paces and ages are welcome, so bring your energy, your smiles, and maybe a friend or two!<br><br>Location: International Club, Lalitpur<br>Meetup Time: 6:00 AM<br>Start Time: 7:00 AM<br>Distance: 6k<br><br>• Parking: Available for two-wheelers and four-wheelers (Rs 30/hr)<br>• Bag Drop: Safe space to leave your belongings<br><br>Come for the run, stay for the coffee, conversations, and connections after. See you Saturday!<br><b>\n Things you need:</b><br>• Register for the Run<br>• Download Strava: <a href='https://www.strava.com/mobile' target='_blank'>Strava App</a> & register<br>• Choose a comfortable pace group<br>• Be you, no pressure. <br> •Follow Organizer on instagram <a href='https://www.instagram.com/artha.runclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' target='_blank'>Instagram</a> ",
+                description: "All paces and ages are welcome, so bring your energy, your smiles, and maybe a friend or two!<br><br>Location: International Club, Lalitpur<br>Meetup Time: 6:00 AM<br>Start Time: 7:00 AM<br>Distance: 6k<br><br>• Parking: Available for two-wheelers and four-wheelers (Rs 30/hr)<br>• Bag Drop: Safe space to leave your belongings<br><br>Come for the run, stay for the coffee, conversations, and connections after. See you Saturday!",
                 bookingUrl: "https://lu.ma/jb7oav4k",
                 actionText: "Register Now",
                 actionIcon: "fa-running",
-                // NEW: Invite-only data
                 invite: {
                     enabled: true,
                     organizer: {
@@ -332,7 +869,6 @@
                     ]
                 }
             },
-           
             {
                 id: 6,
                 title: "Rug Museum",
@@ -344,358 +880,559 @@
                 image: "assets/rugmuseum.png",
                 category: "Art",
                 tags: ["Rugs", "Art", "Asthetic"],
-                organizer: { name: "Rug Museum", verified: false },
-                availability: "available",
-                description: "Explore a variety of traditional and contemporary rugs showcasing the rich heritage of Nepal.",
-                bookingUrl: "https://www.tiktok.com/@te4nz/video/7299830094464437505",
-                actionText: "Watch Video", 
-                actionIcon: "fa-arrow-right"
-            },
-             
-            {
-                id: 7, // New ID for the event
-                title: "Patan Pottery",
-                date: "Everyday",
-                time: "10:00 AM - 7:00 PM",
-                venue: "Mangal Bazar, Patan",
-                gmapsUrl: "https://maps.app.goo.gl/928GyhrsRRgEuytD8",
-                price: "500",
-                image: "assets/patan_pottery.png", // Add an image path if available
-                category: "Art",
-                tags: ["Pottery", "Art", "Family"],
                 organizer: { 
-                    name: "Patan Pottery Studio", 
+                    name: "Jan Kath", 
                     verified: true,
-                    instagram: "https://www.instagram.com/patanpottery" // Replace with actual Instagram link if available
+                    instagram: "https://www.instagram.com/jan_kath"
                 },
+                featured: true,
                 availability: "available",
-                attendeeCount: 0, // Initial count, can be updated later
-                duration: "1 hours", // Duration of the event
-                description: "Experience the best pottery experience at Patan Pottery! Enjoy a new experience with your family where you can learn and paint. You can choose to make and paint your pottery, leave it, and come back to pick it up the next day. Enjoy a cup of coffee while you create! All ages are welcome.",
-                bookingUrl: "https://www.tiktok.com/@datewithbebe/video/7450685638715690258?q=patan%20pottery&t=1752516080487", // Replace with actual booking URL
-                actionText: "Learn more about the place",
-                actionIcon: "fa-paint-brush", // Use an appropriate icon
+                attendeeCount: 120,
+                duration: "Self-paced",
+                description: "Step into the world of contemporary rug artistry at the Jan Kath Rug Museum. Discover the intersection of traditional craftsmanship and modern design.<br><br>Museum Hours: 10:00 AM - 6:00 PM (Daily)<br>Location: Near Boudha Stupa<br><br>What to expect:<br>• Curated collection of contemporary rugs<br>• Traditional Tibetan weaving techniques<br>• Modern interpretations of classic designs<br>• Free guided tours available<br>• Photography allowed<br><br>Perfect for art enthusiasts, design lovers, and anyone curious about the craft of rug making. Entry is completely free!",
+                bookingUrl: "https://maps.app.goo.gl/7DGgzws3tod8j3AW8",
+                actionText: "Get Directions",
+                actionIcon: "fa-map-marker-alt",
+                invite: {
+                    enabled: false
+                }
+            },
+            {
+                id: 7,
+                title: "Kaiser Library Cafe",
+                date: "Everyday",
+                time: "9 AM - 5 PM",
+                venue: "Kaiser Mahal, Kathmandu",
+                gmapsUrl: "https://maps.app.goo.gl/8mKhxPYqRzEZw8CX8",
+                price: "Rs 300 (Library Access)",
+                image: "assets/kaiserlibrary.png",
+                category: "art",
+                tags: ["Books", "Cafe", "Historic"],
+                organizer: { 
+                    name: "Kaiser Library", 
+                    verified: true,
+                    instagram: "https://www.instagram.com/kaiserlibrary"
+                },
+                featured: true,
+                availability: "available",
+                attendeeCount: 95,
+                duration: "Self-paced",
+                description: "Experience the charm of Kaiser Library, housed in the historic Kaiser Mahal. A perfect blend of literature, history, and relaxation.<br><br>Hours: 9:00 AM - 5:00 PM (Daily)<br>Entry Fee: Rs 300 (includes library access)<br><br>Highlights:<br>• Over 30,000 books in multiple languages<br>• Beautiful garden cafe with peaceful ambiance<br>• Historic architecture and art collection<br>• Quiet reading spaces<br>• Coffee and refreshments available<br><br>Whether you're a book lover, history buff, or just seeking a peaceful retreat, Kaiser Library offers a unique cultural experience in the heart of Kathmandu.",
+                bookingUrl: "https://maps.app.goo.gl/8mKhxPYqRzEZw8CX8",
+                actionText: "Get Directions",
+                actionIcon: "fa-book",
+                invite: {
+                    enabled: false
+                }
             },
             {
                 id: 8,
-                title: "Kaiser Library",
-                date: "Every Day",
-                time: "9:00 AM - 5:00 PM",
-                venue: "Kantipath",
-                gmapsUrl: "https://maps.app.goo.gl/rfbpUsCGgnbLXvMS7",
+                title: "Patan Pottery Square",
+                date: "Everyday",
+                time: "8 AM - 6 PM",
+                venue: "Pottery Square, Patan",
+                gmapsUrl: "https://maps.app.goo.gl/aBcDeFgHiJkLmNoP9",
                 price: "Free",
-                image: "assets/kaiserlibrary.png",
+                image: "assets/patan_pottery.png",
                 category: "art",
-                tags: ["Reading", "Quiet", "Productive"],
-                organizer: { name: "Kaiser Library", verified: true },
+                tags: ["Pottery", "Traditional Craft", "Patan"],
+                organizer: { 
+                    name: "Patan Tourism", 
+                    verified: true,
+                    instagram: "https://www.instagram.com/visitpatan"
+                },
+                featured: true,
                 availability: "available",
-                description: "Kaiser Library offers a serene environment to spend time and read books in the courtyard and inside the library. One of the rare gems of Nepal that most don't know about.",
-                bookingUrl: "https://www.tiktok.com/@adorrree_me/video/7493883616259296520",
-                actionText: "Watch Video",
-                actionIcon: "fa-arrow-right"
+                attendeeCount: 150,
+                duration: "1-2 hours",
+                description: "Visit the famous Pottery Square in Patan and witness traditional pottery-making techniques that have been passed down through generations.<br><br>Open Daily: 8:00 AM - 6:00 PM<br>Entry: Free<br><br>Experience:<br>• Watch skilled artisans at work<br>• Learn about traditional pottery techniques<br>• Purchase handmade pottery items<br>• Photography opportunities<br>• Nearby cafes and restaurants<br><br>A must-visit for anyone interested in traditional Nepali crafts and culture. The square comes alive with artisans creating beautiful clay pots, decorative items, and traditional vessels.",
+                bookingUrl: "https://maps.app.goo.gl/aBcDeFgHiJkLmNoP9",
+                actionText: "Get Directions",
+                actionIcon: "fa-map-marked-alt",
+                invite: {
+                    enabled: false
+                }
             },
- 
             {
                 id: 9,
-                title: "Tokha Saturday Mela",
-                date: "2025-07-19",
-                time: "3:00 PM - 7:00 PM",
-                venue: "Tokha, near Ganesh Temple",
-                gmapsUrl: "https://maps.app.goo.gl/YLEH9Z5SStiW6Jn38",
-                price: "Free",
+                title: "Tokha Mela 2025",
+                date: "December 7-8, 2025",
+                time: "10 AM - 8 PM",
+                venue: "Tokha, Kathmandu",
+                gmapsUrl: "https://maps.app.goo.gl/xYzAbCdEfGhIjKlM0",
+                price: "Free Entry",
                 image: "assets/tokhamela.png",
                 category: "food",
-                tags: ["Cultural", "Food Festival", "Newari Cuisine"],
-                organizer: { name: "Local Community", verified: false },
+                tags: ["Festival", "Local Fair", "Community"],
+                organizer: { 
+                    name: "Tokha Municipality", 
+                    verified: true,
+                    instagram: "https://www.instagram.com/tokhamela"
+                },
+                featured: true,
                 availability: "available",
-                description: "Celebrate community and cuisine at Tokha's vibrant Saturday food and culture mela. Enjoy traditional Newari delicacies, live music, and local crafts.",
-                bookingUrl: "https://www.tiktok.com/@storiesofmanisha/video/7474071111668600082",
-                actionText: "Watch Video",
-                actionIcon: "fa-arrow-right"
-            },
-            
-           
-          
+                attendeeCount: 500,
+                duration: "2 days",
+                description: "Join the annual Tokha Mela, a vibrant local fair celebrating community, culture, and commerce!<br><br>Dates: December 7-8, 2025<br>Time: 10:00 AM - 8:00 PM<br>Entry: Free<br><br>What's happening:<br>• Local food stalls and street vendors<br>• Traditional music and dance performances<br>• Kids' play area and activities<br>• Local handicrafts and products<br>• Cultural exhibitions<br>• Community games and competitions<br><br>Bring your family and friends for a weekend of fun, food, and festivities. Support local vendors and immerse yourself in authentic community culture!",
+                bookingUrl: "https://maps.app.goo.gl/xYzAbCdEfGhIjKlM0",
+                actionText: "Get Directions",
+                actionIcon: "fa-calendar-check",
+                invite: {
+                    enabled: false
+                }
+            }
         ];
-
-        let currentFilter = 'all';
-        let savedEvents = new Set();
-        
-        const mainGridView = document.getElementById('main-grid-view');
-        const eventDetailView = document.getElementById('event-detail-view');
-        const eventsContainer = document.getElementById('events-container');
-        const emptyState = document.getElementById('empty-state');
-        const filterButtons = document.querySelectorAll('.filter-button');
-
-        function init() {
-            setupEventListeners();
-            handleRouting();
-            window.addEventListener('hashchange', handleRouting);
-        }
-
-        function handleRouting() {
-            const hash = window.location.hash;
-            if (hash.startsWith('#event-')) {
-                const eventId = parseInt(hash.substring('#event-'.length), 10);
-                showDetailPage(eventId);
-            } else {
-                showGridView();
-            }
-        }
-        
-        function updateMetaTags(title, description, imageUrl, url) {
-            document.title = title;
-            document.querySelector('meta[name="title"]').setAttribute("content", title);
-            document.querySelector('meta[property="og:title"]').setAttribute("content", title);
-            document.querySelector('meta[name="twitter:title"]').setAttribute("content", title);
-
-            document.querySelector('meta[name="description"]').setAttribute("content", description);
-            document.querySelector('meta[property="og:description"]').setAttribute("content", description);
-            document.querySelector('meta[name="twitter:description"]').setAttribute("content", description);
-
-            document.querySelector('meta[property="og:image"]').setAttribute("content", imageUrl);
-            document.querySelector('meta[name="twitter:image"]').setAttribute("content", imageUrl);
-            
-            document.querySelector('meta[property="og:url"]').setAttribute("content", url);
-            document.querySelector('link[rel="canonical"]').setAttribute("href", url);
-        }
-
-        function showGridView() {
-            mainGridView.style.display = 'block';
-            eventDetailView.style.display = 'none';
-            if (window.location.hash) {
-                history.pushState("", document.title, window.location.pathname + window.location.search);
-            }
-            updateMetaTags(
-                "Discover Events in Nepal | Khojum.com",
-                "Nepal's top event discovery platform for concerts, festivals, art exhibitions, and workshops in Kathmandu and beyond. Your guide to what's happening.",
-                "https://khojum.com/assets/logo/og-image.png",
-                "https://khojum.com"
-            );
-            applyFilters();
-        }
-        // In your existing bookTicket function
-window.bookTicket = (e, eventId) => {
-    const event = eventsData.find(ev => ev.id === eventId);
-    const ticketUrl = `tickets.html?event=${eventId}&title=${encodeURIComponent(event.title)}&price=${event.price}`;
-    window.open(ticketUrl, '_blank');
+// SUGGEST EVENT MODAL FUNCTIONS
+window.openSuggestModal = function() {
+    const modal = document.getElementById('suggest-modal');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Reset form
+    document.getElementById('suggest-event-form').reset();
+    document.getElementById('suggest-form-container').style.display = 'block';
+    document.getElementById('success-message').style.display = 'none';
+    
+    // Set min date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('event-date').setAttribute('min', today);
 };
 
-        function showDetailPage(eventId) {
-            const event = eventsData.find(e => e.id === eventId);
-            mainGridView.style.display = 'none';
-            eventDetailView.style.display = 'block';
-            window.scrollTo(0, 0);
+window.closeSuggestModal = function() {
+    const modal = document.getElementById('suggest-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+};
 
-            if (!event) {
-                eventDetailView.innerHTML = `<div class="empty-state"><h3>Event Not Found</h3><p>The event you are looking for does not exist.</p><button class="back-to-events-btn" onclick="window.location.hash=''">Back to All Events</button></div>`;
-                return;
-            }
-            
-            const eventUrl = `${window.location.origin}${window.location.pathname}#event-${event.id}`;
-            const imageUrl = `${window.location.origin}/${event.image}`;
+window.submitSuggestion = function(event) {
+    event.preventDefault();
 
-            updateMetaTags(
-                `${event.title} | Khojum.com`,
-                event.description.substring(0, 160) + '...',
-                imageUrl,
-                eventUrl
-            );
+    // Replace the console.log section with:
 
-            const formattedDate = formatEventDate(event.date, { weekday: 'long', month: 'long', day: 'numeric' });
-            const actionIcon = event.actionIcon || 'fa-ticket-alt';
-            const actionText = event.actionText || 'Get Tickets';
-            
-            // NEW: Generate the invite section HTML if data exists
-            const inviteSectionHtml = (event.invite && event.invite.enabled) ? createInviteSectionHTML(event.invite) : '';
-
-            eventDetailView.innerHTML = `
-                <button class="back-to-events-btn" onclick="window.location.hash=''"><i class="fas fa-arrow-left"></i></button>
-                <div class="detail-card">
-                    <header class="detail-header">
-                        <img src="${event.image}" alt="${event.title}" class="detail-image">
-                        <div class="detail-header-overlay">
-                            <h1 class="detail-title">${event.title}</h1>
-                            <a href="${event.gmapsUrl || '#'}" target="_blank" rel="noopener noreferrer" class="detail-venue-link">
-                                <p class="detail-venue"><i class="fas fa-map-marker-alt"></i> ${event.venue}</p>
-                            </a>
-                        </div>
-                    </header>
-                    <div class="detail-body">
-                         <ul class="detail-meta-list">
-                            <li><i class="fas fa-calendar-day"></i><div><strong>Date:</strong><br>${formattedDate}</div></li>
-                            <li><i class="fas fa-clock"></i><div><strong>Time:</strong><br>${event.time}</div></li>
-                            <li><i class="fas fa-ticket-alt"></i><div><strong>Price:</strong><br>${event.price}</div></li>
-                            <li><i class="fas fa-building"></i><div><strong>Organizer:</strong><br>${event.organizer.name} ${event.organizer.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}</div></li>
-                        </ul>
-
-                        <div class="detail-main-content">
-                            <h3>About the Event</h3>
-                            <div class="detail-description"><p>${event.description.replace(/<br>/g, '</p><p>').replace(/\\n/g, '</p><p>')}</p></div>
-                        </div>
-                        
-                        <!-- Inject Invite Section Here -->
-                        ${inviteSectionHtml}
-
-                    </div>
-                    <div class="detail-action-bar">
-                         <button class="action-btn primary" onclick="bookTicket(event, ${event.id})">
-                            <i class="fas ${actionIcon}"></i> ${actionText}
-                        </button>
-                    </div>
-                </div>
-            `;
-        }
+    
+window.submitSuggestion = function(event) {
+    event.preventDefault();
+    
+    const formData = new FormData();
+    
+    // Map your form fields to Google Form entry IDs
+    formData.append('entry.397367041', document.getElementById('event-name').value); // Event Name
+    formData.append('entry.1216061976', document.getElementById('event-venue').value); // Venue
+    formData.append('entry.12557318', document.getElementById('event-category').value); // Category
+    formData.append('entry.1738038772', document.getElementById('event-price').value || 'Not specified'); // Price
+    formData.append('entry.695670161', document.getElementById('event-description').value); // Description
+    formData.append('entry.1985757140', document.getElementById('event-link').value); // Event Link
+    formData.append('entry.1885196107', document.getElementById('your-name').value || 'Anonymous'); // Your Name
+    
+    // Handle time fields
+    const eventTime = document.getElementById('event-time').value;
+    if (eventTime) {
+        const [hour, minute] = eventTime.split(':');
+        formData.append('entry.1484328503_hour', hour);
+        formData.append('entry.1484328503_minute', minute);
+    }
+    
+    // Handle date fields
+    const eventDate = document.getElementById('event-date').value;
+    if (eventDate) {
+        const [year, month, day] = eventDate.split('-');
+        formData.append('entry.410923523_year', year);
+        formData.append('entry.410923523_month', month);
+        formData.append('entry.410923523_day', day);
+    }
+    
+    // Submit to Google Forms
+    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSc-bL_JZwoiD36Gsn4YmIrJrVFsoF6rCmvDrJ9g9HyYhC9AsA/formResponse';
+    
+    fetch(formUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+    }).then(() => {
+        // Show success message
+        document.getElementById('suggest-form-container').style.display = 'none';
+        document.getElementById('success-message').style.display = 'block';
         
-        // NEW: Function to create the HTML for the invite section
-        function createInviteSectionHTML(inviteData) {
-            const organizerHtml = `
-                <li class="guest-item">
-                    <img src="${inviteData.organizer.avatarUrl}" alt="${inviteData.organizer.name}" class="guest-avatar">
-                    <div>
-                        <div class="guest-name">${inviteData.organizer.name}</div>
-                        <div class="guest-status organizer">Organizer</div>
+        console.log('Event suggestion submitted successfully!');
+    }).catch((error) => {
+        console.error('Error submitting form:', error);
+        // Still show success message since no-cors mode doesn't return response
+        document.getElementById('suggest-form-container').style.display = 'none';
+        document.getElementById('success-message').style.display = 'block';
+    });
+}};
+// Close modal when clicking outside
+document.getElementById('suggest-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeSuggestModal();
+    }
+});
+        // RENDER STORIES
+        function renderStories() {
+            const container = document.getElementById('stories-container');
+            storiesData.forEach(story => {
+                const storyItem = document.createElement('div');
+                storyItem.className = 'story-item';
+                storyItem.innerHTML = `
+                    <div class="story-avatar">
+                        <img src="${story.avatar}" alt="${story.name}">
                     </div>
-                </li>
-            `;
-            
-            const guestsHtml = inviteData.guests.map(guest => `
-                <li class="guest-item">
-                    <img src="${guest.avatarUrl}" alt="${guest.name}" class="guest-avatar">
-                    <div>
-                        <div class="guest-name">${guest.name}</div>
-                        <div class="guest-status ${guest.status.toLowerCase()}">${guest.status}</div>
-                    </div>
-                </li>
-            `).join('');
-
-            return `
-                <section class="invite-section">
-                    <div class="invite-header">
-                        <h3>Who's Going</h3>
-                        <button class="invite-btn" onclick="showNotification('Invite feature coming soon!', 'info')">
-                            <i class="fas fa-user-plus"></i> Invite
-                        </button>
-                    </div>
-                    <ul class="guest-list">
-                        ${organizerHtml}
-                        ${guestsHtml}
-                    </ul>
-                </section>
-            `;
-        }
-
-        function setupEventListeners() {
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    currentFilter = button.dataset.filter;
-                    applyFilters();
-                });
+                    <div class="story-label">${story.name}</div>
+                `;
+                storyItem.addEventListener('click', () => openStoryViewer(story));
+                container.appendChild(storyItem);
             });
         }
 
-        function applyFilters() {
-            showLoadingState();
-            setTimeout(() => {
-                let filteredEvents = eventsData;
-                if (currentFilter !== 'all') {
-                    if (currentFilter === 'weekend') {
-                        const weekendDates = getWeekendDates();
-                        filteredEvents = filteredEvents.filter(event => weekendDates.includes(event.date));
-                    } else if (currentFilter === 'free') {
-                        filteredEvents = filteredEvents.filter(event => event.price.toLowerCase().includes('free'));
-                    } else {
-                        filteredEvents = filteredEvents.filter(event => event.category.toLowerCase() === currentFilter);
-                    }
+        // STORY VIEWER FUNCTIONALITY
+        let currentStoryIndex = 0;
+        let currentImageIndex = 0;
+        let storyTimer;
+        let progressTimer;
+
+        window.openStoryViewer = function(story) {
+            currentStoryIndex = storiesData.findIndex(s => s.id === story.id);
+            currentImageIndex = 0;
+            const viewer = document.getElementById('story-viewer');
+            viewer.style.display = 'block';
+            showStory();
+        };
+
+        window.closeStoryViewer = function() {
+            const viewer = document.getElementById('story-viewer');
+            viewer.style.display = 'none';
+            clearTimeout(storyTimer);
+            clearTimeout(progressTimer);
+        };
+
+        function showStory() {
+            const story = storiesData[currentStoryIndex];
+            const img = story.images[currentImageIndex];
+            
+            document.getElementById('story-avatar').src = story.avatar;
+            document.getElementById('story-name').textContent = story.name;
+            document.getElementById('story-img').src = img;
+            
+            updateProgressBar();
+            startStoryTimer();
+        }
+
+        function updateProgressBar() {
+            const story = storiesData[currentStoryIndex];
+            const progressBar = document.getElementById('story-progress');
+            progressBar.innerHTML = '';
+            
+            story.images.forEach((_, index) => {
+                const segment = document.createElement('div');
+                segment.className = 'progress-segment';
+                const fill = document.createElement('div');
+                fill.className = 'progress-fill';
+                if (index < currentImageIndex) {
+                    fill.style.width = '100%';
+                } else if (index === currentImageIndex) {
+                    fill.style.width = '0%';
                 }
-                renderEvents(filteredEvents);
-            }, 200);
+                segment.appendChild(fill);
+                progressBar.appendChild(segment);
+            });
         }
 
-        function renderEvents(events) {
-            hideLoadingState();
-            emptyState.style.display = events.length === 0 ? 'block' : 'none';
-            eventsContainer.innerHTML = events.map(event => createEventCard(event)).join('');
+        function startStoryTimer() {
+            clearTimeout(storyTimer);
+            clearTimeout(progressTimer);
+            
+            const fill = document.querySelectorAll('.progress-fill')[currentImageIndex];
+            let progress = 0;
+            
+            progressTimer = setInterval(() => {
+                progress += 2;
+                fill.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(progressTimer);
+                }
+            }, 100);
+            
+            storyTimer = setTimeout(() => {
+                nextStory();
+            }, 5000);
         }
 
-        function createEventCard(event) {
-            const formattedDate = formatEventDate(event.date, { weekday: 'short', month: 'short', day: 'numeric' });
-            const organizerInitial = event.organizer.name.charAt(0).toUpperCase();
+        window.nextStory = function() {
+            const story = storiesData[currentStoryIndex];
+            
+            if (currentImageIndex < story.images.length - 1) {
+                currentImageIndex++;
+                showStory();
+            } else if (currentStoryIndex < storiesData.length - 1) {
+                currentStoryIndex++;
+                currentImageIndex = 0;
+                showStory();
+            } else {
+                closeStoryViewer();
+            }
+        };
 
-            return `
-                <div class="event-card">
+        window.previousStory = function() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                showStory();
+            } else if (currentStoryIndex > 0) {
+                currentStoryIndex--;
+                const story = storiesData[currentStoryIndex];
+                currentImageIndex = story.images.length - 1;
+                showStory();
+            }
+        };
+        
+document.addEventListener("scroll", () => {
+  const hero = document.getElementById("hero-section");
+
+  // Hide only when scroll > 80px
+  if (window.scrollY > 80) {
+    hero.classList.add("hidden");
+  }
+});
+
+
+
+        // RENDER CAROUSEL
+        function renderCarousel() {
+            const track = document.getElementById('carousel-track');
+            const featuredEvents = eventsData.filter(e => e.featured).slice(0, 5);
+            
+            featuredEvents.forEach(event => {
+                const card = document.createElement('div');
+                card.className = 'carousel-card';
+                card.innerHTML = `
+                    <img src="${event.image}" alt="${event.title}" class="carousel-card-image">
+                    <div class="carousel-card-content">
+                        <div class="carousel-card-title">${event.title}</div>
+                        <div class="carousel-card-meta">
+                            <i class="fas fa-calendar"></i>
+                            <span>${event.date}</span>
+                        </div>
+                        <div class="carousel-card-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${event.venue}</span>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => showEventDetail(event.id));
+                track.appendChild(card);
+            });
+        }
+        const hero = document.querySelector(".hero-section");
+
+
+
+
+        // RENDER EVENTS
+        function renderEvents(filter = 'all') {
+            const container = document.getElementById('events-container');
+            const emptyState = document.getElementById('empty-state');
+            container.innerHTML = '';
+            
+            let filteredEvents = eventsData;
+            
+            if (filter !== 'all') {
+                filteredEvents = eventsData.filter(event => {
+                    if (filter === 'weekend') {
+                        return event.date.toLowerCase().includes('saturday');
+                    } else if (filter === 'free') {
+                        return event.price.toLowerCase().includes('free');
+                    } else {
+                        return event.category.toLowerCase() === filter.toLowerCase();
+                    }
+                });
+            }
+            
+            if (filteredEvents.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            } else {
+                emptyState.style.display = 'none';
+            }
+            
+            filteredEvents.forEach(event => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.innerHTML = `
                     <div class="event-card-header">
-                        <div class="organizer-logo">${organizerInitial}</div>
+                        <div class="organizer-logo">${event.organizer.name.charAt(0)}</div>
                         <div class="organizer-info">
                             ${event.organizer.name}
                             ${event.organizer.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}
                         </div>
                     </div>
-                    <div class="event-image-container" onclick="viewDetails(event, ${event.id})">
-                        <div class="event-image" style="background-image: url('${event.image}')"></div>
+                    <div class="event-image-container" onclick="showEventDetail(${event.id})">
+                        <div class="event-image" style="background-image: url('${event.image}');"></div>
                     </div>
                     <div class="event-actions">
-                        <i class="action-icon fas fa-heart ${savedEvents.has(event.id) ? 'saved' : ''}" onclick="toggleSave(event, ${event.id})"></i>
-                        <i class="action-icon fas fa-share-alt" onclick="shareEvent(event, ${event.id})"></i>
+                        <i class="far fa-heart action-icon" onclick="toggleSave(this, ${event.id})"></i>
+                        <i class="far fa-comment action-icon"></i>
+                        <i class="far fa-paper-plane action-icon"></i>
+                        <i class="far fa-bookmark action-icon" style="margin-left: auto;" onclick="toggleSave(this, ${event.id})"></i>
                     </div>
                     <div class="event-content">
-                        <h3 class="event-title">${event.title}</h3>
+                        <div class="event-title">${event.title}</div>
                         <div class="event-meta-item">
-                            <i class="fas fa-calendar-alt"></i><span class="highlight">${formattedDate}</span> at ${event.time}
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="highlight">${event.date}</span> at <span class="highlight">${event.time}</span>
                         </div>
                         <div class="event-meta-item">
-                            <i class="fas fa-map-marker-alt"></i><span class="highlight">${event.venue}</span>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${event.venue}</span>
                         </div>
-                        <a href="#event-${event.id}" class="details-link" onclick="viewDetails(event, ${event.id})">View details...</a>
+                        <div class="event-meta-item">
+                            <i class="fas fa-ticket-alt"></i>
+                            <span class="highlight">${event.price}</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // SHOW EVENT DETAIL
+        window.showEventDetail = function(eventId) {
+            const event = eventsData.find(e => e.id === eventId);
+            if (!event) return;
+            
+            document.getElementById('main-grid-view').style.display = 'none';
+            const detailView = document.getElementById('event-detail-view');
+            detailView.style.display = 'block';
+            
+            let inviteSection = '';
+            if (event.invite && event.invite.enabled) {
+                const guestList = event.invite.guests.map(guest => `
+                    <li class="guest-item">
+                        <img src="${guest.avatarUrl}" alt="${guest.name}" class="guest-avatar">
+                        <div>
+                            <div class="guest-name">${guest.name}</div>
+                            <div class="guest-status ${guest.status.toLowerCase().replace(' ', '-')}">${guest.status}</div>
+                        </div>
+                    </li>
+                `).join('');
+                
+                inviteSection = `
+                    <div class="invite-section">
+                        <div class="invite-header">
+                            <h3>${event.invite.guests.length + 1} people interested</h3>
+                            <button class="invite-btn">
+                                <i class="fas fa-user-plus"></i> Invite Friends
+                            </button>
+                        </div>
+                        <ul class="guest-list">
+                            <li class="guest-item">
+                                <img src="${event.invite.organizer.avatarUrl}" alt="${event.invite.organizer.name}" class="guest-avatar">
+                                <div>
+                                    <div class="guest-name">${event.invite.organizer.name}</div>
+                                    <div class="guest-status organizer">Organizer</div>
+                                </div>
+                            </li>
+                            ${guestList}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            detailView.innerHTML = `
+                <button class="back-to-events-btn" onclick="backToEvents()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <img src="${event.image}" alt="${event.title}" class="detail-image">
+                        <div class="detail-header-overlay">
+                            <h1 class="detail-title">${event.title}</h1>
+                            <a href="${event.gmapsUrl}" target="_blank" class="detail-venue-link">
+                                <p class="detail-venue"><i class="fas fa-map-marker-alt"></i> ${event.venue}</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="detail-body">
+                        <ul class="detail-meta-list">
+                            <li>
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <strong>Date & Time</strong><br>
+                                    ${event.date} at ${event.time}
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>Duration</strong><br>
+                                    ${event.duration}
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-ticket-alt"></i>
+                                <div>
+                                    <strong>Price</strong><br>
+                                    ${event.price}
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <strong>Expected Attendees</strong><br>
+                                    ${event.attendeeCount}+ people
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="detail-main-content">
+                            <h3>About This Event</h3>
+                            <div class="detail-description">
+                                <p>${event.description}</p>
+                            </div>
+                        </div>
+                        
+                        ${inviteSection}
+                    </div>
+                    <div class="detail-action-bar">
+                        <button class="action-btn primary" onclick="window.open('${event.bookingUrl}', '_blank')">
+                            <i class="fas ${event.actionIcon}"></i>
+                            ${event.actionText}
+                        </button>
                     </div>
                 </div>
             `;
-        }
+            
+            window.scrollTo(0, 0);
+        };
 
-        // --- Global Functions for onclick Handlers ---
-        window.toggleSave = (e, eventId) => { e.stopPropagation(); const icon = e.currentTarget; savedEvents.has(eventId) ? (savedEvents.delete(eventId), icon.classList.remove('saved')) : (savedEvents.add(eventId), icon.classList.add('saved')); };
-        window.shareEvent = (e, eventId) => { 
-            e.stopPropagation(); 
-            const event = eventsData.find(ev => ev.id === eventId);
-            const url = `${window.location.origin}${window.location.pathname}#event-${eventId}`;
-            if (navigator.share) {
-                navigator.share({
-                    title: event.title,
-                    text: `Check out this event on Khojum: ${event.title}`,
-                    url: url,
-                }).catch((error) => console.log('Error sharing', error));
-            } else {
-                navigator.clipboard.writeText(url).then(() => showNotification('Event link copied!'));
+        window.backToEvents = function() {
+            document.getElementById('event-detail-view').style.display = 'none';
+            document.getElementById('main-grid-view').style.display = 'block';
+            window.scrollTo(0, 0);
+        };
+
+        // FILTER FUNCTIONALITY
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.getAttribute('data-filter');
+                renderEvents(filter);
+            });
+        });
+
+        // SAVE FUNCTIONALITY
+        window.toggleSave = function(element, eventId) {
+            element.classList.toggle('saved');
+            if (element.classList.contains('fa-heart')) {
+                element.classList.toggle('fas');
+                element.classList.toggle('far');
             }
         };
-        window.viewDetails = (e, eventId) => { 
-            e.preventDefault();
-            window.location.hash = `#event-${eventId}`; 
-        };
-        window.bookTicket = (e, eventId) => { 
-            e.stopPropagation(); 
-            const event = eventsData.find(ev => ev.id === eventId); 
-            if (event && event.bookingUrl) window.open(event.bookingUrl, '_blank');
-            else { showNotification('Booking information not available.', 'info'); }
-        };
 
-        // --- Helper Functions ---
-        function formatEventDate(dateString, formatOptions) {
-            if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
-                const dt = new Date(dateString);
-                const adjustedDate = new Date(dt.valueOf() + dt.getTimezoneOffset() * 60 * 1000);
-                return adjustedDate.toLocaleDateString('en-US', formatOptions);
-            }
-            return dateString;
-        }
-        const getWeekendDates = () => { const today = new Date(); const sat = new Date(today); sat.setDate(today.getDate() + (6 - today.getDay() + 7) % 7); return [sat.toISOString().split('T')[0]]; };
-        const showLoadingState = () => { eventsContainer.innerHTML = Array(3).fill('<div class="skeleton-card"><div class="skeleton-image skeleton"></div></div>').join(''); };
-        const hideLoadingState = () => { eventsContainer.innerHTML = ''; };
-        window.showNotification = (message, type = 'info') => { const el = document.createElement('div'); el.style.cssText = `position:fixed;bottom:20px;left:50%;transform:translateX(-50%);padding:12px 20px;border-radius:8px;z-index:10000;font-weight:500;transition:all .3s ease;opacity:0;background:${type==='error'?'#dc3545':'#28a745'};color:white;box-shadow: var(--shadow-md);`; el.textContent = message; document.body.appendChild(el); setTimeout(() => {el.style.opacity = 1; el.style.bottom = '30px';}, 10); setTimeout(() => { el.style.opacity = 0; el.style.bottom = '20px'; setTimeout(() => el.remove(), 300); }, 3000); }
-
-        init();
+        // INITIALIZE
+        renderStories();
+        renderCarousel();
+        renderEvents();
     });
     </script>
 </body>
